@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pedro Veríssimo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Pedro Veríssimo — builder from São Gabriel, Brazil. Tech co-founder of Sincra. Rockets, an AI olympiad gold, Voluntaria+, a 180k-follower page, and whatever grabs me next.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: airport wayfinding — a departures board for the journey, signage-yellow gate markers for each section, a logbook for everything else. */
+:root{
+  --bg:#F0F1EE; --surface:#FFFFFF; --ink:#15171A; --muted:#5A6067; --line:#D5D8D3;
+  --sign:#F3C10F; --sign-ink:#15171A;
+  --board:#1A1D21; --board-ink:#ECEAE1; --board-dim:#8B9097; --board-line:#2C3036; --go:#46B373;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111315; --surface:#181B1E; --ink:#ECEDEA; --muted:#9CA2A8; --line:#2B2F34;
+  --sign:#F2C318; --sign-ink:#111315;
+  --board:#0B0C0E; --board-ink:#F1EFE6; --board-dim:#80858C; --board-line:#24272C; --go:#52C281;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111315; --surface:#181B1E; --ink:#ECEDEA; --muted:#9CA2A8; --line:#2B2F34;
+  --sign:#F2C318; --sign-ink:#111315;
+  --board:#0B0C0E; --board-ink:#F1EFE6; --board-dim:#80858C; --board-line:#24272C; --go:#52C281;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(--muted)}
+a:hover{text-decoration-color:var(--ink)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--sign);outline-offset:2px;border-radius:2px}
+p{margin:0}
+h1,h2,h3{margin:0;text-wrap:balance}
+.mono{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- top bar ---------- */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:20px;border-bottom:1px solid var(--line)}
+.top nav{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}
+.top nav a{text-decoration:none;color:var(--muted)}
+.top nav a:hover{color:var(--ink)}
+.mark{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:.04em;text-transform:uppercase;text-decoration:none}
+
+/* ---------- hero ---------- */
+.hero{padding-block:56px 40px;display:grid;gap:28px}
+.eyebrow{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.hero h1{font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:.88;font-size:clamp(3.4rem,11vw,8.6rem);letter-spacing:-.005em}
+.lede{font-size:clamp(1.15rem,2.2vw,1.4rem);line-height:1.5;max-width:40ch}
+.lede strong{font-weight:600}
+.quick{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.78rem;padding:8px 12px;border:1px solid var(--ink);text-decoration:none;text-transform:uppercase;letter-spacing:.05em}
+.chip:hover{background:var(--ink);color:var(--bg)}
+.chip.y{background:var(--sign);color:var(--sign-ink);border-color:var(--sign)}
+.chip.y:hover{filter:brightness(.95);background:var(--sign);color:var(--sign-ink)}
+
+/* ---------- departures board ---------- */
+.board{background:var(--board);color:var(--board-ink);border-radius:6px;padding:20px clamp(14px,3vw,28px) 10px;box-shadow:0 1px 0 rgba(0,0,0,.2)}
+.board-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:12px;border-bottom:2px solid var(--sign)}
+.board-head h2{font-family:var(--display);font-weight:600;font-size:1.5rem;text-transform:uppercase;letter-spacing:.08em;display:flex;gap:10px;align-items:center}
+.board-head h2 svg{width:22px;height:22px;fill:var(--sign)}
+.board-head .mono{color:var(--board-dim)}
+.legs{list-style:none;margin:0;padding:0}
+.leg{display:grid;grid-template-columns:64px 72px minmax(0,1.1fr) minmax(0,2fr) 112px;gap:14px;align-items:baseline;padding-block:13px;border-bottom:1px solid var(--board-line);font-family:var(--mono);font-size:.86rem}
+.leg:last-child{border-bottom:0}
+.leg .yr{color:var(--board-dim)}
+.leg .code{font-family:var(--display);font-weight:700;font-size:1.35rem;letter-spacing:.06em;color:var(--sign)}
+.leg .city{font-family:var(--display);font-weight:600;font-size:1.2rem;text-transform:uppercase;letter-spacing:.04em}
+.leg .note{color:var(--board-dim);font-family:var(--body);font-size:.95rem;line-height:1.45}
+.leg .st{justify-self:end;text-transform:uppercase;letter-spacing:.08em;font-size:.74rem;padding:3px 8px;border:1px solid var(--board-line);white-space:nowrap}
+.st.now{background:var(--sign);color:var(--sign-ink);border-color:var(--sign)}
+.st.next{color:var(--go);border-color:var(--go);display:inline-flex;gap:7px;align-items:center}
+.st.next::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--go);animation:blink 1.6s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.st.next::before{animation:none}}
+@media (max-width:760px){
+  .leg{grid-template-columns:56px minmax(0,1fr) auto;grid-template-areas:"code city st" "yr note note";row-gap:4px}
+  .leg .code{grid-area:code}.leg .city{grid-area:city}.leg .st{grid-area:st}.leg .yr{grid-area:yr}.leg .note{grid-area:note}
+}
+
+/* ---------- gate signs (section headers) ---------- */
+section{padding-block:56px 8px}
+.gate{display:flex;align-items:stretch;gap:0;margin-bottom:28px;width:max-content;max-width:100%}
+.gate .arrow{background:var(--sign-ink);color:var(--sign);display:grid;place-items:center;padding:0 12px;font-family:var(--display);font-weight:700;font-size:1.5rem}
+.gate h2{background:var(--sign);color:var(--sign-ink);font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(1.4rem,3vw,1.85rem);line-height:1;padding:10px 16px 9px}
+:root[data-theme="dark"] .gate .arrow{background:var(--ink);color:var(--bg)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .gate .arrow{background:var(--ink);color:var(--bg)}}
+.intro{max-width:62ch;color:var(--muted);margin:-12px 0 28px}
+
+/* ---------- now building ---------- */
+.now{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(20px,4vw,48px);background:var(--surface);border:1px solid var(--line);padding:clamp(20px,4vw,36px)}
+.now h3{font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,6vw,3.6rem);text-transform:uppercase;line-height:.95}
+.meta{display:grid;gap:10px;align-content:start}
+.meta dl{margin:8px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-family:var(--mono);font-size:.8rem}
+.meta dt{color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.meta dd{margin:0}
+.prose{display:grid;gap:14px;max-width:64ch;min-width:0}
+.prose h4{margin:6px 0 -6px;font-family:var(--mono);font-size:.76rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+@media (max-width:760px){.now{grid-template-columns:1fr}}
+
+/* ---------- featured work ---------- */
+.works{display:grid;gap:0;border-top:2px solid var(--ink)}
+.work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(20px,4vw,48px);padding-block:36px;border-bottom:1px solid var(--line)}
+.work h3{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4vw,2.5rem);text-transform:uppercase;line-height:1}
+.tag{display:inline-block;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--muted);color:var(--muted);padding:2px 7px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:4px}
+.stat{background:var(--bg);padding:14px 14px 12px}
+.stat b{display:block;font-family:var(--display);font-weight:700;font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:6px;font-size:.86rem;color:var(--muted);line-height:1.35}
+.links{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--mono);font-size:.8rem}
+.links a::after{content:" ↗"}
+.miss{border-left:3px solid var(--sign);padding:4px 0 4px 16px}
+.miss b{font-family:var(--mono);font-size:.76rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:4px}
+@media (max-width:760px){.work{grid-template-columns:1fr}}
+
+/* ---------- logbook ---------- */
+.log{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.log-head,.entry{display:grid;grid-template-columns:96px 120px minmax(0,1fr);gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
+.log-head{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding-block:10px}
+.entry .when{font-family:var(--mono);font-size:.82rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.entry .kind{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;padding-top:2px}
+.entry .what{display:grid;gap:4px;min-width:0}
+.entry .what strong{font-weight:600}
+.entry .what p{color:var(--muted);line-height:1.5}
+.entry .what p a{color:var(--ink)}
+@media (max-width:640px){
+  .log-head{display:none}
+  .entry{grid-template-columns:1fr;gap:4px}
+  .entry .when,.entry .kind{display:inline}
+  .entry .kind::before{content:"· "}
+  .entry .stamp{display:flex;gap:6px;align-items:baseline}
+}
+@media (min-width:641px){.entry .stamp{display:contents}}
+
+/* ---------- misses / off the clock / press ---------- */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(20px,4vw,40px)}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.list li{display:grid;gap:2px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.list li:last-child{border-bottom:0}
+.list strong{font-weight:600}
+.list span{color:var(--muted);line-height:1.5}
+.press{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.press li{display:grid;grid-template-columns:150px minmax(0,1fr) 100px;gap:16px;padding-block:12px;border-bottom:1px solid var(--line);align-items:baseline}
+.press .outlet{font-family:var(--display);font-weight:600;font-size:1.15rem;text-transform:uppercase;letter-spacing:.03em}
+.press .date{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:640px){.press li{grid-template-columns:1fr;gap:2px}.press .date{text-align:left}}
+.offclock{display:flex;flex-wrap:wrap;gap:8px}
+.offclock span{font-family:var(--mono);font-size:.8rem;border:1px solid var(--line);background:var(--surface);padding:6px 10px}
+
+/* ---------- footer ---------- */
+footer{margin-top:72px;background:var(--board);color:var(--board-ink)}
+footer .wrap{padding-block:40px;display:grid;gap:18px}
+footer .big{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(2rem,6vw,3.4rem);line-height:.95}
+footer .big em{font-style:normal;color:var(--sign)}
+footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--mono);font-size:.8rem;color:var(--board-dim)}
+footer a{color:var(--board-ink);text-decoration-color:var(--board-dim)}
+</style>
+</head>
+<body>
+
+
+<header class="wrap top">
+  <a class="mark" href="#top">Pedro Veríssimo</a>
+  <nav aria-label="Sections">
+    <a href="#now">Now</a><a href="#work">Work</a><a href="#log">Logbook</a><a href="#misses">Misses</a><a href="#press">Press</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <p class="eyebrow">Builder · São Paulo, Brazil</p>
+    <h1>Pedro<br>Veríssimo</h1>
+    <p class="lede">When something grabs my attention, I go all the way, until there's something I can point to. So far that's been planes, rockets, a riddle almost nobody solves, a 180,000-follower page, a gold medal in Brazil's first AI Olympiad, a volunteering platform that made the news, and now <strong>Sincra</strong>, a fintech for doctors and hospitals.</p>
+    <div class="quick">
+      <a class="chip y" href="https://sincra.app" target="_blank" rel="noopener">Sincra · sincra.app ↗</a>
+      <a class="chip" href="https://voluntariamais.com.br/impacto" target="_blank" rel="noopener">Voluntaria+ ↗</a>
+      <a class="chip" href="https://www.oniabrasil.com.br/assets/files/Lista_de_Premiao_1a_ONIA_2025_07_10.pdf" target="_blank" rel="noopener">AI Olympiad gold ↗</a>
+    </div>
+
+    <div class="board" role="region" aria-label="Where I've been and where I'm going">
+      <div class="board-head">
+        <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>Departures</h2>
+        <span class="mono">Rio Grande do Sul → São Paulo → ?</span>
+      </div>
+      <ol class="legs">
+        <li class="leg"><span class="yr num">≤2024</span><span class="code">HOME</span><span class="city">São Gabriel</span><span class="note">Hometown of 60,000 in the far south of Brazil. A year and a half of military school, among the top of my class, and the wrong place for someone who builds.</span><span class="st">Origin</span></li>
+        <li class="leg"><span class="yr num">2024</span><span class="code">POA</span><span class="city">Porto Alegre</span><span class="note">Moved alone in the middle of the school year, the only window I had. Colégio Farroupilha. Most of this page happened here.</span><span class="st">Departed</span></li>
+        <li class="leg"><span class="yr num">2026</span><span class="code">SAO</span><span class="city">São Paulo</span><span class="note">Link School of Business. Co-founded Sincra.</span><span class="st now">Now</span></li>
+        <li class="leg"><span class="yr num">2027</span><span class="code">SFO</span><span class="city">San Francisco</span><span class="note">The Academy, founding class.</span><span class="st next">Applied</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- NOW BUILDING -->
+  <section id="now" class="wrap" aria-labelledby="now-h">
+    <div class="gate"><span class="arrow" aria-hidden="true">→</span><h2 id="now-h">Now building</h2></div>
+    <article class="now">
+      <div class="meta">
+        <h3>Sincra</h3>
+        <p class="tag">Fintech · Healthcare</p>
+        <dl>
+          <dt>Role</dt><dd>Tech co-founder, one of three</dd>
+          <dt>Since</dt><dd class="num">2026</dd>
+          <dt>Site</dt><dd><a href="https://sincra.app" target="_blank" rel="noopener">sincra.app ↗</a></dd>
+        </dl>
+      </div>
+      <div class="prose">
+        <p>In Brazil, a surgeon can wait months to be paid for an operation, and the hospital often can't tell where that money is stuck: internal audit, the insurer, a missing signature. Doctors end up paying bank interest on money that is already theirs.</p>
+        <p>Sincra reads what a hospital already has (its management system, the insurers' TISS returns and the bank statement), rebuilds every procedure's path from surgery to payout, and predicts how much each doctor will receive, when, and with what confidence. Doctors and hospitals can then advance those receivables through partner funds, seeing the cost before they confirm.</p>
+        <h4>My part</h4>
+        <p>I lead product and engineering. I built the product prototype (the doctor, hospital and admin views) and the site.</p>
+        <h4>Where it is</h4>
+        <p>We started as a shift-scheduling tool for hospitals, changed the thesis during Link's Startup School, and are now structuring our first operations with hospitals and funding partners.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- FEATURED WORK -->
+  <section id="work" class="wrap" aria-labelledby="work-h">
+    <div class="gate"><span class="arrow" aria-hidden="true">→</span><h2 id="work-h">Selected work</h2></div>
+    <div class="works">
+
+      <article class="work">
+        <div class="meta">
+          <p class="tag">Software · Community</p>
+          <h3>Voluntaria+</h3>
+          <dl>
+            <dt>When</dt><dd class="num">2024–2025</dd>
+            <dt>Role</dt><dd>Head of technology, InovaTec</dd>
+            <dt>Team</dt><dd>4 students, led by me</dd>
+          </dl>
+        </div>
+        <div class="prose">
+          <p>A platform that connects volunteers with NGOs across Rio Grande do Sul. When I joined InovaTec, my high school's student-run innovation club, I found a lot of ambition and almost no one who could build. The club was trying to make the platform in Bubble, with poor results. I took over the build, rebuilt it from scratch with Lovable when AI coding was brand new, and we launched in about four months.</p>
+          <div class="stats">
+            <div class="stat"><b>170+</b><span>volunteers connected</span></div>
+            <div class="stat"><b>20</b><span>regional NGOs</span></div>
+            <div class="stat"><b>80+</b><span>donors at the school's largest blood drive</span></div>
+            <div class="stat"><b>R$6,300</b><span>raised so the Union of the Blind of RS could set up its Braille printer</span></div>
+          </div>
+          <p>It became a partner of Rede Atados, Brazil's largest volunteering network, and was covered by RBS TV, SBT, Zero Hora and Brasil de Fato. Before graduating I trained the students who took over. In July 2026 they used it to raise part of the money to renovate an art school in Morro da Cruz, a low-income community in Porto Alegre.</p>
+          <p>Through the club I also ran AI workshops for 50 low-income students and AI talks for 40 teachers.</p>
+          <div class="links">
+            <a href="https://voluntariamais.com.br" target="_blank" rel="noopener">voluntariamais.com.br</a>
+            <a href="https://voluntariamais.com.br/impacto" target="_blank" rel="noopener">Impact &amp; press</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="meta">
+          <p class="tag">AI · Competition</p>
+          <h3>Gold, 1st National AI Olympiad</h3>
+          <dl>
+            <dt>When</dt><dd class="num">2024–2025</dd>
+            <dt>Field</dt><dd class="num">716,000+ participants</dd>
+            <dt>Result</dt><dd class="num">1 of 28 gold medals</dd>
+          </dl>
+        </div>
+        <div class="prose">
+          <p>The first edition of ONIA, Brazil's National Artificial Intelligence Olympiad, which selects the national team for the International Olympiad in AI. It went from theory and ethics, to building regressions in Python, to a final round where I built a computer-vision algorithm for competing robots, trained on Santos Dumont II, the national supercomputer at LNCC.</p>
+          <p>Afterwards I was named an ambassador for the second edition and brought classmates into it.</p>
+          <div class="miss">
+            <b>The one that got away</b>
+            <p>The selection for the international team ran training on jobs capped at 15 minutes. Instead of saving checkpoints and stacking progress across jobs, I kept starting from zero, and my model stalled around 70% accuracy when it could have reached about 95%. One missing line of code between me and Beijing. I still think about it.</p>
+          </div>
+          <div class="links">
+            <a href="https://www.oniabrasil.com.br/assets/files/Lista_de_Premiao_1a_ONIA_2025_07_10.pdf" target="_blank" rel="noopener">Official medal list (Pedro Villagrande Veríssimo da Fonseca)</a>
+            <a href="https://www.oniabrasil.com.br/page1.html" target="_blank" rel="noopener">1st ONIA results</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="meta">
+          <p class="tag">Hardware</p>
+          <h3>Rockets from zero</h3>
+          <dl>
+            <dt>Stack</dt><dd>Solid motors, Arduino, servos, accelerometer</dd>
+            <dt>Teacher</dt><dd>BPS.space on YouTube</dd>
+          </dl>
+        </div>
+        <div class="prose">
+          <p>Planes led to rockets. I started by taking fireworks apart and mounting them in cardboard tubes. The first ones exploded; after enough iterations they flew. From there I learned to mix my own solid propellant, then moved into avionics: an Arduino flight computer reading an accelerometer and driving servos, a parachute deployment system, and cameras on board to film each flight.</p>
+          <p>No lab, no club, no budget: YouTube and a lot of failed launches.</p>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="meta">
+          <p class="tag">Audience</p>
+          <h3>180,000 followers</h3>
+          <dl>
+            <dt>Accounts grown</dt><dd class="num">3</dd>
+            <dt>Sold</dt><dd class="num">1, for R$2,000</dd>
+          </dl>
+        </div>
+        <div class="prose">
+          <p>I noticed my feed kept serving the same repeatable video format with millions of views, so I tried to reverse-engineer it. The first two accounts went nowhere. The third reached 180,000 followers. I couldn't monetize it (I had no idea how to build a sales funnel), so I sold it for R$2,000, about two months of Brazil's minimum wage, and then repeated the growth on two more accounts.</p>
+          <p>Along the way I placed top five in a clipping competition, closed a paying mentorship client who found me through my DMs, and learned the hard way to sell before building (see Misses). I still help friends grow their audiences.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- LOGBOOK -->
+  <section id="log" class="wrap" aria-labelledby="log-h">
+    <div class="gate"><span class="arrow" aria-hidden="true">→</span><h2 id="log-h">Logbook</h2></div>
+    <p class="intro">Everything else, newest first. Each line ended with something real.</p>
+    <ol class="log">
+      <li class="log-head" aria-hidden="true"><span>When</span><span>Kind</span><span>Entry</span></li>
+
+      <li class="entry"><span class="stamp"><span class="when">Sep 2025</span><span class="kind">Speaking</span></span>
+        <div class="what"><strong>BRICS forum, Brasília</strong><p>Invited to give a 20-minute talk on AI in education to diplomats and young leaders from BRICS countries, on the strength of the Olympiad and Voluntaria+. My school funded the trip.</p></div></li>
+
+      <li class="entry"><span class="stamp"><span class="when">2025</span><span class="kind">Data · Sales</span></span>
+        <div class="what"><strong>Geração Caldeira, Instituto Caldeira</strong><p>A selective four-month program on the new job market. Our final project, a model to predict Q4 sales for RBS Group (Globo's affiliate in Rio Grande do Sul), won. We were invited to RBS headquarters and I turned down an internship offer. I also wrote a 60-page sales playbook for a company with a complex sale.</p></div></li>
+
+      <li class="entry"><span class="stamp"><span class="when">2025</span><span class="kind">Education</span></span>
+        <div class="what"><strong>Step Up, English for low-income students</strong><p>Mentored a class of eight for two months with 32 lessons I designed around how I taught myself English to C2 by 16, including proficiency and SAT prep. Then joined the board and built the system that tracks students, classes and attendance. <a href="https://stepuplearning.com.br" target="_blank" rel="noopener">stepuplearning.com.br ↗</a></p></div></li>
+
+      <li class="entry"><span class="stamp"><span class="when">2025</span><span class="kind">Software</span></span>
+        <div class="what"><strong>Farroupilha AI</strong><p>An essay-grading assistant for my school: OCR on scanned essays, feedback from a language model.</p></div></li>
+
+      <li class="entry"><span class="stamp"><span class="when">2025</span><span class="kind">Writing</span></span>
+        <div class="what"><strong>Preface of Colégio Farroupilha's 9th-grade book</strong><p>Chosen among students and alumni to write about AI, at a time when it was a big unknown for the school. Also sat in on the school's innovation board, and graduated with its highest honor for community impact.</p></div></li>
+
+      <li class="entry"><span class="stamp"><span class="when">Ongoing</span><span class="kind">Web</span></span>
+        <div class="what"><strong>Advogado Rural</strong><p>Built a publishing platform for my uncle, a rural lawyer, so he could reach farmers without depending on newspapers. Now building the funnel for the audience he meets at his workshops. <a href="https://advogadorural.com" target="_blank" rel="noopener">advogadorural.com ↗</a></p></div></li>
+
+      <li class="entry"><span class="stamp"><span class="when">2024</span><span class="kind">Aviation</span></span>
+        <div class="what"><strong>Right seat into Porto Alegre</strong><p>During the 2024 floods, with the roads already closed, I had to get to Porto Alegre for a family emergency. I found a small plane through a friend of a friend and flew in as co-pilot. Planes were my first obsession: as a kid I built near full-scale Airbus cockpits out of cardboard. I've since been studying toward a pilot license.</p></div></li>
+
+      <li class="entry"><span class="stamp"><span class="when">Dec 2023</span><span class="kind">Puzzle</span></span>
+        <div class="what"><strong>Paralelo 1155, solver #76</strong><p>A Brazilian online riddle that about 90 people have solved since 2019. I gave up, came back, and solved it more than a year after starting, before AI could help. <a href="https://paralelo1155.org/quemresolveu/" target="_blank" rel="noopener">List of solvers ↗</a></p></div></li>
+
+      <li class="entry"><span class="stamp"><span class="when">—</span><span class="kind">Competition</span></span>
+        <div class="what"><strong>Gold, Brazilian Astronomy Olympiad (OBA)</strong><p>One of the largest school olympiads in Brazil, with millions of participants.</p></div></li>
+
+      <li class="entry"><span class="stamp"><span class="when">Age 14</span><span class="kind">Business</span></span>
+        <div class="what"><strong>First business: popsicles</strong><p>Sold popsicles at school until the principal banned it for "causing disorder" and taking customers from the cafeteria. I moved to the sidewalk outside at pickup time, where the parents were. R$2,000 in a few months, the first money I ever made. About 22 more business ideas followed.</p></div></li>
+
+      <li class="entry"><span class="stamp"><span class="when">2020</span><span class="kind">Markets</span></span>
+        <div class="what"><strong>The stock market at 12</strong><p>Spent the pandemic reading about stocks and giving family and friends advice nobody asked for.</p></div></li>
+
+      <li class="entry"><span class="stamp"><span class="when">2017–19</span><span class="kind">Film</span></span>
+        <div class="what"><strong>A murder-mystery trilogy</strong><p>Three films, one per summer, shot with my cousin on summer trips to the beach with our grandparents. Script, shooting and editing all by hand.</p></div></li>
+    </ol>
+  </section>
+
+  <!-- MISSES + OFF THE CLOCK -->
+  <section id="misses" class="wrap" aria-labelledby="misses-h">
+    <div class="gate"><span class="arrow" aria-hidden="true">→</span><h2 id="misses-h">Misses</h2></div>
+    <div class="cols">
+      <ul class="list">
+        <li><strong>IG White Academy</strong><span>Built an entire course on growing Instagram pages, then tried to sell it. Nobody wanted it. Two weeks to learn to sell before building.</span></li>
+        <li><strong>Postshop</strong><span>A dropshipping store. It didn't sell.</span></li>
+        <li><strong>The IOAI checkpoint</strong><span>Lost a spot on Brazil's team for the International AI Olympiad to a missing checkpoint (above).</span></li>
+      </ul>
+      <div>
+        <p class="eyebrow" style="margin-bottom:12px">Off the clock</p>
+        <div class="offclock">
+          <span>Specialty coffee</span><span>Brazilian jiu-jitsu</span><span>Tennis</span><span>Swimming</span><span>Cattle &amp; rice on the family farm</span><span>How minds work</span>
+        </div>
+        <p class="eyebrow" style="margin:24px 0 12px">Languages</p>
+        <div class="offclock"><span>Portuguese · native</span><span>English · C2</span><span>Spanish · intermediate</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS -->
+  <section id="press" class="wrap" aria-labelledby="press-h">
+    <div class="gate"><span class="arrow" aria-hidden="true">→</span><h2 id="press-h">Press</h2></div>
+    <ul class="press">
+      <li><span class="outlet">RBS TV</span><a href="https://www.facebook.com/rbstv/videos/1007908015562388" target="_blank" rel="noopener">The Morro da Cruz art school, part-funded through Voluntaria+</a><span class="date num">Jul 2026</span></li>
+      <li><span class="outlet">Zero Hora</span><a href="https://gauchazh.clicrbs.com.br/colunistas/juliana-bublitz/noticia/2026/07/porto-alegre-vai-ganhar-uma-escola-de-grafite-e-artes-visuais-no-morro-da-cruz-cmrdq2uvz01h801316sz6s9ys.html" target="_blank" rel="noopener">Porto Alegre gets a graffiti and visual arts school</a><span class="date num">Jul 2026</span></li>
+      <li><span class="outlet">Brasil de Fato</span><a href="https://www.brasildefato.com.br/2026/07/08/estudantes-viabilizam-reforma-de-espaco-cultural-no-morro-da-cruz-em-porto-alegre" target="_blank" rel="noopener">Students make a cultural space's renovation possible</a><span class="date num">Jul 2026</span></li>
+      <li><span class="outlet">SBT RS</span><a href="https://www.instagram.com/reel/DPWI_YvEYNq" target="_blank" rel="noopener">InovaTec and Voluntaria+</a><span class="date num">Oct 2025</span></li>
+      <li><span class="outlet">RBS TV</span><a href="https://www.facebook.com/SouFarroupilha/videos/1470912627490790" target="_blank" rel="noopener">National Volunteering Day, featuring Voluntaria+</a><span class="date num">Aug 2025</span></li>
+      <li><span class="outlet">Colégio Farroupilha</span><a href="https://colegiofarroupilha.poa.br/2025/08/28/plataforma-criada-por-alunos-conecta-voluntarios-com-instituicoes-que-precisam-de-ajuda/" target="_blank" rel="noopener">Student-built platform connects volunteers with NGOs</a><span class="date num">Aug 2025</span></li>
+      <li><span class="outlet">Correio do Povo</span><a href="https://www.correiodopovo.com.br/not%C3%ADcias/ensino/a%C3%A7%C3%B5es-de-solidariedade-mobilizam-alunos-1.1512834" target="_blank" rel="noopener">Solidarity actions mobilize students</a><span class="date num">Jul 2024</span></li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="big">Next departure: <em>SFO</em></p>
+    <div class="row">
+      <a href="https://sincra.app" target="_blank" rel="noopener">sincra.app</a>
+      <a href="https://voluntariamais.com.br" target="_blank" rel="noopener">voluntariamais.com.br</a>
+      <span>São Paulo, Brazil</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
