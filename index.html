@@ -3,403 +3,926 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Pedro Veríssimo">
+<meta property="og:description" content="Builder from São Gabriel, Brazil. Tech co-founder of Sincra.">
+<meta property="og:image" content="https://pedroverissimo.vercel.app/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#08090C" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <title>Pedro Veríssimo</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Pedro Veríssimo — builder from São Gabriel, Brazil. Tech co-founder of Sincra. Rockets, an AI olympiad gold, Voluntaria+, a 180k-follower page, and whatever grabs me next.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta name="description" content="Pedro Veríssimo: builder from São Gabriel, Brazil. Tech co-founder of Sincra. A gold medal in Brazil's first AI Olympiad, Voluntaria+, rockets, and Instagram pages past 160,000 followers.">
+<script>try{var t=localStorage.getItem('pv-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);else if(t==='auto')document.documentElement.removeAttribute('data-theme');if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!sessionStorage.getItem('pv-intro'))document.documentElement.classList.add('intro')}catch(e){}</script>
 <style>
-/* Layout: airport wayfinding — a departures board for the journey, signage-yellow gate markers for each section, a logbook for everything else. */
+/* Layout: one framed column with hairline rails on both sides; full-bleed rules split sections, small crosses mark the joints; a bento of photos up top, product-style cards below. */
 :root{
-  --bg:#F0F1EE; --surface:#FFFFFF; --ink:#15171A; --muted:#5A6067; --line:#D5D8D3;
-  --sign:#F3C10F; --sign-ink:#15171A;
-  --board:#1A1D21; --board-ink:#ECEAE1; --board-dim:#8B9097; --board-line:#2C3036; --go:#46B373;
-  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
-  --body:"Barlow","Helvetica Neue",Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --bg:#FFFFFF;        /* page */
+  --bg-2:#F6F7F9;      /* panels */
+  --bg-3:#EDEFF3;      /* wells, image placeholders */
+  --fg:#0B0D12;        /* text */
+  --fg-2:#4C5365;      /* secondary text */
+  --fg-3:#858C9C;      /* tertiary, captions */
+  --line:#E5E8EE;      /* hairlines */
+  --line-2:#D3D8E1;    /* stronger hairlines */
+  --accent:#1463FF;    /* blue */
+  --accent-2:#0A4FDB;  /* blue, pressed */
+  --accent-soft:#EAF1FF;
+  --on-accent:#FFFFFF;
+  --ink-panel:#0A0C11; /* the one inverted card */
+  --ink-panel-fg:#E9ECF2;
+  --ink-panel-2:#9CA3B3;
+  --ink-panel-line:#1D212B;
+  --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --frame:1120px;
+  --pad:clamp(16px,4vw,48px);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#111315; --surface:#181B1E; --ink:#ECEDEA; --muted:#9CA2A8; --line:#2B2F34;
-  --sign:#F2C318; --sign-ink:#111315;
-  --board:#0B0C0E; --board-ink:#F1EFE6; --board-dim:#80858C; --board-line:#24272C; --go:#52C281;
+  --bg:#08090C; --bg-2:#0E1016; --bg-3:#161922; --fg:#ECEEF3; --fg-2:#A2A8B7; --fg-3:#6F7687;
+  --line:#1B1E27; --line-2:#272C38; --accent:#4A8BFF; --accent-2:#79A9FF; --accent-soft:#0E1B36; --on-accent:#04060A;
+  --ink-panel:#0F121A; --ink-panel-fg:#E9ECF2; --ink-panel-2:#9CA3B3; --ink-panel-line:#232837;
   color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#111315; --surface:#181B1E; --ink:#ECEDEA; --muted:#9CA2A8; --line:#2B2F34;
-  --sign:#F2C318; --sign-ink:#111315;
-  --board:#0B0C0E; --board-ink:#F1EFE6; --board-dim:#80858C; --board-line:#24272C; --go:#52C281;
+  --bg:#08090C; --bg-2:#0E1016; --bg-3:#161922; --fg:#ECEEF3; --fg-2:#A2A8B7; --fg-3:#6F7687;
+  --line:#1B1E27; --line-2:#272C38; --accent:#4A8BFF; --accent-2:#79A9FF; --accent-soft:#0E1B36; --on-accent:#04060A;
+  --ink-panel:#0F121A; --ink-panel-fg:#E9ECF2; --ink-panel-2:#9CA3B3; --ink-panel-line:#232837;
   color-scheme:dark}
 
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(--muted)}
-a:hover{text-decoration-color:var(--ink)}
-a:focus-visible,button:focus-visible{outline:3px solid var(--sign);outline-offset:2px;border-radius:2px}
-p{margin:0}
-h1,h2,h3{margin:0;text-wrap:balance}
-.mono{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em}
-.num{font-variant-numeric:tabular-nums}
+@font-face{font-family:"Geist";src:url("fonts/geist.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Geist Mono";src:url("fonts/geist-mono.woff2") format("woff2");font-weight:100 900;font-display:swap}
 
-/* ---------- top bar ---------- */
-.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:20px;border-bottom:1px solid var(--line)}
-.top nav{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}
-.top nav a{text-decoration:none;color:var(--muted)}
-.top nav a:hover{color:var(--ink)}
-.mark{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:.04em;text-transform:uppercase;text-decoration:none}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-feature-settings:"ss01","cv11"}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+a{color:inherit;text-decoration:none}
+p a,.prose a,dd a,td a{color:var(--fg);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px;text-decoration-thickness:1px}
+p a:hover,.prose a:hover,dd a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+p,h1,h2,h3,h4,figure,ul,ol,dl,dd{margin:0}
+ul,ol{padding:0;list-style:none}
+h1,h2,h3{text-wrap:balance;font-weight:600}
+img,video{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+.mono{font-family:var(--mono)}
+.num{font-variant-numeric:tabular-nums}
+[hidden]{display:none!important}
+.ext::after{content:"";display:inline-block;width:.7em;height:.7em;margin-left:.3em;vertical-align:-.02em;background:currentColor;opacity:.7;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2.5 7.5 7.5 2.5M3.5 2.5h4v4' fill='none' stroke='black' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2.5 7.5 7.5 2.5M3.5 2.5h4v4' fill='none' stroke='black' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* ---------- frame: column rails, full-bleed rules, joint crosses ---------- */
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main.wrap{overflow-x:clip}
+.frame{max-width:var(--frame);margin:0 auto;position:relative;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.band{position:relative}
+.band::before{content:"";position:absolute;top:0;left:calc(50% - 50vw);width:100vw;height:1px;background:var(--line);pointer-events:none}
+.x{position:absolute;top:-5px;width:11px;height:11px;z-index:2;pointer-events:none}
+.x::before,.x::after{content:"";position:absolute;background:var(--fg-3)}
+.x::before{left:5px;top:0;width:1px;height:11px}.x::after{top:5px;left:0;height:1px;width:11px}
+.x.l{left:-6px}.x.r{right:-6px}
+.hatch{height:44px;background:repeating-linear-gradient(-45deg,transparent 0 6px,var(--line) 6px 7px)}
+.in{padding:clamp(48px,7vw,96px) var(--pad)}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.top .frame{display:flex;align-items:center;gap:20px;height:60px;padding-inline:var(--pad);border-color:var(--line)}
+.brand{display:flex;align-items:center;gap:10px;flex:none;font-weight:600;letter-spacing:-.01em}
+.brand .av{width:30px;height:30px;border-radius:50%;border:1px solid var(--line-2);background:var(--bg-2);display:grid;place-items:center;overflow:hidden}
+.brand .av svg{width:30px;height:30px;color:var(--fg)}
+.nav{display:flex;gap:4px;min-width:0;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font-size:.875rem;color:var(--fg-2);padding:6px 10px;border-radius:8px;white-space:nowrap;transition:color .15s,background .15s}
+.nav a:hover{color:var(--fg);background:var(--bg-2)}
+.nav a[aria-current="true"]{color:var(--fg)}
+.top-r{margin-left:auto;display:flex;align-items:center;gap:10px;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:36px;padding:0 14px;border-radius:10px;font-size:.875rem;font-weight:500;border:1px solid var(--line-2);background:var(--bg);color:var(--fg);transition:background .15s,border-color .15s,color .15s,transform .15s;white-space:nowrap}
+.btn:hover{background:var(--bg-2);border-color:var(--fg-3)}
+.btn:active{transform:translateY(1px)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.pri:hover{background:var(--accent-2);border-color:var(--accent-2)}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--fg-2)}
+.btn.ghost:hover{color:var(--fg);background:var(--bg-2)}
+.btn.sm{height:32px;padding:0 12px;border-radius:9px;font-size:.82rem}
+.theme{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--bg)}
+.theme button{width:28px;height:28px;border-radius:999px;display:grid;place-items:center;color:var(--fg-3)}
+.theme button svg{width:15px;height:15px}
+.theme button:hover{color:var(--fg)}
+.theme button[aria-pressed="true"]{background:var(--bg-3);color:var(--fg);box-shadow:0 0 0 1px var(--line-2) inset}
+@media (max-width:899px){
+  .top .frame{height:auto;flex-wrap:wrap;padding-top:10px;row-gap:6px}
+  .nav{order:3;flex-basis:calc(100% + 2 * var(--pad));margin-inline:calc(-1 * var(--pad));padding:0 calc(var(--pad) - 10px) 8px}
+  .top-r .btn{display:none}
+}
 
 /* ---------- hero ---------- */
-.hero{padding-block:56px 40px;display:grid;gap:28px}
-.eyebrow{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
-.hero h1{font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:.88;font-size:clamp(3.4rem,11vw,8.6rem);letter-spacing:-.005em}
-.lede{font-size:clamp(1.15rem,2.2vw,1.4rem);line-height:1.5;max-width:40ch}
-.lede strong{font-weight:600}
-.quick{display:flex;flex-wrap:wrap;gap:10px}
-.chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.78rem;padding:8px 12px;border:1px solid var(--ink);text-decoration:none;text-transform:uppercase;letter-spacing:.05em}
-.chip:hover{background:var(--ink);color:var(--bg)}
-.chip.y{background:var(--sign);color:var(--sign-ink);border-color:var(--sign)}
-.chip.y:hover{filter:brightness(.95);background:var(--sign);color:var(--sign-ink)}
+.hero{display:grid;gap:clamp(32px,5vw,56px);align-items:center}
+@media (min-width:900px){.hero{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)}}
+.pill{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 12px 0 10px;border:1px solid var(--line);border-radius:999px;font-size:.8rem;color:var(--fg-2);background:var(--bg)}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pill b{color:var(--fg);font-weight:500}
+.hero h1{font-size:clamp(2.7rem,7vw,5.2rem);line-height:.98;letter-spacing:-.045em;font-weight:600;margin-top:22px}
+.hero .sub{margin-top:14px;font-size:clamp(1.1rem,1.8vw,1.3rem);color:var(--fg-2);letter-spacing:-.01em;max-width:44ch;line-height:1.45}
+.hero .sub b{color:var(--fg);font-weight:500}
+.lede{margin-top:22px;font-size:1.05rem;color:var(--fg-2);max-width:56ch}
+.lede strong{color:var(--fg);font-weight:500}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.ctas .btn{height:40px;padding:0 16px}
+.card{border:1px solid var(--line);border-radius:16px;background:var(--bg);overflow:hidden}
+.profile .art{aspect-ratio:1;background-color:var(--bg-2);background-image:radial-gradient(var(--line-2) 1px,transparent 1.2px);background-size:16px 16px;display:grid;place-items:center;border-bottom:1px solid var(--line);position:relative}
+.profile .art svg{width:78%;height:78%;color:var(--fg)}
+.profile .art .tag{position:absolute;left:12px;top:12px;font-family:var(--mono);font-size:.7rem;color:var(--fg-3);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 7px}
+.kv{display:grid;grid-template-columns:auto 1fr;font-size:.875rem}
+.kv dt,.kv dd{padding:10px 16px;border-top:1px solid var(--line)}
+.kv dt:first-of-type,.kv dd:first-of-type{border-top:0}
+.kv dt{font-family:var(--mono);font-size:.75rem;color:var(--fg-3);padding-right:8px;padding-top:12px}
+.kv dd{color:var(--fg);text-align:right}
 
-/* ---------- departures board ---------- */
-.board{background:var(--board);color:var(--board-ink);border-radius:6px;padding:20px clamp(14px,3vw,28px) 10px;box-shadow:0 1px 0 rgba(0,0,0,.2)}
-.board-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:12px;border-bottom:2px solid var(--sign)}
-.board-head h2{font-family:var(--display);font-weight:600;font-size:1.5rem;text-transform:uppercase;letter-spacing:.08em;display:flex;gap:10px;align-items:center}
-.board-head h2 svg{width:22px;height:22px;fill:var(--sign)}
-.board-head .mono{color:var(--board-dim)}
-.legs{list-style:none;margin:0;padding:0}
-.leg{display:grid;grid-template-columns:64px 72px minmax(0,1.1fr) minmax(0,2fr) 112px;gap:14px;align-items:baseline;padding-block:13px;border-bottom:1px solid var(--board-line);font-family:var(--mono);font-size:.86rem}
-.leg:last-child{border-bottom:0}
-.leg .yr{color:var(--board-dim)}
-.leg .code{font-family:var(--display);font-weight:700;font-size:1.35rem;letter-spacing:.06em;color:var(--sign)}
-.leg .city{font-family:var(--display);font-weight:600;font-size:1.2rem;text-transform:uppercase;letter-spacing:.04em}
-.leg .note{color:var(--board-dim);font-family:var(--body);font-size:.95rem;line-height:1.45}
-.leg .st{justify-self:end;text-transform:uppercase;letter-spacing:.08em;font-size:.74rem;padding:3px 8px;border:1px solid var(--board-line);white-space:nowrap}
-.st.now{background:var(--sign);color:var(--sign-ink);border-color:var(--sign)}
-.st.next{color:var(--go);border-color:var(--go);display:inline-flex;gap:7px;align-items:center}
-.st.next::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--go);animation:blink 1.6s steps(2,start) infinite}
-@keyframes blink{to{visibility:hidden}}
-@media (prefers-reduced-motion:reduce){.st.next::before{animation:none}}
-@media (max-width:760px){
-  .leg{grid-template-columns:56px minmax(0,1fr) auto;grid-template-areas:"code city st" "yr note note";row-gap:4px}
-  .leg .code{grid-area:code}.leg .city{grid-area:city}.leg .st{grid-area:st}.leg .yr{grid-area:yr}.leg .note{grid-area:note}
+/* ---------- bento ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:clamp(150px,15vw,190px);gap:12px}
+.tile{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--bg-3);display:block;isolation:isolate}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tile:hover img{transform:scale(1.04)}
+.tile.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(4,6,12,.72));z-index:0}
+.tile .cap{position:absolute;left:14px;right:14px;bottom:12px;z-index:1;color:#fff;display:grid;gap:2px}
+.tile .cap small{font-family:var(--mono);font-size:.7rem;opacity:.75}
+.tile .cap b{font-weight:600;font-size:1rem;letter-spacing:-.01em;line-height:1.25}
+.tile .go{position:absolute;right:12px;top:12px;z-index:1;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;place-items:center;color:#fff;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s}
+.tile:hover .go,.tile:focus-visible .go{opacity:1;transform:none}
+.tile .go::after{content:"";width:12px;height:12px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2.5 7.5 7.5 2.5M3.5 2.5h4v4' fill='none' stroke='black' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2.5 7.5 7.5 2.5M3.5 2.5h4v4' fill='none' stroke='black' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.tile.stat{background:var(--bg-2);padding:16px;display:flex;flex-direction:column;justify-content:space-between;color:var(--fg)}
+.tile.stat .big{font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:600;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.tile.stat .lbl{font-size:.85rem;color:var(--fg-2);line-height:1.35}
+.tile.stat small{font-family:var(--mono);font-size:.7rem;color:var(--fg-3)}
+.tile.blue{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.tile.blue .big{color:var(--on-accent)}
+.tile.blue .lbl,.tile.blue small{color:var(--on-accent);opacity:.8}
+.t-a{grid-column:span 3;grid-row:span 2}.t-b{grid-column:span 2;grid-row:span 2}.t-c{grid-column:span 1}.t-d{grid-column:span 2}.t-e{grid-column:span 1}
+@media (max-width:899px){
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}
+  .t-a{grid-column:span 2;grid-row:span 2}.t-b{grid-column:span 1;grid-row:span 2}.t-c{grid-column:span 1}.t-d{grid-column:span 2}.t-e{grid-column:span 1}
 }
 
-/* ---------- gate signs (section headers) ---------- */
-section{padding-block:56px 8px}
-.gate{display:flex;align-items:stretch;gap:0;margin-bottom:28px;width:max-content;max-width:100%}
-.gate .arrow{background:var(--sign-ink);color:var(--sign);display:grid;place-items:center;padding:0 12px;font-family:var(--display);font-weight:700;font-size:1.5rem}
-.gate h2{background:var(--sign);color:var(--sign-ink);font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(1.4rem,3vw,1.85rem);line-height:1;padding:10px 16px 9px}
-:root[data-theme="dark"] .gate .arrow{background:var(--ink);color:var(--bg)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .gate .arrow{background:var(--ink);color:var(--bg)}}
-.intro{max-width:62ch;color:var(--muted);margin:-12px 0 28px}
+/* ---------- section heads ---------- */
+.head{display:grid;gap:12px;margin-bottom:clamp(32px,4vw,48px);max-width:52rem}
+.label{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.01em}
+.label::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--accent)}
+.head h2{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.05;letter-spacing:-.035em}
+.head p{color:var(--fg-2);font-size:1.05rem;max-width:58ch}
 
-/* ---------- now building ---------- */
-.now{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(20px,4vw,48px);background:var(--surface);border:1px solid var(--line);padding:clamp(20px,4vw,36px)}
-.now h3{font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,6vw,3.6rem);text-transform:uppercase;line-height:.95}
-.meta{display:grid;gap:10px;align-content:start}
-.meta dl{margin:8px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-family:var(--mono);font-size:.8rem}
-.meta dt{color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.meta dd{margin:0}
-.prose{display:grid;gap:14px;max-width:64ch;min-width:0}
-.prose h4{margin:6px 0 -6px;font-family:var(--mono);font-size:.76rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
-@media (max-width:760px){.now{grid-template-columns:1fr}}
+/* ---------- about ---------- */
+.about{display:grid;gap:clamp(28px,4vw,56px)}
+@media (min-width:900px){.about{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
+.prose{display:grid;gap:16px;max-width:62ch;min-width:0;color:var(--fg-2)}
+.prose .big{font-size:clamp(1.2rem,2vw,1.4rem);line-height:1.5;color:var(--fg);letter-spacing:-.015em}
+.facts .kv dd{text-align:left}
+.facts .kv dd,.facts .kv dt{padding-block:12px}
+.copy{display:inline-flex;align-items:center;gap:6px;margin-left:8px;height:24px;padding:0 8px;font-size:.72rem;font-family:var(--mono);border:1px solid var(--line-2);border-radius:7px;color:var(--fg-2);vertical-align:middle}
+.copy:hover{color:var(--fg);border-color:var(--fg-3)}
+.mail{font-family:var(--mono);font-size:.84rem;user-select:all;overflow-wrap:anywhere}
+@media (max-width:420px){.facts .mail{font-size:.76rem}}
 
-/* ---------- featured work ---------- */
-.works{display:grid;gap:0;border-top:2px solid var(--ink)}
-.work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(20px,4vw,48px);padding-block:36px;border-bottom:1px solid var(--line)}
-.work h3{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4vw,2.5rem);text-transform:uppercase;line-height:1}
-.tag{display:inline-block;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--muted);color:var(--muted);padding:2px 7px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:4px}
-.stat{background:var(--bg);padding:14px 14px 12px}
-.stat b{display:block;font-family:var(--display);font-weight:700;font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
-.stat span{display:block;margin-top:6px;font-size:.86rem;color:var(--muted);line-height:1.35}
-.links{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--mono);font-size:.8rem}
-.links a::after{content:" ↗"}
-.miss{border-left:3px solid var(--sign);padding:4px 0 4px 16px}
-.miss b{font-family:var(--mono);font-size:.76rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:4px}
-@media (max-width:760px){.work{grid-template-columns:1fr}}
+/* ---------- product card (Sincra) ---------- */
+.product{display:grid;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--bg)}
+@media (min-width:980px){.product{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
+.product .txt{padding:clamp(20px,3vw,36px);display:grid;gap:16px;align-content:start;color:var(--fg-2);min-width:0}
+.product h3{font-size:clamp(2.2rem,4.6vw,3.4rem);letter-spacing:-.05em;line-height:1;color:var(--fg)}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.badge{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:999px;font-size:.75rem;font-weight:500;border:1px solid var(--line-2);color:var(--fg-2);background:var(--bg);white-space:nowrap}
+.badge.live{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,transparent);background:var(--accent-soft)}
+.badge.live::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.3}}
+@media (prefers-reduced-motion:reduce){.badge.live::before{animation:none}}
+.badge.plain{border-color:var(--line);background:var(--bg-2)}
+.flow{border:1px solid var(--line);border-radius:14px;background:var(--bg-2);padding:18px;display:grid;gap:14px}
+.flow ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;position:relative}
+.flow ol::before{content:"";position:absolute;left:12%;right:12%;top:15px;height:1px;background:var(--line-2)}
+.flow li{position:relative;display:grid;justify-items:center;text-align:center;gap:6px;font-size:.78rem;line-height:1.35;color:var(--fg-3)}
+.flow li b{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--bg);border:1px solid var(--line-2);font-family:var(--mono);font-size:.72rem;color:var(--fg);font-weight:500;position:relative;z-index:1}
+.flow li span{color:var(--fg);font-weight:500;font-size:.82rem}
+.flow li:nth-child(3) b{border-color:color-mix(in srgb,#E5484D 55%,transparent);color:#E5484D}
+.flow .pred{display:flex;align-items:center;gap:10px;font-size:.84rem;color:var(--fg);padding:10px 12px;border-radius:10px;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent)}
+.flow .pred b{font-family:var(--mono);font-size:.72rem;color:var(--accent);font-weight:500}
+@media (max-width:560px){.flow ol{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:16px}.flow ol::before{display:none}}
+.h4{font-family:var(--mono);font-size:.75rem;color:var(--fg-3);margin-top:4px}
+.product .pics{border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+@media (min-width:980px){.product .pics{border-top:0;border-left:1px solid var(--line)}}
+.product .pics .fig{background:var(--bg)}
+.product .pics .fig figcaption{padding:0 14px 12px}
+.product .pics .span{grid-column:1/-1}
+.product .pics .fig-btn{border-radius:0;border:0}
 
-/* ---------- logbook ---------- */
-.log{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
-.log-head,.entry{display:grid;grid-template-columns:96px 120px minmax(0,1fr);gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
-.log-head{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding-block:10px}
-.entry .when{font-family:var(--mono);font-size:.82rem;color:var(--muted);font-variant-numeric:tabular-nums}
-.entry .kind{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;padding-top:2px}
-.entry .what{display:grid;gap:4px;min-width:0}
-.entry .what strong{font-weight:600}
-.entry .what p{color:var(--muted);line-height:1.5}
-.entry .what p a{color:var(--ink)}
+/* ---------- figures ---------- */
+.fig{display:grid;gap:8px;min-width:0;align-content:start}
+.fig-btn{display:block;position:relative;overflow:hidden;background:var(--bg-3);border-radius:12px;border:1px solid var(--line);cursor:zoom-in;width:100%}
+.fig-btn img,.fig-btn video{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.fig-btn:hover img{transform:scale(1.025)}
+.fig figcaption{font-size:.8rem;line-height:1.45;color:var(--fg-3);max-width:52ch}
+.fig.contain .fig-btn{background:#05070B}
+.fig.contain .fig-btn img{object-fit:contain}
+.r43 .fig-btn{aspect-ratio:4/3}.r34 .fig-btn{aspect-ratio:3/4}.r11 .fig-btn{aspect-ratio:1}.r169 .fig-btn{aspect-ratio:16/9}.r45 .fig-btn{aspect-ratio:4/5}
+.pos-top img{object-position:50% 20%}
+
+/* ---------- project cards ---------- */
+.projects{display:grid;gap:20px}
+.proj{border:1px solid var(--line);border-radius:20px;background:var(--bg);padding:clamp(18px,3vw,32px)}
+.proj-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.proj-head .cat{flex-basis:100%;font-family:var(--mono);font-size:.75rem;color:var(--fg-3)}
+.proj-head h3{font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.035em;line-height:1.1;margin-right:auto}
+.proj-head .when{font-family:var(--mono);font-size:.75rem;color:var(--fg-3)}
+.proj-body{display:grid;gap:clamp(22px,3vw,40px)}
+@media (min-width:980px){.proj-body{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.proj.flip .proj-text{order:2}}
+.proj-text{display:grid;gap:16px;align-content:start;color:var(--fg-2);min-width:0}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:.88rem;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--bg-2)}
+.dl dt{font-family:var(--mono);font-size:.74rem;color:var(--fg-3);padding-top:.15em}
+.dl dd{color:var(--fg)}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.stat{background:var(--bg);padding:14px 16px}
+.stat b{display:block;font-size:clamp(1.5rem,2.6vw,1.9rem);font-weight:600;letter-spacing:-.04em;line-height:1;color:var(--fg);font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:6px;font-size:.82rem;line-height:1.35;color:var(--fg-2)}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{display:inline-flex;align-items:center;height:30px;padding:0 11px;border:1px solid var(--line-2);border-radius:9px;font-size:.8rem;color:var(--fg);transition:border-color .15s,background .15s}
+.links a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.note{border:1px solid color-mix(in srgb,var(--accent) 28%,transparent);background:var(--accent-soft);border-radius:12px;padding:14px 16px;display:grid;gap:4px}
+.note b{font-family:var(--mono);font-size:.74rem;color:var(--accent);font-weight:500}
+.note p{font-size:.94rem;color:var(--fg)}
+.grid-m{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px 12px;align-content:start;align-items:start}
+.grid-m .c6{grid-column:span 6}.grid-m .c4{grid-column:span 4}.grid-m .c3{grid-column:span 3}.grid-m .c2{grid-column:span 2}
+@media (max-width:560px){.grid-m .c2:not(.k){grid-column:span 3}.grid-m .c4{grid-column:span 6}}
+.phones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px;align-items:start;align-content:start}
+.phones .fig-btn{border-radius:18px}
+
+/* the inverted card: rockets */
+.proj.ink{background:var(--ink-panel);color:var(--ink-panel-fg);border-color:var(--ink-panel-line)}
+.proj.ink .proj-head{border-color:var(--ink-panel-line)}
+.proj.ink h3,.proj.ink .dl dd,.proj.ink .stat b{color:var(--ink-panel-fg)}
+.proj.ink .proj-text,.proj.ink .cat,.proj.ink .when,.proj.ink .dl dt,.proj.ink figcaption{color:var(--ink-panel-2)}
+.proj.ink .dl{background:#141823;border-color:var(--ink-panel-line)}
+.proj.ink .badge{background:transparent;border-color:#2B3142;color:var(--ink-panel-2)}
+.proj.ink .links a{color:var(--ink-panel-fg);border-color:#2B3142}
+.proj.ink .links a:hover{color:#8DB4FF;border-color:#8DB4FF;background:#0E1B36}
+.proj.ink .fig-btn{border-color:var(--ink-panel-line);background:#141823}
+.specs{display:flex;flex-wrap:wrap;gap:8px}
+.specs span{font-family:var(--mono);font-size:.74rem;padding:5px 9px;border:1px solid #2B3142;border-radius:8px;color:var(--ink-panel-2)}
+.specs b{color:var(--ink-panel-fg);font-weight:500}
+
+/* ---------- beyond work ---------- */
+.beyond{display:grid;gap:20px}
+.chat{max-width:320px}
+.tapes{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.tape{display:grid;gap:6px;align-content:space-between;min-height:132px;padding:14px;border-radius:14px;background:var(--bg-2);border:1px solid var(--line);transition:border-color .15s,background .15s}
+.tape:hover{border-color:var(--accent);background:var(--accent-soft)}
+.tape .t-k{font-family:var(--mono);font-size:.72rem;color:var(--fg-3)}
+.tape .t-t{font-weight:600;font-size:1rem;line-height:1.2;letter-spacing:-.02em;color:var(--fg)}
+.tape .t-e{font-size:.8rem;color:var(--fg-2);line-height:1.35}
+.tape .t-f{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.72rem;color:var(--fg-3)}
+.tape .t-f::before{content:"";width:15px;height:15px;background:var(--fg-3);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm-1.6 4.6 5 3.4-5 3.4Z' fill-rule='evenodd'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm-1.6 4.6 5 3.4-5 3.4Z' fill-rule='evenodd'/%3E%3C/svg%3E") center/contain no-repeat}
+.tape:hover .t-f{color:var(--accent)}
+.tape:hover .t-f::before{background:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:.82rem;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--bg-2);color:var(--fg-2)}
+
+/* ---------- timeline (changelog) ---------- */
+.tl{position:relative}
+.tl li{display:grid;grid-template-columns:120px 20px minmax(0,1fr);gap:0 16px;padding-bottom:28px;position:relative}
+.tl li::before{content:"";position:absolute;left:calc(120px + 16px + 9.5px);top:10px;bottom:-10px;width:1px;background:var(--line-2)}
+.tl li:last-child::before{display:none}
+.tl .d{font-family:var(--mono);font-size:.78rem;color:var(--fg-3);text-align:right;padding-top:2px;font-variant-numeric:tabular-nums}
+.tl .dot{width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--line-2);margin:6px 0 0 4px;position:relative;z-index:1}
+.tl li:first-child .dot{border-color:var(--accent);background:var(--accent-soft)}
+.tl .e{display:grid;gap:4px;color:var(--fg-2);font-size:.94rem;max-width:64ch}
+.tl .e strong{color:var(--fg);font-weight:500;font-size:1rem}
+.tl .e .k{font-family:var(--mono);font-size:.7rem;color:var(--fg-3);margin-left:8px;font-weight:400}
 @media (max-width:640px){
-  .log-head{display:none}
-  .entry{grid-template-columns:1fr;gap:4px}
-  .entry .when,.entry .kind{display:inline}
-  .entry .kind::before{content:"· "}
-  .entry .stamp{display:flex;gap:6px;align-items:baseline}
+  .tl li{grid-template-columns:20px minmax(0,1fr);gap:2px 12px}
+  .tl .d{grid-column:2;text-align:left;order:-1}
+  .tl .dot{grid-row:1/span 2;grid-column:1}
+  .tl li::before{left:9.5px}
 }
-@media (min-width:641px){.entry .stamp{display:contents}}
+.tl-pics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:640px;margin-top:8px}
 
-/* ---------- misses / off the clock / press ---------- */
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(20px,4vw,40px)}
-.list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.list li{display:grid;gap:2px;padding-bottom:14px;border-bottom:1px solid var(--line)}
-.list li:last-child{border-bottom:0}
-.list strong{font-weight:600}
-.list span{color:var(--muted);line-height:1.5}
-.press{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
-.press li{display:grid;grid-template-columns:150px minmax(0,1fr) 100px;gap:16px;padding-block:12px;border-bottom:1px solid var(--line);align-items:baseline}
-.press .outlet{font-family:var(--display);font-weight:600;font-size:1.15rem;text-transform:uppercase;letter-spacing:.03em}
-.press .date{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
-@media (max-width:640px){.press li{grid-template-columns:1fr;gap:2px}.press .date{text-align:left}}
-.offclock{display:flex;flex-wrap:wrap;gap:8px}
-.offclock span{font-family:var(--mono);font-size:.8rem;border:1px solid var(--line);background:var(--surface);padding:6px 10px}
+/* ---------- honors ---------- */
+.list{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bg)}
+.row{display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 16px;padding:16px;border-top:1px solid var(--line);align-items:center}
+.row:first-child{border-top:0}
+@media (min-width:820px){.row{grid-template-columns:56px minmax(0,1fr) minmax(0,1fr) auto}}
+.row .th{width:56px;height:56px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--bg-3);grid-row:span 2}
+@media (min-width:820px){.row .th{grid-row:auto}}
+.row .th img{width:100%;height:100%;object-fit:cover}
+.row h3{font-size:1rem;font-weight:500;letter-spacing:-.01em;line-height:1.35}
+.row .by{font-family:var(--mono);font-size:.74rem;color:var(--fg-3)}
+.row p{font-size:.88rem;color:var(--fg-2)}
+.row .pr{font-size:.8rem}
+.row .pr a{color:var(--fg-2)}
+.row .pr a:hover{color:var(--accent)}
+@media (max-width:819px){.row p,.row .pr{grid-column:2}}
+
+/* ---------- press ---------- */
+.press li{display:grid;gap:2px 20px;padding:14px 16px;border-top:1px solid var(--line)}
+.press li:first-child{border-top:0}
+@media (min-width:760px){.press li{grid-template-columns:180px minmax(0,1fr) 84px;align-items:baseline}}
+.press .outlet{font-weight:500;font-size:.92rem}
+.press a{color:var(--fg-2);font-size:.94rem}
+.press a:hover{color:var(--accent)}
+.press .date{font-family:var(--mono);font-size:.75rem;color:var(--fg-3);font-variant-numeric:tabular-nums}
+@media (min-width:760px){.press .date{text-align:right}}
 
 /* ---------- footer ---------- */
-footer{margin-top:72px;background:var(--board);color:var(--board-ink)}
-footer .wrap{padding-block:40px;display:grid;gap:18px}
-footer .big{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(2rem,6vw,3.4rem);line-height:.95}
-footer .big em{font-style:normal;color:var(--sign)}
-footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--mono);font-size:.8rem;color:var(--board-dim)}
-footer a{color:var(--board-ink);text-decoration-color:var(--board-dim)}
+.foot .in{display:grid;gap:32px;padding-bottom:calc(32px + env(safe-area-inset-bottom,0px))}
+.foot h2{font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.045em;line-height:1}
+.foot h2 span{color:var(--fg-3)}
+.sig{width:min(420px,78%);aspect-ratio:2031/414;background:var(--fg);-webkit-mask:url("media/signature.png") left center/contain no-repeat;mask:url("media/signature.png") left center/contain no-repeat}
+.foot-grid{display:grid;gap:24px}
+@media (min-width:820px){.foot-grid{grid-template-columns:1.3fr 1fr 1fr}}
+.foot-grid h4{font-family:var(--mono);font-size:.74rem;color:var(--fg-3);margin-bottom:10px;font-weight:400}
+.foot-grid ul{display:grid;gap:6px;font-size:.92rem}
+.foot-grid ul a{color:var(--fg-2)}
+.foot-grid ul a:hover{color:var(--accent)}
+.foot-base{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:20px;font-size:.8rem;color:var(--fg-3)}
+
+/* ---------- lightbox ---------- */
+dialog.lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100%;color:#E9ECF2}
+dialog.lb::backdrop{background:rgba(4,6,10,.9);backdrop-filter:blur(6px)}
+.lb-in{position:absolute;inset:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:max(12px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.75rem;color:#9CA3B3;padding-block:6px 12px}
+.lb-top button,.lb-nav button{border:1px solid #2B3142;border-radius:10px;color:#E9ECF2;height:36px;padding:0 12px;font-size:.8rem}
+.lb-stage{display:grid;place-items:center;min-height:0}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px}
+.lb-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:12px}
+.lb-foot p{font-size:.92rem;max-width:70ch}
+.lb-nav{display:flex;gap:8px;flex:none}
+.lb-nav button{width:40px;padding:0}
+.lb-top button:hover,.lb-nav button:hover{border-color:#79A9FF}
+
+/* ---------- intro: the signature, drawn ---------- */
+.loader{display:none}
+.intro .loader{display:grid;position:fixed;inset:0;z-index:100;place-items:center;background:var(--bg);transition:opacity .45s ease,visibility .45s}
+.intro .loader.done{opacity:0;visibility:hidden}
+.loader svg{width:min(520px,78vw);height:auto;color:var(--fg);overflow:visible}
+.loader svg path{stroke-width:11}
+.loader .bar{position:absolute;left:50%;bottom:calc(18vh + env(safe-area-inset-bottom,0px));width:120px;height:2px;margin-left:-60px;background:var(--line);border-radius:2px;overflow:hidden}
+.loader .bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:2px}
+
+/* ---------- 1155 ---------- */
+.p1155{position:fixed;inset:0;z-index:90;display:grid;place-items:center;background:rgba(0,0,0,.9);padding:24px}
+.p1155 .box{max-width:520px;display:grid;gap:14px;font-family:var(--mono);color:#F0F}
+.p1155 img{border:1px solid #F0F}
+.p1155 p{color:#E9ECF2;font-size:.82rem}
+.p1155 button{justify-self:start;border:1px solid #F0F;color:#F0F;padding:8px 12px;font-size:.78rem;border-radius:8px}
 </style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
 </head>
 <body>
 
 
-<header class="wrap top">
-  <a class="mark" href="#top">Pedro Veríssimo</a>
-  <nav aria-label="Sections">
-    <a href="#now">Now</a><a href="#work">Work</a><a href="#log">Logbook</a><a href="#misses">Misses</a><a href="#press">Press</a>
-  </nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="av" viewBox="188 250 2400 2400"><path d="M0 0 C8 17.4 6.7 31 -3.6 46.5 C-5.6 52.5 -5.6 52.5 -4.6 58.5 C4.6 65.4 16.8 61.6 27.4 60.5 C31.2 60.4 34.9 60.2 38.7 60.1 C50.6 59.4 61.4 57.5 72.9 54.6 C81.4 52.7 89.7 51.6 98.3 50.6 C110.4 49.1 121.7 46.7 133.4 43.5 C138.1 42.8 142.8 42.1 147.5 41.5 C155.5 40.4 162.7 39.2 170.4 37 C180.4 34.2 190.2 32.9 200.4 31.5 C206.7 30.6 212.9 29.3 219.1 27.9 C254.9 20.2 291 21.3 327.4 21.9 C329.5 21.9 331.6 21.9 333.7 22 C353.8 22.4 371.2 24.7 390.4 30.5 C391.8 30.8 391.8 30.8 398.8 32.4 C426.9 40.2 448.6 59.4 454.4 88.5 C455.1 105.8 451.8 118.6 439.7 131.6 C434.4 137.7 432.3 141.7 435.4 149.5 C444.5 154 455.3 153 465.2 153.4 C491.5 154.6 517.4 156.7 543.4 160.5 C547.8 160.8 552.2 161.1 556.6 161.4 C571.9 162.8 583.9 168.5 597.6 174.9 C605.6 178.4 613.1 180.5 621.8 181.5 C663.5 190.1 694.5 228 702.4 268.5 C702.9 273.5 703.3 278.5 703.4 283.5 C703.5 285.8 703.6 288 703.8 290.4 C702 329.3 675.4 361.9 648.8 388.1 C643.4 393.5 643.4 393.5 641.4 399.5 C648.6 412 659.5 418.8 671.4 426.5 C673.4 427.8 675.4 429.1 677.4 430.5 C686.4 432.5 686.4 432.5 697 432.5 C727.8 432.5 743.7 451.2 754.4 477.5 C762 502.1 758.5 528.7 747.4 551.5 C746.8 553.4 746.2 555.3 745.6 557.3 C741.5 569.2 735.4 580 728.4 590.5 C727.3 592.3 726.2 594.2 725 596.1 C708.3 621.6 684 641.8 657.4 656.5 C653.3 664.7 652.8 668 654.4 676.8 C661.5 724.1 636.7 762 597.8 786.2 C588.3 791.1 578.6 794.3 568.4 797.5 C565.8 798.8 563.2 800.1 560.4 801.5 C559.4 801.8 558.5 802.2 557.4 802.5 C555.8 807.5 554.2 812.4 552.6 817.4 C545.4 837.6 532.1 847 511 847.8 C493.2 847.2 480.4 839.1 473.4 822.5 C471.4 811.5 471.4 811.5 471 803.6 C470.4 796.5 470.4 796.5 467.4 791.5 C459.3 790.3 454.3 792.2 446.4 794.5 C433 794.5 419.7 791.7 407.3 786.5 C397.3 782.7 387.5 781.3 377 779.7 C370.4 778.7 364 777.3 357.5 775.8 C342.1 772.3 327.3 772.4 311.6 772.5 C307.6 772.5 303.6 772.5 299.6 772.5 C293.3 772.5 287 772.6 280.7 772.6 C274.7 772.6 268.6 772.6 262.5 772.7 C258.8 772.7 255.2 772.7 251.5 772.7 C231.3 772.2 218.5 763.5 211.4 744.5 C210.1 716 222.1 698.5 246.4 684.5 C253.4 682.5 253.4 682.5 260.1 681.6 C267.4 680.5 267.4 680.5 272.4 679 C282.6 676.8 292.8 677.1 303.1 677.2 C305.2 677.2 307.3 677.2 309.5 677.2 C338.7 677.3 367.5 681.9 395.4 690.5 C397.6 691 399.8 691.5 402 692 C408.3 693.7 413.6 696.5 419.4 699.5 C421.6 700.3 423.8 701.2 426.1 702 C435.7 705.8 443.3 711.2 451.4 717.5 C455.4 719.5 455.4 719.5 460.4 718.5 C471.9 701.3 453.4 648.9 449.4 630.5 C448.9 628 448.4 625.6 447.9 623 C446.2 615 444.5 608.7 440.4 601.5 C440.4 600.8 440.4 600.2 440.4 599.5 C438.8 598.8 437.1 598.2 435.4 597.5 C419.1 588.8 403.6 579.1 388.4 568.5 C385.5 566.5 382.5 564.5 379.4 562.5 C360 547.4 341.7 531 325.4 512.5 C324 510.9 322.5 509.2 320.9 507.6 C316.9 503 313.2 498.3 309.4 493.5 C306.2 490.2 302.9 486.9 299.6 483.7 C295.4 479.4 291.4 475 287.4 470.5 C271.2 453.5 271.2 453.5 259.4 453.5 C257.9 460.1 256.6 466.8 255.4 473.5 C242.6 499.1 217.6 509.5 191.4 517.5 C189.3 518.2 187.2 518.8 185 519.5 C156.8 526.9 127.2 526.5 98.4 523.5 C96.2 523.3 94 523.1 91.6 522.9 C78.3 521.7 67.1 519.3 54.4 514.5 C51.6 514 48.7 513.6 45.8 513.1 C37 511.4 30.4 508.5 22.4 504.5 C19.1 503.2 15.8 501.9 12.4 500.5 C-8.5 491 -8.5 491 -14.6 486.5 C-17.9 484.9 -21.2 483.2 -24.6 481.5 C-26.9 479.9 -29.2 478.2 -31.6 476.5 C-34.2 475.2 -36.8 473.9 -39.6 472.5 C-97.6 433.8 -97.6 433.8 -97.6 422.5 C-98.9 421.8 -100.2 421.2 -101.6 420.5 C-103.5 418.2 -105.5 415.9 -107.6 413.5 C-122.8 405.9 -134.5 412.3 -147.6 421.5 C-150.6 425.5 -150.6 425.5 -151.9 435.4 C-153.3 444.6 -155 451.1 -158.6 459.5 C-159.3 462.1 -160.1 464.7 -160.9 467.4 C-171.2 499.1 -191.2 527.1 -217.6 547.5 C-218.7 548.4 -218.7 548.4 -224.6 553.2 C-234.6 560.9 -245.5 566.6 -256.6 572.5 C-258.9 573.8 -261.2 575.1 -263.6 576.5 C-269.2 577.9 -274.9 579.2 -280.6 580.5 C-283.9 581.8 -287.2 583.1 -290.6 584.5 C-298.8 585.9 -306.7 586.6 -315 586.9 C-324.4 587.6 -329.6 588 -335.6 595.5 C-336.6 601.2 -337.6 606.8 -338.6 612.5 C-340.3 618.7 -342.2 624.6 -344.6 630.5 C-345.8 640.2 -346.6 649.8 -347.1 659.6 C-347.5 668.2 -348.6 675.3 -352 683.2 C-354.6 689.5 -354.6 689.5 -355.9 696.4 C-357.7 704.2 -360.8 710.4 -364.6 717.5 C-365.9 721.1 -367.2 724.8 -368.6 728.5 C-369.9 730.5 -371.2 732.5 -372.6 734.5 C-373.3 736.4 -374.1 738.3 -374.9 740.2 C-378.2 748 -382.5 754.9 -387.1 761.9 C-389.3 765.6 -391.5 769.3 -393.6 773.1 C-396.6 778.5 -399.9 783.4 -403.6 788.5 C-415.4 805.6 -420.7 818.7 -420.6 839.5 C-420.6 840.9 -420.6 840.9 -420.6 847.5 C-420.6 850.3 -420.6 853.1 -420.6 856.1 C-420.5 862 -420.5 868 -420.5 874 C-420.5 883.4 -420.4 892.8 -420.4 902.3 C-420.3 911.4 -420.3 920.5 -420.3 929.6 C-420.3 932.4 -420.3 935.2 -420.2 938.1 C-420.2 940.7 -420.2 943.4 -420.2 946.1 C-420.2 948.4 -420.2 950.7 -420.2 953.1 C-421.4 974.3 -432.4 989.2 -452.6 996.5 C-454.9 997.6 -457.1 998.6 -459.5 999.8 C-475.1 1005.8 -486.3 1000.3 -498.6 990.5 C-504.4 983.7 -509.1 977.4 -513.2 969.5 C-524.9 948.7 -557.5 941.4 -579.6 942.5 C-604.8 950.4 -619.4 962.8 -630.6 986.5 C-631.6 988.5 -632.5 990.5 -633.6 992.5 C-634.3 997 -635 1001.4 -635.6 1005.9 C-636.6 1013.5 -637.6 1020.7 -639.3 1028.1 C-642.5 1047.1 -640.4 1063.9 -635.6 1082.5 C-635.2 1085.7 -634.9 1088.9 -634.5 1092.2 C-633.6 1100.5 -633.6 1100.5 -629.6 1110.5 C-625.6 1120.5 -625.6 1120.5 -623.6 1127.2 C-621.6 1133.5 -621.6 1133.5 -617.6 1140.5 C-616.2 1143.8 -614.9 1147.1 -613.6 1150.5 C-611.6 1153.5 -609.6 1156.4 -607.6 1159.5 C-606.2 1162.1 -604.9 1164.8 -603.6 1167.5 C-586.8 1192.8 -565.2 1213.7 -536.6 1224.5 C-533.6 1225.8 -530.6 1227.1 -527.6 1228.5 C-509.2 1233.5 -492.2 1231.2 -473.6 1228.5 C-450.9 1228.5 -436.7 1236.8 -423.6 1255.5 C-420.6 1264.5 -419.1 1273.2 -417.6 1282.5 C-416.6 1288.5 -416.6 1288.5 -414.4 1296.4 C-412.6 1303.5 -412.6 1303.5 -411.7 1312.2 C-410.5 1322.2 -407.8 1331 -404.6 1340.5 C-403.5 1346.8 -403.1 1352.9 -402.7 1359.3 C-401.7 1372.7 -399.9 1385.4 -396.5 1398.4 C-394.2 1410.4 -393.7 1422.2 -393.1 1434.3 C-392.3 1447.4 -390 1460.1 -387.6 1473 C-385.4 1485.6 -384.4 1498.1 -383.6 1510.8 C-382.6 1526.1 -381.1 1540.7 -377.7 1555.6 C-375.4 1569.3 -375.1 1583.1 -374.2 1596.9 C-373.2 1613.1 -371.1 1628.7 -367.6 1644.5 C-366.6 1652.2 -366.1 1659.8 -365.7 1667.5 C-364.7 1684.1 -363.5 1700.5 -359.6 1716.8 C-357 1730.7 -356.2 1744.5 -355.4 1758.7 C-353.6 1790.2 -353.6 1790.2 -351.6 1805.5 C-350.3 1842 -357.7 1869.1 -387.6 1891.5 C-401.4 1896.1 -405.8 1892.3 -415.6 1882.5 C-425.4 1877.6 -431.4 1882.9 -439.6 1888.5 C-456.3 1905.3 -446.5 1942.2 -441.8 1963.7 C-440.6 1969.1 -439.9 1974.6 -439.1 1980 C-437.6 1989.5 -434.8 1997.5 -431.6 2006.5 C-430.9 2009.6 -430.2 2012.6 -429.5 2015.8 C-427.8 2023.3 -425.6 2029.5 -422.6 2036.5 C-421.9 2039 -421.2 2041.6 -420.6 2044.2 C-418.6 2051.5 -418.6 2051.5 -413.6 2060.5 C-413.2 2061.6 -413.2 2061.6 -411.6 2067.3 C-409.6 2074.3 -406.9 2080.1 -403.6 2086.5 C-402.2 2090.1 -400.9 2093.8 -399.6 2097.5 C-397.9 2100.1 -396.3 2102.8 -394.6 2105.5 C-393.2 2108.8 -391.9 2112.1 -390.6 2115.5 C-388.9 2117.8 -387.3 2120.1 -385.6 2122.5 C-384.2 2125.8 -382.9 2129.1 -381.6 2132.5 C-379.6 2135.5 -377.6 2138.4 -375.6 2141.5 C-373.6 2145.5 -371.6 2149.5 -369.6 2153.5 C-366.4 2158.2 -363.2 2162.9 -359.9 2167.6 C-356.6 2172.5 -356.6 2172.5 -352.6 2180.5 C-349.6 2184.2 -346.6 2187.9 -343.6 2191.5 C-342.1 2193.3 -340.7 2195 -339.2 2196.9 C-327 2211.7 -314.5 2225.7 -300.9 2239.1 C-296.9 2243.1 -293.2 2247.3 -289.6 2251.5 C-287.3 2253.3 -285 2255.2 -282.7 2257.1 C-276.6 2262.5 -276.6 2262.5 -275.6 2269.5 C-292.7 2286.6 -465 2280.4 -495.1 2277.5 C-506.8 2276.5 -518.5 2276.1 -530.3 2275.8 C-540.7 2275.4 -551 2274.7 -561.4 2274 C-570.5 2273.5 -579.7 2273.2 -588.8 2272.8 C-606.9 2272.2 -624.7 2271.3 -642.5 2268.4 C-651.2 2267.1 -659.9 2266.3 -668.6 2265.5 C-670.9 2265.2 -673.2 2264.8 -675.6 2264.5 C-679.2 2264.3 -682.7 2264 -686.4 2263.8 C-696.7 2263 -706.5 2261.5 -716.6 2259.6 C-727.6 2257.5 -738.3 2255.9 -749.4 2255.1 C-764 2253.9 -778.1 2251.2 -792.4 2248.1 C-799.4 2246.7 -806.3 2245.7 -813.4 2244.9 C-824.7 2243.5 -834.7 2240.7 -845.6 2237.5 C-848.8 2237 -852 2236.5 -855.2 2236 C-864.9 2234.4 -873.4 2231.7 -882.6 2228.5 C-885.4 2227.8 -888.2 2227.1 -891.1 2226.4 C-898.6 2224.5 -898.6 2224.5 -908.6 2219.5 C-917.1 2219.5 -920.5 2221.8 -927.6 2226.5 C-953.6 2233.6 -974.2 2232.9 -992.6 2211.5 C-1007.8 2175.2 -984.7 2145.1 -961.6 2117.5 C-959.6 2115.2 -957.7 2112.9 -955.8 2110.6 C-949.9 2103.9 -943.8 2097.7 -937.6 2091.5 C-935.3 2088.9 -932.9 2086.2 -930.6 2083.5 C-921.5 2074.7 -911.7 2067.1 -901.6 2059.5 C-899.6 2057.8 -897.6 2056.2 -895.5 2054.4 C-888.4 2048.5 -881 2043 -873.6 2037.5 C-871.7 2036 -869.8 2034.6 -867.8 2033.1 C-859.3 2026.8 -850.4 2021.2 -841.6 2015.5 C-839.1 2013.9 -836.7 2012.4 -834.2 2010.8 C-832 2009.3 -829.8 2007.9 -827.6 2006.5 C-825.4 2005.1 -823.1 2003.6 -820.9 2002.1 C-812.2 1996.7 -803.4 1991.6 -794.6 1986.5 C-792.2 1985.1 -789.8 1983.8 -787.4 1982.4 C-768.7 1971.7 -768.7 1971.7 -759.3 1966.6 C-753.6 1963.5 -747.9 1960.3 -742.2 1957.1 C-740.2 1956 -738.2 1954.9 -736.2 1953.7 C-731.8 1951.2 -727.5 1948.7 -723.1 1946.2 C-715.7 1942 -708.2 1938.3 -700.6 1934.5 C-695.6 1931.9 -690.6 1929.4 -685.6 1926.8 C-684.3 1926.2 -684.3 1926.2 -678.1 1923 C-673.2 1920.4 -668.3 1917.5 -663.6 1914.5 C-659.6 1912.5 -655.6 1910.5 -651.6 1908.5 C-650.3 1907.9 -650.3 1907.9 -643.8 1904.6 C-638.3 1901.9 -632.8 1899.1 -627.2 1896.4 C-620.9 1893.2 -614.7 1889.9 -608.6 1886.5 C-606.9 1885.6 -605.3 1884.7 -603.6 1883.8 C-598.4 1880.9 -593.2 1878 -588.1 1875 C-581.3 1871.1 -574.5 1867.2 -567.6 1863.5 C-561.6 1860.2 -555.6 1856.8 -549.6 1853.5 C-546.6 1851.8 -543.6 1850.2 -540.5 1848.5 C-528.7 1841.9 -517.1 1835 -505.4 1828.1 C-498.3 1824 -491.4 1820.5 -483.9 1817.1 C-473.6 1812.2 -464.7 1806.4 -455.6 1799.5 C-453.3 1797.9 -451 1796.2 -448.7 1794.6 C-436.5 1784.9 -439.4 1773.5 -441.4 1759.3 C-443.5 1744.1 -445.3 1729 -445.9 1713.6 C-446.7 1691.8 -448.7 1670.5 -452 1648.9 C-454.4 1632.7 -455.8 1616.4 -457 1600 C-457.9 1586.9 -459.1 1573.9 -462.1 1561.1 C-463.9 1551.8 -464.5 1542.7 -465.1 1533.2 C-466.3 1514.1 -467.7 1495.3 -471.6 1476.6 C-473.1 1468.9 -474 1461.9 -474.5 1454.1 C-475.5 1439.4 -478 1425 -480.6 1410.5 C-482 1401.2 -483.5 1391.8 -484.9 1382.5 C-486.6 1373.5 -486.6 1373.5 -489.1 1364.4 C-491.1 1356.5 -492.3 1349.3 -493.1 1341.2 C-495.1 1325.2 -495.1 1325.2 -502.6 1321.5 C-508.6 1320.5 -508.6 1320.5 -518 1320.1 C-554.4 1318 -590.2 1302.1 -618.6 1279.5 C-620.7 1277.9 -622.8 1276.4 -625 1274.8 C-639.7 1262.6 -653.5 1249.1 -664.6 1233.5 C-665.7 1231.8 -666.9 1230.2 -668.1 1228.5 C-669.3 1226.8 -670.4 1225.2 -671.6 1223.5 C-673.1 1221.3 -674.6 1219.2 -676.1 1216.9 C-682.3 1208 -687.8 1199.3 -692.6 1189.5 C-693.4 1187.8 -693.4 1187.8 -697.6 1179.5 C-698.9 1176.2 -700.2 1172.9 -701.6 1169.5 C-702.9 1166.9 -704.2 1164.2 -705.6 1161.5 C-707.2 1156.2 -708.9 1150.8 -710.6 1145.5 C-711.2 1144 -711.2 1144 -714.6 1136.5 C-715 1133.5 -715.5 1130.5 -716 1127.4 C-717.4 1118.5 -719.7 1110.9 -722.6 1102.5 C-724.9 1090.7 -725 1078.8 -725.2 1066.8 C-725.3 1064.6 -725.3 1062.5 -725.4 1060.4 C-725.7 1036.6 -724.6 1015.5 -718.6 992.5 C-717.9 989.3 -717.3 986.1 -716.6 982.9 C-714.5 974.4 -711.5 967.3 -707.6 959.5 C-706.8 957.5 -706 955.5 -705.2 953.4 C-702 946.3 -697.9 940 -693.6 933.5 C-688.5 925.1 -691.5 921.6 -696.6 913.5 C-700.7 905.6 -704.2 897.8 -707.6 889.5 C-708.9 886.8 -710.2 884 -711.5 881.2 C-714.9 874 -717.8 866.9 -720.6 859.5 C-721.9 856.9 -723.2 854.2 -724.6 851.5 C-725.9 845.8 -727.3 840.2 -728.6 834.5 C-729.9 830.5 -731.2 826.5 -732.6 822.5 C-733.6 816.5 -733.6 816.5 -733.9 806.6 C-734.9 790.5 -739.1 786.9 -751.6 777.5 C-770.4 755.9 -779.5 727.9 -781.6 699.5 C-781.8 696.9 -782 694.3 -782.2 691.7 C-785.1 619.8 -785.1 619.8 -774.6 589.8 C-772.6 583.5 -772.6 583.5 -771.2 575.1 C-769.6 566.9 -767.2 560.9 -763.6 553.5 C-762.2 549.2 -760.9 544.8 -759.6 540.5 C-757.9 537.2 -756.3 533.9 -754.6 530.5 C-753.7 528.3 -752.9 526.2 -752.1 523.9 C-749.6 517.5 -749.6 517.5 -744.6 508.5 C-744.1 507.7 -744.1 507.7 -741.9 503.4 C-724.4 472.1 -701.9 445.9 -674.8 422.4 C-670.6 418.5 -670.6 418.5 -666.6 413.5 C-663.9 411.5 -661.3 409.5 -658.6 407.5 C-653.6 401.5 -653.6 401.5 -654.6 395.5 C-658.8 393 -663.2 390.7 -667.6 388.5 C-689.7 371.9 -707.4 356.9 -698.4 326.2 C-683.4 290.9 -651.7 292.1 -618.7 292.9 C-615.5 292.9 -612.3 293 -609.1 293.1 C-596 293.7 -584.1 294.7 -571.6 298.5 C-561.6 298.5 -561.6 298.5 -557.6 294.5 C-555.6 285.5 -555.6 285.5 -554.9 276.6 C-552.7 251.7 -548.8 227 -540.6 203.5 C-539.9 200.7 -539.2 197.9 -538.5 195 C-536.6 187.5 -536.6 187.5 -531.6 177.5 C-530.9 175.3 -530.2 173.1 -529.6 170.9 C-527.6 164.5 -527.6 164.5 -522.6 156.5 C-521.2 153.2 -519.9 149.9 -518.6 146.5 C-516.6 143.5 -514.6 140.6 -512.6 137.5 C-511.9 136.2 -511.9 136.2 -508.6 129.5 C-500 116.6 -490.1 104.8 -479.6 93.5 C-477.5 91.3 -475.4 89 -473.3 86.7 C-453.3 65.2 -428.3 47.4 -400.6 37.5 C-397.3 36.2 -394 34.9 -390.6 33.5 C-363.8 27.9 -340.7 30.2 -324.1 53.8 C-319.5 62.4 -318.6 70.2 -318.1 79.9 C-317.4 90.7 -317.4 90.7 -313.6 94.5 C-302.5 94.5 -298.4 89.4 -291.6 81.5 C-277.5 69.2 -263.4 57.5 -247.6 47.5 C-242.9 44.2 -238.2 40.9 -233.6 37.5 C-221.3 28.8 -208.7 20.8 -195.6 13.5 C-193.7 12.5 -191.9 11.4 -190.1 10.4 C-183.7 7 -177.2 4.3 -170.6 1.5 C-167.3 -0.1 -164 -1.8 -160.6 -3.5 C-155.6 -5.2 -150.6 -6.9 -145.6 -8.5 C-143.6 -9.3 -141.7 -10 -139.7 -10.8 C-98.4 -26.4 -28.2 -46.3 0 0 Z " fill="currentColor" transform="translate(1399.5625,326.5)"/><path d="M0 0 C2.8 -0 5.6 -0 8.5 -0 C44.1 0 84.7 0.8 101.4 38 C108.8 59.9 102.5 78 84.6 92.4 C64.8 101.3 49.7 102.3 28.2 99.1 C-6.1 95.2 -43.1 95.1 -77.3 100.3 C-84.9 101.4 -92.5 102.1 -100.2 102.7 C-112.5 103.9 -122.9 106.8 -134.4 111.4 C-136.6 111.9 -138.7 112.4 -140.9 113 C-146.4 114.4 -146.4 114.4 -152.2 116.9 C-171.1 124.5 -190.3 126.6 -205.4 111.4 C-218.1 92.6 -213.8 78.9 -201.4 60.4 C-182.2 38.3 -157.3 25.7 -129.4 17.4 C-126.5 16.1 -123.5 14.7 -120.4 13.4 C-117.5 12.9 -114.6 12.5 -111.6 12 C-101.4 10.4 -92.2 7.6 -82.4 4.4 C-55.1 0.5 -27.6 0.1 0 0 Z " fill="currentColor" transform="translate(1334.4375,987.625)"/><path d="M0 0 C8.9 23.7 5.5 49.3 -12.5 67.6 C-32 82.5 -55.5 85.3 -78 74 C-97.2 59.6 -108.3 40.8 -102.4 16.5 C-85.2 -29.6 -29.3 -44.7 0 0 Z " fill="currentColor" transform="translate(1346,1179)"/><path d="M0 0 C11 27.7 6.4 52 -16 72 C-37.2 84.4 -58.5 85.3 -79 70 C-98.4 53 -101.3 29.9 -93.4 6.4 C-74.9 -33.5 -25.7 -30 0 0 Z " fill="currentColor" transform="translate(1758,1190)"/><path d="M0 0 C1.7 4.3 3.2 8.7 4.6 13.1 C5.4 15.4 6.1 17.7 6.9 20.1 C8.3 24.7 9.7 29.3 11.1 34 C13.1 40.2 15.4 46 18 52 C18.4 53.1 18.4 53.1 20.5 58.6 C22.8 64.5 25.3 70.2 28 76 C33.4 87.9 38.5 99.7 43 112 C44.3 115.3 45.7 118.7 47.1 122.1 C48.4 125.4 49.7 128.6 51 132 C51.9 134.2 52.8 136.4 53.7 138.7 C66.1 177.8 60.5 216.8 28.2 245.2 C17.4 253.1 6.4 258.8 -6 264 C-7.2 264.5 -7.2 264.5 -13 267 C-32.3 270.9 -48.6 263.2 -60 248 C-68.6 230.7 -47.3 211.3 -37 200 C-35.5 198.3 -34 196.6 -32.4 194.9 C-28.4 190.5 -24.2 186.2 -20 182 C-14.8 171.5 -16.8 164.5 -21 154 C-23.1 148.7 -25.2 143.3 -27 137.9 C-29 132 -29 132 -33 124 C-34.7 118 -36.3 112 -38 106 C-39.3 103 -40.6 100.1 -42 97 C-43.7 90.7 -45.3 84.3 -47 78 C-47.8 76 -48.7 74 -49.5 71.9 C-58.8 46.1 -65.1 10.8 -42 -9 C-25.3 -18.3 -12.4 -14.5 0 0 Z " fill="currentColor" transform="translate(1609,1193)"/><path d="M0 0 C7.6 14.4 9.8 26.8 12 43 C12.7 46 13.3 48.9 14 52 C15.5 66 15.1 80 15.1 94.1 C15.1 96.5 15.1 99 15.1 101.6 C15.1 121.7 14.5 141.5 12.1 161.5 C10.8 172.7 9.6 183.9 8.6 195.1 C7.4 206.5 5.5 217.6 3.2 228.9 C2.1 234.4 1.4 240.1 0.7 245.7 C-7.1 308 -26.4 370 -50 428 C-51.3 431.2 -52.5 434.3 -53.8 437.6 C-80.6 504.3 -80.6 504.3 -93 525 C-94.4 527.5 -95.8 530.1 -97.2 532.7 C-102 541 -107.2 548.4 -113 556 C-114 557.3 -114 557.3 -118.9 564.1 C-124.6 571.5 -130.6 578.2 -137 585 C-138.6 586.8 -140.1 588.5 -141.8 590.4 C-146 595 -146 595 -154 602 C-156.3 604.3 -158.6 606.6 -161 609 C-166.5 613.6 -171.9 618 -177.8 622.1 C-195.3 635.4 -190 651.3 -188.2 671.2 C-187.9 675.1 -187.5 679 -187.2 683 C-186 693 -186 693 -183 702 C-182.7 703 -182.3 704 -182 705 C-173.8 708.3 -168.3 709.3 -159.2 710.2 C-136.7 712.7 -116.5 720.1 -95.5 728.2 C-88.4 730.9 -81.3 733 -74 735 C-72 735.6 -70 736.2 -68 736.7 C-57.7 739.7 -47.5 742.4 -37 744.6 C-27.5 746.7 -18.3 749.2 -9 752 C-2 753.7 5 755.3 12 757 C22.7 759.7 33.5 762.6 44.2 765.4 C52.2 767.5 60.1 769.5 68.1 771.5 C78.5 774.1 88.7 777 99 780 C102.1 780.7 105.3 781.5 108.5 782.2 C134.3 788.4 160.1 795.6 185.4 803.6 C191.5 805.6 197.7 807.4 203.9 809.1 C211.8 811.2 219.3 814.1 227 817 C228.4 817.5 228.4 817.5 235.6 819.9 C250 824.7 264.3 829.5 278 836 C286.1 839.6 294.3 843.1 302.5 846.4 C315.9 852 328.5 858.7 341 866 C342.7 867 344.5 868 346.2 869 C357.1 875.4 367.6 881.9 378 889 C380 890.3 382.1 891.7 384.2 893.1 C395 900.4 405 908.5 415 917 C416.7 918.3 418.3 919.6 420.1 921 C446.2 942.2 458.2 963 452 997 C438.7 1017 420.7 1028 396.4 1022.5 C381 1019.4 371.9 1021.1 358 1028 C351.7 1029.7 345.3 1031.4 339 1033 C336.4 1034.3 333.7 1035.6 331 1037 C325 1038.7 319 1040.3 313 1042 C309 1043.7 305 1045.3 301 1047 C296 1048.3 291 1049.7 286 1051 C284.1 1051.8 282.2 1052.6 280.2 1053.4 C274 1056 274 1056 264.2 1058.6 C255 1061 255 1061 247 1065 C241 1066.7 235 1068.3 229 1070 C226.8 1070.8 224.6 1071.7 222.4 1072.6 C216 1075 216 1075 207.9 1077 C200.8 1078.8 194.7 1081.1 188 1084 C182.7 1085.7 177.3 1087.3 172 1089 C169 1090.3 166.1 1091.6 163 1093 C160.1 1093.6 157.2 1094.2 154.2 1094.9 C146 1096.8 139.6 1099.3 132 1103 C127.7 1104.4 123.3 1105.7 119 1107 C117.1 1107.8 115.1 1108.7 113.1 1109.5 C106.2 1112.3 99.2 1114.1 92 1116 C90.1 1116.8 88.1 1117.7 86.1 1118.5 C78.6 1121.6 70.9 1123.1 63 1125 C61 1125.8 59 1126.7 57 1127.5 C51 1130 51 1130 42.4 1132 C34 1134 34 1134 24 1139 C17.7 1140.7 11.3 1142.3 5 1144 C1.3 1145.7 -2.3 1147.3 -6 1149 C-11.3 1150.3 -16.7 1151.7 -22 1153 C-24 1153.8 -25.9 1154.7 -27.9 1155.5 C-35.5 1158.6 -43.1 1160.1 -51 1162 C-52 1162.4 -52 1162.4 -56.8 1164.5 C-65.3 1167.9 -74 1169.2 -83 1171 C-85.3 1171.8 -87.6 1172.7 -90 1173.5 C-97 1176 -97 1176 -106.8 1177.9 C-117 1180 -117 1180 -125.5 1183 C-134.9 1186.3 -144.2 1188.1 -154 1190 C-156.5 1190.8 -158.9 1191.7 -161.4 1192.5 C-170.8 1195.6 -180.3 1197.2 -190 1199 C-192.6 1199.8 -195.2 1200.7 -197.8 1201.5 C-204.7 1203.6 -211 1204.9 -218.1 1206 C-224.9 1207.1 -230.8 1208.3 -237.3 1210.4 C-246.6 1213.5 -255.9 1215.1 -265.5 1216.8 C-272 1218 -272 1218 -280.5 1220.5 C-290 1223.3 -299.5 1225 -309.3 1226.7 C-315.2 1227.9 -321.1 1229.2 -327 1230.6 C-336.6 1232.9 -346.2 1234.5 -356 1236 C-363.4 1237.6 -370.7 1239.3 -378 1241 C-386.8 1242.3 -395.5 1242.9 -404.3 1243.6 C-407.8 1243.9 -411.2 1244.2 -414.7 1244.5 C-432.1 1245.5 -432.1 1245.5 -438 1241 C-438 1230.8 -431.9 1228.1 -424 1222 C-416.4 1214.8 -409 1207.4 -401.6 1199.9 C-399.6 1197.9 -397.6 1195.9 -395.5 1193.9 C-385.7 1184 -376.3 1174.3 -368 1163 C-360.6 1153.1 -353.1 1143.4 -345 1134 C-339 1126.8 -333.4 1119.6 -328 1112 C-325 1108 -322 1104 -319 1100 C-311.8 1090.4 -305.8 1080.5 -300 1070 C-298 1067 -296 1064.1 -294 1061 C-289.1 1052.8 -284.5 1044.5 -280 1036 C-278.6 1033.3 -277.1 1030.6 -275.6 1027.8 C-274.1 1024.9 -272.6 1022 -271 1019 C-269.3 1015.8 -267.7 1012.7 -265.9 1009.4 C-261.5 1001 -257.2 992.5 -253 984 C-251.3 980.7 -249.7 977.4 -248 974 C-242.9 963.5 -238 953 -234 942 C-232.7 938.7 -231.4 935.4 -230 932 C-229.2 929.4 -228.3 926.7 -227.5 924 C-225 916 -225 916 -221 906 C-219.3 900.3 -217.6 894.7 -216 889 C-212.7 878.2 -209 867.6 -205 857 C-203.6 852.9 -202.3 848.8 -200.9 844.8 C-198.8 838.4 -196.7 832.2 -194.1 826 C-189.5 815 -189.5 815 -194 809 C-203 808 -203 808 -211.9 808.1 C-237.4 807.8 -254.6 791.8 -264 769 C-265.2 763.4 -266.2 757.7 -267 752 C-267.6 749.5 -268.3 746.9 -268.9 744.3 C-271.2 733.9 -272.2 723.8 -273.1 713.2 C-275 689.5 -275 689.5 -280 687 C-288.2 687 -294.4 689 -302.2 691.5 C-305.2 692.4 -308.2 693.3 -311.2 694.3 C-316.5 695.9 -321.8 697.6 -327.2 699.2 C-379.3 715.2 -430.8 718.2 -483 700 C-486 699.2 -489 698.5 -492.1 697.7 C-500.5 695.4 -508.3 692.6 -516.4 689.4 C-528.6 684.9 -541.1 681.1 -553.5 677.1 C-561.8 674.4 -569.9 671.4 -578 668 C-581 666.8 -583.9 665.6 -587 664.3 C-603.1 657.3 -618.8 649.9 -634 641 C-636.6 639.7 -639.3 638.4 -642 637 C-646.7 634.3 -651.3 631.7 -656 629 C-659.3 627.2 -662.7 625.4 -666.1 623.5 C-676.7 617.6 -686.3 611.3 -696 604 C-699.1 601.9 -702.2 599.8 -705.4 597.7 C-712.5 592.7 -718.7 588 -725 582 C-727.6 579.7 -730.3 577.4 -733 575 C-747 561.9 -757.9 549.7 -757 530 C-750 513.7 -740.4 505.7 -723 504 C-708.2 507.3 -695.9 516.3 -683 524 C-659.7 536.1 -635.6 547 -611 556 C-608.9 556.8 -606.7 557.6 -604.5 558.4 C-596.1 561.3 -587.6 564.2 -579.2 567 C-573.7 568.8 -568.3 570.6 -562.9 572.4 C-465.7 603.1 -319.4 615.2 -233 549 C-230.2 546.9 -227.4 544.8 -224.5 542.6 C-209.1 530.6 -198.3 517.9 -187 502 C-186 500.7 -186 500.7 -181 494.1 C-169.2 478.2 -159.4 461.4 -152 443 C-150 439 -148 435 -146 431 C-144.3 427 -142.6 423 -141 419 C-133.5 401.2 -133.5 401.2 -130.3 394.2 C-127.5 387.9 -125.3 381.5 -123 375 C-121.7 371.7 -120.4 368.4 -119 365 C-118.4 363.1 -117.8 361.3 -117.1 359.4 C-115.6 354.9 -114 350.4 -112.3 346 C-102.1 318.3 -93.6 289.8 -87 261 C-86.2 258 -85.4 255.1 -84.6 252 C-69.3 187.6 -61.1 119.6 -58.6 53.6 C-58 44.5 -56.7 35.9 -55 27 C-54.7 24 -54.4 21.1 -54.1 18 C-49.9 -13.3 -20.4 -25.5 0 0 Z " fill="currentColor" transform="translate(1924,1320)"/><path d="M0 0 C4.5 1.1 9 2.1 13.6 3 C14.7 3.2 14.7 3.2 20.4 4.4 C22.9 5 25.4 5.5 28 6 C31.1 6.7 34.2 7.3 37.4 8 C50.8 10.5 64.1 11.9 77.6 13.2 C87.1 14.2 96.6 15.3 106 17 C131.9 19.2 158 17.9 183.9 17.4 C190.3 17.2 196.6 17.1 203 17 C205.1 17 207.2 16.9 209.4 16.9 C231.1 16.6 240.8 20.4 252 39 C254.2 58.8 240.1 67.8 224.1 76.1 C212.1 80.8 200.7 83.1 188 85 C185.5 85.4 182.9 85.8 180.3 86.2 C149.9 90.4 119.4 90.8 89 86 C85 85.5 81 85 76.9 84.5 C60.8 82.5 45.4 80.5 30 75 C27 74.2 24.1 73.4 21 72.6 C-1.9 65.9 -39.4 51 -49 27 C-49 9 -43.7 2.7 -27 -4 C-17.3 -5.9 -9.2 -2.9 0 0 Z " fill="currentColor" transform="translate(1401,1537)"/><path d="M0 0 C5 10.1 1.7 16.7 -2 27 C-2.8 29.5 -3.5 31.9 -4.3 34.5 C-9 49.2 -14 62.8 -22 76 C-26.7 84 -30.5 91.3 -34 100 C-35.7 103.3 -37.3 106.6 -39 110 C-39.9 111.9 -40.9 113.8 -41.8 115.8 C-45.3 122.6 -49.1 129.3 -53 136 C-55.5 140.4 -58 144.8 -60.4 149.3 C-66.6 160.8 -73.7 171.5 -80.9 182.3 C-85.2 188.8 -89.1 195.3 -93 202 C-101.5 214.7 -110.6 226.9 -120 239 C-121.6 241.1 -123.1 243.1 -124.8 245.2 C-130 252 -135.4 258.5 -141 265 C-142 266.2 -142 266.2 -147.1 272.2 C-152 277.9 -157 283.4 -162 289 C-163.2 290.3 -163.2 290.3 -169 297 C-173 301 -177 305 -181 309 C-184 312 -187 315.1 -190 318.1 C-203.2 331.4 -216.7 342.2 -232 353 C-234.3 354.8 -236.5 356.5 -238.9 358.3 C-244.4 362.6 -250.1 366.3 -256 370 C-257.7 371.2 -259.3 372.4 -261.1 373.6 C-281.2 387.6 -297.9 395 -321.9 397.3 C-334.3 398.6 -345.9 401.1 -358 404 C-390.2 408 -421.5 408.1 -452 397 C-453 396.8 -453 396.8 -457.9 395.6 C-464.7 393.8 -470.6 391.1 -477 388 C-480.3 386.7 -483.6 385.4 -487 384 C-492.4 380.5 -497.5 376.6 -502.6 372.8 C-507.3 369.3 -512 366 -516.8 362.8 C-525.3 356.8 -532.5 350.2 -540 343 C-542.6 340.7 -545.3 338.4 -548 336 C-553.6 330.5 -558.8 324.9 -564 319 C-565.5 317.4 -567 315.8 -568.5 314.1 C-572.8 309.3 -576.4 304.3 -580 299 C-581.5 297 -583 295 -584.5 293 C-592.7 282.1 -600.4 271 -607 259 C-608.7 256.4 -610.3 253.7 -612 251 C-613.3 248.4 -614.6 245.7 -616 243 C-617.3 241 -618.6 239 -620 237 C-621.3 233.7 -622.6 230.4 -624 227 C-626 223.7 -628 220.4 -630 217 C-631.7 213 -633.4 209 -635 205 C-636.3 202.4 -637.6 199.7 -639 197 C-639.6 194.9 -640.3 192.8 -640.9 190.6 C-643 184 -643 184 -648 174 C-649.4 168.7 -650.7 163.3 -652 158 C-653.6 154 -655.3 150 -657 146 C-657.7 143.8 -658.3 141.5 -659 139.2 C-661 133 -661 133 -666 126 C-667.8 115.9 -668.3 107.1 -668.2 96.8 C-668.3 93.7 -668.3 90.5 -668.3 87.3 C-667.8 73.2 -665.3 67.4 -654 59 C-634.4 55.1 -619.9 67.6 -604 78 C-601 79.7 -598.1 81.3 -595 83 C-592.8 84.3 -590.5 85.6 -588.2 87 C-581.9 90.5 -575.7 93.3 -569 96 C-566.4 97.3 -563.7 98.6 -561 100 C-556 101.7 -551 103.4 -546 105 C-543.8 105.8 -541.5 106.7 -539.2 107.6 C-530.6 110.5 -521.9 112.2 -513 114 C-510.2 114.8 -507.4 115.7 -504.6 116.6 C-491.9 119.5 -479.5 120.4 -466.6 121.3 C-461.4 121.7 -456.2 122.3 -451.1 123 C-435.5 125.2 -419.8 125.2 -404.1 125.2 C-402.3 125.2 -402.3 125.2 -393.5 125.2 C-383.2 125 -373.2 124.2 -363 123 C-351.8 121.8 -340.5 120.8 -329.2 120.1 C-319.1 119.4 -309.8 117.8 -300 115 C-292.8 113.2 -285.7 111.8 -278.3 110.7 C-268.8 109 -260.2 106.1 -251 103 C-245.3 101.7 -239.7 100.3 -234 99 C-228 97 -222 95 -216 93 C-213.6 92.3 -211.1 91.6 -208.6 90.9 C-202.2 89 -196.2 86.6 -190 84 C-187.7 83.2 -185.5 82.4 -183.1 81.6 C-175.9 79 -169 76 -162 73 C-158.7 71.7 -155.4 70.4 -152 69 C-150.7 68.3 -150.7 68.3 -144 65 C-140.7 63.7 -137.4 62.4 -134 61 C-131.4 59.3 -128.7 57.7 -126 56 C-120.7 53.3 -115.3 50.7 -110 48 C-98.8 42 -87.6 36 -77 29 C-73.7 27 -70.4 25 -67 23 C-59.9 18.5 -52.9 14 -46.1 9.1 C-15 -13.1 -15 -13.1 0 0 Z " fill="currentColor" transform="translate(1667,2185)"/></symbol></svg>
+
+<div class="loader" aria-hidden="true">
+  <svg role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2031 414" fill="none" stroke="currentColor" stroke-width="8.2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M14.0 15.0C33.3 20.7 91.0 38.7 130.0 49.0C169.0 59.3 219.0 69.5 248.0 77.0C277.0 84.5 293.7 90.2 304.0 94.0C314.3 97.8 309.0 99.0 310.0 100.0"/>
+<path d="M1364.0 129.0C1361.7 131.0 1353.5 139.0 1350.0 141.0C1346.5 143.0 1352.2 138.5 1343.0 141.0C1333.8 143.5 1303.7 152.8 1295.0 156.0C1286.3 159.2 1295.8 159.5 1291.0 160.0C1286.2 160.5 1271.0 158.5 1266.0 159.0C1261.0 159.5 1264.3 162.2 1261.0 163.0C1257.7 163.8 1250.0 164.2 1246.0 164.0C1242.0 163.8 1239.0 162.8 1237.0 162.0C1235.0 161.2 1234.3 162.0 1234.0 159.0C1233.7 156.0 1237.3 146.5 1235.0 144.0C1232.7 141.5 1223.0 144.5 1220.0 144.0C1217.0 143.5 1220.5 142.2 1217.0 141.0C1213.5 139.8 1202.7 138.3 1199.0 137.0C1195.3 135.7 1199.0 133.7 1195.0 133.0C1191.0 132.3 1179.7 133.8 1175.0 133.0C1170.3 132.2 1182.0 131.7 1167.0 128.0C1152.0 124.3 1116.0 115.8 1085.0 111.0C1054.0 106.2 1019.0 101.3 981.0 99.0C943.0 96.7 891.3 96.5 857.0 97.0C822.7 97.5 812.2 97.8 775.0 102.0C737.8 106.2 666.0 117.0 634.0 122.0C602.0 127.0 593.0 129.5 583.0 132.0C573.0 134.5 578.5 136.5 574.0 137.0C569.5 137.5 559.8 136.2 556.0 135.0C552.2 133.8 558.3 132.7 551.0 130.0C543.7 127.3 528.3 122.3 512.0 119.0C495.7 115.7 474.7 112.3 453.0 110.0C431.3 107.7 397.0 105.8 382.0 105.0C367.0 104.2 367.2 104.5 363.0 105.0C358.8 105.5 365.3 108.7 357.0 108.0C348.7 107.3 321.3 101.8 313.0 101.0C304.7 100.2 324.7 103.0 307.0 103.0C289.3 103.0 224.3 100.8 207.0 101.0C189.7 101.2 208.3 104.3 203.0 104.0C197.7 103.7 182.5 101.0 175.0 99.0C167.5 97.0 160.8 93.2 158.0 92.0"/>
+<path d="M204.0 104.0C204.7 105.0 205.3 108.3 208.0 110.0C210.7 111.7 182.0 104.0 220.0 114.0C258.0 124.0 399.7 160.2 436.0 170.0C472.3 179.8 435.0 172.5 438.0 173.0C441.0 173.5 450.5 172.3 454.0 173.0C457.5 173.7 437.5 170.8 459.0 177.0C480.5 183.2 560.7 204.0 583.0 210.0C605.3 216.0 591.0 212.0 593.0 213.0C595.0 214.0 593.0 215.5 595.0 216.0C597.0 216.5 601.0 218.3 605.0 216.0C609.0 213.7 616.5 205.0 619.0 202.0C621.5 199.0 619.8 198.7 620.0 198.0"/>
+<path d="M360.0 109.0C361.0 110.0 346.0 108.0 366.0 115.0C386.0 122.0 460.3 144.3 480.0 151.0C499.7 157.7 483.3 154.3 484.0 155.0"/>
+<path d="M438.0 174.0C437.3 174.8 441.2 174.3 434.0 179.0C426.8 183.7 404.2 195.7 395.0 202.0C385.8 208.3 382.8 212.8 379.0 217.0C375.2 221.2 373.7 223.3 372.0 227.0C370.3 230.7 369.2 235.7 369.0 239.0C368.8 242.3 368.8 244.3 371.0 247.0C373.2 249.7 377.2 252.8 382.0 255.0C386.8 257.2 384.7 258.8 400.0 260.0C415.3 261.2 450.8 263.0 474.0 262.0C497.2 261.0 520.0 257.7 539.0 254.0C558.0 250.3 578.7 243.7 588.0 240.0C597.3 236.3 591.3 234.0 595.0 232.0C598.7 230.0 606.7 229.7 610.0 228.0C613.3 226.3 611.3 223.2 615.0 222.0C618.7 220.8 626.5 222.5 632.0 221.0C637.5 219.5 644.8 215.0 648.0 213.0C651.2 211.0 650.5 209.7 651.0 209.0"/>
+<path d="M556.0 135.0C555.5 135.7 560.7 136.5 553.0 139.0C545.3 141.5 518.7 147.2 510.0 150.0C501.3 152.8 505.2 155.0 501.0 156.0C496.8 157.0 488.3 155.3 485.0 156.0C481.7 156.7 485.5 158.0 481.0 160.0C476.5 162.0 462.5 165.8 458.0 168.0C453.5 170.2 454.7 172.2 454.0 173.0"/>
+<path d="M631.0 196.0C629.2 196.2 624.7 198.2 620.0 197.0C615.3 195.8 607.2 190.3 603.0 189.0C598.8 187.7 611.3 193.8 595.0 189.0C578.7 184.2 520.5 165.5 505.0 160.0C489.5 154.5 502.5 156.7 502.0 156.0"/>
+<path d="M594.0 232.0C592.8 231.3 589.3 228.7 587.0 228.0C584.7 227.3 583.3 227.2 580.0 228.0C576.7 228.8 571.7 232.3 567.0 233.0C562.3 233.7 554.5 232.2 552.0 232.0"/>
+<path d="M577.0 228.0C576.7 226.7 574.8 223.0 575.0 220.0C575.2 217.0 577.5 211.7 578.0 210.0"/>
+<path d="M998.0 350.0C977.2 341.8 896.3 309.2 873.0 301.0C849.7 292.8 897.5 313.3 858.0 301.0C818.5 288.7 674.2 240.5 636.0 227.0C597.8 213.5 629.3 223.8 629.0 220.0C628.7 216.2 633.3 209.8 634.0 204.0C634.7 198.2 633.8 189.3 633.0 185.0C632.2 180.7 633.3 182.5 629.0 178.0C624.7 173.5 616.0 164.7 607.0 158.0C598.0 151.3 580.3 141.3 575.0 138.0"/>
+<path d="M595.0 190.0L583.0 209.0"/>
+<path d="M587.0 228.0L595.0 217.0"/>
+<path d="M604.0 188.0C607.0 185.2 616.0 175.7 622.0 171.0C628.0 166.3 634.3 162.8 640.0 160.0C645.7 157.2 653.0 154.3 656.0 154.0C659.0 153.7 658.3 155.8 658.0 158.0C657.7 160.2 657.0 162.8 654.0 167.0C651.0 171.2 643.3 180.0 640.0 183.0C636.7 186.0 635.0 184.7 634.0 185.0"/>
+<path d="M606.0 215.0L614.0 222.0"/>
+<path d="M870.0 300.0C869.5 299.0 869.5 296.0 867.0 294.0C864.5 292.0 873.2 296.2 855.0 288.0C836.8 279.8 788.7 257.5 758.0 245.0C727.3 232.5 686.5 219.2 671.0 213.0C655.5 206.8 668.3 208.8 665.0 208.0C661.7 207.2 654.0 208.7 651.0 208.0C648.0 207.3 649.7 205.0 647.0 204.0C644.3 203.0 637.0 202.3 635.0 202.0"/>
+<path d="M830.0 149.0C826.0 151.2 811.7 159.8 806.0 162.0C800.3 164.2 805.5 160.2 796.0 162.0C786.5 163.8 763.7 171.0 749.0 173.0C734.3 175.0 715.8 172.3 708.0 174.0C700.2 175.7 708.7 178.2 702.0 183.0C695.3 187.8 674.2 198.8 668.0 203.0C661.8 207.2 665.5 207.2 665.0 208.0"/>
+<path d="M708.0 174.0C707.3 172.8 704.3 169.0 704.0 167.0C703.7 165.0 703.2 164.3 706.0 162.0C708.8 159.7 717.8 154.2 721.0 153.0C724.2 151.8 724.3 154.2 725.0 155.0C725.7 155.8 726.0 155.0 725.0 158.0C724.0 161.0 720.0 170.5 719.0 173.0"/>
+<path d="M2009.0 207.0C2007.7 206.2 2009.8 203.7 2001.0 202.0C1992.2 200.3 1985.2 199.2 1956.0 197.0C1926.8 194.8 1890.7 190.3 1826.0 189.0C1761.3 187.7 1614.3 188.3 1568.0 189.0C1521.7 189.7 1551.7 192.7 1548.0 193.0C1544.3 193.3 1563.5 191.3 1546.0 191.0C1528.5 190.7 1472.3 190.8 1443.0 191.0C1413.7 191.2 1382.5 191.5 1370.0 192.0C1357.5 192.5 1371.7 194.2 1368.0 194.0C1364.3 193.8 1351.7 191.2 1348.0 191.0C1344.3 190.8 1368.0 192.5 1346.0 193.0C1324.0 193.5 1243.5 193.7 1216.0 194.0C1188.5 194.3 1187.2 194.5 1181.0 195.0C1174.8 195.5 1185.7 197.2 1179.0 197.0C1172.3 196.8 1147.7 194.2 1141.0 194.0C1134.3 193.8 1170.7 194.8 1139.0 196.0C1107.3 197.2 1002.8 198.5 951.0 201.0C899.2 203.5 852.0 209.7 828.0 211.0C804.0 212.3 821.2 207.3 807.0 209.0C792.8 210.7 753.7 219.0 743.0 221.0"/>
+<path d="M804.0 163.0C802.5 166.2 796.3 177.8 795.0 182.0C793.7 186.2 794.8 186.3 796.0 188.0C797.2 189.7 798.2 191.5 802.0 192.0C805.8 192.5 813.3 192.2 819.0 191.0C824.7 189.8 827.3 189.2 836.0 185.0C844.7 180.8 863.8 169.3 871.0 166.0C878.2 162.7 872.7 169.3 879.0 165.0C885.3 160.7 904.0 144.2 909.0 140.0"/>
+<path d="M813.0 208.0C813.7 207.2 811.0 204.7 817.0 203.0C823.0 201.3 816.3 201.7 849.0 198.0C881.7 194.3 978.5 184.0 1013.0 181.0C1047.5 178.0 1047.5 180.8 1056.0 180.0C1064.5 179.2 1060.8 176.7 1064.0 176.0C1067.2 175.3 1072.3 175.2 1075.0 176.0C1077.7 176.8 1070.3 179.2 1080.0 181.0C1089.7 182.8 1122.8 185.0 1133.0 187.0C1143.2 189.0 1139.7 192.0 1141.0 193.0"/>
+<path d="M979.0 131.0C973.7 135.2 960.0 148.0 947.0 156.0C934.0 164.0 910.3 174.7 901.0 179.0C891.7 183.3 894.5 181.7 891.0 182.0C887.5 182.3 882.2 181.7 880.0 181.0C877.8 180.3 878.2 180.5 878.0 178.0C877.8 175.5 878.8 168.0 879.0 166.0"/>
+<path d="M974.0 174.0C977.7 171.8 990.8 163.3 996.0 161.0C1001.2 158.7 998.7 162.7 1005.0 160.0C1011.3 157.3 1024.8 148.5 1034.0 145.0C1043.2 141.5 1054.3 139.5 1060.0 139.0C1065.7 138.5 1065.8 140.2 1068.0 142.0C1070.2 143.8 1072.3 146.7 1073.0 150.0C1073.7 153.3 1073.0 157.8 1072.0 162.0C1071.0 166.2 1067.8 172.8 1067.0 175.0"/>
+<path d="M979.0 127.0C979.2 127.7 977.3 127.8 980.0 131.0C982.7 134.2 992.5 141.2 995.0 146.0C997.5 150.8 995.0 157.7 995.0 160.0"/>
+<path d="M1076.0 176.0C1076.7 175.3 1075.3 173.8 1080.0 172.0C1084.7 170.2 1089.3 170.5 1104.0 165.0C1118.7 159.5 1156.2 144.3 1168.0 139.0C1179.8 133.7 1173.8 134.0 1175.0 133.0"/>
+<path d="M1219.0 145.0C1218.7 145.7 1221.2 146.5 1217.0 149.0C1212.8 151.5 1206.5 154.8 1194.0 160.0C1181.5 165.2 1150.7 176.7 1142.0 180.0"/>
+<path d="M1179.0 198.0C1179.7 199.0 1179.2 201.5 1183.0 204.0C1186.8 206.5 1195.5 209.2 1202.0 213.0C1208.5 216.8 1214.3 220.5 1222.0 227.0C1229.7 233.5 1241.0 244.0 1248.0 252.0C1255.0 260.0 1259.8 268.0 1264.0 275.0C1268.2 282.0 1270.5 287.3 1273.0 294.0C1275.5 300.7 1278.0 304.3 1279.0 315.0C1280.0 325.7 1279.8 347.3 1279.0 358.0C1278.2 368.7 1277.8 372.7 1274.0 379.0C1270.2 385.3 1259.0 393.2 1256.0 396.0"/>
+<path d="M1195.0 132.0C1195.8 131.2 1186.2 131.7 1200.0 127.0C1213.8 122.3 1265.0 107.8 1278.0 104.0"/>
+<path d="M1265.0 158.0C1264.5 157.3 1265.7 155.5 1262.0 154.0C1258.3 152.5 1246.8 150.5 1243.0 149.0C1239.2 147.5 1239.7 145.7 1239.0 145.0"/>
+<path d="M1255.0 131.0C1252.8 132.3 1244.7 136.8 1242.0 139.0C1239.3 141.2 1239.5 143.2 1239.0 144.0"/>
+<path d="M1275.0 379.0C1276.7 378.7 1251.2 399.5 1285.0 377.0C1318.8 354.5 1434.5 273.5 1478.0 244.0C1521.5 214.5 1534.3 208.2 1546.0 200.0C1557.7 191.8 1547.7 195.8 1548.0 195.0"/>
+<path d="M1292.0 161.0C1292.7 161.7 1287.0 161.0 1296.0 165.0C1305.0 169.0 1337.3 180.8 1346.0 185.0C1354.7 189.2 1347.7 189.2 1348.0 190.0"/>
+<path d="M1478.0 126.0C1473.5 128.5 1457.0 138.7 1451.0 141.0C1445.0 143.3 1450.2 138.0 1442.0 140.0C1433.8 142.0 1414.7 149.7 1402.0 153.0C1389.3 156.3 1373.8 159.0 1366.0 160.0C1358.2 161.0 1357.8 159.8 1355.0 159.0C1352.2 158.2 1350.0 157.8 1349.0 155.0C1348.0 152.2 1349.0 144.2 1349.0 142.0"/>
+<path d="M1368.0 195.0C1370.5 198.2 1380.0 209.0 1383.0 214.0C1386.0 219.0 1385.5 223.2 1386.0 225.0"/>
+<path d="M1451.0 142.0C1450.8 142.8 1451.3 144.7 1450.0 147.0C1448.7 149.3 1444.3 153.2 1443.0 156.0C1441.7 158.8 1441.5 162.0 1442.0 164.0C1442.5 166.0 1443.8 167.0 1446.0 168.0C1448.2 169.0 1450.0 170.0 1455.0 170.0C1460.0 170.0 1465.8 169.8 1476.0 168.0C1486.2 166.2 1507.5 161.7 1516.0 159.0C1524.5 156.3 1521.2 154.5 1527.0 152.0C1532.8 149.5 1547.0 145.3 1551.0 144.0"/>
+<path d="M1516.0 160.0C1516.0 161.5 1515.2 166.5 1516.0 169.0C1516.8 171.5 1518.3 173.7 1521.0 175.0C1523.7 176.3 1527.2 177.0 1532.0 177.0C1536.8 177.0 1544.2 176.2 1550.0 175.0C1555.8 173.8 1560.8 172.5 1567.0 170.0C1573.2 167.5 1581.0 163.7 1587.0 160.0C1593.0 156.3 1600.0 151.2 1603.0 148.0C1606.0 144.8 1604.7 142.2 1605.0 141.0"/>
+<path d="M1537.0 148.0C1536.8 147.0 1535.5 144.3 1536.0 142.0C1536.5 139.7 1537.0 137.2 1540.0 134.0C1543.0 130.8 1547.7 126.8 1554.0 123.0C1560.3 119.2 1570.7 113.3 1578.0 111.0C1585.3 108.7 1593.0 108.8 1598.0 109.0C1603.0 109.2 1605.2 110.2 1608.0 112.0C1610.8 113.8 1613.8 116.7 1615.0 120.0C1616.2 123.3 1615.0 130.0 1615.0 132.0"/>
+<path d="M1708.0 104.0C1701.7 106.7 1678.5 117.3 1670.0 120.0C1661.5 122.7 1664.8 118.0 1657.0 120.0C1649.2 122.0 1629.7 130.0 1623.0 132.0C1616.3 134.0 1619.7 130.7 1617.0 132.0C1614.3 133.3 1610.5 138.5 1607.0 140.0C1603.5 141.5 1603.0 139.0 1596.0 141.0C1589.0 143.0 1573.5 149.5 1565.0 152.0C1556.5 154.5 1549.0 156.5 1545.0 156.0C1541.0 155.5 1541.7 150.2 1541.0 149.0"/>
+<path d="M1552.0 145.0L1553.0 153.0"/>
+<path d="M1558.0 152.0C1558.0 151.0 1558.5 147.5 1558.0 146.0C1557.5 144.5 1555.5 143.5 1555.0 143.0"/>
+<path d="M1572.0 188.0C1572.7 186.8 1561.0 190.8 1576.0 181.0C1591.0 171.2 1646.8 139.0 1662.0 129.0C1677.2 119.0 1666.2 122.3 1667.0 121.0"/>
+</svg>
+  <span class="bar"><i></i></span>
+</div>
+
+<header class="top wrap">
+  <div class="frame">
+    <a class="brand" href="#top" aria-label="Pedro Veríssimo, back to top"><span class="av"><svg aria-hidden="true"><use href="#av"/></svg></span>Pedro Veríssimo</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">About</a><a href="#sincra">Sincra</a><a href="#work">Work</a><a href="#beyond">Beyond work</a><a href="#timeline">Timeline</a><a href="#honors">Honors</a><a href="#press">Press</a>
+    </nav>
+    <div class="top-r">
+      <div class="theme" role="group" aria-label="Color theme">
+        <button type="button" data-theme-set="auto" aria-label="System theme" aria-pressed="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1.5" y="2.5" width="13" height="9" rx="1.5"/><path d="M5.5 14h5M8 11.5V14"/></svg></button>
+        <button type="button" data-theme-set="light" aria-label="Light theme" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3 3l1.1 1.1M11.9 11.9 13 13M3 13l1.1-1.1M11.9 4.1 13 3"/></svg></button>
+        <button type="button" data-theme-set="dark" aria-label="Dark theme" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5 5.8 5.8 0 1 0 13.5 9.6Z"/></svg></button>
+      </div>
+      <a class="btn sm pri" href="#contact">Contact</a>
+    </div>
+  </div>
 </header>
 
-<main id="top">
-  <div class="wrap hero">
-    <p class="eyebrow">Builder · São Paulo, Brazil</p>
-    <h1>Pedro<br>Veríssimo</h1>
-    <p class="lede">When something grabs my attention, I go all the way, until there's something I can point to. So far that's been planes, rockets, a riddle almost nobody solves, a 180,000-follower page, a gold medal in Brazil's first AI Olympiad, a volunteering platform that made the news, and now <strong>Sincra</strong>, a fintech for doctors and hospitals.</p>
-    <div class="quick">
-      <a class="chip y" href="https://sincra.app" target="_blank" rel="noopener">Sincra · sincra.app ↗</a>
-      <a class="chip" href="https://voluntariamais.com.br/impacto" target="_blank" rel="noopener">Voluntaria+ ↗</a>
-      <a class="chip" href="https://www.oniabrasil.com.br/assets/files/Lista_de_Premiao_1a_ONIA_2025_07_10.pdf" target="_blank" rel="noopener">AI Olympiad gold ↗</a>
-    </div>
+<main class="wrap" id="top">
+  <div class="frame">
 
-    <div class="board" role="region" aria-label="Where I've been and where I'm going">
-      <div class="board-head">
-        <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>Departures</h2>
-        <span class="mono">Rio Grande do Sul → São Paulo → ?</span>
+    <!-- ================= HERO ================= -->
+    <section class="band" data-sec="top"><span class="x l"></span><span class="x r"></span>
+      <div class="in">
+        <div class="hero">
+          <div>
+            <span class="pill"><span class="dot"></span>Building <b>Sincra</b> · São Paulo</span>
+            <h1>Pedro Veríssimo</h1>
+            <p class="sub">Builder from São Gabriel, Brazil. <b>Tech co-founder of Sincra.</b></p>
+            <p class="lede">When something grabs my attention, I go all the way, until there's something I can point to. So far that's been rockets, a gold medal in Brazil's first AI Olympiad, a volunteering platform that made the evening news, Instagram pages past 160,000 followers, and now <strong>Sincra</strong>, a fintech that gets doctors paid sooner.</p>
+            <div class="ctas">
+              <a class="btn pri ext" href="https://sincra.app" target="_blank" rel="noopener">Visit Sincra</a>
+              <button class="btn" type="button" data-copy="pedrovverissimo1@gmail.com">Copy email</button>
+              <a class="btn ghost ext" href="https://www.oniabrasil.com.br/assets/files/Lista_de_Premiao_1a_ONIA_2025_07_10.pdf" target="_blank" rel="noopener">Olympiad medal list</a>
+            </div>
+          </div>
+          <aside class="card profile" aria-label="Profile">
+            <div class="art"><span class="tag">@pedro</span><svg role="img" aria-label="Illustrated portrait of Pedro"><use href="#av"/></svg></div>
+            <dl class="kv">
+              <dt>From</dt><dd>São Gabriel, RS</dd>
+              <dt>Now</dt><dd>São Paulo, SP</dd>
+              <dt>Building</dt><dd>Sincra</dd>
+              <dt>Studying</dt><dd>Link School of Business</dd>
+              <dt>Local time</dt><dd class="num" id="clock">--:--</dd>
+            </dl>
+          </aside>
+        </div>
       </div>
-      <ol class="legs">
-        <li class="leg"><span class="yr num">≤2024</span><span class="code">HOME</span><span class="city">São Gabriel</span><span class="note">Hometown of 60,000 in the far south of Brazil. A year and a half of military school, among the top of my class, and the wrong place for someone who builds.</span><span class="st">Origin</span></li>
-        <li class="leg"><span class="yr num">2024</span><span class="code">POA</span><span class="city">Porto Alegre</span><span class="note">Moved alone in the middle of the school year, the only window I had. Colégio Farroupilha. Most of this page happened here.</span><span class="st">Departed</span></li>
-        <li class="leg"><span class="yr num">2026</span><span class="code">SAO</span><span class="city">São Paulo</span><span class="note">Link School of Business. Co-founded Sincra.</span><span class="st now">Now</span></li>
-        <li class="leg"><span class="yr num">2027</span><span class="code">SFO</span><span class="city">San Francisco</span><span class="note">The Academy, founding class.</span><span class="st next">Applied</span></li>
-      </ol>
-    </div>
+    </section>
+
+    <div class="hatch" aria-hidden="true"></div>
+
+    <!-- ================= HIGHLIGHTS ================= -->
+    <section class="band" aria-label="Highlights"><span class="x l"></span><span class="x r"></span>
+      <div class="in" style="padding-top:clamp(28px,4vw,48px)">
+        <div class="bento">
+          <a class="tile ph t-a" href="#sincra"><img src="media/cowork-s.webp" srcset="media/cowork-s.webp 760w, media/cowork-l.webp 1600w" sizes="(min-width: 900px) 40vw, 90vw" width="569" height="760" alt=""><span class="go" aria-hidden="true"></span><span class="cap"><small>Now building</small><b>Sincra: receivables for doctors and hospitals</b></span></a>
+          <a class="tile ph t-b" href="#onia"><img src="media/onia-medal-s.webp" srcset="media/onia-medal-s.webp 760w, media/onia-medal-l.webp 1600w" sizes="(min-width: 900px) 40vw, 90vw" width="570" height="760" alt="" style="object-position:50% 22%"><span class="go" aria-hidden="true"></span><span class="cap"><small>AI · 2025</small><b>Gold, Brazil&#x27;s first AI Olympiad</b></span></a>
+          <a class="tile stat blue t-c" href="#onia"><small>ONIA</small><span><span class="big">1 / 28</span><span class="lbl">golds, among 716,000+ students</span></span></a>
+          <a class="tile stat t-c" href="#audience"><small>Instagram</small><span><span class="big">230K</span><span class="lbl">followers across three pages</span></span></a>
+          <a class="tile ph t-d" href="#voluntaria"><img src="media/voluntaria-stand-s.webp" srcset="media/voluntaria-stand-s.webp 760w, media/voluntaria-stand-l.webp 1600w" sizes="(min-width: 900px) 40vw, 90vw" width="570" height="760" alt="" style="object-position:50% 22%"><span class="go" aria-hidden="true"></span><span class="cap"><small>Social · 2024–25</small><b>Voluntaria+, a platform that made the news</b></span></a>
+          <a class="tile ph t-d" href="#rockets"><img src="media/launch-field-s.webp" srcset="media/launch-field-s.webp 760w, media/launch-field-l.webp 1600w" sizes="(min-width: 900px) 40vw, 90vw" width="760" height="689" alt=""><span class="go" aria-hidden="true"></span><span class="cap"><small>Hardware</small><b>Rockets, built from fireworks up</b></span></a>
+          <a class="tile ph t-e" href="#brics"><img src="media/brics-stage-s.webp" srcset="media/brics-stage-s.webp 760w, media/brics-stage-l.webp 1600w" sizes="(min-width: 900px) 40vw, 90vw" width="760" height="570" alt=""><span class="go" aria-hidden="true"></span><span class="cap"><small>Talk · 2025</small><b>II BRICS Forum, Brasília</b></span></a>
+          <a class="tile stat t-e" href="#voluntaria"><small>Raised</small><span><span class="big">R$6.3K</span><span class="lbl">for the Union of the Blind's Braille printer</span></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="band" id="about" data-sec="about"><span class="x l"></span><span class="x r"></span>
+      <div class="in">
+        <div class="head"><span class="label">About</span><h2>From the far south of Brazil to São Paulo.</h2></div>
+        <div class="about">
+          <div class="prose">
+            <p class="big">I'm from São Gabriel, a town of 60,000 in the far south of Brazil, and the fifth generation of a family that farms rice and cattle there.</p>
+            <p>I taught myself English, AI and audience growth, mostly from YouTube. Most of what's on this page happened after I moved to Porto Alegre on my own, in the middle of a school year, because that was the only window I had.</p>
+            <p>Now I'm in São Paulo, studying at Link School of Business and building Sincra. I like problems that end in something you can point to: a rocket that flies, a model that predicts, a platform people actually use.</p>
+          </div>
+          <div class="card facts">
+            <dl class="kv">
+              <dt>Name</dt><dd>Pedro Veríssimo</dd>
+              <dt>Role</dt><dd>Tech co-founder, Sincra</dd>
+              <dt>Route</dt><dd>São Gabriel → Porto Alegre → São Paulo</dd>
+              <dt>School</dt><dd>Link School of Business</dd>
+              <dt>Languages</dt><dd>Portuguese · English (C2) · Spanish</dd>
+              <dt>Email</dt><dd><span class="mail">pedrovverissimo1@gmail.com</span><button class="copy" type="button" data-copy="pedrovverissimo1@gmail.com">Copy</button></dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SINCRA ================= -->
+    <section class="band" id="sincra" data-sec="sincra"><span class="x l"></span><span class="x r"></span>
+      <div class="in">
+        <div class="head"><span class="label">Now building</span><h2>Doctors shouldn't pay interest on money that's already theirs.</h2></div>
+        <article class="product">
+          <div class="txt">
+            <div>
+              <h3>Sincra</h3>
+              <div class="meta" style="margin-top:12px"><span class="badge live">Active</span><span class="badge plain">Tech co-founder, one of three</span><span class="badge plain">Since 2026</span><span class="badge plain">Fintech · Healthcare</span></div>
+            </div>
+            <p>In Brazil, a surgeon can wait months to be paid for an operation, and the hospital often can't tell where that money is stuck: internal audit, the insurer, a missing signature. Doctors end up paying bank interest on money that is already theirs.</p>
+            <p>Sincra reads what a hospital already has (its management system, the insurers' TISS returns and the bank statement), rebuilds every procedure's path from surgery to payout, and predicts how much each doctor will receive, when, and with what confidence. Doctors and hospitals can then advance those receivables through partner funds, seeing the cost before they confirm.</p>
+            <div class="flow" aria-label="The path of one procedure's payment">
+              <ol>
+                <li><b>01</b><span>Surgery</span>The procedure happens</li>
+                <li><b>02</b><span>Billing</span>Claim built and sent</li>
+                <li><b>03</b><span>Insurer audit</span>Where money gets stuck</li>
+                <li><b>04</b><span>Payout</span>Hospital, then doctor</li>
+              </ol>
+              <p class="pred"><b>Sincra</b>Amount, date and confidence for each step, before it happens.</p>
+            </div>
+            <p class="h4">My part</p>
+            <p>I lead product and engineering. I built the product prototype (the doctor, hospital and admin views) and the site.</p>
+            <p class="h4">Where it is</p>
+            <p>We started as a shift-scheduling tool for hospitals, changed the thesis during Link's Startup School, and are now structuring our first operations with hospitals and funding partners.</p>
+            <div class="links"><a class="ext" href="https://sincra.app" target="_blank" rel="noopener">sincra.app</a></div>
+          </div>
+          <div class="pics">
+            <figure class="fig span r43 pos-top"><button class="fig-btn" type="button" data-full="media/cowork-l.webp" aria-label="Open photo: Most days look like this now."><img src="media/cowork-s.webp" srcset="media/cowork-s.webp 760w, media/cowork-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="569" height="760" loading="lazy" decoding="async" alt="Most days look like this now."></button><figcaption>Most days look like this now.</figcaption></figure>
+            <figure class="fig r34"><button class="fig-btn" type="button" data-full="media/coding-cap-l.webp" aria-label="Open photo: Heads down."><img src="media/coding-cap-s.webp" srcset="media/coding-cap-s.webp 760w, media/coding-cap-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="506" loading="lazy" decoding="async" alt="Heads down."></button><figcaption>Heads down.</figcaption></figure>
+            <figure class="fig r34"><button class="fig-btn" type="button" data-full="media/night-laptop-l.webp" aria-label="Open photo: And most nights."><img src="media/night-laptop-s.webp" srcset="media/night-laptop-s.webp 760w, media/night-laptop-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="570" loading="lazy" decoding="async" alt="And most nights."></button><figcaption>And most nights.</figcaption></figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= WORK ================= -->
+    <section class="band" id="work" data-sec="work"><span class="x l"></span><span class="x r"></span>
+      <div class="in">
+        <div class="head"><span class="label">Selected work</span><h2>Things I've built, won and shipped.</h2><p>Each one ended in something you can check. Sources are linked on every card.</p></div>
+        <div class="projects">
+
+          <article class="proj" id="voluntaria">
+            <header class="proj-head"><span class="cat">Software · Community</span><h3>Voluntaria+</h3><span class="badge">Handed off</span><span class="when">2024–2025 · Porto Alegre</span></header>
+            <div class="proj-body">
+              <div class="proj-text">
+                <dl class="dl"><dt>Role</dt><dd>Head of technology, InovaTec</dd><dt>Team</dt><dd>4 students, led by me</dd><dt>What</dt><dd>Connects volunteers with NGOs across Rio Grande do Sul</dd></dl>
+                <p>When I joined InovaTec, my high school's student-run innovation club, I found a lot of ambition and almost no one who could build. The club was trying to make the platform in Bubble, with poor results. I took over the build, rebuilt it from scratch with Lovable when AI coding was brand new, and we launched in about four months.</p>
+                <div class="stats">
+                  <div class="stat"><b>170+</b><span>volunteers connected</span></div>
+                  <div class="stat"><b>20</b><span>regional NGOs</span></div>
+                  <div class="stat"><b>80+</b><span>donors at the school's largest blood drive</span></div>
+                  <div class="stat"><b>R$6,300</b><span>raised so the Union of the Blind of RS could set up its Braille printer</span></div>
+                </div>
+                <p>It became a partner of Rede Atados, Brazil's largest volunteering network, and was covered by RBS TV, SBT, Zero Hora and Brasil de Fato. Before graduating I trained the students who took over. In July 2026 they used it to raise part of the money to renovate an art school in Morro da Cruz, a low-income community in Porto Alegre.</p>
+                <p>Through the club I also ran AI workshops for 50 low-income students and AI talks for 40 teachers.</p>
+                <div class="links">
+                  <a class="ext" href="https://voluntariamais.com.br" target="_blank" rel="noopener">voluntariamais.com.br</a>
+                  <a class="ext" href="https://voluntariamais.com.br/impacto" target="_blank" rel="noopener">Impact &amp; press</a>
+                  <a class="ext" href="https://www.instagram.com/reel/DSa0CDDAMB_/" target="_blank" rel="noopener">Braille fundraiser</a>
+                  <a class="ext" href="https://www.instagram.com/reel/DQeSrrWjjg9/" target="_blank" rel="noopener">Blood drive</a>
+                </div>
+              </div>
+              <div class="grid-m">
+                <figure class="fig c6 r43 pos-top"><button class="fig-btn" type="button" data-full="media/voluntaria-stand-l.webp" aria-label="Open photo: The Voluntaria+ stand, recruiting volunteers in Porto Alegre."><img src="media/voluntaria-stand-s.webp" srcset="media/voluntaria-stand-s.webp 760w, media/voluntaria-stand-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="570" height="760" loading="lazy" decoding="async" alt="The Voluntaria+ stand, recruiting volunteers in Porto Alegre."></button><figcaption>The Voluntaria+ stand, recruiting volunteers in Porto Alegre.</figcaption></figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj flip" id="onia">
+            <header class="proj-head"><span class="cat">AI · Competition</span><h3>Gold, 1st National AI Olympiad</h3><span class="badge">Gold</span><span class="when">2024–2025</span></header>
+            <div class="proj-body">
+              <div class="proj-text">
+                <dl class="dl"><dt>Field</dt><dd class="num">716,000+ participants</dd><dt>Result</dt><dd>One of 28 gold medals</dd><dt>After</dt><dd>Named ambassador for the 2026 edition</dd></dl>
+                <p>The first edition of ONIA, Brazil's National Artificial Intelligence Olympiad, which selects the national team for the International Olympiad in AI. It went from theory and ethics, to building regressions in Python, to a final round where I built a computer-vision algorithm for competing robots, trained on Santos Dumont II, the national supercomputer at LNCC.</p>
+                <p>Afterwards I was named an ambassador for the second edition and brought classmates into it.</p>
+                <div class="note"><b>The one that got away</b><p>The selection for the international team ran training on jobs capped at 15 minutes. Instead of saving checkpoints and stacking progress across jobs, I kept starting from zero, and my model stalled around 70% accuracy when it could have reached about 95%. One missing line of code between me and Beijing. I still think about it.</p></div>
+                <div class="links">
+                  <a class="ext" href="https://www.oniabrasil.com.br/assets/files/Lista_de_Premiao_1a_ONIA_2025_07_10.pdf" target="_blank" rel="noopener">Official medal list</a>
+                  <a class="ext" href="https://www.oniabrasil.com.br/page1.html" target="_blank" rel="noopener">1st ONIA results</a>
+                  <a class="ext" href="https://www.instagram.com/reel/DRADaaqEVXX/" target="_blank" rel="noopener">The gold, on video</a>
+                </div>
+              </div>
+              <div class="grid-m">
+                <figure class="fig c3 r34 pos-top"><button class="fig-btn" type="button" data-full="media/onia-medal-l.webp" aria-label="Open photo: Gold, 1st National AI Olympiad."><img src="media/onia-medal-s.webp" srcset="media/onia-medal-s.webp 760w, media/onia-medal-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="570" height="760" loading="lazy" decoding="async" alt="Gold, 1st National AI Olympiad."></button><figcaption>Gold, 1st National AI Olympiad.</figcaption></figure>
+                <figure class="fig c3 r34"><button class="fig-btn" type="button" data-full="media/medal-moment-l.webp" aria-label="Open photo: The medal going on."><img src="media/medal-moment-s.webp" srcset="media/medal-moment-s.webp 760w, media/medal-moment-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="428" loading="lazy" decoding="async" alt="The medal going on."></button><figcaption>The medal going on.</figcaption></figure>
+                <figure class="fig c6 r169 contain"><button class="fig-btn" type="button" data-full="media/onia-final-story-l.webp" aria-label="Open photo: The final round as ONIA posted it live: 28 finalists, four places on the team for Beijing."><img src="media/onia-final-story-s.webp" srcset="media/onia-final-story-s.webp 760w, media/onia-final-story-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="750" loading="lazy" decoding="async" alt="The final round as ONIA posted it live: 28 finalists, four places on the team for Beijing."></button><figcaption>The final round as ONIA posted it live: 28 finalists, four places on the team for Beijing.</figcaption></figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj ink" id="rockets">
+            <header class="proj-head"><span class="cat">Hardware</span><h3>Rockets from zero</h3><span class="badge">Iterating</span><span class="when">São Gabriel</span></header>
+            <div class="proj-body">
+              <div class="proj-text">
+                <dl class="dl"><dt>Stack</dt><dd>Solid motors, Arduino, servos, accelerometer</dd><dt>Flown</dt><dd>5 rockets built and launched</dd><dt>Teacher</dt><dd>BPS.space on YouTube</dd></dl>
+                <p>Planes led to rockets. I started by taking fireworks apart and mounting them in cardboard tubes. The first ones exploded; after enough iterations they flew. From there I learned to mix my own solid propellant, then moved into avionics: an Arduino flight computer reading an accelerometer and driving servos, a parachute deployment system, and cameras on board to film each flight.</p>
+                <p>No lab, no club, no budget: YouTube and a lot of failed launches.</p>
+                <div class="specs"><span>Built <b>5</b></span><span>Propellant <b>home-mixed</b></span><span>Flight computer <b>Arduino</b></span><span>Recovery <b>parachute</b></span></div>
+                <div class="links"><a class="ext" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener">Documentary: “Foguete 7/2023”</a></div>
+              </div>
+              <div class="grid-m">
+                <figure class="fig c6 r169"><button class="fig-btn" type="button" data-full="media/launch-field-l.webp" aria-label="Open photo: Launch day in the pampa. Tripod rolling, everyone looking up."><img src="media/launch-field-s.webp" srcset="media/launch-field-s.webp 760w, media/launch-field-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="689" loading="lazy" decoding="async" alt="Launch day in the pampa. Tripod rolling, everyone looking up."></button><figcaption>Launch day in the pampa. Tripod rolling, everyone looking up.</figcaption></figure>
+                <figure class="fig c2 k r34"><button class="fig-btn" type="button" data-full="media/rocket-handheld-l.webp" aria-label="Open photo: Clear nose cone, cardboard fins."><img src="media/rocket-handheld-s.webp" srcset="media/rocket-handheld-s.webp 760w, media/rocket-handheld-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="570" height="760" loading="lazy" decoding="async" alt="Clear nose cone, cardboard fins."></button><figcaption>Clear nose cone, cardboard fins.</figcaption></figure>
+                <figure class="fig c2 k r34"><button class="fig-btn" type="button" data-full="media/rocket-cardboard-l.webp" aria-label="Open photo: Early airframe: cardboard tube, fins, fuse."><img src="media/rocket-cardboard-s.webp" srcset="media/rocket-cardboard-s.webp 760w, media/rocket-cardboard-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="570" height="760" loading="lazy" decoding="async" alt="Early airframe: cardboard tube, fins, fuse."></button><figcaption>Early airframe: cardboard tube, fins, fuse.</figcaption></figure>
+                <figure class="fig c2 k r34"><button class="fig-btn" type="button" data-full="media/rocket-table-l.webp" aria-label="Open photo: A bigger one, flag on the fin."><img src="media/rocket-table-s.webp" srcset="media/rocket-table-s.webp 760w, media/rocket-table-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="428" loading="lazy" decoding="async" alt="A bigger one, flag on the fin."></button><figcaption>A bigger one, flag on the fin.</figcaption></figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj flip" id="audience">
+            <header class="proj-head"><span class="cat">Audience</span><h3>A crab, a cat, 230,000 followers</h3><span class="badge">One sold</span><span class="when">Instagram</span></header>
+            <div class="proj-body">
+              <div class="proj-text">
+                <dl class="dl"><dt>Pages</dt><dd>@seusiriqueijo · @gatinhoajude · @inteligenciai</dd><dt>Followers</dt><dd class="num">162K + 58.4K + 14K</dd><dt>Sold</dt><dd>One page, for R$2,000</dd></dl>
+                <p>I noticed my feed kept serving the same repeatable video formats with millions of views, so I tried to reverse-engineer them. The first two pages went nowhere. Then a crab took off: @seusiriqueijo, “the most famous crab in Brazil,” passed 160,000 followers. A cat drinking water did it again on @gatinhoajude, where one reel reached 340,000 accounts.</p>
+                <p>I couldn't monetize them (I had no idea how to build a sales funnel), so I sold one for R$2,000, about two months of Brazil's minimum wage. Along the way I placed top five in a clipping competition, closed a paying mentorship client who found me through my DMs, and learned the hard way to sell before building. I still help friends grow their audiences.</p>
+              </div>
+              <div class="phones">
+                <figure class="fig r45 contain"><button class="fig-btn" type="button" data-full="media/ig-siri-profile-l.webp" aria-label="Open photo: @seusiriqueijo: 162K followers."><img src="media/ig-siri-profile-s.webp" srcset="media/ig-siri-profile-s.webp 760w, media/ig-siri-profile-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="591" height="560" loading="lazy" decoding="async" alt="@seusiriqueijo: 162K followers."></button><figcaption>@seusiriqueijo: 162K followers.</figcaption></figure>
+                <figure class="fig r45 contain"><button class="fig-btn" type="button" data-full="media/ig-gatinho-profile-l.webp" aria-label="Open photo: @gatinhoajude: 58.4K."><img src="media/ig-gatinho-profile-s.webp" srcset="media/ig-gatinho-profile-s.webp 760w, media/ig-gatinho-profile-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="591" height="560" loading="lazy" decoding="async" alt="@gatinhoajude: 58.4K."></button><figcaption>@gatinhoajude: 58.4K.</figcaption></figure>
+                <figure class="fig r45 contain"><button class="fig-btn" type="button" data-full="media/ig-reach-30d-l.webp" aria-label="Open photo: One month of reach: a single reel at 340,088."><img src="media/ig-reach-30d-s.webp" srcset="media/ig-reach-30d-s.webp 760w, media/ig-reach-30d-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="556" height="760" loading="lazy" decoding="async" alt="One month of reach: a single reel at 340,088."></button><figcaption>One month of reach: a single reel at 340,088.</figcaption></figure>
+                <figure class="fig r45 contain"><button class="fig-btn" type="button" data-full="media/ig-stories-crab-l.webp" aria-label="Open photo: Stories reach on the crab page."><img src="media/ig-stories-crab-s.webp" srcset="media/ig-stories-crab-s.webp 760w, media/ig-stories-crab-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="362" height="760" loading="lazy" decoding="async" alt="Stories reach on the crab page."></button><figcaption>Stories reach on the crab page.</figcaption></figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj" id="caldeira">
+            <header class="proj-head"><span class="cat">Data · Sales</span><h3>Forecasting Q4 for RBS Group</h3><span class="badge">Won</span><span class="when">2025 · Instituto Caldeira</span></header>
+            <div class="proj-body">
+              <div class="proj-text">
+                <dl class="dl"><dt>Program</dt><dd>Geração Caldeira, Instituto Caldeira</dd><dt>Selected</dt><dd class="num">200 of 18,000 applicants</dd><dt>Client</dt><dd>RBS Group, Globo's affiliate in Rio Grande do Sul</dd></dl>
+                <p>A selective four-month program on the new job market, built around real company problems. Our final project was a predictive sales panel for RBS Group's fourth quarter. It won. We were invited to RBS headquarters, and I turned down an internship offer to keep building.</p>
+                <p>In the same program I wrote a 60-page sales playbook for a consulting firm with a long, complex sale.</p>
+              </div>
+              <div class="grid-m">
+                <figure class="fig c6 r169"><button class="fig-btn" type="button" data-full="media/caldeira-rbs-panel-l.webp" aria-label="Open photo: The team with our predictive sales panel for RBS on the screen."><img src="media/caldeira-rbs-panel-s.webp" srcset="media/caldeira-rbs-panel-s.webp 760w, media/caldeira-rbs-panel-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="428" loading="lazy" decoding="async" alt="The team with our predictive sales panel for RBS on the screen."></button><figcaption>The team with our predictive sales panel for RBS on the screen.</figcaption></figure>
+                <figure class="fig c6 r169 pos-top"><button class="fig-btn" type="button" data-full="media/caldeira-rbs-team-l.webp" aria-label="Open photo: Our group on challenge day, holding the RBS card."><img src="media/caldeira-rbs-team-s.webp" srcset="media/caldeira-rbs-team-s.webp 760w, media/caldeira-rbs-team-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="428" loading="lazy" decoding="async" alt="Our group on challenge day, holding the RBS card."></button><figcaption>Our group on challenge day, holding the RBS card.</figcaption></figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj flip" id="brics">
+            <header class="proj-head"><span class="cat">Speaking</span><h3>A talk at the II BRICS Forum</h3><span class="badge">Invited</span><span class="when">Sep 2025 · Brasília</span></header>
+            <div class="proj-body">
+              <div class="proj-text">
+                <dl class="dl"><dt>Talk</dt><dd>“The Youth Perspective: innovation starts small”</dd><dt>Audience</dt><dd>Diplomats and young leaders from BRICS countries</dd><dt>Length</dt><dd>20 minutes</dd></dl>
+                <p>I was invited to speak on AI in education because of the Olympiad and Voluntaria+. My school funded the trip. The talk was about how innovation actually starts for people my age: laptops, communities and small ideas that someone decides to finish.</p>
+                <div class="links"><a class="ext" href="https://www.instagram.com/reel/DOn23plkbA5/" target="_blank" rel="noopener">At the forum, on video</a></div>
+              </div>
+              <div class="grid-m">
+                <figure class="fig c6 r169"><button class="fig-btn" type="button" data-full="media/brics-stage-l.webp" aria-label="Open photo: On stage: “The Youth Perspective.”"><img src="media/brics-stage-s.webp" srcset="media/brics-stage-s.webp 760w, media/brics-stage-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="570" loading="lazy" decoding="async" alt="On stage: “The Youth Perspective.”"></button><figcaption>On stage: “The Youth Perspective.”</figcaption></figure>
+                <figure class="fig c3 r43"><button class="fig-btn" type="button" data-full="media/brics-roundtable-2-l.webp" aria-label="Open photo: At the roundtable."><img src="media/brics-roundtable-2-s.webp" srcset="media/brics-roundtable-2-s.webp 760w, media/brics-roundtable-2-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="555" loading="lazy" decoding="async" alt="At the roundtable."></button><figcaption>At the roundtable.</figcaption></figure>
+                <figure class="fig c3 r43 pos-top"><button class="fig-btn" type="button" data-full="media/brasilia-congress-l.webp" aria-label="Open photo: Brasília, the National Congress behind me."><img src="media/brasilia-congress-s.webp" srcset="media/brasilia-congress-s.webp 760w, media/brasilia-congress-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="570" height="760" loading="lazy" decoding="async" alt="Brasília, the National Congress behind me."></button><figcaption>Brasília, the National Congress behind me.</figcaption></figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj" id="flying">
+            <header class="proj-head"><span class="cat">Aviation</span><h3>Planes, the first obsession</h3><span class="badge">10 h flown</span><span class="when">Since childhood</span></header>
+            <div class="proj-body">
+              <div class="proj-text">
+                <dl class="dl"><dt>Ground school</dt><dd>ANAC private pilot curriculum, completed</dd><dt>Flight time</dt><dd class="num">10 hours</dd></dl>
+                <p>As a kid I built near full-scale Airbus cockpits out of cardboard, instruments drawn by hand, with a co-pilot recruited from whoever was around.</p>
+                <p>In May 2024, during the floods in Rio Grande do Sul, I had to get to Porto Alegre for a family emergency with the roads already closed. I found a small plane through a friend of a friend and flew in as co-pilot. I've since finished the ANAC private pilot ground school and logged ten hours.</p>
+              </div>
+              <div class="grid-m">
+                <figure class="fig c3 r43"><button class="fig-btn" type="button" data-full="media/cardboard-cockpit-2-l.webp" aria-label="Open photo: A cockpit built from cardboard boxes, every instrument drawn by hand."><img src="media/cardboard-cockpit-2-s.webp" srcset="media/cardboard-cockpit-2-s.webp 760w, media/cardboard-cockpit-2-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="570" loading="lazy" decoding="async" alt="A cockpit built from cardboard boxes, every instrument drawn by hand."></button><figcaption>A cockpit built from cardboard boxes, every instrument drawn by hand.</figcaption></figure>
+                <figure class="fig c3 r43"><button class="fig-btn" type="button" data-full="media/cardboard-cockpit-1-l.webp" aria-label="Open photo: Headset on, co-pilot recruited."><img src="media/cardboard-cockpit-1-s.webp" srcset="media/cardboard-cockpit-1-s.webp 760w, media/cardboard-cockpit-1-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="570" loading="lazy" decoding="async" alt="Headset on, co-pilot recruited."></button><figcaption>Headset on, co-pilot recruited.</figcaption></figure>
+                <figure class="fig c3 r34 pos-top"><button class="fig-btn" type="button" data-full="media/cockpit-pilot-l.webp" aria-label="Open photo: The real thing."><img src="media/cockpit-pilot-s.webp" srcset="media/cockpit-pilot-s.webp 760w, media/cockpit-pilot-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="570" loading="lazy" decoding="async" alt="The real thing."></button><figcaption>The real thing.</figcaption></figure>
+                <figure class="fig c3 r34"><button class="fig-btn" type="button" data-full="media/ground-school-l.webp" aria-label="Open photo: Ground school: the forces in a climb."><img src="media/ground-school-s.webp" srcset="media/ground-school-s.webp 760w, media/ground-school-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="570" height="760" loading="lazy" decoding="async" alt="Ground school: the forces in a climb."></button><figcaption>Ground school: the forces in a climb.</figcaption></figure>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BEYOND WORK ================= -->
+    <section class="band" id="beyond" data-sec="beyond"><span class="x l"></span><span class="x r"></span>
+      <div class="in">
+        <div class="head"><span class="label">Beyond work</span><h2>The farm, the uniform and the camera.</h2><p>The parts that don't fit on a résumé and explain most of it.</p></div>
+        <div class="beyond">
+          <article class="proj">
+            <header class="proj-head"><span class="cat">Family</span><h3>Fifth generation</h3><span class="when">Rio Grande do Sul</span></header>
+            <div class="proj-body">
+              <div class="proj-text">
+                <p>My family has worked the land in Rio Grande do Sul for five generations: rice and cattle. When I'm home I'm in the corral for the vaccinations and on the combine for the harvest.</p>
+                <p>The caption below is my grandmother's, not mine.</p>
+                <div class="chat"><figure class="fig r34 contain"><button class="fig-btn" type="button" data-full="media/grandma-whatsapp-l.webp" aria-label="Open photo: “Fifth generation in agro. Our grandson Pedro, vaccinating against anthrax.” The family group chat."><img src="media/grandma-whatsapp-s.webp" srcset="media/grandma-whatsapp-s.webp 760w, media/grandma-whatsapp-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="558" height="760" loading="lazy" decoding="async" alt="“Fifth generation in agro. Our grandson Pedro, vaccinating against anthrax.” The family group chat."></button><figcaption>“Fifth generation in agro. Our grandson Pedro, vaccinating against anthrax.” The family group chat.</figcaption></figure></div>
+              </div>
+              <div class="grid-m">
+                <figure class="fig c6 r169"><button class="fig-btn" type="button" data-full="media/combine-harvest-l.webp" aria-label="Open photo: Rice harvest, from the combine."><img src="media/combine-harvest-s.webp" srcset="media/combine-harvest-s.webp 760w, media/combine-harvest-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="570" loading="lazy" decoding="async" alt="Rice harvest, from the combine."></button><figcaption>Rice harvest, from the combine.</figcaption></figure>
+                <figure class="fig c2 k r34 pos-top"><button class="fig-btn" type="button" data-full="media/farm-vaccination-l.webp" aria-label="Open photo: Vaccination day at the chute."><img src="media/farm-vaccination-s.webp" srcset="media/farm-vaccination-s.webp 760w, media/farm-vaccination-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="570" loading="lazy" decoding="async" alt="Vaccination day at the chute."></button><figcaption>Vaccination day at the chute.</figcaption></figure>
+                <figure class="fig c2 k r34"><button class="fig-btn" type="button" data-full="media/farm-cattle-wall-l.webp" aria-label="Open photo: Stone corral, cattle coming through."><img src="media/farm-cattle-wall-s.webp" srcset="media/farm-cattle-wall-s.webp 760w, media/farm-cattle-wall-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="570" loading="lazy" decoding="async" alt="Stone corral, cattle coming through."></button><figcaption>Stone corral, cattle coming through.</figcaption></figure>
+                <figure class="fig c2 k r34"><button class="fig-btn" type="button" data-full="media/farm-shed-l.webp" aria-label="Open photo: Under the trees, gear on a stump."><img src="media/farm-shed-s.webp" srcset="media/farm-shed-s.webp 760w, media/farm-shed-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="570" loading="lazy" decoding="async" alt="Under the trees, gear on a stump."></button><figcaption>Under the trees, gear on a stump.</figcaption></figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj flip">
+            <header class="proj-head"><span class="cat">School</span><h3>Military school</h3><span class="when">São Gabriel · until 2024</span></header>
+            <div class="proj-body">
+              <div class="proj-text">
+                <p>A year and a half at a military school in São Gabriel, where I received the “Alamar” distinction, given to the top 1% for grades and conduct.</p>
+                <p>It taught me discipline. It also made clear it was the wrong place for someone who wants to build, so I left.</p>
+              </div>
+              <div class="grid-m">
+                <figure class="fig c3 r34 pos-top"><button class="fig-btn" type="button" data-full="media/military-uniform-l.webp" aria-label="Open photo: Dress uniform."><img src="media/military-uniform-s.webp" srcset="media/military-uniform-s.webp 760w, media/military-uniform-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="570" height="760" loading="lazy" decoding="async" alt="Dress uniform."></button><figcaption>Dress uniform.</figcaption></figure>
+                <figure class="fig c3 r34 pos-top"><button class="fig-btn" type="button" data-full="media/military-pair-l.webp" aria-label="Open photo: Ceremony night."><img src="media/military-pair-s.webp" srcset="media/military-pair-s.webp 760w, media/military-pair-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="570" height="760" loading="lazy" decoding="async" alt="Ceremony night."></button><figcaption>Ceremony night.</figcaption></figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj">
+            <header class="proj-head"><span class="cat">Film</span><h3>Filmes Pedro</h3><span class="when">YouTube</span></header>
+            <div class="proj-body">
+              <div class="proj-text">
+                <p>Before any of this I made films. A murder-mystery trilogy, one film per summer, shot with my cousin on beach trips with our grandparents. Script, shooting and editing all by hand. Later, documentaries: one on the Cold War, one on my own rockets.</p>
+                <p class="h4">Off the clock</p>
+                <div class="chips"><span>Specialty coffee &amp; latte art</span><span>Brazilian jiu-jitsu</span><span>Weightlifting</span><span>Tennis</span><span>Swimming</span><span>Sleep &amp; nutrition papers</span><span>How minds work</span></div>
+              </div>
+              <div class="tapes">
+                <a class="tape" href="https://youtu.be/_12PqCGbdgI" target="_blank" rel="noopener"><span class="t-k">Trilogy · Part 1</span><span class="t-t">Em Busca da Batatinha Perdida</span><span class="t-e">In search of the lost potato.</span><span class="t-f">Watch on YouTube</span></a>
+                <a class="tape" href="https://youtu.be/MT8nUVmGwXw" target="_blank" rel="noopener"><span class="t-k">Trilogy · Part 2</span><span class="t-t">Em Busca da Batatinha Perdida 2</span><span class="t-e">The case continues.</span><span class="t-f">Watch on YouTube</span></a>
+                <a class="tape" href="https://youtu.be/tap-1_KABF4" target="_blank" rel="noopener"><span class="t-k">Trilogy · Part 3</span><span class="t-t">Em Busca da Batatinha Perdida 3</span><span class="t-e">The finale.</span><span class="t-f">Watch on YouTube</span></a>
+                <a class="tape" href="https://youtu.be/R73Zr48ojcc" target="_blank" rel="noopener"><span class="t-k">Documentary</span><span class="t-t">Guerra Fria</span><span class="t-e">The Cold War, explained by me.</span><span class="t-f">Watch on YouTube</span></a>
+                <a class="tape" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener"><span class="t-k">Documentary</span><span class="t-t">Foguete 7/2023</span><span class="t-e">My rocket, July 2023.</span><span class="t-f">Watch on YouTube</span></a>
+                <a class="tape" href="https://youtu.be/CC7_vhzHMnY" target="_blank" rel="noopener"><span class="t-k">Short</span><span class="t-t">Pedras do Infinito</span><span class="t-e">The infinity stones, homemade.</span><span class="t-f">Watch on YouTube</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TIMELINE ================= -->
+    <section class="band" id="timeline" data-sec="timeline"><span class="x l"></span><span class="x r"></span>
+      <div class="in">
+        <div class="head"><span class="label">Timeline</span><h2>Everything else, newest first.</h2><p>Every line ended with something real.</p></div>
+        <ol class="tl">
+          <li><span class="d">2026</span><span class="dot"></span><div class="e"><strong>Link School of Business <span class="k">School</span></strong><p>Business degree in São Paulo. Co-founded Sincra in the first year.</p></div></li>
+          <li><span class="d">Jul 2026</span><span class="dot"></span><div class="e"><strong>Voluntaria+ funds an art school <span class="k">Impact</span></strong><p>The students I trained used the platform to raise part of the money to renovate an art school in Morro da Cruz.</p></div></li>
+          <li><span class="d">2025</span><span class="dot"></span><div class="e"><strong>Gold, Brazilian Astronomy Olympiad (OBA) <span class="k">Science</span></strong><p>Among the top 150 in the country, invited to the selection for the international team. <a class="ext" href="http://www.oba.org.br/sisglob/sisglob_arquivos/downloads/CARTA%20CONVITE%20-%20TSA2026%20REFORMATADA%20e%20COM%20LISTA%20DE%20ALUNOS.pdf" target="_blank" rel="noopener">Invitation list</a></p></div></li>
+          <li><span class="d">2025</span><span class="dot"></span><div class="e"><strong>Step Up, English for low-income students <span class="k">Education</span></strong><p>Started as a mentor, teaching 32 lessons I designed around how I taught myself English to C2 by 16, including proficiency and SAT prep. Then moved up to run operations and built the system that tracks students, classes and attendance. <a class="ext" href="https://stepuplearning.com.br" target="_blank" rel="noopener">stepuplearning.com.br</a></p></div></li>
+          <li><span class="d">2025</span><span class="dot"></span><div class="e"><strong>Farroupilha AI <span class="k">Software</span></strong><p>An essay-grading assistant for my school: OCR on scanned essays, feedback from a language model.</p></div></li>
+          <li><span class="d">2025</span><span class="dot"></span><div class="e"><strong>Preface of Colégio Farroupilha's 9th-grade book <span class="k">Writing</span></strong><p>Chosen among students and alumni to write about AI, when it was still a big unknown for the school. Also sat on the school's innovation board.</p></div></li>
+          <li><span class="d">Ongoing</span><span class="dot"></span><div class="e"><strong>Advogado Rural <span class="k">Web</span></strong><p>A publishing platform for my uncle, a rural lawyer, so he can reach farmers without depending on newspapers. <a class="ext" href="https://advogadorural.com" target="_blank" rel="noopener">advogadorural.com</a></p></div></li>
+          <li><span class="d">May 2024</span><span class="dot"></span><div class="e"><strong>Co-pilot during the floods <span class="k">Aviation</span></strong><p>Roads closed, family emergency. Flew into Porto Alegre on a small plane found through a friend of a friend.</p></div></li>
+          <li><span class="d">2024</span><span class="dot"></span><div class="e"><strong>Moved to Porto Alegre, alone, mid-year <span class="k">Move</span></strong><p>Transferred to Colégio Farroupilha. Most of this page happened there.</p></div></li>
+          <li><span class="d">Dec 2023</span><span class="dot"></span><div class="e"><strong>Paralelo 1155, solver #76 <span class="k">Puzzle</span></strong><p>A Brazilian online riddle that about 90 people have solved since 2019. I gave up, came back, and solved it more than a year after starting, before AI could help. <a class="ext" href="https://paralelo1155.org/quemresolveu/" target="_blank" rel="noopener">List of solvers</a></p></div></li>
+          <li><span class="d">Age 14</span><span class="dot"></span><div class="e"><strong>First business: popsicles <span class="k">Business</span></strong><p>Sold popsicles at school until the principal banned it for “causing disorder” and taking customers from the cafeteria. Moved to the sidewalk outside at pickup time, where the parents were. R$2,000 in a few months. About 22 more business ideas followed.</p></div></li>
+          <li><span class="d">2020</span><span class="dot"></span><div class="e"><strong>The stock market at 12 <span class="k">Markets</span></strong><p>Spent the pandemic reading about stocks and giving family and friends advice nobody asked for.</p></div></li>
+          <li><span class="d">2017–19</span><span class="dot"></span><div class="e"><strong>A murder-mystery trilogy <span class="k">Film</span></strong><p>One film per summer, with my cousin. See Filmes Pedro, above.</p></div></li>
+        </ol>
+        <div class="tl-pics">
+          <figure class="fig r43"><button class="fig-btn" type="button" data-full="media/stocks-imac-l.webp" aria-label="Open photo: 2020: twelve, and reading charts."><img src="media/stocks-imac-s.webp" srcset="media/stocks-imac-s.webp 760w, media/stocks-imac-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="760" height="570" loading="lazy" decoding="async" alt="2020: twelve, and reading charts."></button><figcaption>2020: twelve, and reading charts.</figcaption></figure>
+          <figure class="fig r43 contain"><button class="fig-btn" type="button" data-full="media/p1155-cert-l.webp" aria-label="Open photo: The Paralelo 1155 certificate. Solver nº 00076, 23/12/2023."><img src="media/p1155-cert-s.webp" srcset="media/p1155-cert-s.webp 760w, media/p1155-cert-l.webp 1600w" sizes="(min-width: 980px) 34vw, 92vw" width="756" height="756" loading="lazy" decoding="async" alt="The Paralelo 1155 certificate. Solver nº 00076, 23/12/2023."></button><figcaption>The Paralelo 1155 certificate. Solver nº 00076, 23/12/2023.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HONORS ================= -->
+    <section class="band" id="honors" data-sec="honors"><span class="x l"></span><span class="x r"></span>
+      <div class="in">
+        <div class="head"><span class="label">Recognition</span><h2>Honors and distinctions.</h2></div>
+        <div class="list">
+          <div class="row"><span class="th"><img src="media/onia-medal-s.webp" width="570" height="760" loading="lazy" decoding="async" alt=""></span><div><h3>Gold medal, 1st National AI Olympiad</h3><span class="by">ONIA · 2025</span></div><p>One of 28 golds among more than 716,000 participants.</p><span class="pr"><a class="ext" href="https://www.oniabrasil.com.br/assets/files/Lista_de_Premiao_1a_ONIA_2025_07_10.pdf" target="_blank" rel="noopener">Official list</a></span></div>
+          <div class="row"><span class="th"><img src="media/medal-moment-s.webp" width="760" height="428" loading="lazy" decoding="async" alt=""></span><div><h3>ONIA ambassador</h3><span class="by">ONIA · 2026 edition</span></div><p>Appointed for academic excellence, to bring new students into the olympiad.</p><span class="pr"></span></div>
+          <div class="row"><span class="th"><img src="media/oba-medal-s.webp" width="600" height="300" loading="lazy" decoding="async" alt=""></span><div><h3>Gold medal, Brazilian Astronomy Olympiad</h3><span class="by">OBA · 2025</span></div><p>Top 150 in Brazil, invited to train for the international team.</p><span class="pr"><a class="ext" href="http://www.oba.org.br/sisglob/sisglob_arquivos/downloads/CARTA%20CONVITE%20-%20TSA2026%20REFORMATADA%20e%20COM%20LISTA%20DE%20ALUNOS.pdf" target="_blank" rel="noopener">Invitation list</a></span></div>
+          <div class="row"><span class="th"><img src="media/brics-stage-s.webp" width="760" height="570" loading="lazy" decoding="async" alt=""></span><div><h3>Invited speaker, II BRICS Forum</h3><span class="by">Brasília · Sep 2025</span></div><p>A 20-minute talk on AI and education for diplomats and young leaders.</p><span class="pr"></span></div>
+          <div class="row"><span class="th"><img src="media/caldeira-rbs-team-s.webp" width="760" height="428" loading="lazy" decoding="async" alt=""></span><div><h3>Geração Caldeira fellow</h3><span class="by">Instituto Caldeira · 2025</span></div><p>Selected among 200 of about 18,000 applicants. Final project won.</p><span class="pr"></span></div>
+          <div class="row"><span class="th"><img src="media/p1155-cert-s.webp" width="756" height="756" loading="lazy" decoding="async" alt=""></span><div><h3>Solver #76, Paralelo 1155</h3><span class="by">Dec 2023</span></div><p>About 90 solvers since 2019.</p><span class="pr"><a class="ext" href="https://paralelo1155.org/quemresolveu/" target="_blank" rel="noopener">List of solvers</a></span></div>
+          <div class="row"><span class="th"><img src="media/military-uniform-s.webp" width="570" height="760" loading="lazy" decoding="async" alt=""></span><div><h3>“Alamar” distinction</h3><span class="by">Military school · São Gabriel</span></div><p>Top 1% of the school for grades and conduct.</p><span class="pr"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRESS ================= -->
+    <section class="band" id="press" data-sec="press"><span class="x l"></span><span class="x r"></span>
+      <div class="in">
+        <div class="head"><span class="label">Press</span><h2>In the news.</h2></div>
+        <ul class="list press">
+          <li><span class="outlet">RBS TV</span><a class="ext" href="https://www.facebook.com/rbstv/videos/1007908015562388" target="_blank" rel="noopener">The Morro da Cruz art school, part-funded through Voluntaria+</a><span class="date">Jul 2026</span></li>
+          <li><span class="outlet">Zero Hora</span><a class="ext" href="https://gauchazh.clicrbs.com.br/colunistas/juliana-bublitz/noticia/2026/07/porto-alegre-vai-ganhar-uma-escola-de-grafite-e-artes-visuais-no-morro-da-cruz-cmrdq2uvz01h801316sz6s9ys.html" target="_blank" rel="noopener">Porto Alegre gets a graffiti and visual arts school</a><span class="date">Jul 2026</span></li>
+          <li><span class="outlet">Brasil de Fato</span><a class="ext" href="https://www.brasildefato.com.br/2026/07/08/estudantes-viabilizam-reforma-de-espaco-cultural-no-morro-da-cruz-em-porto-alegre" target="_blank" rel="noopener">Students make a cultural space's renovation possible</a><span class="date">Jul 2026</span></li>
+          <li><span class="outlet">SBT RS</span><a class="ext" href="https://www.instagram.com/reel/DPWI_YvEYNq" target="_blank" rel="noopener">InovaTec and Voluntaria+</a><span class="date">Oct 2025</span></li>
+          <li><span class="outlet">RBS TV</span><a class="ext" href="https://www.facebook.com/SouFarroupilha/videos/1470912627490790" target="_blank" rel="noopener">National Volunteering Day, featuring Voluntaria+</a><span class="date">Aug 2025</span></li>
+          <li><span class="outlet">Colégio Farroupilha</span><a class="ext" href="https://colegiofarroupilha.poa.br/2025/08/28/plataforma-criada-por-alunos-conecta-voluntarios-com-instituicoes-que-precisam-de-ajuda/" target="_blank" rel="noopener">Student-built platform connects volunteers with NGOs</a><span class="date">Aug 2025</span></li>
+          <li><span class="outlet">Correio do Povo</span><a class="ext" href="https://www.correiodopovo.com.br/not%C3%ADcias/ensino/a%C3%A7%C3%B5es-de-solidariedade-mobilizam-alunos-1.1512834" target="_blank" rel="noopener">Solidarity actions mobilize students</a><span class="date">Jul 2024</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="hatch" aria-hidden="true"></div>
+
+    <!-- ================= CONTACT ================= -->
+    <footer class="band foot" id="contact" data-sec="contact"><span class="x l"></span><span class="x r"></span>
+      <div class="in">
+        <h2>Building something?<br><span>Let's talk.</span></h2>
+        <div class="sig" role="img" aria-label="Pedro Veríssimo's signature"></div>
+        <div class="foot-grid">
+          <div>
+            <h4>Email</h4>
+            <p><span class="mail">pedrovverissimo1@gmail.com</span><button class="copy" type="button" data-copy="pedrovverissimo1@gmail.com">Copy</button></p>
+            <p style="margin-top:8px;color:var(--fg-3);font-size:.88rem">São Paulo, Brazil · UTC−3</p>
+          </div>
+          <div>
+            <h4>Elsewhere</h4>
+            <ul>
+              <li><a class="ext" href="https://sincra.app" target="_blank" rel="noopener">sincra.app</a></li>
+              <li><a class="ext" href="https://voluntariamais.com.br" target="_blank" rel="noopener">voluntariamais.com.br</a></li>
+              <li><a class="ext" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener">Filmes Pedro on YouTube</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>On this page</h4>
+            <ul><li><a href="#sincra">Sincra</a></li><li><a href="#work">Selected work</a></li><li><a href="#timeline">Timeline</a></li></ul>
+          </div>
+        </div>
+        <div class="foot-base"><span>© 2026 Pedro Veríssimo</span><span class="mono">Type 1155 anywhere.</span></div>
+      </div>
+    </footer>
   </div>
-
-  <!-- NOW BUILDING -->
-  <section id="now" class="wrap" aria-labelledby="now-h">
-    <div class="gate"><span class="arrow" aria-hidden="true">→</span><h2 id="now-h">Now building</h2></div>
-    <article class="now">
-      <div class="meta">
-        <h3>Sincra</h3>
-        <p class="tag">Fintech · Healthcare</p>
-        <dl>
-          <dt>Role</dt><dd>Tech co-founder, one of three</dd>
-          <dt>Since</dt><dd class="num">2026</dd>
-          <dt>Site</dt><dd><a href="https://sincra.app" target="_blank" rel="noopener">sincra.app ↗</a></dd>
-        </dl>
-      </div>
-      <div class="prose">
-        <p>In Brazil, a surgeon can wait months to be paid for an operation, and the hospital often can't tell where that money is stuck: internal audit, the insurer, a missing signature. Doctors end up paying bank interest on money that is already theirs.</p>
-        <p>Sincra reads what a hospital already has (its management system, the insurers' TISS returns and the bank statement), rebuilds every procedure's path from surgery to payout, and predicts how much each doctor will receive, when, and with what confidence. Doctors and hospitals can then advance those receivables through partner funds, seeing the cost before they confirm.</p>
-        <h4>My part</h4>
-        <p>I lead product and engineering. I built the product prototype (the doctor, hospital and admin views) and the site.</p>
-        <h4>Where it is</h4>
-        <p>We started as a shift-scheduling tool for hospitals, changed the thesis during Link's Startup School, and are now structuring our first operations with hospitals and funding partners.</p>
-      </div>
-    </article>
-  </section>
-
-  <!-- FEATURED WORK -->
-  <section id="work" class="wrap" aria-labelledby="work-h">
-    <div class="gate"><span class="arrow" aria-hidden="true">→</span><h2 id="work-h">Selected work</h2></div>
-    <div class="works">
-
-      <article class="work">
-        <div class="meta">
-          <p class="tag">Software · Community</p>
-          <h3>Voluntaria+</h3>
-          <dl>
-            <dt>When</dt><dd class="num">2024–2025</dd>
-            <dt>Role</dt><dd>Head of technology, InovaTec</dd>
-            <dt>Team</dt><dd>4 students, led by me</dd>
-          </dl>
-        </div>
-        <div class="prose">
-          <p>A platform that connects volunteers with NGOs across Rio Grande do Sul. When I joined InovaTec, my high school's student-run innovation club, I found a lot of ambition and almost no one who could build. The club was trying to make the platform in Bubble, with poor results. I took over the build, rebuilt it from scratch with Lovable when AI coding was brand new, and we launched in about four months.</p>
-          <div class="stats">
-            <div class="stat"><b>170+</b><span>volunteers connected</span></div>
-            <div class="stat"><b>20</b><span>regional NGOs</span></div>
-            <div class="stat"><b>80+</b><span>donors at the school's largest blood drive</span></div>
-            <div class="stat"><b>R$6,300</b><span>raised so the Union of the Blind of RS could set up its Braille printer</span></div>
-          </div>
-          <p>It became a partner of Rede Atados, Brazil's largest volunteering network, and was covered by RBS TV, SBT, Zero Hora and Brasil de Fato. Before graduating I trained the students who took over. In July 2026 they used it to raise part of the money to renovate an art school in Morro da Cruz, a low-income community in Porto Alegre.</p>
-          <p>Through the club I also ran AI workshops for 50 low-income students and AI talks for 40 teachers.</p>
-          <div class="links">
-            <a href="https://voluntariamais.com.br" target="_blank" rel="noopener">voluntariamais.com.br</a>
-            <a href="https://voluntariamais.com.br/impacto" target="_blank" rel="noopener">Impact &amp; press</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="work">
-        <div class="meta">
-          <p class="tag">AI · Competition</p>
-          <h3>Gold, 1st National AI Olympiad</h3>
-          <dl>
-            <dt>When</dt><dd class="num">2024–2025</dd>
-            <dt>Field</dt><dd class="num">716,000+ participants</dd>
-            <dt>Result</dt><dd class="num">1 of 28 gold medals</dd>
-          </dl>
-        </div>
-        <div class="prose">
-          <p>The first edition of ONIA, Brazil's National Artificial Intelligence Olympiad, which selects the national team for the International Olympiad in AI. It went from theory and ethics, to building regressions in Python, to a final round where I built a computer-vision algorithm for competing robots, trained on Santos Dumont II, the national supercomputer at LNCC.</p>
-          <p>Afterwards I was named an ambassador for the second edition and brought classmates into it.</p>
-          <div class="miss">
-            <b>The one that got away</b>
-            <p>The selection for the international team ran training on jobs capped at 15 minutes. Instead of saving checkpoints and stacking progress across jobs, I kept starting from zero, and my model stalled around 70% accuracy when it could have reached about 95%. One missing line of code between me and Beijing. I still think about it.</p>
-          </div>
-          <div class="links">
-            <a href="https://www.oniabrasil.com.br/assets/files/Lista_de_Premiao_1a_ONIA_2025_07_10.pdf" target="_blank" rel="noopener">Official medal list (Pedro Villagrande Veríssimo da Fonseca)</a>
-            <a href="https://www.oniabrasil.com.br/page1.html" target="_blank" rel="noopener">1st ONIA results</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="work">
-        <div class="meta">
-          <p class="tag">Hardware</p>
-          <h3>Rockets from zero</h3>
-          <dl>
-            <dt>Stack</dt><dd>Solid motors, Arduino, servos, accelerometer</dd>
-            <dt>Teacher</dt><dd>BPS.space on YouTube</dd>
-          </dl>
-        </div>
-        <div class="prose">
-          <p>Planes led to rockets. I started by taking fireworks apart and mounting them in cardboard tubes. The first ones exploded; after enough iterations they flew. From there I learned to mix my own solid propellant, then moved into avionics: an Arduino flight computer reading an accelerometer and driving servos, a parachute deployment system, and cameras on board to film each flight.</p>
-          <p>No lab, no club, no budget: YouTube and a lot of failed launches.</p>
-        </div>
-      </article>
-
-      <article class="work">
-        <div class="meta">
-          <p class="tag">Audience</p>
-          <h3>180,000 followers</h3>
-          <dl>
-            <dt>Accounts grown</dt><dd class="num">3</dd>
-            <dt>Sold</dt><dd class="num">1, for R$2,000</dd>
-          </dl>
-        </div>
-        <div class="prose">
-          <p>I noticed my feed kept serving the same repeatable video format with millions of views, so I tried to reverse-engineer it. The first two accounts went nowhere. The third reached 180,000 followers. I couldn't monetize it (I had no idea how to build a sales funnel), so I sold it for R$2,000, about two months of Brazil's minimum wage, and then repeated the growth on two more accounts.</p>
-          <p>Along the way I placed top five in a clipping competition, closed a paying mentorship client who found me through my DMs, and learned the hard way to sell before building (see Misses). I still help friends grow their audiences.</p>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- LOGBOOK -->
-  <section id="log" class="wrap" aria-labelledby="log-h">
-    <div class="gate"><span class="arrow" aria-hidden="true">→</span><h2 id="log-h">Logbook</h2></div>
-    <p class="intro">Everything else, newest first. Each line ended with something real.</p>
-    <ol class="log">
-      <li class="log-head" aria-hidden="true"><span>When</span><span>Kind</span><span>Entry</span></li>
-
-      <li class="entry"><span class="stamp"><span class="when">Sep 2025</span><span class="kind">Speaking</span></span>
-        <div class="what"><strong>BRICS forum, Brasília</strong><p>Invited to give a 20-minute talk on AI in education to diplomats and young leaders from BRICS countries, on the strength of the Olympiad and Voluntaria+. My school funded the trip.</p></div></li>
-
-      <li class="entry"><span class="stamp"><span class="when">2025</span><span class="kind">Data · Sales</span></span>
-        <div class="what"><strong>Geração Caldeira, Instituto Caldeira</strong><p>A selective four-month program on the new job market. Our final project, a model to predict Q4 sales for RBS Group (Globo's affiliate in Rio Grande do Sul), won. We were invited to RBS headquarters and I turned down an internship offer. I also wrote a 60-page sales playbook for a company with a complex sale.</p></div></li>
-
-      <li class="entry"><span class="stamp"><span class="when">2025</span><span class="kind">Education</span></span>
-        <div class="what"><strong>Step Up, English for low-income students</strong><p>Mentored a class of eight for two months with 32 lessons I designed around how I taught myself English to C2 by 16, including proficiency and SAT prep. Then joined the board and built the system that tracks students, classes and attendance. <a href="https://stepuplearning.com.br" target="_blank" rel="noopener">stepuplearning.com.br ↗</a></p></div></li>
-
-      <li class="entry"><span class="stamp"><span class="when">2025</span><span class="kind">Software</span></span>
-        <div class="what"><strong>Farroupilha AI</strong><p>An essay-grading assistant for my school: OCR on scanned essays, feedback from a language model.</p></div></li>
-
-      <li class="entry"><span class="stamp"><span class="when">2025</span><span class="kind">Writing</span></span>
-        <div class="what"><strong>Preface of Colégio Farroupilha's 9th-grade book</strong><p>Chosen among students and alumni to write about AI, at a time when it was a big unknown for the school. Also sat in on the school's innovation board, and graduated with its highest honor for community impact.</p></div></li>
-
-      <li class="entry"><span class="stamp"><span class="when">Ongoing</span><span class="kind">Web</span></span>
-        <div class="what"><strong>Advogado Rural</strong><p>Built a publishing platform for my uncle, a rural lawyer, so he could reach farmers without depending on newspapers. Now building the funnel for the audience he meets at his workshops. <a href="https://advogadorural.com" target="_blank" rel="noopener">advogadorural.com ↗</a></p></div></li>
-
-      <li class="entry"><span class="stamp"><span class="when">2024</span><span class="kind">Aviation</span></span>
-        <div class="what"><strong>Right seat into Porto Alegre</strong><p>During the 2024 floods, with the roads already closed, I had to get to Porto Alegre for a family emergency. I found a small plane through a friend of a friend and flew in as co-pilot. Planes were my first obsession: as a kid I built near full-scale Airbus cockpits out of cardboard. I've since been studying toward a pilot license.</p></div></li>
-
-      <li class="entry"><span class="stamp"><span class="when">Dec 2023</span><span class="kind">Puzzle</span></span>
-        <div class="what"><strong>Paralelo 1155, solver #76</strong><p>A Brazilian online riddle that about 90 people have solved since 2019. I gave up, came back, and solved it more than a year after starting, before AI could help. <a href="https://paralelo1155.org/quemresolveu/" target="_blank" rel="noopener">List of solvers ↗</a></p></div></li>
-
-      <li class="entry"><span class="stamp"><span class="when">—</span><span class="kind">Competition</span></span>
-        <div class="what"><strong>Gold, Brazilian Astronomy Olympiad (OBA)</strong><p>One of the largest school olympiads in Brazil, with millions of participants.</p></div></li>
-
-      <li class="entry"><span class="stamp"><span class="when">Age 14</span><span class="kind">Business</span></span>
-        <div class="what"><strong>First business: popsicles</strong><p>Sold popsicles at school until the principal banned it for "causing disorder" and taking customers from the cafeteria. I moved to the sidewalk outside at pickup time, where the parents were. R$2,000 in a few months, the first money I ever made. About 22 more business ideas followed.</p></div></li>
-
-      <li class="entry"><span class="stamp"><span class="when">2020</span><span class="kind">Markets</span></span>
-        <div class="what"><strong>The stock market at 12</strong><p>Spent the pandemic reading about stocks and giving family and friends advice nobody asked for.</p></div></li>
-
-      <li class="entry"><span class="stamp"><span class="when">2017–19</span><span class="kind">Film</span></span>
-        <div class="what"><strong>A murder-mystery trilogy</strong><p>Three films, one per summer, shot with my cousin on summer trips to the beach with our grandparents. Script, shooting and editing all by hand.</p></div></li>
-    </ol>
-  </section>
-
-  <!-- MISSES + OFF THE CLOCK -->
-  <section id="misses" class="wrap" aria-labelledby="misses-h">
-    <div class="gate"><span class="arrow" aria-hidden="true">→</span><h2 id="misses-h">Misses</h2></div>
-    <div class="cols">
-      <ul class="list">
-        <li><strong>IG White Academy</strong><span>Built an entire course on growing Instagram pages, then tried to sell it. Nobody wanted it. Two weeks to learn to sell before building.</span></li>
-        <li><strong>Postshop</strong><span>A dropshipping store. It didn't sell.</span></li>
-        <li><strong>The IOAI checkpoint</strong><span>Lost a spot on Brazil's team for the International AI Olympiad to a missing checkpoint (above).</span></li>
-      </ul>
-      <div>
-        <p class="eyebrow" style="margin-bottom:12px">Off the clock</p>
-        <div class="offclock">
-          <span>Specialty coffee</span><span>Brazilian jiu-jitsu</span><span>Tennis</span><span>Swimming</span><span>Cattle &amp; rice on the family farm</span><span>How minds work</span>
-        </div>
-        <p class="eyebrow" style="margin:24px 0 12px">Languages</p>
-        <div class="offclock"><span>Portuguese · native</span><span>English · C2</span><span>Spanish · intermediate</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRESS -->
-  <section id="press" class="wrap" aria-labelledby="press-h">
-    <div class="gate"><span class="arrow" aria-hidden="true">→</span><h2 id="press-h">Press</h2></div>
-    <ul class="press">
-      <li><span class="outlet">RBS TV</span><a href="https://www.facebook.com/rbstv/videos/1007908015562388" target="_blank" rel="noopener">The Morro da Cruz art school, part-funded through Voluntaria+</a><span class="date num">Jul 2026</span></li>
-      <li><span class="outlet">Zero Hora</span><a href="https://gauchazh.clicrbs.com.br/colunistas/juliana-bublitz/noticia/2026/07/porto-alegre-vai-ganhar-uma-escola-de-grafite-e-artes-visuais-no-morro-da-cruz-cmrdq2uvz01h801316sz6s9ys.html" target="_blank" rel="noopener">Porto Alegre gets a graffiti and visual arts school</a><span class="date num">Jul 2026</span></li>
-      <li><span class="outlet">Brasil de Fato</span><a href="https://www.brasildefato.com.br/2026/07/08/estudantes-viabilizam-reforma-de-espaco-cultural-no-morro-da-cruz-em-porto-alegre" target="_blank" rel="noopener">Students make a cultural space's renovation possible</a><span class="date num">Jul 2026</span></li>
-      <li><span class="outlet">SBT RS</span><a href="https://www.instagram.com/reel/DPWI_YvEYNq" target="_blank" rel="noopener">InovaTec and Voluntaria+</a><span class="date num">Oct 2025</span></li>
-      <li><span class="outlet">RBS TV</span><a href="https://www.facebook.com/SouFarroupilha/videos/1470912627490790" target="_blank" rel="noopener">National Volunteering Day, featuring Voluntaria+</a><span class="date num">Aug 2025</span></li>
-      <li><span class="outlet">Colégio Farroupilha</span><a href="https://colegiofarroupilha.poa.br/2025/08/28/plataforma-criada-por-alunos-conecta-voluntarios-com-instituicoes-que-precisam-de-ajuda/" target="_blank" rel="noopener">Student-built platform connects volunteers with NGOs</a><span class="date num">Aug 2025</span></li>
-      <li><span class="outlet">Correio do Povo</span><a href="https://www.correiodopovo.com.br/not%C3%ADcias/ensino/a%C3%A7%C3%B5es-de-solidariedade-mobilizam-alunos-1.1512834" target="_blank" rel="noopener">Solidarity actions mobilize students</a><span class="date num">Jul 2024</span></li>
-    </ul>
-  </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <p class="big">Next departure: <em>SFO</em></p>
-    <div class="row">
-      <a href="https://sincra.app" target="_blank" rel="noopener">sincra.app</a>
-      <a href="https://voluntariamais.com.br" target="_blank" rel="noopener">voluntariamais.com.br</a>
-      <span>São Paulo, Brazil</span>
-    </div>
+<dialog class="lb" id="lb" aria-label="Photo viewer">
+  <div class="lb-in">
+    <div class="lb-top"><span id="lbn"></span><button type="button" id="lbx">Close</button></div>
+    <div class="lb-stage"><img id="lbi" alt=""></div>
+    <div class="lb-foot"><p id="lbc"></p><div class="lb-nav"><button type="button" id="lbp" aria-label="Previous photo">←</button><button type="button" id="lbnx" aria-label="Next photo">→</button></div></div>
   </div>
-</footer>
+</dialog>
+
+<script>
+(()=>{
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  const root=document.documentElement, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* intro: draw the signature once per session */
+  const loader=$('.loader');
+  function endIntro(){if(!loader)return;loader.classList.add('done');try{sessionStorage.setItem('pv-intro','1')}catch(e){};setTimeout(()=>{root.classList.remove('intro');loader.remove()},500)}
+  if(root.classList.contains('intro')&&loader){
+    const paths=[...loader.querySelectorAll('svg path')], bar=loader.querySelector('.bar i');
+    const lens=paths.map(p=>p.getTotalLength()), total=lens.reduce((a,b)=>a+b,0)||1;
+    const T=1700; let t=0;
+    paths.forEach((p,i)=>{p.style.strokeDasharray=lens[i]+' '+lens[i];p.style.strokeDashoffset=lens[i]});
+    paths.forEach((p,i)=>{const d=Math.max(60,T*lens[i]/total);
+      try{p.animate([{strokeDashoffset:lens[i]},{strokeDashoffset:0}],{duration:d,delay:t*0.82,easing:'cubic-bezier(.45,.05,.4,1)',fill:'forwards'})}catch(e){p.style.strokeDashoffset=0}
+      t+=d});
+    try{bar.animate([{width:'0%'},{width:'100%'}],{duration:T*0.85+250,easing:'ease-in-out',fill:'forwards'})}catch(e){}
+    setTimeout(endIntro,T*0.85+600);
+    addEventListener('keydown',endIntro,{once:true});loader.addEventListener('click',endIntro);
+  } else if(loader){loader.remove()}
+
+  /* theme: auto / light / dark */
+  const tbtns=$$('[data-theme-set]');
+  function stored(){try{return localStorage.getItem('pv-theme')||'auto'}catch(e){return 'auto'}}
+  function paint(v){tbtns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.themeSet===v?'true':'false'))}
+  function setTheme(v){try{localStorage.setItem('pv-theme',v)}catch(e){}
+    if(v==='auto')root.removeAttribute('data-theme');else root.setAttribute('data-theme',v);paint(v)}
+  paint(stored()); tbtns.forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.themeSet)));
+
+  /* clock */
+  const clk=$('#clock');
+  const fmt=new Intl.DateTimeFormat('en-GB',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit',hour12:false});
+  const tick=()=>{try{clk.textContent=fmt.format(new Date())+' · UTC−3'}catch(e){}};tick();setInterval(tick,15000);
+
+  /* nav: highlight the section in view */
+  const secs=$$('[data-sec]'), navs=$$('.nav a');
+  function spy(){const mid=innerHeight*.3;let id='';secs.forEach(s=>{if(s.getBoundingClientRect().top<=mid)id=s.id});
+    navs.forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+id?'true':'false'))}
+  addEventListener('scroll',()=>requestAnimationFrame(spy),{passive:true});spy();
+
+  /* copy */
+  $$('[data-copy]').forEach(b=>b.addEventListener('click',()=>{
+    const v=b.dataset.copy, label=b.textContent, done=t=>{b.textContent=t;setTimeout(()=>b.textContent=label,1600)};
+    const sel=()=>{const m=b.parentElement.querySelector('.mail');if(m){const r=document.createRange();r.selectNodeContents(m);const s=getSelection();s.removeAllRanges();s.addRange(r);done('Selected')}else done(v)};
+    try{navigator.clipboard.writeText(v).then(()=>done('Copied'),sel)}catch(e){sel()}
+  }));
+
+  /* lightbox */
+  const lb=$('#lb'),lbi=$('#lbi'),lbc=$('#lbc'),lbn=$('#lbn'); const figs=$$('.fig-btn'); let li=0;
+  function open(i){li=(i+figs.length)%figs.length;const b=figs[li],img=b.querySelector('img');
+    lbi.src=b.dataset.full;lbi.alt=img.alt;lbc.textContent=img.alt;lbn.textContent=(li+1)+' / '+figs.length;
+    if(!lb.open){try{lb.showModal()}catch(e){lb.setAttribute('open','')}}}
+  figs.forEach((b,i)=>b.addEventListener('click',()=>open(i)));
+  $('#lbx').addEventListener('click',()=>lb.close());
+  $('#lbp').addEventListener('click',()=>open(li-1));$('#lbnx').addEventListener('click',()=>open(li+1));
+  lb.addEventListener('click',e=>{if(e.target===lb||e.target.classList.contains('lb-stage'))lb.close()});
+  addEventListener('keydown',e=>{if(!lb.open)return;if(e.key==='ArrowLeft')open(li-1);if(e.key==='ArrowRight')open(li+1)});
+
+  /* videos: play only while visible */
+  const vids=$$('video[data-auto]');
+  if(vids.length&&'IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting&&!reduce){v.play().catch(()=>{})}else v.pause()}),{threshold:.25});vids.forEach(v=>io.observe(v))}
+
+  /* type 1155 */
+  let buf='';
+  addEventListener('keydown',e=>{if(lb.open||/input|textarea/i.test(e.target.tagName))return;buf=(buf+e.key).slice(-4);if(buf==='1155')egg()});
+  function egg(){if($('.p1155'))return;const d=document.createElement('div');d.className='p1155';d.setAttribute('role','dialog');d.setAttribute('aria-label','Paralelo 1155');
+    d.innerHTML='<div class="box"><span>&gt; paralelo 1155 · solver nº 00076</span><img src="media/p1155-cert-l.webp" alt="Paralelo 1155 certificate for Pedro Veríssimo, number 00076"><p>You typed the number. About 90 people have solved the riddle since 2019. I was the 76th.</p><button type="button">Close</button></div>';
+    document.body.appendChild(d);const c=d.querySelector('button');c.focus();const x=()=>d.remove();c.addEventListener('click',x);d.addEventListener('click',e=>{if(e.target===d)x()});addEventListener('keydown',function k(e){if(e.key==='Escape'){x();removeEventListener('keydown',k)}})}
+  try{console.log('%cPedro Veríssimo','font:600 14px system-ui;color:#1463FF');console.log('Paralelo 1155 solver #76. Try typing 1155 on the page.')}catch(e){}
+})();
+</script>
 
 </body>
 </html>
