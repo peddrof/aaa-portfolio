@@ -423,7 +423,7 @@ def ai():
         b = bar(p / 100 * w, w); cv.text(7, y, b, col); cv.text(7 + len(b), y, '░' * (w - len(b)), FAINT)
         cv.text(28, y, '%3d%%' % p, WHITE if p == final else GREY)
         if p == final and mark: cv.text(33, y, mark, RED if '✕' in mark else GREEN)
-    plan = [('job 1', 70, '✕ 15:00 cap'), ('job 2', 70, '✕ from zero'), ('job 3', 70, '✕ from zero')]
+    plan = [('job 1', 70, '✕ 20:00 cap'), ('job 2', 70, '✕ from zero'), ('job 3', 70, '✕ from zero')]
     for f in range(130):
         cv = Canvas(46, 8)
         cv.text(0, 0, 'ONIA 2025', GREEN); cv.text(10, 0, '· gold · 1 of 28 among 716,000+', GREY)
@@ -431,7 +431,7 @@ def ai():
         for j, (lab, fin, mark) in enumerate(plan):
             start = j * 16
             if t >= start: jobrow(cv, 2 + j, lab, min(fin, (t - start) * 6), fin, mark, GREEN if j == 0 else (36, 160, 120))
-        line = "+ joblib.dump(model, 'ckpt.pkl')"
+        line = "+ YOLO(last).train(resume=True)"
         if t >= 52:
             cv.text(0, 5, 'what if', DIM); cv.text(8, 5, typed(line, (t - 52) * 2), YELLOW)
             if (t - 52) * 2 < len(line) and f % 4 < 2: cv.put(8 + (t - 52) * 2, 5, '▌', YELLOW)

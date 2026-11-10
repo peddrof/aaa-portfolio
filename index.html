@@ -89,6 +89,9 @@ a:hover>.ext::after,.ext:hover::after{transform:translate(1px,-1px)}
 .sh .lede{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--fg-2);max-width:56ch;line-height:1.55}
 .note{font-family:var(--hand);font-size:1.45rem;line-height:1.05;color:var(--blue);transform:rotate(-4deg);display:inline-block;pointer-events:none}
 .note svg{display:block;width:58px;height:34px;margin-top:2px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.note.note-up{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;transform:rotate(-2deg)}
+.note.note-up svg{order:-1;margin:0 0 2px 8px}
+.flag{display:inline-block;vertical-align:-.15em;margin:0 .2em;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.12);overflow:hidden}
 
 /* ---------- header ---------- */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
@@ -148,6 +151,11 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .mini a[aria-current="true"]{color:var(--fg)}
 .mini a[aria-current="true"] i{width:28px;background:var(--blue)}
 .mini a:hover i{width:22px}
+.mini.on-dark a{color:rgba(255,255,255,.5)}
+.mini.on-dark a i{background:rgba(255,255,255,.5)}
+.mini.on-dark a:hover,.mini.on-dark a[aria-current="true"]{color:#fff}
+.mini.on-dark a:hover i{background:rgba(255,255,255,.85)}
+.mini.on-dark a[aria-current="true"] i{background:#fff;width:28px}
 
 /* ---------- hero: blueprint ---------- */
 .hero{position:relative;padding:0 0 clamp(56px,8vw,96px);overflow:hidden;isolation:isolate}
@@ -392,6 +400,12 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .lcards{display:flex;flex-wrap:wrap;gap:14px;align-items:stretch}
 .lcards>.lc,.lcards>.yt{flex:1 1 230px;max-width:340px;min-width:0}
 .lcards>.ig{flex:0 0 auto;width:clamp(128px,12vw,156px)}
+#press .lcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#press .lcards>.lc,#press .lcards>.ig{max-width:none;width:auto;flex:initial}
+#press .lcards>.ig{justify-self:stretch}
+#press .lcards>.ig .ig-fr{width:100%;aspect-ratio:16/10;border-radius:12px}
+@media (max-width:899px){#press .lcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:599px){#press .lcards{grid-template-columns:1fr}}
 .lcards.yt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px 16px}
 .lcards.yt-grid>.yt{max-width:none}
 @media (max-width:599px){.lcards{gap:10px}.lcards>.lc,.lcards>.yt{flex-basis:calc(50% - 5px)}.lcards>.ig{width:calc(50% - 5px)}.lc .tx{padding:10px}.lc .tx b{font-size:.84rem}.mast{font-size:1.1rem}.lcards.yt-grid{grid-template-columns:1fr}}
@@ -504,14 +518,18 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .cw-tabs{display:flex;gap:2px;height:100%}
 .cw-tabs button{font-family:var(--mono);font-size:.72rem;color:#6E9488;padding:0 10px;border-bottom:2px solid transparent}
 .cw-tabs button[aria-selected="true"]{color:#E8FFF6;border-bottom-color:var(--mint)}
+.cw-file{font-family:var(--mono);font-size:.72rem;color:#E8FFF6}
 .cw-gh{margin-left:auto;font-family:var(--mono);font-size:.7rem;color:#8FB3A7}
 .cw-gh:hover{color:var(--mint)}
 .ai-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:12px;overflow:hidden;margin:22px 0}
 .ai-stats div{background:#061713;padding:14px}
 .ai-stats b{display:block;font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:600;letter-spacing:-.03em;color:#fff;line-height:1.1;font-variant-numeric:tabular-nums}
 .ai-stats span{font-size:.74rem;color:var(--fg-2)}
-.ai-media{display:grid;grid-template-columns:1.778fr .75fr .462fr;gap:10px;margin-top:clamp(28px,4vw,44px);align-items:start}
-@media (max-width:699px){.ai-media{grid-template-columns:1.333fr .75fr}.ai-media .a{grid-column:1/-1}}
+.ai-media{display:grid;grid-template-columns:1.6fr .75fr .48fr .48fr;gap:10px;margin-top:clamp(28px,4vw,44px);align-items:start}
+.ai-media .ig{width:100%;max-width:none}
+.ai-media .ig .ig-fr{width:100%;height:auto;aspect-ratio:9/16}
+@media (max-width:899px){.ai-media{grid-template-columns:1.2fr .7fr .55fr}.ai-media .d{display:none}}
+@media (max-width:699px){.ai-media{grid-template-columns:1fr 1fr}.ai-media .a{grid-column:1/-1}.ai-media .d{display:none}}
 .ai .links a{border-color:var(--line-2);color:var(--fg)}
 .ai .links a:hover{border-color:var(--mint);color:var(--mint);background:transparent}
 
@@ -790,7 +808,10 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .qa summary::-webkit-details-marker{display:none}
 .qa summary::after{content:"+";font-family:var(--mono);font-size:1.1rem;color:var(--fg-3);transition:transform .25s}
 .qa details[open] summary::after{transform:rotate(45deg)}
-.qa .ans{padding:0 16px 16px;color:var(--fg-2);display:grid;gap:10px}
+.qa .ans{color:var(--fg-2);display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s cubic-bezier(.2,.8,.2,1),padding .32s}
+.qa .ans>div{overflow:hidden;display:grid;gap:10px;min-height:0}
+.qa details[open] .ans{grid-template-rows:1fr;padding:0 16px 16px}
+.qa details:not([open]) .ans{padding:0 16px}
 .qa code{font-family:var(--mono);font-size:.82rem;background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--fg)}
 
 .sr,.agents{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
@@ -1172,7 +1193,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
 <section class="hero" data-sec="top" aria-label="Introduction">
   <div class="ruler" aria-hidden="true"><span style="left:0px">0</span><span style="left:100px">100</span><span style="left:200px">200</span><span style="left:300px">300</span><span style="left:400px">400</span><span style="left:500px">500</span><span style="left:600px">600</span><span style="left:700px">700</span><span style="left:800px">800</span><span style="left:900px">900</span><span style="left:1000px">1000</span><span style="left:1100px">1100</span><span style="left:1200px">1200</span><span style="left:1300px">1300</span><span style="left:1400px">1400</span><span style="left:1500px">1500</span><span style="left:1600px">1600</span><span style="left:1700px">1700</span><span style="left:1800px">1800</span><span style="left:1900px">1900</span><span style="left:2000px">2000</span><span style="left:2100px">2100</span><span style="left:2200px">2200</span><span style="left:2300px">2300</span><span style="left:2400px">2400</span><span style="left:2500px">2500</span></div>
   <div class="frame wrap">
-    <div class="hero-meta"><span><b>Fig. 0.1</b> · Pedro Veríssimo, at scale 1:1</span><span>São Gabriel → Porto Alegre → São Paulo</span></div>
+    <div class="hero-meta"><span><b>Fig. 0.1</b> · Pedro Veríssimo, at scale 1:1</span><span>São Gabriel → Porto Alegre → São Paulo → ???</span></div>
     <div class="hero-grid">
       <div class="hero-txt">
         <h1 class="name"><span class="w">Pedro</span><span class="w">Veríssimo</span></h1>
@@ -1190,16 +1211,6 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
       </div>
       <div class="deck" data-deck aria-label="Clips"><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-rod-0623.mp4" data-poster="media/v-rod-0623-p.webp" aria-label="rockets"></video><figcaption>rockets</figcaption></figure><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-combine-selfie-2025.mp4" data-poster="media/v-combine-selfie-2025-p.webp" aria-label="harvest"></video><figcaption>harvest</figcaption></figure><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-static-test.mp4" data-poster="media/v-static-test-p.webp" aria-label="thrust test"></video><figcaption>thrust test</figcaption></figure><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-latte.mp4" data-poster="media/v-latte-p.webp" aria-label="coffee"></video><figcaption>coffee</figcaption></figure><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-atv-2026.mp4" data-poster="media/v-atv-2026-p.webp" aria-label="cattle"></video><figcaption>cattle</figcaption></figure></div>
     </div>
-  <div class="stk dk" style="top:-1%;left:-10.5%;--r:8deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-coffee"/></g></svg></div>
-  <div class="stk" style="top:24%;left:-10.5%;--r:-7deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-cat"/></g></svg></div>
-  <div class="stk dk" style="top:49%;left:-10.5%;--r:-11deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-cow"/></g></svg></div>
-  <div class="stk dk" style="top:74%;left:-10.5%;--r:5deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-laptop"/></g></svg></div>
-  <div class="stk dk" style="top:6%;left:70%;--r:9deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-ticket"/></g></svg></div>
-  <div class="stk" style="top:-2%;left:auto;right:-13%;--r:12deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-rocket"/></g></svg></div>
-  <div class="stk" style="top:26%;left:auto;right:-13%;--r:-8deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-medal"/></g></svg></div>
-  <div class="stk dk" style="top:52%;left:auto;right:-13%;--r:6deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-me"/></g></svg></div>
-  <div class="stk dk" style="top:78%;left:auto;right:-13%;--r:-5deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-crab"/></g></svg></div>
-  <span class="note n1 dk" style="top:12%;left:6%" aria-hidden="true">drag the stickers<svg viewBox="0 0 58 34"><path d="M48 26C32 24 16 16 8 8M8 8l1 10M8 8l10 2"/></svg></span>
   </div>
 </section>
 
@@ -1214,7 +1225,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
     <div class="about">
       <div>
         <div class="fig"><span class="tag">Fig. 01</span><span>About</span></div>
-        <h2 style="margin-top:14px">From the far south of Brazil to <em class="s">São Paulo.</em></h2>
+        <h2 style="margin-top:14px">From the far south <svg class="flag" viewBox="0 0 30 20" width="28" height="18" aria-label="Rio Grande do Sul" role="img"><title>Rio Grande do Sul</title><rect width="30" height="20" fill="#00A859"/><path d="M0 0L30 20M30 0L0 20" stroke="#FFD100" stroke-width="5"/><path d="M0 0L30 20M30 0L0 20" stroke="#C8102E" stroke-width="2.4"/><circle cx="15" cy="10" r="4.2" fill="#fff" stroke="#C8102E" stroke-width=".6"/><circle cx="15" cy="10" r="2.4" fill="#0033A0"/></svg> of Brazil to <em class="s">São Paulo</em> <svg class="flag" viewBox="0 0 30 20" width="28" height="18" aria-label="São Paulo" role="img"><title>São Paulo</title><rect width="30" height="20" fill="#fff"/><rect y="0" width="30" height="2.86" fill="#000"/><rect y="5.71" width="30" height="2.86" fill="#000"/><rect y="11.43" width="30" height="2.86" fill="#000"/><rect y="17.14" width="30" height="2.86" fill="#000"/><rect width="11" height="11.4" fill="#DA291C"/><circle cx="5.5" cy="5.7" r="3.3" fill="#fff"/><path d="M4.2 4.3h2.6v2.8H4.2z" fill="#00205B"/></svg>.</h2>
         <dl class="kv">
           <dt>From</dt><dd><span class="place" tabindex="0" data-c="30°20′ S · 54°19′ W">São Gabriel, RS</span></dd>
           <dt>Then</dt><dd><span class="place" tabindex="0" data-c="30°02′ S · 51°13′ W">Porto Alegre, RS</span></dd>
@@ -1354,7 +1365,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
       <figure class="flt wide" data-lb data-full="media/rocket-flag-l.webp" data-cap="Airframe, Dec 13 2023. The biggest one, flag on the nose."><img src="media/rocket-flag-s.webp" srcset="media/rocket-flag-s.webp 760w, media/rocket-flag-l.webp 1600w" sizes="(min-width: 1100px) 16vw, 45vw" width="760" height="428" loading="lazy" decoding="async" alt="Airframe, Dec 13 2023. The biggest one, flag on the nose."><div class="hd"><span>Nº 18</span><span>Dec 13 2023</span></div><div class="ft"><b><span class="res lab">Airframe</span></b><span>The biggest one, flag on the nose.</span></div></figure>
       <figure class="flt " data-lb data-video="media/v-rod-1223.mp4" data-cap="Liftoff, Dec 20 2023. Tall rod, open field."><video muted loop playsinline preload="none" data-src="media/v-rod-1223.mp4" data-poster="media/v-rod-1223-p.webp" width="540" height="960" aria-label="Liftoff, Dec 20 2023. Tall rod, open field."></video><div class="hd"><span>Nº 19</span><span>Dec 20 2023</span></div><div class="ft"><b><span class="res ok">Liftoff</span></b><span>Tall rod, open field.</span></div></figure>
       <figure class="flt " data-lb data-video="media/v-launch-field-1223.mp4" data-cap="Downrange, Dec 20 2023. Light it, step back, watch it go."><video muted loop playsinline preload="none" data-src="media/v-launch-field-1223.mp4" data-poster="media/v-launch-field-1223-p.webp" width="540" height="960" aria-label="Downrange, Dec 20 2023. Light it, step back, watch it go."></video><div class="hd"><span>Nº 20</span><span>Dec 20 2023</span></div><div class="ft"><b><span class="res ok">Downrange</span></b><span>Light it, step back, watch it go.</span></div></figure>
-      <div class="flt-doc"><a class="yt" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener" aria-label="Foguete 7/2023: the documentary about my rocket, on YouTube"><span class="yt-th" style="--a:#FF5A1F"><img src="media/yt-foguete.webp" alt="" loading="lazy" decoding="async"><svg class="yt-arr" viewBox="0 0 80 60" aria-hidden="true" style="left:50%;top:9%;width:20%"><path d="M74 52C58 50 30 40 12 10"/><path d="M8 24 11 9l14 4"/></svg><span class="yt-tt br"><b>Foguete</b><b class="hl">7/2023</b></span><span class="yt-wm"><svg viewBox="0 0 68 48" aria-hidden="true"><use href="#g-ytp"/></svg>YouTube</span><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><use href="#g-ytp"/></svg></span></span><span class="yt-meta"><span class="yt-av"><svg viewBox="340 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><span class="yt-tx"><b>Foguete 7/2023: the documentary about my rocket</b><small>Filmes Pedro · Documentary</small></span><span class="ext" aria-hidden="true"></span></span></a><span class="note">every clip I kept<svg viewBox="0 0 58 34" aria-hidden="true"><path d="M50 8C34 10 20 16 10 26M10 26l9-1M10 26l2-9"/></svg></span></div>
+      <div class="flt-doc"><a class="yt" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener" aria-label="Foguete 7/2023: the documentary about my rocket, on YouTube"><span class="yt-th" style="--a:#FF5A1F"><img src="media/yt-foguete.webp" alt="" loading="lazy" decoding="async"><svg class="yt-arr" viewBox="0 0 80 60" aria-hidden="true" style="left:50%;top:9%;width:20%"><path d="M74 52C58 50 30 40 12 10"/><path d="M8 24 11 9l14 4"/></svg><span class="yt-tt br"><b>Foguete</b><b class="hl">7/2023</b></span><span class="yt-wm"><svg viewBox="0 0 68 48" aria-hidden="true"><use href="#g-ytp"/></svg>YouTube</span><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><use href="#g-ytp"/></svg></span></span><span class="yt-meta"><span class="yt-av"><svg viewBox="340 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><span class="yt-tx"><b>Foguete 7/2023: the documentary about my rocket</b><small>Filmes Pedro · Documentary</small></span><span class="ext" aria-hidden="true"></span></span></a><span class="note note-up"><svg viewBox="0 0 58 34" aria-hidden="true"><path d="M29 30C29 20 29 12 29 4M29 4l-9 10M29 4l9 10"/></svg>every clip I kept</span></div>
     </div>
   </div></div>
 </section>
@@ -1376,7 +1387,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
           <div><b>28</b><span>gold medals</span></div>
           <div><b>1</b><span>of them mine</span></div>
         </div>
-        <p><b style="color:#fff;font-weight:500">The one that got away.</b> The selection for the international team ran training on jobs capped at 15 minutes. Instead of saving checkpoints and stacking progress across jobs, I kept starting from zero, and my model stalled around 70% accuracy when it could have reached about 95%. One missing line of code between me and Beijing. I still think about it.</p>
+        <p><b style="color:#fff;font-weight:500">The one that got away.</b> The selection for the international team ran training on jobs capped at 20 minutes. My script saved a checkpoint every epoch but never loaded one, so every job started from zero, and my model stalled around 70% accuracy when it could have reached about 95%. One missing line of code between me and Beijing. I still think about it.</p>
         <div class="links" style="margin-top:18px">
           <a href="https://www.oniabrasil.com.br/assets/files/Lista_de_Premiao_1a_ONIA_2025_07_10.pdf" target="_blank" rel="noopener"><span class="ext">Official medal list</span></a>
           <a href="https://www.oniabrasil.com.br/page1.html" target="_blank" rel="noopener"><span class="ext">1st ONIA results</span></a>
@@ -1384,54 +1395,42 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
       </div>
       <div>
         <div class="chart" data-chart>
-          <div class="chart-h"><span>Accuracy across 15-minute jobs</span><span>Schematic</span></div>
-          <svg viewBox="0 0 530 246" role="img" aria-label="Schematic: restarting each 15-minute job keeps accuracy near 70%; saving a checkpoint lets it climb to about 95%."><g class="grid"><line x1="46" x2="470" y1="214.0" y2="214.0"/><line x1="46" x2="470" y1="166.5" y2="166.5"/><line x1="46" x2="470" y1="119.0" y2="119.0"/><line x1="46" x2="470" y1="71.5" y2="71.5"/><line x1="46" x2="470" y1="24.0" y2="24.0"/></g><g class="jobs"><line x1="99.0" x2="99.0" y1="24.0" y2="214.0"/><line x1="152.0" x2="152.0" y1="24.0" y2="214.0"/><line x1="205.0" x2="205.0" y1="24.0" y2="214.0"/><line x1="258.0" x2="258.0" y1="24.0" y2="214.0"/><line x1="311.0" x2="311.0" y1="24.0" y2="214.0"/><line x1="364.0" x2="364.0" y1="24.0" y2="214.0"/><line x1="417.0" x2="417.0" y1="24.0" y2="214.0"/></g><g class="axis"><text x="38" y="217.0" text-anchor="end">0%</text><text x="38" y="169.5" text-anchor="end">25%</text><text x="38" y="122.0" text-anchor="end">50%</text><text x="38" y="74.5" text-anchor="end">75%</text><text x="38" y="27.0" text-anchor="end">100%</text><text x="72.5" y="234" text-anchor="middle">job 1</text><text x="125.5" y="234" text-anchor="middle">job 2</text><text x="178.5" y="234" text-anchor="middle">job 3</text><text x="231.5" y="234" text-anchor="middle">job 4</text><text x="284.5" y="234" text-anchor="middle">job 5</text><text x="337.5" y="234" text-anchor="middle">job 6</text><text x="390.5" y="234" text-anchor="middle">job 7</text><text x="443.5" y="234" text-anchor="middle">job 8</text></g><path class="c-saw draw" d="M46 198.8C57.7 115.2 77.8 84.8 99.0 81.0L99.0 198.8C110.7 115.2 130.8 84.8 152.0 81.0L152.0 198.8C163.7 115.2 183.8 84.8 205.0 81.0L205.0 198.8C216.7 115.2 236.8 84.8 258.0 81.0L258.0 198.8C269.7 115.2 289.8 84.8 311.0 81.0L311.0 198.8C322.7 115.2 342.8 84.8 364.0 81.0L364.0 198.8C375.7 115.2 395.8 84.8 417.0 81.0L417.0 198.8C428.7 115.2 448.8 84.8 470.0 81.0"/><path class="c-ck draw late" d="M46.0 198.8L51.3 191.1L56.6 183.8L61.9 176.8L67.2 170.1L72.5 163.8L77.8 157.7L83.1 151.9L88.4 146.4L93.7 141.2L99.0 136.2L104.3 131.4L109.6 126.8L114.9 122.5L120.2 118.4L125.5 114.4L130.8 110.7L136.1 107.1L141.4 103.6L146.7 100.4L152.0 97.3L157.3 94.3L162.6 91.5L167.9 88.8L173.2 86.2L178.5 83.8L183.8 81.4L189.1 79.2L194.4 77.1L199.7 75.0L205.0 73.1L210.3 71.3L215.6 69.5L220.9 67.8L226.2 66.2L231.5 64.7L236.8 63.3L242.1 61.9L247.4 60.6L252.7 59.3L258.0 58.1L263.3 57.0L268.6 55.9L273.9 54.8L279.2 53.8L284.5 52.9L289.8 52.0L295.1 51.1L300.4 50.3L305.7 49.5L311.0 48.8L316.3 48.1L321.6 47.4L326.9 46.7L332.2 46.1L337.5 45.5L342.8 45.0L348.1 44.5L353.4 43.9L358.7 43.5L364.0 43.0L369.3 42.6L374.6 42.1L379.9 41.7L385.2 41.3L390.5 41.0L395.8 40.6L401.1 40.3L406.4 40.0L411.7 39.7L417.0 39.4L422.3 39.1L427.6 38.9L432.9 38.6L438.2 38.4L443.5 38.1L448.8 37.9L454.1 37.7L459.4 37.5L464.7 37.3L470.0 37.2"/><text class="lbl" x="478" y="85.0" fill="#FF6B57">≈70%</text><text class="lbl" x="478" y="99.0" fill="#FF6B57" opacity=".7">stuck</text><text class="lbl" x="478" y="37.5" fill="#2EE6A6">≈95%</text><text class="lbl" x="478" y="51.5" fill="#2EE6A6" opacity=".7">possible</text></svg>
-          <div class="legend"><span><i style="background:#FF6B57"></i>What I ran: every job starts from zero</span><span><i style="background:var(--mint)"></i>With a checkpoint: progress stacks</span></div>
+          <div class="chart-h"><span>Accuracy across 20-minute jobs</span><span>Schematic</span></div>
+          <svg viewBox="0 0 530 246" role="img" aria-label="Schematic: restarting each 20-minute job keeps accuracy near 70%; resuming from the checkpoint lets it climb to about 95%."><g class="grid"><line x1="46" x2="470" y1="214.0" y2="214.0"/><line x1="46" x2="470" y1="166.5" y2="166.5"/><line x1="46" x2="470" y1="119.0" y2="119.0"/><line x1="46" x2="470" y1="71.5" y2="71.5"/><line x1="46" x2="470" y1="24.0" y2="24.0"/></g><g class="jobs"><line x1="99.0" x2="99.0" y1="24.0" y2="214.0"/><line x1="152.0" x2="152.0" y1="24.0" y2="214.0"/><line x1="205.0" x2="205.0" y1="24.0" y2="214.0"/><line x1="258.0" x2="258.0" y1="24.0" y2="214.0"/><line x1="311.0" x2="311.0" y1="24.0" y2="214.0"/><line x1="364.0" x2="364.0" y1="24.0" y2="214.0"/><line x1="417.0" x2="417.0" y1="24.0" y2="214.0"/></g><g class="axis"><text x="38" y="217.0" text-anchor="end">0%</text><text x="38" y="169.5" text-anchor="end">25%</text><text x="38" y="122.0" text-anchor="end">50%</text><text x="38" y="74.5" text-anchor="end">75%</text><text x="38" y="27.0" text-anchor="end">100%</text><text x="72.5" y="234" text-anchor="middle">job 1</text><text x="125.5" y="234" text-anchor="middle">job 2</text><text x="178.5" y="234" text-anchor="middle">job 3</text><text x="231.5" y="234" text-anchor="middle">job 4</text><text x="284.5" y="234" text-anchor="middle">job 5</text><text x="337.5" y="234" text-anchor="middle">job 6</text><text x="390.5" y="234" text-anchor="middle">job 7</text><text x="443.5" y="234" text-anchor="middle">job 8</text></g><path class="c-saw draw" d="M46 198.8C57.7 115.2 77.8 84.8 99.0 81.0L99.0 198.8C110.7 115.2 130.8 84.8 152.0 81.0L152.0 198.8C163.7 115.2 183.8 84.8 205.0 81.0L205.0 198.8C216.7 115.2 236.8 84.8 258.0 81.0L258.0 198.8C269.7 115.2 289.8 84.8 311.0 81.0L311.0 198.8C322.7 115.2 342.8 84.8 364.0 81.0L364.0 198.8C375.7 115.2 395.8 84.8 417.0 81.0L417.0 198.8C428.7 115.2 448.8 84.8 470.0 81.0"/><path class="c-ck draw late" d="M46.0 198.8L51.3 191.1L56.6 183.8L61.9 176.8L67.2 170.1L72.5 163.8L77.8 157.7L83.1 151.9L88.4 146.4L93.7 141.2L99.0 136.2L104.3 131.4L109.6 126.8L114.9 122.5L120.2 118.4L125.5 114.4L130.8 110.7L136.1 107.1L141.4 103.6L146.7 100.4L152.0 97.3L157.3 94.3L162.6 91.5L167.9 88.8L173.2 86.2L178.5 83.8L183.8 81.4L189.1 79.2L194.4 77.1L199.7 75.0L205.0 73.1L210.3 71.3L215.6 69.5L220.9 67.8L226.2 66.2L231.5 64.7L236.8 63.3L242.1 61.9L247.4 60.6L252.7 59.3L258.0 58.1L263.3 57.0L268.6 55.9L273.9 54.8L279.2 53.8L284.5 52.9L289.8 52.0L295.1 51.1L300.4 50.3L305.7 49.5L311.0 48.8L316.3 48.1L321.6 47.4L326.9 46.7L332.2 46.1L337.5 45.5L342.8 45.0L348.1 44.5L353.4 43.9L358.7 43.5L364.0 43.0L369.3 42.6L374.6 42.1L379.9 41.7L385.2 41.3L390.5 41.0L395.8 40.6L401.1 40.3L406.4 40.0L411.7 39.7L417.0 39.4L422.3 39.1L427.6 38.9L432.9 38.6L438.2 38.4L443.5 38.1L448.8 37.9L454.1 37.7L459.4 37.5L464.7 37.3L470.0 37.2"/><text class="lbl" x="478" y="85.0" fill="#FF6B57">≈70%</text><text class="lbl" x="478" y="99.0" fill="#FF6B57" opacity=".7">stuck</text><text class="lbl" x="478" y="37.5" fill="#2EE6A6">≈95%</text><text class="lbl" x="478" y="51.5" fill="#2EE6A6" opacity=".7">possible</text></svg>
+          <div class="legend"><span><i style="background:#FF6B57"></i>What I ran: every job starts from zero</span><span><i style="background:var(--mint)"></i>Resuming the checkpoint: progress stacks</span></div>
         </div>
-<div class="codewin" data-tabs>
-          <div class="cw-top"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="cw-tabs" role="tablist" aria-label="Code"><button type="button" role="tab" aria-selected="true" data-tab="rn">rn.py</button><button type="button" role="tab" aria-selected="false" data-tab="ck">the missing line</button></div><a class="cw-gh" href="https://github.com/peddrof/ONIA-Project" target="_blank" rel="noopener">GitHub ↗</a></div>
-<pre class="code" data-pane="rn" role="tabpanel" aria-label="rn.py, my submission"><span class="k">from</span> sklearn.neural_network <span class="k">import</span> <span class="f">MLPClassifier</span>
-<span class="k">from</span> sklearn.preprocessing <span class="k">import</span> <span class="f">StandardScaler</span>
-<span class="k">import</span> pandas <span class="k">as</span> pd
+<div class="codewin">
+          <div class="cw-top"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="cw-file">pedro.fonseca3/train.py</span><a class="cw-gh" href="https://github.com/peddrof/ONIA-Project/blob/main/pedro.fonseca3/train.py" target="_blank" rel="noopener">GitHub ↗</a></div>
+<pre class="code" aria-label="train.py from the ONIA selection. Highlighted lines are what was missing: resume from the last checkpoint."><span class="c"># YOLOv8 on Santos Dumont II · SLURM --time=00:20:00</span>
+<span class="k">import</span> argparse
+<span class="hl"><span class="k">import</span> os</span>
+<span class="k">from</span> ultralytics <span class="k">import</span> <span class="f">YOLO</span>
 
-train_data = pd.read_csv(<span class="s">'treino.csv'</span>)
-test_data = pd.read_csv(<span class="s">'teste.csv'</span>)
-
-<span class="f">X_train</span> = train_data.drop([<span class="s">'id'</span>, <span class="s">'target'</span>], axis=<span class="n">1</span>)
-y_train = train_data[<span class="s">'target'</span>]
-
-<span class="f">X_test</span> = test_data.drop(<span class="s">'id'</span>, axis=<span class="n">1</span>)
-test_ids = test_data[<span class="s">'id'</span>]
-
-scaler = <span class="f">StandardScaler</span>()
-<span class="f">X_train_scaled</span> = scaler.fit_transform(<span class="f">X_train</span>)
-<span class="f">X_test_scaled</span> = scaler.transform(<span class="f">X_test</span>)
-
-model = <span class="f">MLPClassifier</span>(hidden_layer_sizes=(<span class="n">200</span>), max_iter=<span class="n">1000</span>, random_state=<span class="n">42</span>)
-model.fit(<span class="f">X_train_scaled</span>, y_train)
-
-y_pred = model.predict(<span class="f">X_test_scaled</span>)
-
-predictions_df = pd.<span class="f">DataFrame</span>({<span class="s">'id'</span>: test_ids, <span class="s">'target'</span>: y_pred})
-
-predictions_df.to_csv(<span class="s">'resposta.csv'</span>, index=<span class="f">False</span>)
-<span class="k">print</span>(<span class="s">"Resposta salva em: 'resposta.csv'"</span>)</pre>
-<pre class="code" data-pane="ck" role="tabpanel" aria-label="The missing line" hidden><span class="k">for</span> job <span class="k">in</span> range(n_jobs):   <span class="c"># 15 minutes each</span>
-    model = build_model()
-<span class="hl">    model.load_state_dict(torch.load("ckpt.pt"))</span>    train(model, minutes=15)
-    torch.save(model.state_dict(), "ckpt.pt")</pre>
+<span class="k">def</span> <span class="f">train</span>(data_yaml, epochs, batch_size, img_size):
+    <span class="c"># YOLOv8n (nano) para rapidez em 20 minutos</span>
+<span class="hl">    last = <span class="s">'runs/detect/exp/weights/last.pt'</span>
+<span class="hl">    <span class="k">if</span> os.path.exists(last):</span>
+<span class="hl">        <span class="k">return</span> <span class="f">YOLO</span>(last).train(resume=<span class="f">True</span>)</span>
+    model = <span class="f">YOLO</span>(<span class="s">'yolov8n.yaml'</span>)
+    model.train(
+        data=data_yaml,
+        epochs=epochs,
+        batch=batch_size,
+        imgsz=img_size,
+        workers=<span class="n">4</span>,
+        name=<span class="s">'exp'</span>,
+        save_period=<span class="n">1</span>,    <span class="c"># checkpoint cada época</span>
+        patience=<span class="n">10</span>
+    )</pre>
         </div>
-        <span class="note" style="margin-top:12px">↑ the real file I submitted, and the line I didn't write later</span>
+        <span class="note" style="margin-top:12px">↑ the script that ran. It saved a checkpoint every epoch and never loaded one. Highlighted: what I didn't write</span>
       </div>
     </div>
     <div class="ai-media">
       <figure class="a"><div class="m zoom" style="aspect-ratio:16/9" data-lb data-full="media/medal-moment-l.webp" data-cap="The medal going on."><img src="media/medal-moment-s.webp" srcset="media/medal-moment-s.webp 760w, media/medal-moment-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="760" height="428" loading="lazy" decoding="async" alt="The medal going on."></div><figcaption>The medal going on.</figcaption></figure>
       <figure class="b"><div class="m zoom" style="aspect-ratio:3/4" data-lb data-full="media/medal-school-l.webp" data-cap="Back at school with the gold."><img src="media/medal-school-s.webp" srcset="media/medal-school-s.webp 760w, media/medal-school-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="570" height="760" loading="lazy" decoding="async" alt="Back at school with the gold."></div><figcaption>Back at school with the gold.</figcaption></figure>
-      
+      <a class="ig c" href="https://www.instagram.com/reel/DRADaaqEVXX/" target="_blank" rel="noopener" aria-label="The gold, on video, an Instagram reel"><span class="ig-fr"><img src="media/onia-reel-s.webp" srcset="media/onia-reel-s.webp 545w, media/onia-reel-l.webp 545w" sizes="156px" alt="" loading="lazy" decoding="async"><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>The gold, on video</b></span></span></a>
       <figure class="d"><div class="m zoom contain" style="aspect-ratio:9/19.5" data-lb data-full="media/onia-final-story-l.webp" data-cap="The final round as ONIA posted it live: 28 finalists, four places on the team for Beijing."><img src="media/onia-final-story-s.webp" srcset="media/onia-final-story-s.webp 760w, media/onia-final-story-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="351" height="760" loading="lazy" decoding="async" alt="The final round as ONIA posted it live: 28 finalists, four places on the team for Beijing."></div><figcaption>The final round as ONIA posted it live: 28 finalists, four places on the team for Beijing.</figcaption></figure>
-    </div>
-    <div class="lcards" style="margin-top:14px;max-width:520px">
-      <a class="ig" href="https://www.instagram.com/reel/DRADaaqEVXX/" target="_blank" rel="noopener" aria-label="The gold, on video, an Instagram reel"><span class="ig-fr"><img src="media/medal-moment-s.webp" alt="" loading="lazy" decoding="async"><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>The gold, on video</b></span></span></a>
     </div>
   </div></div>
 </section>
@@ -1465,10 +1464,10 @@ predictions_df.to_csv(<span class="s">'resposta.csv'</span>, index=<span class="
       <figure class="pin p5"><div class="m zoom" style="aspect-ratio:16/9" data-lb data-full="media/class-coding-b-l.webp" data-cap="Heads down on the build."><img src="media/class-coding-b-s.webp" srcset="media/class-coding-b-s.webp 760w, media/class-coding-b-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="760" height="506" loading="lazy" decoding="async" alt="Heads down on the build."></div><figcaption>Heads down on the build.</figcaption></figure>
     </div>
     <div class="lcards" style="margin-top:clamp(28px,4vw,44px)">
-      <a class="lc" href="https://voluntariamais.com.br" target="_blank" rel="noopener"><span class="th ms"><span class="mast" style="--g:linear-gradient(135deg,#1F5BFF,#16130A)">Voluntaria<em>+</em></span></span><span class="tx"><small>voluntariamais.com.br</small><b>The platform <span class="ext"></span></b></span></a>
-      <a class="lc" href="https://voluntariamais.com.br/impacto" target="_blank" rel="noopener"><span class="th ms"><span class="mast" style="--g:linear-gradient(135deg,#16130A,#3A3015)">Impact</span></span><span class="tx"><small>voluntariamais.com.br</small><b>Impact &amp; press <span class="ext"></span></b></span></a>
+      <a class="lc" href="https://voluntariamais.com.br" target="_blank" rel="noopener"><span class="th"><img src="media/site-voluntaria-s.webp" srcset="media/site-voluntaria-s.webp 760w, media/site-voluntaria-l.webp 1200w" sizes="340px" alt="" loading="lazy" decoding="async"></span><span class="tx"><small>voluntariamais.com.br</small><b>The platform <span class="ext"></span></b></span></a>
+      <a class="lc" href="https://voluntariamais.com.br/impacto" target="_blank" rel="noopener"><span class="th"><img src="media/mic-outdoors-s.webp" srcset="media/mic-outdoors-s.webp 760w, media/mic-outdoors-l.webp 1600w" sizes="340px" alt="" loading="lazy" decoding="async"></span><span class="tx"><small>voluntariamais.com.br</small><b>Impact &amp; press <span class="ext"></span></b></span></a>
       <a class="ig" href="https://www.instagram.com/reel/DSa0CDDAMB_/" target="_blank" rel="noopener" aria-label="The Braille printer fundraiser, an Instagram reel"><span class="ig-fr"><img src="media/braille-printer-s.webp" alt="" loading="lazy" decoding="async"><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>The Braille printer fundraiser</b></span></span></a>
-      <a class="ig" href="https://www.instagram.com/reel/DQeSrrWjjg9/" target="_blank" rel="noopener" aria-label="The school&#x27;s largest blood drive, an Instagram reel"><span class="ig-fr"><span class="mast" style="--g:linear-gradient(160deg,#E0263F,#5A0F1C)">80+ <em>donors</em></span><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>The school's largest blood drive</b></span></span></a>
+      <a class="ig" href="https://www.instagram.com/reel/DQeSrrWjjg9/" target="_blank" rel="noopener" aria-label="The school&#x27;s largest blood drive, an Instagram reel"><span class="ig-fr"><img src="media/blood-drive-s.webp" srcset="media/blood-drive-s.webp 640w, media/blood-drive-l.webp 640w" sizes="156px" alt="" loading="lazy" decoding="async"><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>The school's largest blood drive</b></span></span></a>
     </div>
   </div></div>
 </section>
@@ -1532,7 +1531,7 @@ predictions_df.to_csv(<span class="s">'resposta.csv'</span>, index=<span class="
           <figure class="span"><div class="m zoom" data-lb data-full="media/brics-roundtable-2-l.webp" data-cap="At the roundtable."><img src="media/brics-roundtable-2-s.webp" srcset="media/brics-roundtable-2-s.webp 760w, media/brics-roundtable-2-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="760" height="555" loading="lazy" decoding="async" alt="At the roundtable, from the side."></div><figcaption>At the roundtable.</figcaption></figure>
           <div class="shot">
             <figure><div class="m zoom" data-lb data-full="media/brasilia-congress-l.webp" data-cap="Brasília, the National Congress behind me."><img src="media/brasilia-congress-s.webp" srcset="media/brasilia-congress-s.webp 760w, media/brasilia-congress-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="570" height="760" loading="lazy" decoding="async" alt="Brasília, the National Congress behind me."></div><figcaption>Brasília, Congress behind me.</figcaption></figure>
-            <a class="ig" href="https://www.instagram.com/reel/DOn23plkbA5/" target="_blank" rel="noopener" aria-label="At the forum, on video, an Instagram reel"><span class="ig-fr"><img src="media/brics-stage-s.webp" alt="" loading="lazy" decoding="async" style="object-position:72% 50%"><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>At the forum, on video</b></span></span></a>
+            <a class="ig" href="https://www.instagram.com/reel/DOn23plkbA5/" target="_blank" rel="noopener" aria-label="At the forum, on video, an Instagram reel"><span class="ig-fr"><img src="media/brics-reel-s.webp" srcset="media/brics-reel-s.webp 499w, media/brics-reel-l.webp 499w" sizes="156px" alt="" loading="lazy" decoding="async"><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>At the forum, on video</b></span></span></a>
           </div>
         </div>
       </article>
@@ -1794,12 +1793,12 @@ predictions_df.to_csv(<span class="s">'resposta.csv'</span>, index=<span class="
         <p>The short answers are here. For the long ones, ask your AI at the bottom: it reads my notes first.</p>
       </div>
       <div class="qa">
-        <details open><summary>Where are you from?</summary><div class="ans"><p>São Gabriel, a town of 60,000 in the far south of Brazil, where my family has farmed rice and cattle for five generations. I moved to Porto Alegre on my own in 2024, in the middle of a school year, and I'm in São Paulo now.</p></div></details>
-        <details><summary>How did you learn all of this?</summary><div class="ans"><p>Mostly YouTube: English (C2 by 16), AI, audience growth, and rockets, where BPS.space did most of the teaching.</p></div></details>
-        <details><summary>What is Sincra, in one breath?</summary><div class="ans"><p>A fintech for medical receivables. It reads what a hospital already has, predicts how much each doctor will receive and when, and lets doctors and hospitals advance that money through partner funds, with the cost shown first. I'm the tech co-founder, one of three.</p></div></details>
-        <details><summary>Which miss do you think about most?</summary><div class="ans"><p>The AI Olympiad selection. Training ran in 15-minute jobs and I never saved checkpoints, so every job started from zero. My model stalled around 70% when it could have reached about 95%. One missing line between me and Beijing.</p></div></details>
-        <details><summary>Why sell the Instagram pages?</summary><div class="ans"><p>I had the audience but no idea how to build a sales funnel, so it wasn't turning into anything. Selling all three taught me to sell before building.</p></div></details>
-        <details><summary>Can I read this in a terminal?</summary><div class="ans"><p>Yes. Run <code>curl -sL pedroverissimo.vercel.app</code> and follow the menu, for example <code>curl -sL pedroverissimo.vercel.app/rockets</code>. There is an interactive one too, with the launch, buttons and the mouse: <code>curl -sL pedroverissimo.vercel.app/go | bash</code>.</p></div></details>
+        <details open><summary>Where are you from?</summary><div class="ans"><div><p>São Gabriel, a town of 60,000 in the far south of Brazil, where my family has farmed rice and cattle for five generations. I moved to Porto Alegre on my own in 2024, in the middle of a school year, and I'm in São Paulo now.</p></div></div>
+        <details><summary>How did you learn all of this?</summary><div class="ans"><div><p>Mostly YouTube: English (C2 by 16), AI, audience growth, and rockets, where BPS.space did most of the teaching.</p></div></div>
+        <details><summary>What is Sincra, in one breath?</summary><div class="ans"><div><p>A fintech for medical receivables. It reads what a hospital already has, predicts how much each doctor will receive and when, and lets doctors and hospitals advance that money through partner funds, with the cost shown first. I'm the tech co-founder, one of three.</p></div></div>
+        <details><summary>Which miss do you think about most?</summary><div class="ans"><div><p>The AI Olympiad selection. Training ran in 20-minute jobs and I never resumed from a checkpoint, so every job started from zero. My model stalled around 70% when it could have reached about 95%. One missing line between me and Beijing.</p></div></div>
+        <details><summary>Why sell the Instagram pages?</summary><div class="ans"><div><p>I had the audience but no idea how to build a sales funnel, so it wasn't turning into anything. Selling all three taught me to sell before building.</p></div></div>
+        <details><summary>Can I read this in a terminal?</summary><div class="ans"><div><p>Yes. An interactive version, with the launch, buttons and the mouse: <code>curl -sL pedroverissimo.vercel.app/go | bash</code>. Or open a page directly with <code>curl -sL pedroverissimo.vercel.app/go | bash -s rockets</code>.</p></div></div>
         <div class="chat" id="ask">
           <div class="chat-h"><span class="av"><svg viewBox="0 0 2060 2060" aria-hidden="true"><use href="#av"/></svg></span><div><b>Ask anything about me</b><small>Answered by your AI, from my llms.txt</small></div><span class="live">online</span></div>
           <div class="chat-log" data-chat-log aria-live="polite">
@@ -1826,7 +1825,7 @@ predictions_df.to_csv(<span class="s">'resposta.csv'</span>, index=<span class="
         <li><a class="row" href="https://sincra.app" target="_blank" rel="noopener">Sincra<span>sincra.app ↗</span></a></li>
         <li><a class="row" href="https://voluntariamais.com.br" target="_blank" rel="noopener">Voluntaria+<span>voluntariamais.com.br ↗</span></a></li>
       </ul></div>
-      <div class="cc"><small>From a terminal</small><div class="term"><span class="p">$</span><code>curl -sL pedroverissimo.vercel.app</code><button type="button" data-copy="curl -sL pedroverissimo.vercel.app">Copy</button></div><p style="font-size:.86rem;color:var(--fg-3)">A plain-text version of this page, in color. Add <code>/go | bash</code> for the interactive one, launch included.</p></div>
+      <div class="cc"><small>From a terminal</small><div class="term"><span class="p">$</span><code>curl -sL pedroverissimo.vercel.app/go | bash</code><button type="button" data-copy="curl -sL pedroverissimo.vercel.app/go | bash">Copy</button></div><p style="font-size:.86rem;color:var(--fg-3)">The interactive version: the launch, art, buttons and the mouse.</p></div>
     </div>
     <div class="foot-base"><span>© 2026 Pedro Veríssimo</span><span class="mono">Type 1155 anywhere.</span><a class="agents" href="/llms.txt" rel="alternate" type="text/plain" tabindex="-1">AI agents: the full context about Pedro, in plain text, is at /llms.txt. Start there.</a></div>
   </div></div>
@@ -1938,10 +1937,38 @@ const tick=()=>{let s='';try{s=fmt.format(new Date())}catch(e){}$$('[data-clock]
 const secs=$$('[data-sec]'), navs=$$('.nav a'), minis=$$('.mini a');
 const navMap={top:'',about:'about',sincra:'sincra',rockets:'rockets',onia:'rockets',voluntaria:'rockets',audience:'rockets',data:'rockets',flying:'rockets',side:'rockets',farm:'farm',military:'farm',beyond:'beyond',timeline:'timeline',honors:'timeline',press:'press',talk:'talk',contact:''};
 let spyQ=false;
+const darkMini=new Set(['rockets','onia','audience']);
+const miniNav=$('.mini');
 function spy(){spyQ=false;const mid=innerHeight*.35;let id='top';secs.forEach(s=>{if(s.getBoundingClientRect().top<=mid)id=s.dataset.sec});
   const n=navMap[id]; navs.forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+n?'true':'false'));
-  minis.forEach(a=>a.setAttribute('aria-current',a.dataset.mini===(id==='honors'?'timeline':id)?'true':'false'))}
+  minis.forEach(a=>a.setAttribute('aria-current',a.dataset.mini===(id==='honors'?'timeline':id)?'true':'false'));
+  if(miniNav)miniNav.classList.toggle('on-dark',darkMini.has(id))}
 addEventListener('scroll',()=>{if(!spyQ){spyQ=true;requestAnimationFrame(spy)}},{passive:true});spy();
+
+/* ========== 4b. FAQ: one open, animated ========== */
+$$('.qa details').forEach(d=>{
+  const ans=$('.ans',d); if(!ans)return;
+  const inner=ans.firstElementChild||ans;
+  const setH=h=>{ans.style.gridTemplateRows=h};
+  if(d.open){setH('1fr');ans.style.padding='0 16px 16px'}
+  else{setH('0fr');ans.style.padding='0 16px'}
+  d.addEventListener('click',e=>{
+    const sum=$('summary',d); if(!sum||!sum.contains(e.target)&&e.target!==sum)return;
+    e.preventDefault();
+    const opening=!d.open;
+    if(opening){
+      $$('.qa details').forEach(o=>{
+        if(o===d||!o.open)return;
+        o.open=false; const a=$('.ans',o); if(a){a.style.gridTemplateRows='0fr';a.style.padding='0 16px'}
+      });
+      d.open=true; ans.style.padding='0 16px 16px';
+      requestAnimationFrame(()=>requestAnimationFrame(()=>setH('1fr')));
+    }else{
+      setH('0fr'); ans.style.padding='0 16px';
+      ans.addEventListener('transitionend',function te(ev){if(ev.propertyName!=='grid-template-rows')return;ans.removeEventListener('transitionend',te);d.open=false});
+    }
+  });
+});
 
 /* ========== 5. copy ========== */
 $$('[data-copy]').forEach(b=>b.addEventListener('click',()=>{
@@ -2231,7 +2258,8 @@ $$('[data-tabs]').forEach(w=>{const tb=$$('[data-tab]',w);tb.forEach(b=>b.addEve
 
 /* ========== 15. compare slider ========== */
 $$('[data-cmp]').forEach(c=>{const r=$('input',c);const set=v=>c.style.setProperty('--x',v+'%');r.addEventListener('input',()=>set(r.value));
-  const cio2=io(e=>{if(e.isIntersecting&&!reduce&&!c._d){c._d=1;let t0=performance.now();const sw=n=>{const q=Math.min(1,(n-t0)/1600);const v=50+28*Math.sin(q*Math.PI*2)*(1-q);set(v.toFixed(1));r.value=v;if(q<1)requestAnimationFrame(sw)};requestAnimationFrame(sw)}},{threshold:.5});cio2.observe(c)});
+  const amp=c.closest('#flying')||c.dataset.cmp==='full'?48:28;
+  const cio2=io(e=>{if(e.isIntersecting&&!reduce&&!c._d){c._d=1;let t0=performance.now();const sw=n=>{const q=Math.min(1,(n-t0)/1800);const v=50+amp*Math.sin(q*Math.PI*2)*(1-q*.15);set(Math.max(2,Math.min(98,v)).toFixed(1));r.value=v;if(q<1)requestAnimationFrame(sw)};requestAnimationFrame(sw)}},{threshold:.5});cio2.observe(c)});
 
 /* ========== 16. film strip: drag, years ========== */
 const film=$('[data-film]');

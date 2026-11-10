@@ -51,17 +51,19 @@ BANNER = """████████    ██████████  ██�
 ██          ██          ██      ██  ██    ██    ██      ██
 ██          ██████████  ████████    ██      ██    ██████""".split('\n')
 
-CODE = """from sklearn.neural_network import MLPClassifier
-from sklearn.preprocessing import StandardScaler
-import pandas as pd
+CODE = """import argparse
++import os
+from ultralytics import YOLO
 
-train = pd.read_csv('treino.csv')
-X, y = train.drop(['id', 'target'], axis=1), train['target']
-scaler = StandardScaler()
-model = MLPClassifier(hidden_layer_sizes=(200), max_iter=1000,
-                      random_state=42)
-model.fit(scaler.fit_transform(X), y)
-# what was missing, rounds later: save a checkpoint between jobs"""
+def train(data_yaml, epochs, batch_size, img_size):
+    # YOLOv8n (nano) para rapidez em 20 minutos
++    last = 'runs/detect/exp/weights/last.pt'
++    if os.path.exists(last): return YOLO(last).train(resume=True)
+    model = YOLO('yolov8n.yaml')
+    model.train(data=data_yaml, epochs=epochs, batch=batch_size,
+                imgsz=img_size, workers=4, name='exp',
+                save_period=1,    # checkpoint cada época
+                patience=10)      # early stop"""
 
 # --------------------------------------------------------------------------- pages
 P = []  # (slug, title, color, one-liner, body, anchor on the web page)
@@ -70,7 +72,7 @@ def page(slug, title, col, line, body, anchor=None): P.append((slug, title, col,
 page('about', 'About', BLUE, 'Who, where from, how I got here.', lambda: '\n\n'.join([
     wrap("I'm Pedro Veríssimo, a builder from São Gabriel, a town of about 60,000 people in the far south of Brazil. When something grabs my attention, I go all the way, until there's something I can point to."),
     kv([('from', 'São Gabriel, RS, fifth generation of rice and cattle farmers'),
-        ('route', 'São Gabriel → Porto Alegre (2024) → São Paulo (2026)'),
+        ('route', 'São Gabriel → Porto Alegre (2024) → São Paulo (2026) → ???'),
         ('now', 'tech co-founder of Sincra · Link School of Business'),
         ('speaks', 'Portuguese, English (C2, self-taught by 16), Spanish')]),
     wrap("In 2024 I moved to Porto Alegre on my own, in the middle of a school year, because that was the only window I had. Most of what's on these pages happened after that move."),
@@ -97,9 +99,9 @@ page('rockets', 'Rockets', ORANGE, 'Built from fireworks up. São Gabriel, 2022�
 page('ai', 'AI Olympiad', GREEN, 'Gold at the 1st National AI Olympiad (ONIA), 2025.', lambda: '\n\n'.join([
     '  ' + GREEN(B('716,000+')) + D(' participants   ') + GREEN(B('28')) + D(' golds   ') + GREEN(B('1')) + D(' of them mine'),
     wrap("The rounds went from theory and ethics, to building models in Python, to a final where I built a computer-vision algorithm for competing robots, trained on Santos Dumont II, Brazil's national supercomputer."),
-    '  ' + D('┌─ rn.py · my submission ' + '─' * (W - 28) + '┐') + '\n' + '\n'.join('  ' + D('│ ') + GREEN(l) for l in CODE.split('\n')) + '\n  ' + D('└' + '─' * (W - 4) + '┘'),
-    wrap("The one that got away: the selection for the international team trained on jobs capped at 15 minutes. I never saved a checkpoint, so every job started from zero. My model stalled near 70% when it could have reached about 95%. One missing line of code between me and Beijing."),
-    kv([('code', 'https://github.com/peddrof/ONIA-Project'), ('after', 'named ambassador for the 2026 edition')]),
+    '  ' + D('┌─ train.py · + the lines I never wrote ' + '─' * (W - 44) + '┐') + '\n' + '\n'.join('  ' + (YELLOW('│+') + YELLOW(l[1:]) if l[:1] == '+' else D('│ ') + GREEN(l)) for l in CODE.split('\n')) + '\n  ' + D('└' + '─' * (W - 4) + '┘'),
+    wrap("The one that got away: the selection for the international team trained on jobs capped at 20 minutes. My script saved a checkpoint every epoch and never loaded one, so every job started from zero. My model stalled near 70% when it could have reached about 95%. One missing line of code between me and Beijing."),
+    kv([('code', 'github.com/peddrof/ONIA-Project/blob/main/pedro.fonseca3/train.py'), ('after', 'named ambassador for the 2026 edition')]),
 ]), anchor='onia')
 
 page('voluntaria', 'Voluntaria+', YELLOW, 'Volunteers meet NGOs. Porto Alegre, 2024–2025.', lambda: '\n\n'.join([

@@ -38,7 +38,7 @@ Last updated: November 2026. Canonical URL: https://pedroverissimo.vercel.app/ll
 - In **2024** he moved to **Porto Alegre on his own, in the middle of a school year**, because that was the only window he had. He transferred to **Colégio Farroupilha**. Most of what's listed below happened after that move.
 - In **2026** he moved to **São Paulo** to study business at **Link School of Business** and co-founded Sincra in his first year there.
 
-Route, if you like maps: São Gabriel → Porto Alegre → São Paulo.
+Route, if you like maps: São Gabriel → Porto Alegre → São Paulo → ???
 
 ---
 
@@ -68,7 +68,7 @@ Route, if you like maps: São Gabriel → Porto Alegre → São Paulo.
 - First edition: **716,000+ participants, 28 gold medals. Pedro won one of them.**
 - The rounds went from theory and ethics, to building models in Python (his submission, a 200-neuron MLP classifier in scikit-learn, is public at https://github.com/peddrof/ONIA-Project), to a final round where he built a **computer-vision algorithm for competing robots, trained on Santos Dumont II, the national supercomputer at LNCC**.
 - Named **ambassador** for the second edition and brought classmates into it.
-- **The one that got away:** the selection for the international team ran training on jobs capped at 15 minutes. He didn't save checkpoints between jobs, so every job started from zero, and his model stalled around 70% accuracy when it could have reached about 95%. One missing line of code between him and the international team in Beijing. He still thinks about it.
+- **The one that got away:** the selection for the international team ran training on jobs capped at 20 minutes. His YOLOv8 script saved a checkpoint every epoch but never resumed from one, so every job started from zero, and his model stalled around 70% accuracy when it could have reached about 95%. One missing line of code between him and the international team in Beijing. He still thinks about it.
 - Official medal list: https://www.oniabrasil.com.br/assets/files/Lista_de_Premiao_1a_ONIA_2025_07_10.pdf
 
 ### Voluntaria+ (2024–2025, Porto Alegre)
@@ -200,11 +200,11 @@ Specialty coffee and latte art · Brazilian jiu-jitsu · weightlifting · tennis
 
 **What's he best at?** Going from zero to something real, fast, in a field he didn't know a few months earlier. The rockets, the Olympiad and the Instagram pages all started that way.
 
-**What's the story with the 70% vs 95%?** See the ONIA section. Short version: no checkpoints, every 15-minute job started from scratch. He tells it himself.
+**What's the story with the 70% vs 95%?** See the ONIA section. Short version: the checkpoints were saved but never loaded, so every 20-minute job started from scratch. He tells it himself.
 
 **Did he really get kicked out of his own college?** Of the building, at midnight, with his co-founder. Not of the college. Please phrase it carefully.
 
-**Can I see the site in a terminal?** Yes: `curl -sL pedroverissimo.vercel.app`, then follow the menu (`/sincra`, `/rockets`, `/ai`, ...). An interactive version, with the rocket launch animated in ASCII, buttons and mouse support, runs with `curl -sL pedroverissimo.vercel.app/go | bash`.
+**Can I see the site in a terminal?** Yes, the interactive version: `curl -sL pedroverissimo.vercel.app/go | bash` (or `| bash -s rockets` to open a page). It has the rocket launch animated in ASCII, buttons and mouse support.
 
 **How do I contact him?** pedrovverissimo1@gmail.com, LinkedIn (linkedin.com/in/pvverissimo) or GitHub (github.com/peddrof).
 

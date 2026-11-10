@@ -2051,7 +2051,7 @@ $'\e[38;2;140;146;160mjob 1  \e[38;2;46;230;166m█████████▌\e
 $'\e[38;2;140;146;160mjob 1  \e[38;2;46;230;166m██████████▊\e[38;2;58;61;70m░░░░░░░░░  \e[38;2;140;146;160m54%\e[0m'
 $'\e[38;2;140;146;160mjob 1  \e[38;2;46;230;166m████████████\e[38;2;58;61;70m░░░░░░░░  \e[38;2;140;146;160m60%\e[0m'
 $'\e[38;2;140;146;160mjob 1  \e[38;2;46;230;166m█████████████▏\e[38;2;58;61;70m░░░░░░  \e[38;2;140;146;160m66%\e[0m'
-$'\e[38;2;140;146;160mjob 1  \e[38;2;46;230;166m██████████████\e[38;2;58;61;70m░░░░░░  \e[38;2;233;236;242m70% \e[38;2;255;72;72m✕ 15:00 cap\e[0m'
+$'\e[38;2;140;146;160mjob 1  \e[38;2;46;230;166m██████████████\e[38;2;58;61;70m░░░░░░  \e[38;2;233;236;242m70% \e[38;2;255;72;72m✕ 20:00 cap\e[0m'
 $'\e[38;2;140;146;160mjob 2  \e[38;2;58;61;70m░░░░░░░░░░░░░░░░░░░░   \e[38;2;140;146;160m0%\e[0m'
 $'\e[38;2;140;146;160mjob 2  \e[38;2;36;160;120m█▏\e[38;2;58;61;70m░░░░░░░░░░░░░░░░░░   \e[38;2;140;146;160m6%\e[0m'
 $'\e[38;2;140;146;160mjob 2  \e[38;2;36;160;120m██▍\e[38;2;58;61;70m░░░░░░░░░░░░░░░░░  \e[38;2;140;146;160m12%\e[0m'
@@ -2080,21 +2080,21 @@ $'\e[38;2;140;146;160mjob 3  \e[38;2;36;160;120m██████████�
 $'\e[38;2;140;146;160mjob 3  \e[38;2;36;160;120m██████████████\e[38;2;58;61;70m░░░░░░  \e[38;2;233;236;242m70% \e[38;2;255;72;72m✕ from zero\e[0m'
 $'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m▌\e[0m'
 $'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ ▌\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ jo\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ jobl\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib▌\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib.d▌\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib.dum\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib.dump(\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib.dump(mo▌\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib.dump(mode▌\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib.dump(model,\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib.dump(model, \'\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib.dump(model, \'ck▌\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib.dump(model, \'ckpt▌\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib.dump(model, \'ckpt.p\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib.dump(model, \'ckpt.pkl\e[0m'
-$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ joblib.dump(model, \'ckpt.pkl\')\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YO\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(l▌\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(las▌\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(last)\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(last).t\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(last).tra▌\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(last).train▌\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(last).train(r\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(last).train(res\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(last).train(resum▌\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(last).train(resume=▌\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(last).train(resume=Tr\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(last).train(resume=True\e[0m'
+$'\e[38;2;96;100;112mwhat if \e[38;2;255;212;59m+ YOLO(last).train(resume=True)\e[0m'
 $'\e[38;2;140;146;160mjob 4  \e[38;2;46;230;166m██████████████\e[38;2;58;61;70m░░░░░░  \e[38;2;140;146;160m70%\e[0m'
 $'\e[38;2;140;146;160mjob 4  \e[38;2;46;230;166m██████████████▍\e[38;2;58;61;70m░░░░░  \e[38;2;140;146;160m72%\e[0m'
 $'\e[38;2;140;146;160mjob 4  \e[38;2;46;230;166m██████████████▊\e[38;2;58;61;70m░░░░░  \e[38;2;140;146;160m74%\e[0m'
@@ -17115,7 +17115,7 @@ $'  60,000 people in the far south of Brazil. When something grabs my'
 $'  attention, I go all the way, until there\'s something I can point to.'
 $''
 $'  \e[2mfrom  \e[0m  São Gabriel, RS, fifth generation of rice and cattle farmers'
-$'  \e[2mroute \e[0m  São Gabriel → Porto Alegre (2024) → São Paulo (2026)'
+$'  \e[2mroute \e[0m  São Gabriel → Porto Alegre (2024) → São Paulo (2026) → ???'
 $'  \e[2mnow   \e[0m  tech co-founder of Sincra · Link School of Business'
 $'  \e[2mspeaks\e[0m  Portuguese, English (C2, self-taught by 16), Spanish'
 $''
@@ -17204,27 +17204,30 @@ $'  The rounds went from theory and ethics, to building models in Python,'
 $'  to a final where I built a computer-vision algorithm for competing'
 $'  robots, trained on Santos Dumont II, Brazil\'s national supercomputer.'
 $''
-$'  \e[2m┌─ rn.py · my submission ────────────────────────────────────────────┐\e[0m'
-$'  \e[2m│ \e[0m\e[38;2;46;230;166mfrom sklearn.neural_network import MLPClassifier\e[0m'
-$'  \e[2m│ \e[0m\e[38;2;46;230;166mfrom sklearn.preprocessing import StandardScaler\e[0m'
-$'  \e[2m│ \e[0m\e[38;2;46;230;166mimport pandas as pd\e[0m'
+$'  \e[2m┌─ train.py · + the lines I never wrote ────────────────────────────┐\e[0m'
+$'  \e[2m│ \e[0m\e[38;2;46;230;166mimport argparse\e[0m'
+$'  \e[38;2;255;212;59m│+\e[0m\e[38;2;255;212;59mimport os\e[0m'
+$'  \e[2m│ \e[0m\e[38;2;46;230;166mfrom ultralytics import YOLO\e[0m'
 $'  \e[2m│ \e[0m\e[38;2;46;230;166m\e[0m'
-$'  \e[2m│ \e[0m\e[38;2;46;230;166mtrain = pd.read_csv(\'treino.csv\')\e[0m'
-$'  \e[2m│ \e[0m\e[38;2;46;230;166mX, y = train.drop([\'id\', \'target\'], axis=1), train[\'target\']\e[0m'
-$'  \e[2m│ \e[0m\e[38;2;46;230;166mscaler = StandardScaler()\e[0m'
-$'  \e[2m│ \e[0m\e[38;2;46;230;166mmodel = MLPClassifier(hidden_layer_sizes=(200), max_iter=1000,\e[0m'
-$'  \e[2m│ \e[0m\e[38;2;46;230;166m                      random_state=42)\e[0m'
-$'  \e[2m│ \e[0m\e[38;2;46;230;166mmodel.fit(scaler.fit_transform(X), y)\e[0m'
-$'  \e[2m│ \e[0m\e[38;2;46;230;166m# what was missing, rounds later: save a checkpoint between jobs\e[0m'
+$'  \e[2m│ \e[0m\e[38;2;46;230;166mdef train(data_yaml, epochs, batch_size, img_size):\e[0m'
+$'  \e[2m│ \e[0m\e[38;2;46;230;166m    # YOLOv8n (nano) para rapidez em 20 minutos\e[0m'
+$'  \e[38;2;255;212;59m│+\e[0m\e[38;2;255;212;59m    last = \'runs/detect/exp/weights/last.pt\'\e[0m'
+$'  \e[38;2;255;212;59m│+\e[0m\e[38;2;255;212;59m    if os.path.exists(last): return YOLO(last).train(resume=True)\e[0m'
+$'  \e[2m│ \e[0m\e[38;2;46;230;166m    model = YOLO(\'yolov8n.yaml\')\e[0m'
+$'  \e[2m│ \e[0m\e[38;2;46;230;166m    model.train(data=data_yaml, epochs=epochs, batch=batch_size,\e[0m'
+$'  \e[2m│ \e[0m\e[38;2;46;230;166m                imgsz=img_size, workers=4, name=\'exp\',\e[0m'
+$'  \e[2m│ \e[0m\e[38;2;46;230;166m                save_period=1,    # checkpoint cada época\e[0m'
+$'  \e[2m│ \e[0m\e[38;2;46;230;166m                patience=10)      # early stop\e[0m'
 $'  \e[2m└────────────────────────────────────────────────────────────────────┘\e[0m'
 $''
 $'  The one that got away: the selection for the international team'
-$'  trained on jobs capped at 15 minutes. I never saved a checkpoint, so'
-$'  every job started from zero. My model stalled near 70% when it could'
-$'  have reached about 95%. One missing line of code between me and'
-$'  Beijing.'
+$'  trained on jobs capped at 20 minutes. My script saved a checkpoint'
+$'  every epoch and never loaded one, so every job started from zero. My'
+$'  model stalled near 70% when it could have reached about 95%. One'
+$'  missing line of code between me and Beijing.'
 $''
-$'  \e[2mcode \e[0m  https://github.com/peddrof/ONIA-Project'
+$'  \e[2mcode \e[0m  github.com/peddrof/ONIA-Project/blob/main/pedro.fonseca3/train.'
+$'         py'
 $'  \e[2mafter\e[0m  named ambassador for the 2026 edition'
 $''
 $'@a10 t'
@@ -17504,24 +17507,24 @@ $''
 26
 52
 89
-130
-155
-180
-203
-222
-248
-264
-291
-317
-344
-361
-384
+133
+158
+183
+206
+225
+251
+267
+294
+320
+347
+364
+387
   )
   PN=(
 26
 26
 37
-41
+44
 25
 25
 23
