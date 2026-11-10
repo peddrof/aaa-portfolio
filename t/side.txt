@@ -17,9 +17,9 @@
 
   [38;2;255;79;139m▸[0m Markets, age 12 (2020): the pandemic, a stock chart, and advice
     nobody asked for. In 2026, presenting at B3 with my Link class.
-  [38;2;255;79;139m▸[0m Popsicles, age 14: sold at school until the principal banned it
-    for "causing disorder". Moved to the sidewalk at pickup time.
-    R$2,000 in a few months.
+  [38;2;255;79;139m▸[0m Popsicles, age 14 (2022): sold at school until the principal
+    banned it for "causing disorder". Moved to the sidewalk at pickup
+    time. R$2,000 in a few months.
   [38;2;255;79;139m▸[0m Step Up (2025): an NGO teaching English to low-income students. 32
     lessons as a mentor, then operations and the tracking system.
     stepuplearning.com.br

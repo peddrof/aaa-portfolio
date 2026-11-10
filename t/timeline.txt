@@ -24,6 +24,7 @@
   [1m2023[0m  [2m│[0m [38;2;255;212;59m★ win  [0m  Paralelo 1155, solver #76. The "Alamar".
         [2m│[0m [38;2;79;127;255m+ build[0m  The crab, the cat and the AI page.
   [1m2022[0m  [2m│[0m [38;2;79;127;255m+ build[0m  Rockets.
+        [2m│[0m [38;2;46;230;166m∴ learn[0m  Popsicles, at 14.
   [1m2020[0m  [2m│[0m [38;2;46;230;166m∴ learn[0m  The stock market at 12.
   [1m2017[0m  [2m│[0m [38;2;79;127;255m+ build[0m  A murder-mystery trilogy, one film per summer.
 

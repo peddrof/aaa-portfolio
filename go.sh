@@ -17334,9 +17334,9 @@ $'@a17 8'
 $''
 $'  \e[38;2;255;79;139m▸\e[0m Markets, age 12 (2020): the pandemic, a stock chart, and advice'
 $'    nobody asked for. In 2026, presenting at B3 with my Link class.'
-$'  \e[38;2;255;79;139m▸\e[0m Popsicles, age 14: sold at school until the principal banned it'
-$'    for "causing disorder". Moved to the sidewalk at pickup time.'
-$'    R$2,000 in a few months.'
+$'  \e[38;2;255;79;139m▸\e[0m Popsicles, age 14 (2022): sold at school until the principal'
+$'    banned it for "causing disorder". Moved to the sidewalk at pickup'
+$'    time. R$2,000 in a few months.'
 $'  \e[38;2;255;79;139m▸\e[0m Step Up (2025): an NGO teaching English to low-income students. 32'
 $'    lessons as a mentor, then operations and the tracking system.'
 $'    stepuplearning.com.br'
@@ -17410,6 +17410,7 @@ $'        \e[2m│\e[0m          floods.'
 $'  \e[1m2023\e[0m  \e[2m│\e[0m \e[38;2;255;212;59m★ win  \e[0m  Paralelo 1155, solver #76. The "Alamar".'
 $'        \e[2m│\e[0m \e[38;2;79;127;255m+ build\e[0m  The crab, the cat and the AI page.'
 $'  \e[1m2022\e[0m  \e[2m│\e[0m \e[38;2;79;127;255m+ build\e[0m  Rockets.'
+$'        \e[2m│\e[0m \e[38;2;46;230;166m∴ learn\e[0m  Popsicles, at 14.'
 $'  \e[1m2020\e[0m  \e[2m│\e[0m \e[38;2;46;230;166m∴ learn\e[0m  The stock market at 12.'
 $'  \e[1m2017\e[0m  \e[2m│\e[0m \e[38;2;79;127;255m+ build\e[0m  A murder-mystery trilogy, one film per summer.'
 $''
@@ -17511,10 +17512,10 @@ $''
 248
 264
 291
-316
-343
-360
-383
+317
+344
+361
+384
   )
   PN=(
 26
@@ -17528,7 +17529,7 @@ $''
 26
 16
 27
-25
+26
 27
 17
 23

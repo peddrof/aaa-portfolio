@@ -131,7 +131,7 @@ page('flying', 'Flying', BLUE, 'From a cardboard cockpit to the real one.', lamb
 
 page('side', 'Side quests', PINK, 'Smaller things, each one finished.', lambda: '\n\n'.join([
     bullets(['Markets, age 12 (2020): the pandemic, a stock chart, and advice nobody asked for. In 2026, presenting at B3 with my Link class.',
-             'Popsicles, age 14: sold at school until the principal banned it for "causing disorder". Moved to the sidewalk at pickup time. R$2,000 in a few months.',
+             'Popsicles, age 14 (2022): sold at school until the principal banned it for "causing disorder". Moved to the sidewalk at pickup time. R$2,000 in a few months.',
              'Step Up (2025): an NGO teaching English to low-income students. 32 lessons as a mentor, then operations and the tracking system. stepuplearning.com.br',
              'Advogado Rural: a publishing platform for a rural lawyer, so he reaches farmers directly. advogadorural.com',
              'Farroupilha AI: an essay-grading assistant for my school, OCR plus a language model.'], PINK),
@@ -162,6 +162,7 @@ def timeline():
             ('2023', 'win', 'Paralelo 1155, solver #76. The "Alamar".'),
             ('2023', 'build', 'The crab, the cat and the AI page.'),
             ('2022', 'build', 'Rockets.'),
+            ('2022', 'learn', 'Popsicles, at 14.'),
             ('2020', 'learn', 'The stock market at 12.'),
             ('2017', 'build', 'A murder-mystery trilogy, one film per summer.')]
     col = {'build': BLUE, 'win': YELLOW, 'move': ORANGE, 'learn': GREEN}
