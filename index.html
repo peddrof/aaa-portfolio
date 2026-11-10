@@ -89,10 +89,10 @@ a:hover>.ext::after,.ext:hover::after{transform:translate(1px,-1px)}
 .sh .lede{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--fg-2);max-width:56ch;line-height:1.55}
 .note{font-family:var(--hand);font-size:1.45rem;line-height:1.05;color:var(--blue);transform:rotate(-4deg);display:inline-block;pointer-events:none}
 .note svg{display:block;width:58px;height:34px;margin-top:2px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.note.note-up{display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px;transform:rotate(-3deg)}
-.note.note-up svg{order:-1;margin:0 0 0 2px;width:72px;height:44px}
-.note.note-up svg path{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.flag{display:inline-block;height:0.92em;width:auto;vertical-align:-0.12em;margin:0 .18em;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.14);object-fit:cover}
+.note.note-up{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;transform:rotate(-2deg)}
+.note.note-up svg{order:-1;margin:0 0 0 6px;width:40px;height:52px}
+.note.note-up svg path{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.flag{display:inline-block;height:0.62em;width:auto;vertical-align:0.02em;margin:0 .14em;border-radius:1.5px;box-shadow:0 0 0 1px rgba(0,0,0,.14);object-fit:cover}
 .about h2 em.s{font-family:var(--serif);font-style:italic;font-weight:700;letter-spacing:-.02em;color:var(--blue)}
 
 /* ---------- header ---------- */
@@ -818,17 +818,13 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .st-grid h2 em{font-family:var(--serif);font-style:italic;font-weight:400}
 .st-grid>div>p{color:var(--fg-2);margin-top:14px;max-width:34ch}
 .qa{display:grid;gap:8px}
-.qa details{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:clip}
+.qa details{border:1px solid var(--line);border-radius:14px;background:var(--card)}
 .qa summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;font-weight:500}
 .qa summary::-webkit-details-marker{display:none}
 .qa summary::after{content:"+";font-family:var(--mono);font-size:1.1rem;color:var(--fg-3);transition:transform .25s}
 .qa details[open] summary::after{transform:rotate(45deg)}
 .qa .ans{padding:0 16px 16px;color:var(--fg-2);display:grid;gap:10px}
 .qa .ans>div{display:grid;gap:10px}
-@supports (interpolate-size:allow-keywords){
-  .qa details::details-content{block-size:0;overflow:hidden;transition:block-size .32s cubic-bezier(.2,.8,.2,1),content-visibility .32s allow-discrete;interpolate-size:allow-keywords}
-  .qa details[open]::details-content{block-size:auto}
-}
 .qa code{font-family:var(--mono);font-size:.82rem;background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--fg)}
 
 .sr,.agents{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
@@ -1390,7 +1386,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
       <figure class="flt wide" data-lb data-full="media/rocket-flag-l.webp" data-cap="Airframe, Dec 13 2023. The biggest one, flag on the nose."><img src="media/rocket-flag-s.webp" srcset="media/rocket-flag-s.webp 760w, media/rocket-flag-l.webp 1600w" sizes="(min-width: 1100px) 16vw, 45vw" width="760" height="428" loading="lazy" decoding="async" alt="Airframe, Dec 13 2023. The biggest one, flag on the nose."><div class="hd"><span>Nº 18</span><span>Dec 13 2023</span></div><div class="ft"><b><span class="res lab">Airframe</span></b><span>The biggest one, flag on the nose.</span></div></figure>
       <figure class="flt " data-lb data-video="media/v-rod-1223.mp4" data-cap="Liftoff, Dec 20 2023. Tall rod, open field."><video muted loop playsinline preload="none" data-src="media/v-rod-1223.mp4" data-poster="media/v-rod-1223-p.webp" width="540" height="960" aria-label="Liftoff, Dec 20 2023. Tall rod, open field."></video><div class="hd"><span>Nº 19</span><span>Dec 20 2023</span></div><div class="ft"><b><span class="res ok">Liftoff</span></b><span>Tall rod, open field.</span></div></figure>
       <figure class="flt " data-lb data-video="media/v-launch-field-1223.mp4" data-cap="Downrange, Dec 20 2023. Light it, step back, watch it go."><video muted loop playsinline preload="none" data-src="media/v-launch-field-1223.mp4" data-poster="media/v-launch-field-1223-p.webp" width="540" height="960" aria-label="Downrange, Dec 20 2023. Light it, step back, watch it go."></video><div class="hd"><span>Nº 20</span><span>Dec 20 2023</span></div><div class="ft"><b><span class="res ok">Downrange</span></b><span>Light it, step back, watch it go.</span></div></figure>
-      <div class="flt-doc"><a class="yt" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener" aria-label="Foguete 7/2023: the documentary about my rocket, on YouTube"><span class="yt-th" style="--a:#FF5A1F"><img src="media/yt-foguete.webp" alt="" loading="lazy" decoding="async"><svg class="yt-arr" viewBox="0 0 80 60" aria-hidden="true" style="left:50%;top:9%;width:20%"><path d="M74 52C58 50 30 40 12 10"/><path d="M8 24 11 9l14 4"/></svg><span class="yt-tt br"><b>Foguete</b><b class="hl">7/2023</b></span><span class="yt-wm"><svg viewBox="0 0 68 48" aria-hidden="true"><use href="#g-ytp"/></svg>YouTube</span><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><use href="#g-ytp"/></svg></span></span><span class="yt-meta"><span class="yt-av"><svg viewBox="340 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><span class="yt-tx"><b>Foguete 7/2023: the documentary about my rocket</b><small>Filmes Pedro · Documentary</small></span><span class="ext" aria-hidden="true"></span></span></a><span class="note note-up"><svg viewBox="0 0 72 44" aria-hidden="true"><path d="M14 40C20 30 28 18 42 10C50 5 58 3 66 6"/><path d="M54 2C60 3 65 6 66 6C63 12 59 16 54 18"/></svg>every clip I kept</span></div>
+      <div class="flt-doc"><a class="yt" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener" aria-label="Foguete 7/2023: the documentary about my rocket, on YouTube"><span class="yt-th" style="--a:#FF5A1F"><img src="media/yt-foguete.webp" alt="" loading="lazy" decoding="async"><svg class="yt-arr" viewBox="0 0 80 60" aria-hidden="true" style="left:50%;top:9%;width:20%"><path d="M74 52C58 50 30 40 12 10"/><path d="M8 24 11 9l14 4"/></svg><span class="yt-tt br"><b>Foguete</b><b class="hl">7/2023</b></span><span class="yt-wm"><svg viewBox="0 0 68 48" aria-hidden="true"><use href="#g-ytp"/></svg>YouTube</span><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><use href="#g-ytp"/></svg></span></span><span class="yt-meta"><span class="yt-av"><svg viewBox="340 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><span class="yt-tx"><b>Foguete 7/2023: the documentary about my rocket</b><small>Filmes Pedro · Documentary</small></span><span class="ext" aria-hidden="true"></span></span></a><span class="note note-up"><svg viewBox="0 0 48 58" aria-hidden="true"><path d="M30 54C26 42 18 30 16 16C15 10 18 5 24 3"/><path d="M14 12C18 7 22 4 24 3C20 9 17 14 14 18"/></svg>every clip I kept</span></div>
     </div>
   </div></div>
 </section>
@@ -1448,7 +1444,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
         patience=<span class="n">10</span>
     )</pre>
         </div>
-        <span class="note note-up" style="margin-top:12px"><svg viewBox="0 0 72 44" aria-hidden="true"><path d="M10 38C16 26 26 14 40 9C50 5 58 6 66 10"/><path d="M54 3C60 5 65 9 66 10C62 15 57 18 51 20"/></svg>the script that ran. It saved a checkpoint every epoch and never loaded one. Highlighted: what I didn't write</span>
+        <span class="note note-up" style="margin-top:12px"><svg viewBox="0 0 48 58" aria-hidden="true"><path d="M28 54C22 40 14 28 15 14C16 8 20 4 26 3"/><path d="M16 11C20 7 24 4 26 3C22 9 19 14 16 18"/></svg>the script that ran. It saved a checkpoint every epoch and never loaded one. Highlighted: what I didn't write</span>
       </div>
     </div>
     <div class="ai-media">
@@ -1818,12 +1814,12 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
         <p>The short answers are here. For the long ones, ask your AI at the bottom: it reads my notes first.</p>
       </div>
       <div class="qa">
-        <details open><summary>Where are you from?</summary><div class="ans"><div><p>São Gabriel, a town of 60,000 in the far south of Brazil, where my family has farmed rice and cattle for five generations. I moved to Porto Alegre on my own in 2024, in the middle of a school year, and I'm in São Paulo now.</p></div></div>
-        <details><summary>How did you learn all of this?</summary><div class="ans"><div><p>Mostly YouTube: English (C2 by 16), AI, audience growth, and rockets, where BPS.space did most of the teaching.</p></div></div>
-        <details><summary>What is Sincra, in one breath?</summary><div class="ans"><div><p>A fintech for medical receivables. It reads what a hospital already has, predicts how much each doctor will receive and when, and lets doctors and hospitals advance that money through partner funds, with the cost shown first. I'm the tech co-founder, one of three.</p></div></div>
-        <details><summary>Which miss do you think about most?</summary><div class="ans"><div><p>The AI Olympiad selection. Training ran in 20-minute jobs and I never resumed from a checkpoint, so every job started from zero. My model stalled around 70% when it could have reached about 95%. One missing line between me and Beijing.</p></div></div>
-        <details><summary>Why sell the Instagram pages?</summary><div class="ans"><div><p>I had the audience but no idea how to build a sales funnel, so it wasn't turning into anything. Selling all three taught me to sell before building.</p></div></div>
-        <details><summary>Can I read this in a terminal?</summary><div class="ans"><div><p>Yes. An interactive version, with the launch, buttons and the mouse: <code>curl -sL pedroverissimo.vercel.app/go | bash</code>. Or open a page directly with <code>curl -sL pedroverissimo.vercel.app/go | bash -s rockets</code>.</p></div></div>
+        <details open><summary>Where are you from?</summary><div class="ans"><div><p>São Gabriel, a town of 60,000 in the far south of Brazil, where my family has farmed rice and cattle for five generations. I moved to Porto Alegre on my own in 2024, in the middle of a school year, and I'm in São Paulo now.</p></div></div></details>
+        <details><summary>How did you learn all of this?</summary><div class="ans"><div><p>Mostly YouTube: English (C2 by 16), AI, audience growth, and rockets, where BPS.space did most of the teaching.</p></div></div></details>
+        <details><summary>What is Sincra, in one breath?</summary><div class="ans"><div><p>A fintech for medical receivables. It reads what a hospital already has, predicts how much each doctor will receive and when, and lets doctors and hospitals advance that money through partner funds, with the cost shown first. I'm the tech co-founder, one of three.</p></div></div></details>
+        <details><summary>Which miss do you think about most?</summary><div class="ans"><div><p>The AI Olympiad selection. Training ran in 20-minute jobs and I never resumed from a checkpoint, so every job started from zero. My model stalled around 70% when it could have reached about 95%. One missing line between me and Beijing.</p></div></div></details>
+        <details><summary>Why sell the Instagram pages?</summary><div class="ans"><div><p>I had the audience but no idea how to build a sales funnel, so it wasn't turning into anything. Selling all three taught me to sell before building.</p></div></div></details>
+        <details><summary>Can I read this in a terminal?</summary><div class="ans"><div><p>Yes. An interactive version, with the launch, buttons and the mouse: <code>curl -sL pedroverissimo.vercel.app/go | bash</code>. Or open a page directly with <code>curl -sL pedroverissimo.vercel.app/go | bash -s rockets</code>.</p></div></div></details>
         <div class="chat" id="ask">
           <div class="chat-h"><span class="av"><svg viewBox="0 0 2060 2060" aria-hidden="true"><use href="#av"/></svg></span><div><b>Ask anything about me</b><small>Answered by your AI, from my llms.txt</small></div><span class="live">online</span></div>
           <div class="chat-log" data-chat-log aria-live="polite">
