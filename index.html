@@ -186,8 +186,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:859px){.deck{width:min(72vw,300px)}}
 .hero .sub{margin-top:18px;font-size:clamp(1.25rem,2.1vw,1.6rem);line-height:1.3;letter-spacing:-.02em;max-width:28ch}
 .hero .sub em{color:var(--blue)}
-.hero .lede{margin-top:14px;color:var(--fg-2);max-width:54ch;font-size:1.02rem}
+.hero .lede{margin-top:14px;color:var(--fg-2);max-width:58ch;font-size:1.02rem;line-height:1.85}
 .hero .lede strong{color:var(--fg);font-weight:500}
+.kw{--kw:var(--blue);display:inline-flex;align-items:center;gap:.28em;margin:0 .05em;padding:.02em .4em .06em .22em;border-radius:6px;font-weight:550;font-size:1em;line-height:1.25;letter-spacing:-.016em;white-space:nowrap;vertical-align:middle;text-decoration:none;color:color-mix(in srgb,var(--kw) 64%,var(--fg));background:color-mix(in srgb,var(--kw) 18%,var(--card));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--kw) 32%,transparent);transition:background .15s,box-shadow .15s}
+.kw.plain{padding-inline:.42em .46em}
+.kw svg{width:.95em;height:.95em;flex:none;display:block}
+.hero .lede a.kw,.hero .lede a.kw:hover{text-decoration:none}
+.kw:hover{background:color-mix(in srgb,var(--kw) 26%,var(--card));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--kw) 50%,transparent)}
+.kw-rk{--kw:var(--ember)}
+.kw-md{--kw:#D4920A}
+.kw-ai{--kw:var(--mint)}
+.kw-vol{--kw:var(--sun)}
+.kw-ig{--kw:var(--pink)}
+.kw-n{--kw:var(--violet);font-variant-numeric:tabular-nums}
+.kw-sx{--kw:#147DFF}
 .hero-r{display:grid;gap:14px;justify-items:start;margin-top:22px}
 .hero-status{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
 .ctas{display:flex;flex-wrap:wrap;gap:8px}
@@ -492,10 +504,10 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .ai .fig .tag{background:var(--mint);color:#04120F}
 .ai .sh h2 em{color:var(--mint)}
 .ai .note{color:var(--mint)}
-.ai-grid{display:grid;gap:clamp(28px,4vw,48px)}
-@media (min-width:980px){.ai-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
+.ai-grid{display:grid;gap:clamp(24px,3.5vw,40px);align-items:start}
+@media (min-width:980px){.ai-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}}
 .ai p{color:var(--fg-2)}
-.ai p+p{margin-top:12px}
+.ai p+p{margin-top:10px}
 .chart{border:1px solid var(--line-2);border-radius:16px;background:#061713;padding:16px 16px 12px;position:relative}
 .chart-h{display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--fg-3);text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px}
 .chart svg{width:100%;height:auto;overflow:visible}
@@ -510,40 +522,67 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .chart.in .draw.late{transition-delay:.9s}
 .legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:.72rem;color:var(--fg-2);margin-top:6px}
 .legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
-.code{margin:0;border:0;border-radius:0;background:#020B09;font-family:var(--mono);font-size:.78rem;line-height:1.7;padding:12px 14px;overflow-x:auto;color:#8FB3A7;position:relative}
-.code .hl{display:block;margin:0 -14px;padding:0 14px;background:color-mix(in srgb,var(--mint) 12%,transparent);color:#E8FFF6;border-left:2px solid var(--mint)}
+.code{margin:0;border:0;border-radius:0;background:#020B09;font-family:var(--mono);font-size:.78rem;line-height:1.65;padding:0;overflow-x:auto;color:#8FB3A7;position:relative;tab-size:4;white-space:normal}
 .code .c{color:#4C6E64}
 .code .k{color:#FF8E7A}
 .code .s{color:#E8D27A}.code .n{color:#7AD7FF}.code .f{color:#E8FFF6}
-.codewin{margin-top:14px;border:1px solid var(--line-2);border-radius:12px;overflow:hidden;background:#020B09}
-.cw-top{display:flex;align-items:center;gap:12px;padding:0 12px;height:40px;border-bottom:1px solid #12251F;background:#03100C}
-.cw-top .dots{display:flex;gap:6px}.cw-top .dots i{width:9px;height:9px;border-radius:50%;background:#1E3A31}
-.cw-tabs{display:flex;gap:2px;height:100%}
-.cw-tabs button{font-family:var(--mono);font-size:.72rem;color:#6E9488;padding:0 10px;border-bottom:2px solid transparent}
-.cw-tabs button[aria-selected="true"]{color:#E8FFF6;border-bottom-color:var(--mint)}
-.cw-file{font-family:var(--mono);font-size:.72rem;color:#E8FFF6}
-.cw-gh{margin-left:auto;font-family:var(--mono);font-size:.7rem;color:#8FB3A7}
+.codewin{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:#020B09;box-shadow:0 18px 40px -28px rgba(0,0,0,.55)}
+.ai-code{margin-top:clamp(18px,2.5vw,28px)}
+@media (min-width:980px){.ai-grid > .chart{align-self:center}}
+.cw-top{display:flex;align-items:center;gap:10px;padding:0 12px;height:40px;border-bottom:1px solid #12251F;background:linear-gradient(180deg,#071A15,#03100C)}
+.cw-top .dots{display:flex;gap:6px;flex:none}.cw-top .dots i{width:9px;height:9px;border-radius:50%}
+.cw-top .dots i:nth-child(1){background:#FF5F57}.cw-top .dots i:nth-child(2){background:#FEBC2E}.cw-top .dots i:nth-child(3){background:#28C840}
+.cw-file{font-family:var(--mono);font-size:.72rem;color:#E8FFF6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cw-pill{flex:none;font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase;color:#04120F;background:var(--mint);padding:3px 7px;border-radius:999px}
+.cw-gh{margin-left:auto;flex:none;font-family:var(--mono);font-size:.7rem;color:#8FB3A7}
 .cw-gh:hover{color:var(--mint)}
-.ai-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:12px;overflow:hidden;margin:22px 0}
-.ai-stats div{background:#061713;padding:14px}
-.ai-stats b{display:block;font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:600;letter-spacing:-.03em;color:#fff;line-height:1.1;font-variant-numeric:tabular-nums}
+.cw-split{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(12rem,.65fr)}
+.cw-body{display:grid;grid-template-columns:auto 1fr;align-items:stretch;min-width:0}
+.cw-gutter{grid-row:1;grid-column:1;padding:12px 0 12px 10px;font-family:var(--mono);font-size:.7rem;line-height:1.65;color:#3E5F55;text-align:right;user-select:none;background:#03110D;border-right:1px solid #0E221C}
+.cw-gutter span{display:block;padding:0 8px 0 4px}
+.cw-gutter .miss{color:var(--mint)}
+.codewin .code{grid-row:1;grid-column:2;padding:12px 14px 12px 12px}
+.code .ln{display:block;white-space:pre}
+.code .ln.dim{opacity:.55}
+.code .ln.hl{margin:0 -14px 0 -12px;padding:0 14px 0 12px;background:color-mix(in srgb,var(--mint) 14%,transparent);color:#E8FFF6;box-shadow:inset 2px 0 0 var(--mint)}
+.code .ell{color:#4C6E64;user-select:none}
+.cw-aside{padding:16px 18px;border-left:1px solid #12251F;background:linear-gradient(180deg,#071F18,#04140F);display:flex;flex-direction:column;justify-content:center;gap:8px}
+.cw-aside b{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mint);font-weight:600}
+.cw-aside p{margin:0;font-size:.92rem;line-height:1.35;color:#C7E6DA;letter-spacing:-.01em}
+.cw-aside p em{font-style:italic;color:#fff}
+.cw-foot{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;padding:10px 14px;border-top:1px solid #12251F;background:#03100C;font-family:var(--mono);font-size:.68rem;line-height:1.35;color:#6E9488}
+.cw-foot b{color:#C7E6DA;font-weight:500}
+.cw-foot .mark{color:var(--mint)}
+@media (max-width:699px){
+  .cw-split{grid-template-columns:1fr}
+  .cw-aside{border-left:0;border-top:1px solid #12251F;padding:12px 14px}
+  .cw-pill{display:none}
+}
+.ai-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:12px;overflow:hidden;margin:18px 0}
+.ai-stats div{background:#061713;padding:12px 14px}
+.ai-stats b{display:block;font-size:clamp(1.25rem,2.4vw,1.75rem);font-weight:600;letter-spacing:-.03em;color:#fff;line-height:1.1;font-variant-numeric:tabular-nums}
 .ai-stats span{font-size:.74rem;color:var(--fg-2)}
-.ai-media{display:grid;grid-template-columns:minmax(118px,.42fr) 1.55fr .7fr .42fr;gap:10px;margin-top:clamp(28px,4vw,44px);align-items:start}
+.ai-media{display:grid;grid-template-columns:minmax(0,.56fr) minmax(0,.8fr) minmax(0,.75fr) minmax(0,.56fr);gap:12px;margin-top:clamp(28px,4vw,44px);align-items:start}
+.ai-media > *{min-width:0}
 .ai-media .a{grid-column:2;grid-row:1}
 .ai-media .b{grid-column:3;grid-row:1}
 .ai-media .d{grid-column:4;grid-row:1}
-.ai-media .ig{grid-column:1;grid-row:1;width:100%;max-width:180px;align-self:start;margin-top:-12px;justify-self:start}
+.ai-media .ig{grid-column:1;grid-row:1;width:100%;max-width:none;margin-top:0;justify-self:stretch}
+.ai-media .a .m{aspect-ratio:4/5}
+.ai-media .b .m{aspect-ratio:3/4}
+.ai-media .d .m{aspect-ratio:9/16}
 .ai-media .ig .ig-fr{width:100%;height:auto;aspect-ratio:9/16}
+.ai-media figcaption{margin-top:6px;font-size:.72rem}
 @media (max-width:899px){
-  .ai-media{grid-template-columns:minmax(100px,.4fr) 1.2fr .65fr}
+  .ai-media{grid-template-columns:minmax(0,.56fr) minmax(0,.85fr) minmax(0,.75fr)}
   .ai-media .d{display:none}
-  .ai-media .a{grid-column:2}.ai-media .b{grid-column:3}.ai-media .ig{grid-column:1;margin-top:0}
+  .ai-media .a{grid-column:2}.ai-media .b{grid-column:3}.ai-media .ig{grid-column:1}
 }
 @media (max-width:699px){
-  .ai-media{grid-template-columns:1fr 1fr}
-  .ai-media .a{grid-column:1/-1;grid-row:auto}
-  .ai-media .b{grid-column:1;grid-row:auto}
-  .ai-media .ig{grid-column:2;grid-row:auto;max-width:none;margin-top:0}
+  .ai-media{grid-template-columns:1fr 1fr;gap:10px}
+  .ai-media .a{grid-column:1;grid-row:1}
+  .ai-media .ig{grid-column:2;grid-row:1;max-width:none;justify-self:stretch;align-self:start}
+  .ai-media .b{grid-column:1/-1;grid-row:2;max-width:280px}
   .ai-media .d{display:none}
 }
 .ai .links a{border-color:var(--line-2);color:var(--fg)}
@@ -1221,7 +1260,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
         <h1 class="name"><span class="w">Pedro</span><span class="w">Veríssimo</span></h1>
 
         <p class="sub">Builder from São Gabriel, Brazil. <em>Tech co-founder of Sincra.</em></p>
-        <p class="lede">When something grabs my attention, I go all the way, until there's something I can point to. So far: rockets built from fireworks up, a gold medal in Brazil's first AI Olympiad, a volunteering platform that made the evening news, three Instagram pages with over 300,000 followers between them (all sold), and now <strong>Sincra</strong>, a fintech that gets doctors paid sooner.</p>
+        <p class="lede">When something grabs my attention, I go all the way, until there's something I can point to. So far: <a class="kw kw-rk" href="#rockets"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.15c.2 0 2.85 1.2 3.6 4.45.38 1.5.12 2.95-.62 4.05l-1.1-.38c.42-.82.48-1.8.12-2.72C9.22 4.35 8 3.25 8 3.25S6.78 4.35 6 6.55c-.36.92-.3 1.9.12 2.72l-1.1.38c-.74-1.1-1-2.55-.62-4.05C5.15 2.35 7.8 1.15 8 1.15z"/><circle cx="8" cy="5.45" r="1.05" fill="var(--bg)"/><path fill="currentColor" d="M5.35 9.05 3.65 12.1c.62.28 1.28.22 1.82-.18L5.35 9.05zm5.3 0 .12 2.87c.54.4 1.2.46 1.82.18L10.65 9.05z"/><path fill="currentColor" d="M6.85 9.25h2.3l-.45 2.55c-.12.55-.32 1.05-.55 1.4-.23-.35-.43-.85-.55-1.4l-.45-2.55z"/></svg>rockets</a> built from fireworks up, a <a class="kw kw-md" href="#onia"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M4.55 1.15h1.35L8 5.55 6.55 6.2 4.15 1.15h.4zm6.9 0h.4L9.45 6.2 8 5.55l2.1-4.4h1.35z"/><circle cx="8" cy="10.55" r="3.7"/><circle cx="8" cy="10.55" r="1.65" fill="var(--bg)"/></svg>gold medal</a> in Brazil's first <a class="kw kw-ai plain" href="#onia">AI Olympiad</a>, a <a class="kw kw-vol" href="#voluntaria"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 13.55S3.35 10.7 2.35 7.15C1.6 4.7 2.95 2.85 5.05 2.85c1.25 0 2.2.72 2.95 1.85.75-1.13 1.7-1.85 2.95-1.85 2.1 0 3.45 1.85 2.7 4.3-1 3.55-5.65 6.4-5.65 6.4z"/></svg>volunteering platform</a> that made the evening news, three <a class="kw kw-ig" href="#audience"><svg viewBox="0 0 16 16" aria-hidden="true"><defs><radialGradient id="kw-ig" cx="30%" cy="110%" r="115%"><stop offset="0" stop-color="#FEDA75"/><stop offset=".28" stop-color="#FA7E1E"/><stop offset=".55" stop-color="#D62976"/><stop offset=".82" stop-color="#962FBF"/><stop offset="1" stop-color="#4F5BD5"/></radialGradient></defs><rect x="1.4" y="1.4" width="13.2" height="13.2" rx="3.7" fill="url(#kw-ig)"/><circle cx="8" cy="8" r="2.75" fill="none" stroke="#fff" stroke-width="1.35"/><circle cx="11.45" cy="4.55" r=".75" fill="#fff"/></svg>Instagram</a> pages with over <a class="kw kw-n plain" href="#audience">300,000</a> followers between them (all sold), and now <a class="kw kw-sx" href="#sincra"><svg viewBox="0 0 1080 1080" aria-hidden="true"><defs><linearGradient id="kw-sx-g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#003DFF"/><stop offset="1" stop-color="#147DFF"/></linearGradient></defs><rect width="1080" height="1080" rx="240" fill="url(#kw-sx-g)"/><path fill="#fff" fill-rule="evenodd" d="M418.7 296.2Q376.5 324.9 352.8 370.2Q352.6 370.5 352.5 370.7Q352.4 371 352.2 371.3Q352.1 371.6 352 371.9Q351.8 372.2 351.7 372.5C343.6 376 336.7 381.6 331.4 388.8C325.2 397.4 321.9 407.6 321.9 418.2C321.9 428.8 325.2 439 331.4 447.6C337.7 456.1 346.4 462.5 356.4 465.8C366.5 469 377.3 469 387.4 465.8C397.4 462.5 406.1 456.1 412.4 447.6C418.6 439 421.9 428.8 421.9 418.2C421.9 413.3 421.2 408.5 419.8 403.9Q434.8 376 461 358.2Q487.7 340 519.9 336.5Q552 333 582.1 345Q612.1 357 632.9 381.8Q637.7 387.5 644.3 390.9Q651 394.3 658.4 395Q665.8 395.6 672.9 393.3Q680.1 391.1 685.8 386.3Q688.6 383.9 690.9 381Q693.2 378.1 694.9 374.9Q696.6 371.6 697.6 368Q698.6 364.5 699 360.8Q699.3 357.1 698.9 353.4Q698.5 349.8 697.3 346.3Q696.2 342.7 694.4 339.5Q692.7 336.3 690.3 333.4Q657.4 294.4 610 275.4Q562.5 256.4 511.7 261.9Q461 267.4 418.7 296.2ZM663.2 682.1C661.8 677.5 661.1 672.7 661.1 667.8C661.1 657.2 664.4 647 670.6 638.4C676.9 629.9 685.6 623.5 695.6 620.2C705.7 617 716.5 617 726.6 620.2C736.6 623.5 745.3 629.9 751.6 638.4C757.8 647 761.1 657.2 761.1 667.8C761.1 678.4 757.8 688.6 751.6 697.2C746.3 704.4 739.4 710 731.3 713.5Q731.2 713.8 731 714.1Q730.9 714.4 730.8 714.7Q730.6 715 730.5 715.3Q730.4 715.5 730.2 715.8Q706.5 761.1 664.3 789.8Q622 818.6 571.3 824.1Q520.5 829.6 473 810.6Q425.6 791.6 392.7 752.6Q387.9 746.9 385.7 739.7Q383.4 732.6 384 725.2Q384.7 717.8 388.1 711.1Q391.5 704.5 397.2 699.7Q402.9 694.9 410.1 692.7Q417.2 690.4 424.6 691Q432 691.7 438.7 695.1Q445.3 698.5 450.1 704.2Q470.9 729 500.9 741Q531 753 563.1 749.5Q595.3 746 622 727.8Q648.2 710 663.2 682.1Z"/></svg>Sincra</a>, a fintech that gets doctors paid sooner.</p>
         <div class="hero-r">
           <div class="hero-status">
             <span class="status"><i></i>Building Sincra · São Paulo · <span class="num" data-clock>--:--</span></span>
@@ -1412,49 +1451,49 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
           <div><b>1</b><span>of them mine</span></div>
         </div>
         <p><b style="color:#fff;font-weight:500">The one that got away.</b> The selection for the international team ran training on jobs capped at 20 minutes. My script saved a checkpoint every epoch but never loaded one, so every job started from zero, and my model stalled around 70% accuracy when it could have reached about 95%. One missing line of code between me and Beijing. I still think about it.</p>
-        <div class="links" style="margin-top:18px">
+        <div class="links" style="margin-top:16px">
           <a href="https://www.oniabrasil.com.br/assets/files/Lista_de_Premiao_1a_ONIA_2025_07_10.pdf" target="_blank" rel="noopener"><span class="ext">Official medal list</span></a>
           <a href="https://www.oniabrasil.com.br/page1.html" target="_blank" rel="noopener"><span class="ext">1st ONIA results</span></a>
         </div>
       </div>
-      <div>
-        <div class="chart" data-chart>
-          <div class="chart-h"><span>Accuracy across 20-minute jobs</span><span>Schematic</span></div>
-          <svg viewBox="0 0 530 246" role="img" aria-label="Schematic: restarting each 20-minute job keeps accuracy near 70%; resuming from the checkpoint lets it climb to about 95%."><g class="grid"><line x1="46" x2="470" y1="214.0" y2="214.0"/><line x1="46" x2="470" y1="166.5" y2="166.5"/><line x1="46" x2="470" y1="119.0" y2="119.0"/><line x1="46" x2="470" y1="71.5" y2="71.5"/><line x1="46" x2="470" y1="24.0" y2="24.0"/></g><g class="jobs"><line x1="99.0" x2="99.0" y1="24.0" y2="214.0"/><line x1="152.0" x2="152.0" y1="24.0" y2="214.0"/><line x1="205.0" x2="205.0" y1="24.0" y2="214.0"/><line x1="258.0" x2="258.0" y1="24.0" y2="214.0"/><line x1="311.0" x2="311.0" y1="24.0" y2="214.0"/><line x1="364.0" x2="364.0" y1="24.0" y2="214.0"/><line x1="417.0" x2="417.0" y1="24.0" y2="214.0"/></g><g class="axis"><text x="38" y="217.0" text-anchor="end">0%</text><text x="38" y="169.5" text-anchor="end">25%</text><text x="38" y="122.0" text-anchor="end">50%</text><text x="38" y="74.5" text-anchor="end">75%</text><text x="38" y="27.0" text-anchor="end">100%</text><text x="72.5" y="234" text-anchor="middle">job 1</text><text x="125.5" y="234" text-anchor="middle">job 2</text><text x="178.5" y="234" text-anchor="middle">job 3</text><text x="231.5" y="234" text-anchor="middle">job 4</text><text x="284.5" y="234" text-anchor="middle">job 5</text><text x="337.5" y="234" text-anchor="middle">job 6</text><text x="390.5" y="234" text-anchor="middle">job 7</text><text x="443.5" y="234" text-anchor="middle">job 8</text></g><path class="c-saw draw" d="M46 198.8C57.7 115.2 77.8 84.8 99.0 81.0L99.0 198.8C110.7 115.2 130.8 84.8 152.0 81.0L152.0 198.8C163.7 115.2 183.8 84.8 205.0 81.0L205.0 198.8C216.7 115.2 236.8 84.8 258.0 81.0L258.0 198.8C269.7 115.2 289.8 84.8 311.0 81.0L311.0 198.8C322.7 115.2 342.8 84.8 364.0 81.0L364.0 198.8C375.7 115.2 395.8 84.8 417.0 81.0L417.0 198.8C428.7 115.2 448.8 84.8 470.0 81.0"/><path class="c-ck draw late" d="M46.0 198.8L51.3 191.1L56.6 183.8L61.9 176.8L67.2 170.1L72.5 163.8L77.8 157.7L83.1 151.9L88.4 146.4L93.7 141.2L99.0 136.2L104.3 131.4L109.6 126.8L114.9 122.5L120.2 118.4L125.5 114.4L130.8 110.7L136.1 107.1L141.4 103.6L146.7 100.4L152.0 97.3L157.3 94.3L162.6 91.5L167.9 88.8L173.2 86.2L178.5 83.8L183.8 81.4L189.1 79.2L194.4 77.1L199.7 75.0L205.0 73.1L210.3 71.3L215.6 69.5L220.9 67.8L226.2 66.2L231.5 64.7L236.8 63.3L242.1 61.9L247.4 60.6L252.7 59.3L258.0 58.1L263.3 57.0L268.6 55.9L273.9 54.8L279.2 53.8L284.5 52.9L289.8 52.0L295.1 51.1L300.4 50.3L305.7 49.5L311.0 48.8L316.3 48.1L321.6 47.4L326.9 46.7L332.2 46.1L337.5 45.5L342.8 45.0L348.1 44.5L353.4 43.9L358.7 43.5L364.0 43.0L369.3 42.6L374.6 42.1L379.9 41.7L385.2 41.3L390.5 41.0L395.8 40.6L401.1 40.3L406.4 40.0L411.7 39.7L417.0 39.4L422.3 39.1L427.6 38.9L432.9 38.6L438.2 38.4L443.5 38.1L448.8 37.9L454.1 37.7L459.4 37.5L464.7 37.3L470.0 37.2"/><text class="lbl" x="478" y="85.0" fill="#FF6B57">≈70%</text><text class="lbl" x="478" y="99.0" fill="#FF6B57" opacity=".7">stuck</text><text class="lbl" x="478" y="37.5" fill="#2EE6A6">≈95%</text><text class="lbl" x="478" y="51.5" fill="#2EE6A6" opacity=".7">possible</text></svg>
-          <div class="legend"><span><i style="background:#FF6B57"></i>What I ran: every job starts from zero</span><span><i style="background:var(--mint)"></i>Resuming the checkpoint: progress stacks</span></div>
-        </div>
-<div class="codewin">
-          <div class="cw-top"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="cw-file">pedro.fonseca3/train.py</span><a class="cw-gh" href="https://github.com/peddrof/ONIA-Project/blob/main/pedro.fonseca3/train.py" target="_blank" rel="noopener">GitHub ↗</a></div>
-<pre class="code" aria-label="train.py from the ONIA selection. Highlighted lines are what was missing: resume from the last checkpoint."><span class="c"># YOLOv8 on Santos Dumont II · SLURM --time=00:20:00</span>
-<span class="k">import</span> argparse
-<span class="hl"><span class="k">import</span> os</span>
-<span class="k">from</span> ultralytics <span class="k">import</span> <span class="f">YOLO</span>
-
-<span class="k">def</span> <span class="f">train</span>(data_yaml, epochs, batch_size, img_size):
-    <span class="c"># YOLOv8n (nano) para rapidez em 20 minutos</span>
-<span class="hl">    last = <span class="s">'runs/detect/exp/weights/last.pt'</span>
-<span class="hl">    <span class="k">if</span> os.path.exists(last):</span>
-<span class="hl">        <span class="k">return</span> <span class="f">YOLO</span>(last).train(resume=<span class="f">True</span>)</span>
-    model = <span class="f">YOLO</span>(<span class="s">'yolov8n.yaml'</span>)
-    model.train(
-        data=data_yaml,
-        epochs=epochs,
-        batch=batch_size,
-        imgsz=img_size,
-        workers=<span class="n">4</span>,
-        name=<span class="s">'exp'</span>,
-        save_period=<span class="n">1</span>,    <span class="c"># checkpoint cada época</span>
-        patience=<span class="n">10</span>
-    )</pre>
-        </div>
-        <span class="note note-up" style="margin-top:12px"><svg viewBox="0 0 56 72" aria-hidden="true"><path d="M22 67C36 46 32 22 26 5"/><path d="M33 10 26 5 23.5 13"/></svg>the script that ran. It saved a checkpoint every epoch and never loaded one. Highlighted: what I didn't write</span>
+      <div class="chart" data-chart>
+        <div class="chart-h"><span>Accuracy across 20-minute jobs</span><span>Schematic</span></div>
+        <svg viewBox="0 0 530 246" role="img" aria-label="Schematic: restarting each 20-minute job keeps accuracy near 70%; resuming from the checkpoint lets it climb to about 95%."><g class="grid"><line x1="46" x2="470" y1="214.0" y2="214.0"/><line x1="46" x2="470" y1="166.5" y2="166.5"/><line x1="46" x2="470" y1="119.0" y2="119.0"/><line x1="46" x2="470" y1="71.5" y2="71.5"/><line x1="46" x2="470" y1="24.0" y2="24.0"/></g><g class="jobs"><line x1="99.0" x2="99.0" y1="24.0" y2="214.0"/><line x1="152.0" x2="152.0" y1="24.0" y2="214.0"/><line x1="205.0" x2="205.0" y1="24.0" y2="214.0"/><line x1="258.0" x2="258.0" y1="24.0" y2="214.0"/><line x1="311.0" x2="311.0" y1="24.0" y2="214.0"/><line x1="364.0" x2="364.0" y1="24.0" y2="214.0"/><line x1="417.0" x2="417.0" y1="24.0" y2="214.0"/></g><g class="axis"><text x="38" y="217.0" text-anchor="end">0%</text><text x="38" y="169.5" text-anchor="end">25%</text><text x="38" y="122.0" text-anchor="end">50%</text><text x="38" y="74.5" text-anchor="end">75%</text><text x="38" y="27.0" text-anchor="end">100%</text><text x="72.5" y="234" text-anchor="middle">job 1</text><text x="125.5" y="234" text-anchor="middle">job 2</text><text x="178.5" y="234" text-anchor="middle">job 3</text><text x="231.5" y="234" text-anchor="middle">job 4</text><text x="284.5" y="234" text-anchor="middle">job 5</text><text x="337.5" y="234" text-anchor="middle">job 6</text><text x="390.5" y="234" text-anchor="middle">job 7</text><text x="443.5" y="234" text-anchor="middle">job 8</text></g><path class="c-saw draw" d="M46 198.8C57.7 115.2 77.8 84.8 99.0 81.0L99.0 198.8C110.7 115.2 130.8 84.8 152.0 81.0L152.0 198.8C163.7 115.2 183.8 84.8 205.0 81.0L205.0 198.8C216.7 115.2 236.8 84.8 258.0 81.0L258.0 198.8C269.7 115.2 289.8 84.8 311.0 81.0L311.0 198.8C322.7 115.2 342.8 84.8 364.0 81.0L364.0 198.8C375.7 115.2 395.8 84.8 417.0 81.0L417.0 198.8C428.7 115.2 448.8 84.8 470.0 81.0"/><path class="c-ck draw late" d="M46.0 198.8L51.3 191.1L56.6 183.8L61.9 176.8L67.2 170.1L72.5 163.8L77.8 157.7L83.1 151.9L88.4 146.4L93.7 141.2L99.0 136.2L104.3 131.4L109.6 126.8L114.9 122.5L120.2 118.4L125.5 114.4L130.8 110.7L136.1 107.1L141.4 103.6L146.7 100.4L152.0 97.3L157.3 94.3L162.6 91.5L167.9 88.8L173.2 86.2L178.5 83.8L183.8 81.4L189.1 79.2L194.4 77.1L199.7 75.0L205.0 73.1L210.3 71.3L215.6 69.5L220.9 67.8L226.2 66.2L231.5 64.7L236.8 63.3L242.1 61.9L247.4 60.6L252.7 59.3L258.0 58.1L263.3 57.0L268.6 55.9L273.9 54.8L279.2 53.8L284.5 52.9L289.8 52.0L295.1 51.1L300.4 50.3L305.7 49.5L311.0 48.8L316.3 48.1L321.6 47.4L326.9 46.7L332.2 46.1L337.5 45.5L342.8 45.0L348.1 44.5L353.4 43.9L358.7 43.5L364.0 43.0L369.3 42.6L374.6 42.1L379.9 41.7L385.2 41.3L390.5 41.0L395.8 40.6L401.1 40.3L406.4 40.0L411.7 39.7L417.0 39.4L422.3 39.1L427.6 38.9L432.9 38.6L438.2 38.4L443.5 38.1L448.8 37.9L454.1 37.7L459.4 37.5L464.7 37.3L470.0 37.2"/><text class="lbl" x="478" y="85.0" fill="#FF6B57">≈70%</text><text class="lbl" x="478" y="99.0" fill="#FF6B57" opacity=".7">stuck</text><text class="lbl" x="478" y="37.5" fill="#2EE6A6">≈95%</text><text class="lbl" x="478" y="51.5" fill="#2EE6A6" opacity=".7">possible</text></svg>
+        <div class="legend"><span><i style="background:#FF6B57"></i>What I ran: every job starts from zero</span><span><i style="background:var(--mint)"></i>Resuming the checkpoint: progress stacks</span></div>
       </div>
     </div>
+    <div class="codewin ai-code">
+      <div class="cw-top">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="cw-file">pedro.fonseca3/train.py</span>
+        <span class="cw-pill">never written</span>
+        <a class="cw-gh" href="https://github.com/peddrof/ONIA-Project/blob/main/pedro.fonseca3/train.py" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="cw-split">
+        <div class="cw-body">
+          <div class="cw-gutter" aria-hidden="true"><span>12</span><span class="miss">13</span><span class="miss">14</span><span class="miss">15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span></div>
+<pre class="code" aria-label="Excerpt from train.py. Highlighted lines are what was missing: resume from the last checkpoint."><span class="ln dim"><span class="k">def</span> <span class="f">train</span>(data_yaml, epochs, batch_size, img_size):</span>
+<span class="ln hl">    last = <span class="s">'runs/detect/exp/weights/last.pt'</span></span>
+<span class="ln hl">    <span class="k">if</span> os.path.exists(last):</span>
+<span class="ln hl">        <span class="k">return</span> <span class="f">YOLO</span>(last).train(resume=<span class="f">True</span>)</span>
+<span class="ln dim">    model = <span class="f">YOLO</span>(<span class="s">'yolov8n.yaml'</span>)</span>
+<span class="ln dim">    model.train(</span>
+<span class="ln dim">        data=data_yaml, epochs=epochs, <span class="ell">…</span></span>
+<span class="ln dim">        save_period=<span class="n">1</span>,  <span class="c"># wrote the checkpoint</span></span>
+<span class="ln dim">    )</span></pre>
+        </div>
+        <aside class="cw-aside">
+          <b>The miss</b>
+          <p>Three lines. Resume from the last checkpoint. <em>Never written.</em></p>
+        </aside>
+      </div>
+      <div class="cw-foot"><span>Saved every epoch. <b>Never loaded one.</b></span><span class="mark">mint lines = the miss</span></div>
+    </div>
     <div class="ai-media">
-      <figure class="a"><div class="m zoom" style="aspect-ratio:16/9" data-lb data-full="media/medal-moment-l.webp" data-cap="The medal going on."><img src="media/medal-moment-s.webp" srcset="media/medal-moment-s.webp 760w, media/medal-moment-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="760" height="428" loading="lazy" decoding="async" alt="The medal going on."></div><figcaption>The medal going on.</figcaption></figure>
-      <figure class="b"><div class="m zoom" style="aspect-ratio:3/4" data-lb data-full="media/medal-school-l.webp" data-cap="Back at school with the gold."><img src="media/medal-school-s.webp" srcset="media/medal-school-s.webp 760w, media/medal-school-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="570" height="760" loading="lazy" decoding="async" alt="Back at school with the gold."></div><figcaption>Back at school with the gold.</figcaption></figure>
-      <figure class="d"><div class="m zoom contain" style="aspect-ratio:9/19.5" data-lb data-full="media/onia-final-story-l.webp" data-cap="The final round as ONIA posted it live: 28 finalists, four places on the team for Beijing."><img src="media/onia-final-story-s.webp" srcset="media/onia-final-story-s.webp 760w, media/onia-final-story-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="351" height="760" loading="lazy" decoding="async" alt="The final round as ONIA posted it live: 28 finalists, four places on the team for Beijing."></div><figcaption>The final round as ONIA posted it live: 28 finalists, four places on the team for Beijing.</figcaption></figure>
-      <a class="ig c" href="https://www.instagram.com/reel/DRADaaqEVXX/" target="_blank" rel="noopener" aria-label="The gold, on video, an Instagram reel"><span class="ig-fr"><img src="media/onia-reel-s.webp" srcset="media/onia-reel-s.webp 545w, media/onia-reel-l.webp 545w" sizes="156px" alt="" loading="lazy" decoding="async"><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>The gold, on video</b></span></span></a>
+      <figure class="a"><div class="m zoom" data-lb data-full="media/medal-moment-l.webp" data-cap="The medal going on."><img src="media/medal-moment-s.webp" srcset="media/medal-moment-s.webp 420w, media/medal-moment-l.webp 576w" sizes="(min-width: 980px) 22vw, 45vw" width="420" height="525" loading="lazy" decoding="async" alt="The medal going on."></div><figcaption>The medal going on.</figcaption></figure>
+      <figure class="b"><div class="m zoom" data-lb data-full="media/medal-school-l.webp" data-cap="Back at school with the gold."><img src="media/medal-school-s.webp" srcset="media/medal-school-s.webp 760w, media/medal-school-l.webp 1600w" sizes="(min-width: 980px) 20vw, 45vw" width="570" height="760" loading="lazy" decoding="async" alt="Back at school with the gold."></div><figcaption>Back at school with the gold.</figcaption></figure>
+      <figure class="d"><div class="m zoom" data-lb data-full="media/onia-final-story-l.webp" data-cap="ONIA final round, live: 28 finalists, four places for Beijing."><img src="media/onia-final-story-s.webp" srcset="media/onia-final-story-s.webp 760w, media/onia-final-story-l.webp 1600w" sizes="(min-width: 980px) 14vw, 40vw" width="351" height="760" loading="lazy" decoding="async" alt="ONIA final round, live: 28 finalists, four places for Beijing."></div><figcaption>ONIA final round, live: 28 finalists, four places for Beijing.</figcaption></figure>
+      <a class="ig c" href="https://www.instagram.com/reel/DRADaaqEVXX/" target="_blank" rel="noopener" aria-label="The gold, on video, an Instagram reel"><span class="ig-fr"><img src="media/onia-reel-s.webp" srcset="media/onia-reel-s.webp 545w, media/onia-reel-l.webp 545w" sizes="(min-width: 980px) 14vw, 40vw" alt="" loading="lazy" decoding="async"><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>The gold, on video</b></span></span></a>
     </div>
   </div></div>
 </section>
