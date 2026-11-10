@@ -95,7 +95,7 @@ a:hover>.ext::after,.ext:hover::after{transform:translate(1px,-1px)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
 .top .frame{display:flex;align-items:center;gap:18px;height:60px;padding-inline:var(--pad)}
 .brand{display:flex;align-items:center;gap:5px;flex:none;font-weight:600;letter-spacing:-.01em}
-.brand .av{width:30px;height:30px;display:grid;place-items:center;color:var(--fg);margin-right:-3px;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.brand .av{width:30px;height:30px;display:grid;place-items:center;color:var(--fg);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
 .brand:hover .av{transform:rotate(-8deg) scale(1.06)}
 .brand .av svg{width:30px;height:30px;overflow:visible}
 .nav{display:flex;gap:2px;min-width:0;overflow-x:auto;scrollbar-width:none}
@@ -124,8 +124,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .ai-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
 .ai-b{display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border:1px solid var(--line-2);border-radius:10px;font-size:.84rem;background:var(--bg);color:var(--fg);transition:border-color .15s,background .15s,transform .15s;text-align:left}
 .ai-b:hover{border-color:var(--fg-3);background:var(--card);transform:translateY(-1px)}
-.ai-b i{width:9px;height:9px;border-radius:50%;background:var(--c);flex:none;box-shadow:0 0 0 2px color-mix(in srgb,var(--c) 22%,transparent)}
-.ai-b.cp i{background:none;border:1.5px dashed var(--fg-3);box-shadow:none}
+.ai-b .mk{width:15px;height:15px;flex:none;display:block}
+.ai-b.cp .mk{color:var(--fg-2)}
 .toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:95;background:var(--fg);color:var(--bg);font-size:.84rem;padding:10px 14px;border-radius:12px;box-shadow:0 14px 30px -12px rgba(0,0,0,.4);animation:pop .25s ease;max-width:calc(100vw - 32px)}
 .theme{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
 .theme button{width:28px;height:28px;border-radius:999px;display:grid;place-items:center;color:var(--fg-3)}
@@ -164,19 +164,16 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .name{margin:0;font-size:clamp(3.4rem,7.6vw,7.2rem);line-height:.86;letter-spacing:-.055em;font-weight:620;display:flex;flex-direction:column;align-items:flex-start;position:relative;z-index:2}
 .name .w{display:block}
 .name .w.s{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.03em}
-.hero-grid{display:grid;gap:32px 48px;margin-top:clamp(36px,5vw,72px);position:relative;z-index:2;align-items:center}
+.hero-grid{display:grid;gap:32px 48px;margin-top:clamp(72px,9vw,128px);position:relative;z-index:2;align-items:center}
 @media (min-width:860px){.hero-grid{grid-template-columns:minmax(0,1fr) auto}.deck{justify-self:end}}
 /* the clip deck: stickers slapped on top of each other */
-.deck{position:relative;width:clamp(210px,21vw,270px);aspect-ratio:3/4;margin:4px 8px 8px;justify-self:center}
+.deck{position:relative;width:clamp(260px,28vw,360px);aspect-ratio:3/4;margin:8px 16px 16px;justify-self:center}
 .dc{position:absolute;inset:0;margin:0;padding:7px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.05),0 22px 40px -18px rgba(12,20,40,.45);transform:translate(var(--x,0),var(--y,0)) rotate(var(--r,0deg)) scale(var(--s,1));opacity:var(--o,1);transition:transform .75s cubic-bezier(.2,.8,.2,1),opacity .5s ease;will-change:transform}
 .dc video{display:block;width:100%;height:100%;object-fit:cover;border-radius:16px;background:var(--bg-3)}
-.dc figcaption{position:absolute;left:16px;bottom:16px;font-family:var(--mono);font-size:.68rem;line-height:1;color:#fff;background:rgba(0,0,0,.5);padding:5px 8px;border-radius:7px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.dc figcaption{position:absolute;left:18px;bottom:18px;font-family:var(--mono);font-size:.92rem;line-height:1;color:#fff;background:rgba(0,0,0,.5);padding:8px 12px;border-radius:9px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .dc.slap{animation:slap .62s cubic-bezier(.2,.9,.25,1.15) both}
 @keyframes slap{0%{transform:translate(18px,-46px) rotate(-16deg) scale(1.22);opacity:0}55%{opacity:1}100%{transform:translate(var(--x,0),var(--y,0)) rotate(var(--r,0deg)) scale(1);opacity:1}}
-.deck .note.n2{position:absolute;right:calc(100% + 10px);top:6px;left:auto;font-size:1.05rem;white-space:nowrap;line-height:1;display:flex;align-items:flex-end;gap:6px}
-.deck .note.n2 svg{width:40px;transform:rotate(18deg);margin-bottom:-10px}
-@media (max-width:859px){.deck .note.n2{display:none}}
-@media (max-width:859px){.deck{width:min(64vw,250px)}}
+@media (max-width:859px){.deck{width:min(72vw,300px)}}
 .hero .sub{margin-top:18px;font-size:clamp(1.25rem,2.1vw,1.6rem);line-height:1.3;letter-spacing:-.02em;max-width:28ch}
 .hero .sub em{color:var(--blue)}
 .hero .lede{margin-top:14px;color:var(--fg-2);max-width:54ch;font-size:1.02rem}
@@ -370,8 +367,10 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .flt{position:relative;border-radius:10px;overflow:hidden;background:#111216;border:1px solid #1E1F25;aspect-ratio:9/16}
 .flt.wide,.flt.w4{grid-column:span 2;aspect-ratio:16/10}
 @media (min-width:700px){.flt.w4{grid-column:span 4}.flt.wide,.flt.w4{aspect-ratio:auto;min-height:220px}}
-.flt-doc{grid-column:span 2;display:grid}
-@media (min-width:700px){.flt-doc{grid-column:span 4}}
+.flt-doc{grid-column:span 2;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+@media (min-width:700px){.flt-doc{grid-column:span 4;flex-direction:row;align-items:center;gap:28px 40px}}
+.flt-doc .note{margin:4px 0 0 6px;flex:none}
+@media (min-width:700px){.flt-doc .note{margin:0}}
 .flt-doc .lc{height:100%;grid-template-rows:1fr auto;background:#0E0F13;border-color:#1E1F25}
 .flt-doc .lc .tx b{color:#E9E7E2}
 .flt video,.flt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -426,7 +425,7 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .yt-tx small{display:block;margin-top:3px;font-size:.8rem;color:var(--fg-3)}
 .yt-meta .ext{color:var(--fg-3);margin-top:2px}
 .rk .yt-tx b{color:#E9E7E2}
-.flt-doc .yt{max-width:420px}
+.flt-doc .yt{width:100%;max-width:420px;flex:1 1 280px}
 /* Instagram: unmistakably Instagram, vertical */
 .ig{display:block;padding:2.5px;border-radius:20px;background:linear-gradient(45deg,#FEDA75,#FA7E1E 28%,#D62976 55%,#962FBF 78%,#4F5BD5);transition:transform .25s cubic-bezier(.2,.8,.2,1);align-self:start}
 .ig:hover{transform:translateY(-3px) rotate(-1deg)}
@@ -603,6 +602,11 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .duo-media{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .duo-media .m{aspect-ratio:4/3}
 .duo-media .wide{grid-column:span 2}.duo-media .wide .m{aspect-ratio:16/9}
+.stage .duo-media .span{grid-column:1 / -1}
+.stage .shot{grid-column:1 / -1;display:grid;grid-template-columns:0.75fr 0.5625fr;gap:10px;align-items:start}
+.stage .shot .m{aspect-ratio:3/4}
+.stage .shot .ig{width:100%;aspect-ratio:9/16;box-sizing:border-box}
+.stage .shot .ig .ig-fr{height:100%;aspect-ratio:auto}
 .stage{background:#0E0D0C;color:#F3EEE6;border-color:#0E0D0C;--fg:#F3EEE6;--fg-2:#B9B2A6;--fg-3:#80796E;--line:#262320;--bg-3:#1B1917}
 .stage::before{content:"";position:absolute;left:50%;top:-30%;width:120%;height:90%;translate:-50% 0;background:radial-gradient(50% 50% at 50% 50%,rgba(255,236,190,.16),transparent 70%);pointer-events:none}
 .stage h3{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(2rem,3.6vw,2.9rem);letter-spacing:-.02em}
@@ -792,8 +796,8 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .sr,.agents{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
 .chat{border:1px solid var(--line-2);border-radius:20px;background:var(--card);overflow:hidden;margin-top:6px;box-shadow:0 20px 50px -30px rgba(15,25,60,.35)}
 .chat-h{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
-.chat-h .av{width:34px;height:34px;display:grid;place-items:center;color:var(--fg);flex:none}
-.chat-h .av svg{width:34px;height:34px}
+.chat-h .av{width:34px;height:34px;display:grid;place-items:center;color:var(--fg);flex:none;overflow:visible}
+.chat-h .av svg{width:34px;height:34px;overflow:visible}
 .chat-h b{display:block;font-weight:500;line-height:1.2}
 .chat-h small{font-size:.76rem;color:var(--fg-3)}
 .chat-h .live{margin-left:auto;font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.04em;color:var(--fg-3);display:flex;align-items:center;gap:6px}
@@ -923,6 +927,14 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FEDA75"/><stop offset=".3" stop-color="#FA7E1E"/><stop offset=".55" stop-color="#D62976"/><stop offset=".8" stop-color="#962FBF"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient>
+<linearGradient id="gem-g" x1="3.5" y1="13.5" x2="17.5" y2="12" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FABC12"/><stop offset=".46" stop-color="#FABC12" stop-opacity="0"/></linearGradient><linearGradient id="gem-r" x1="8" y1="5.5" x2="11.5" y2="11" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#F94543"/><stop offset="1" stop-color="#F94543" stop-opacity="0"/></linearGradient><linearGradient id="gem-n" x1="7" y1="15.5" x2="11" y2="12" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#08B962"/><stop offset="1" stop-color="#08B962" stop-opacity="0"/></linearGradient><radialGradient id="cop-a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-9.77133 19.8405 38.9403 15.7727 12.674 .587)"><stop offset=".25" stop-color="#109df2"/><stop offset=".72" stop-color="#aad445"/><stop offset=".97" stop-color="#ffd400"/></radialGradient><radialGradient id="cop-b" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-9.94414 20.7959 24.6537 12.5336 21.948 4.756)"><stop offset=".07" stop-color="#8c48ff"/><stop offset=".5" stop-color="#f2598a"/><stop offset=".9" stop-color="#ffb152"/></radialGradient><linearGradient id="cop-c" x1="8.275" y1=".534" x2="8.177" y2="17.776" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3dcbff"/><stop offset=".25" stop-color="#0588f7" stop-opacity="0"/></linearGradient><linearGradient id="cop-d" x1="15.839" y1="5.211" x2="15.829" y2="9.907" gradientUnits="userSpaceOnUse"><stop offset=".06" stop-color="#f8adfa"/><stop offset=".71" stop-color="#a86edd" stop-opacity="0"/></linearGradient><symbol id="lg-gpt" viewBox="0 0 24 24"><path fill="currentColor" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></symbol>
+<symbol id="lg-claude" viewBox="0 0 24 24"><path fill="#D97757" d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z"/></symbol>
+<symbol id="lg-gemini" viewBox="0 0 24 24"><path fill="#3186FF" d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"/><path fill="url(#gem-n)" d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"/><path fill="url(#gem-r)" d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"/><path fill="url(#gem-g)" d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"/></symbol>
+<symbol id="lg-grok" viewBox="0 0 24 24"><path fill="currentColor" d="M9.27 15.29l7.978-5.897c.391-.29.95-.177 1.137.272.98 2.369.542 5.215-1.41 7.169-1.951 1.954-4.667 2.382-7.149 1.406l-2.711 1.257c3.889 2.661 8.611 2.003 11.562-.953 2.341-2.344 3.066-5.539 2.388-8.42l.006.007c-.983-4.232.242-5.924 2.75-9.383.06-.082.12-.164.179-.248l-3.301 3.305v-.01L9.267 15.292M7.623 16.723c-2.792-2.67-2.31-6.801.071-9.184 1.761-1.763 4.647-2.483 7.166-1.425l2.705-1.25a7.808 7.808 0 00-1.829-1A8.975 8.975 0 005.984 5.83c-2.533 2.536-3.33 6.436-1.962 9.764 1.022 2.487-.653 4.246-2.34 6.022-.599.63-1.199 1.259-1.682 1.925l7.62-6.815"/></symbol>
+<symbol id="lg-pplx" viewBox="0 0 24 24"><path fill="#22B8CD" d="M19.785 0v7.272H22.5V17.62h-2.935V24l-7.037-6.194v6.145h-1.091v-6.152L4.392 24v-6.465H1.5V7.188h2.884V0l7.053 6.494V.19h1.09v6.49L19.786 0zm-7.257 9.044v7.319l5.946 5.234V14.44l-5.946-5.397zm-1.099-.08l-5.946 5.398v7.235l5.946-5.234V8.965zm8.136 7.58h1.844V8.349H13.46l6.105 5.54v2.655zm-8.982-8.28H2.59v8.195h1.8v-2.576l6.192-5.62zM5.475 2.476v4.71h5.115l-5.115-4.71zm13.219 0l-5.115 4.71h5.115v-4.71z"/></symbol>
+<symbol id="lg-meta" viewBox="0 0 24 24"><path fill="#0082FB" d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></symbol>
+<symbol id="lg-copilot" viewBox="0 0 24 24"><path fill="url(#cop-a)" d="M16.295 5.29l-0.242 0.986h-2.32c-1.721 0-3.22 1.197-3.638 2.902l-2.101 8.593H3.798c-2.44 0-4.229-2.342-3.637-4.761l2.106-8.612c0.557-2.274 2.556-3.87 4.85-3.87h5.54c2.44 0 4.23 2.343 3.638 4.761"/><path fill="url(#cop-c)" d="M16.295 5.29l-0.242 0.986h-2.32c-1.721 0-3.22 1.197-3.638 2.902l-2.101 8.593H3.798c-2.44 0-4.229-2.342-3.637-4.761l2.106-8.612c0.557-2.274 2.556-3.87 4.85-3.87h5.54c2.44 0 4.23 2.343 3.638 4.761"/><path fill="url(#cop-b)" d="M7.752 18.758l0.242-0.986h2.321c1.72 0 3.22-1.197 3.637-2.903l2.102-8.593h4.196c2.439 0 4.228 2.343 3.637 4.762l-2.107 8.611c-0.556 2.274-2.555 3.87-4.85 3.87h-5.54c-2.44 0-4.229-2.342-3.638-4.761"/><path fill="url(#cop-d)" d="M7.752 18.758l0.242-0.986h2.321c1.72 0 3.22-1.197 3.637-2.903l2.102-8.593h4.196c2.439 0 4.228 2.343 3.637 4.762l-2.107 8.611c-0.556 2.274-2.555 3.87-4.85 3.87h-5.54c-2.44 0-4.229-2.342-3.638-4.761"/></symbol>
+<symbol id="lg-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 14V5.5A1.5 1.5 0 0 1 5.5 4H14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
 <symbol id="g-ig" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></symbol>
 <symbol id="g-ytp" viewBox="0 0 68 48"><path fill="#FF0033" d="M66.5 7.7c-.8-2.9-3-5.2-5.9-6C55.3.3 34 .3 34 .3S12.7.3 7.4 1.7c-2.9.8-5.1 3.1-5.9 6C.1 13 .1 24 .1 24s0 11 1.4 16.3c.8 2.9 3 5.2 5.9 6 5.3 1.4 26.6 1.4 26.6 1.4s21.3 0 26.6-1.4c2.9-.8 5.1-3.1 5.9-6C68 35 68 24 68 24s0-11-1.5-16.3z"/><path fill="#fff" d="M45 24 27 13.6v20.8z"/></symbol>
 <symbol id="g-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.5 8.1 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.4 3.6 4.2 6.8C19.5 15.9 12 20.5 12 20.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
@@ -1132,7 +1144,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
 
 <header class="top wrap">
   <div class="frame">
-    <a class="brand" href="#top" aria-label="Pedro Veríssimo, back to top"><span>Pedro</span><span class="av"><svg viewBox="340 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><span>Veríssimo</span></a>
+    <a class="brand" href="#top" aria-label="Pedro Veríssimo, back to top"><span>Pedro</span><span class="av"><svg viewBox="0 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><span>Veríssimo</span></a>
     <nav class="nav" aria-label="Sections">
       <a href="#about">About</a><a href="#sincra">Sincra</a><a href="#rockets">Work</a><a href="#farm">Farm</a><a href="#beyond">Beyond work</a><a href="#timeline">Timeline</a><a href="#press">Press</a><a href="#talk">Small talk</a>
     </nav>
@@ -1176,19 +1188,19 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
           </div>
         </div>
       </div>
-      <div class="deck" data-deck aria-label="Clips from my camera roll"><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-rod-0623.mp4" data-poster="media/v-rod-0623-p.webp" aria-label="rockets"></video><figcaption>rockets</figcaption></figure><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-combine-selfie-2025.mp4" data-poster="media/v-combine-selfie-2025-p.webp" aria-label="harvest"></video><figcaption>harvest</figcaption></figure><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-static-test.mp4" data-poster="media/v-static-test-p.webp" aria-label="thrust test"></video><figcaption>thrust test</figcaption></figure><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-latte.mp4" data-poster="media/v-latte-p.webp" aria-label="coffee"></video><figcaption>coffee</figcaption></figure><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-atv-2026.mp4" data-poster="media/v-atv-2026-p.webp" aria-label="cattle"></video><figcaption>cattle</figcaption></figure><span class="note n2" aria-hidden="true">from the camera roll<svg viewBox="0 0 58 34"><path d="M6 4C10 18 22 28 40 30M40 30l-9-5M40 30l-8 6"/></svg></span></div>
+      <div class="deck" data-deck aria-label="Clips"><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-rod-0623.mp4" data-poster="media/v-rod-0623-p.webp" aria-label="rockets"></video><figcaption>rockets</figcaption></figure><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-combine-selfie-2025.mp4" data-poster="media/v-combine-selfie-2025-p.webp" aria-label="harvest"></video><figcaption>harvest</figcaption></figure><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-static-test.mp4" data-poster="media/v-static-test-p.webp" aria-label="thrust test"></video><figcaption>thrust test</figcaption></figure><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-latte.mp4" data-poster="media/v-latte-p.webp" aria-label="coffee"></video><figcaption>coffee</figcaption></figure><figure class="dc"><video muted loop playsinline preload="none" data-src="media/v-atv-2026.mp4" data-poster="media/v-atv-2026-p.webp" aria-label="cattle"></video><figcaption>cattle</figcaption></figure></div>
     </div>
+  <div class="stk dk" style="top:-1%;left:-10.5%;--r:8deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-coffee"/></g></svg></div>
+  <div class="stk" style="top:24%;left:-10.5%;--r:-7deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-cat"/></g></svg></div>
+  <div class="stk dk" style="top:49%;left:-10.5%;--r:-11deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-cow"/></g></svg></div>
+  <div class="stk dk" style="top:74%;left:-10.5%;--r:5deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-laptop"/></g></svg></div>
+  <div class="stk dk" style="top:6%;left:70%;--r:9deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-ticket"/></g></svg></div>
+  <div class="stk" style="top:-2%;left:auto;right:-13%;--r:12deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-rocket"/></g></svg></div>
+  <div class="stk" style="top:26%;left:auto;right:-13%;--r:-8deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-medal"/></g></svg></div>
+  <div class="stk dk" style="top:52%;left:auto;right:-13%;--r:6deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-me"/></g></svg></div>
+  <div class="stk dk" style="top:78%;left:auto;right:-13%;--r:-5deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-crab"/></g></svg></div>
+  <span class="note n1 dk" style="top:12%;left:6%" aria-hidden="true">drag the stickers<svg viewBox="0 0 58 34"><path d="M48 26C32 24 16 16 8 8M8 8l1 10M8 8l10 2"/></svg></span>
   </div>
-  <div class="stk " style="top:4%;left:96%;--r:14deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-rocket"/></g></svg></div>
-  <div class="stk " style="top:28%;left:96%;--r:-8deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-medal"/></g></svg></div>
-  <div class="stk dk" style="top:6%;left:3%;--r:-10deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-cow"/></g></svg></div>
-  <div class="stk dk" style="top:8%;left:16%;--r:8deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-coffee"/></g></svg></div>
-  <div class="stk " style="top:24%;left:2%;--r:-6deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-cat"/></g></svg></div>
-  <div class="stk dk" style="top:82%;left:8%;--r:-5deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-laptop"/></g></svg></div>
-  <div class="stk dk" style="top:58%;left:96%;--r:4deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-me"/></g></svg></div>
-  <div class="stk dk" style="top:78%;left:96%;--r:6deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-crab"/></g></svg></div>
-  <div class="stk dk" style="top:88%;left:28%;--r:10deg" aria-hidden="true"><svg viewBox="0 0 120 120"><g filter="url(#diecut)"><use href="#st-ticket"/></g></svg></div>
-  <span class="note n1 dk" style="top:18%;left:8%" aria-hidden="true">drag the stickers<svg viewBox="0 0 58 34"><path d="M4 4C14 22 34 30 52 24M52 24l-9-6M52 24l-6 8"/></svg></span>
 </section>
 
 <!-- ======================= TICKER ======================= -->
@@ -1317,7 +1329,6 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
       </div>
       <div>
         <p>Below is every clip I kept, in order, with the date it was filmed. Liftoffs in green, things that didn't go to plan in orange, bench work in blue.</p>
-        <span class="note" style="margin-top:12px">every clip I kept<svg viewBox="0 0 58 34"><path d="M6 4C8 16 16 26 30 30M30 30l-9 1M30 30l-4-8"/></svg></span>
       </div>
     </div>
     <div class="log">
@@ -1343,7 +1354,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
       <figure class="flt wide" data-lb data-full="media/rocket-flag-l.webp" data-cap="Airframe, Dec 13 2023. The biggest one, flag on the nose."><img src="media/rocket-flag-s.webp" srcset="media/rocket-flag-s.webp 760w, media/rocket-flag-l.webp 1600w" sizes="(min-width: 1100px) 16vw, 45vw" width="760" height="428" loading="lazy" decoding="async" alt="Airframe, Dec 13 2023. The biggest one, flag on the nose."><div class="hd"><span>Nº 18</span><span>Dec 13 2023</span></div><div class="ft"><b><span class="res lab">Airframe</span></b><span>The biggest one, flag on the nose.</span></div></figure>
       <figure class="flt " data-lb data-video="media/v-rod-1223.mp4" data-cap="Liftoff, Dec 20 2023. Tall rod, open field."><video muted loop playsinline preload="none" data-src="media/v-rod-1223.mp4" data-poster="media/v-rod-1223-p.webp" width="540" height="960" aria-label="Liftoff, Dec 20 2023. Tall rod, open field."></video><div class="hd"><span>Nº 19</span><span>Dec 20 2023</span></div><div class="ft"><b><span class="res ok">Liftoff</span></b><span>Tall rod, open field.</span></div></figure>
       <figure class="flt " data-lb data-video="media/v-launch-field-1223.mp4" data-cap="Downrange, Dec 20 2023. Light it, step back, watch it go."><video muted loop playsinline preload="none" data-src="media/v-launch-field-1223.mp4" data-poster="media/v-launch-field-1223-p.webp" width="540" height="960" aria-label="Downrange, Dec 20 2023. Light it, step back, watch it go."></video><div class="hd"><span>Nº 20</span><span>Dec 20 2023</span></div><div class="ft"><b><span class="res ok">Downrange</span></b><span>Light it, step back, watch it go.</span></div></figure>
-      <div class="flt-doc"><a class="yt" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener" aria-label="Foguete 7/2023: the documentary about my rocket, on YouTube"><span class="yt-th" style="--a:#FF5A1F"><img src="media/yt-foguete.webp" alt="" loading="lazy" decoding="async"><svg class="yt-arr" viewBox="0 0 80 60" aria-hidden="true" style="left:50%;top:9%;width:20%"><path d="M74 52C58 50 30 40 12 10"/><path d="M8 24 11 9l14 4"/></svg><span class="yt-tt br"><b>Foguete</b><b class="hl">7/2023</b></span><span class="yt-wm"><svg viewBox="0 0 68 48" aria-hidden="true"><use href="#g-ytp"/></svg>YouTube</span><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><use href="#g-ytp"/></svg></span></span><span class="yt-meta"><span class="yt-av"><svg viewBox="340 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><span class="yt-tx"><b>Foguete 7/2023: the documentary about my rocket</b><small>Filmes Pedro · Documentary</small></span><span class="ext" aria-hidden="true"></span></span></a></div>
+      <div class="flt-doc"><a class="yt" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener" aria-label="Foguete 7/2023: the documentary about my rocket, on YouTube"><span class="yt-th" style="--a:#FF5A1F"><img src="media/yt-foguete.webp" alt="" loading="lazy" decoding="async"><svg class="yt-arr" viewBox="0 0 80 60" aria-hidden="true" style="left:50%;top:9%;width:20%"><path d="M74 52C58 50 30 40 12 10"/><path d="M8 24 11 9l14 4"/></svg><span class="yt-tt br"><b>Foguete</b><b class="hl">7/2023</b></span><span class="yt-wm"><svg viewBox="0 0 68 48" aria-hidden="true"><use href="#g-ytp"/></svg>YouTube</span><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><use href="#g-ytp"/></svg></span></span><span class="yt-meta"><span class="yt-av"><svg viewBox="340 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><span class="yt-tx"><b>Foguete 7/2023: the documentary about my rocket</b><small>Filmes Pedro · Documentary</small></span><span class="ext" aria-hidden="true"></span></span></a><span class="note">every clip I kept<svg viewBox="0 0 58 34" aria-hidden="true"><path d="M50 8C34 10 20 16 10 26M10 26l9-1M10 26l2-9"/></svg></span></div>
     </div>
   </div></div>
 </section>
@@ -1518,11 +1529,11 @@ predictions_df.to_csv(<span class="s">'resposta.csv'</span>, index=<span class="
         <div class="duo-media">
           <figure class="wide"><div class="m zoom" data-lb data-full="media/brics-stage-l.webp" data-cap="On stage."><img src="media/brics-stage-s.webp" srcset="media/brics-stage-s.webp 760w, media/brics-stage-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="760" height="570" loading="lazy" decoding="async" alt="On stage."></div><figcaption>On stage.</figcaption></figure>
           
-          <figure class=""><div class="m zoom" data-lb data-full="media/brics-roundtable-2-l.webp" data-cap="At the roundtable."><img src="media/brics-roundtable-2-s.webp" srcset="media/brics-roundtable-2-s.webp 760w, media/brics-roundtable-2-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="760" height="555" loading="lazy" decoding="async" alt="At the roundtable, from the side."></div><figcaption>At the roundtable.</figcaption></figure>
-          <figure class=""><div class="m zoom" data-lb data-full="media/brasilia-congress-l.webp" data-cap="Brasília, the National Congress behind me."><img src="media/brasilia-congress-s.webp" srcset="media/brasilia-congress-s.webp 760w, media/brasilia-congress-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="570" height="760" loading="lazy" decoding="async" alt="Brasília, the National Congress behind me."></div><figcaption>Brasília, Congress behind me.</figcaption></figure>
-        </div>
-        <div class="lcards">
-          <a class="ig" href="https://www.instagram.com/reel/DOn23plkbA5/" target="_blank" rel="noopener" aria-label="At the forum, on video, an Instagram reel"><span class="ig-fr"><img src="media/brics-stage-s.webp" alt="" loading="lazy" decoding="async" style="object-position:72% 50%"><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>At the forum, on video</b></span></span></a>
+          <figure class="span"><div class="m zoom" data-lb data-full="media/brics-roundtable-2-l.webp" data-cap="At the roundtable."><img src="media/brics-roundtable-2-s.webp" srcset="media/brics-roundtable-2-s.webp 760w, media/brics-roundtable-2-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="760" height="555" loading="lazy" decoding="async" alt="At the roundtable, from the side."></div><figcaption>At the roundtable.</figcaption></figure>
+          <div class="shot">
+            <figure><div class="m zoom" data-lb data-full="media/brasilia-congress-l.webp" data-cap="Brasília, the National Congress behind me."><img src="media/brasilia-congress-s.webp" srcset="media/brasilia-congress-s.webp 760w, media/brasilia-congress-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="570" height="760" loading="lazy" decoding="async" alt="Brasília, the National Congress behind me."></div><figcaption>Brasília, Congress behind me.</figcaption></figure>
+            <a class="ig" href="https://www.instagram.com/reel/DOn23plkbA5/" target="_blank" rel="noopener" aria-label="At the forum, on video, an Instagram reel"><span class="ig-fr"><img src="media/brics-stage-s.webp" alt="" loading="lazy" decoding="async" style="object-position:72% 50%"><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>At the forum, on video</b></span></span></a>
+          </div>
         </div>
       </article>
     </div>
@@ -1790,7 +1801,7 @@ predictions_df.to_csv(<span class="s">'resposta.csv'</span>, index=<span class="
         <details><summary>Why sell the Instagram pages?</summary><div class="ans"><p>I had the audience but no idea how to build a sales funnel, so it wasn't turning into anything. Selling all three taught me to sell before building.</p></div></details>
         <details><summary>Can I read this in a terminal?</summary><div class="ans"><p>Yes. Run <code>curl -sL pedroverissimo.vercel.app</code> and follow the menu, for example <code>curl -sL pedroverissimo.vercel.app/rockets</code>.</p></div></details>
         <div class="chat" id="ask">
-          <div class="chat-h"><span class="av"><svg viewBox="340 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><div><b>Ask anything about me</b><small>Answered by your AI, from my llms.txt</small></div><span class="live">online</span></div>
+          <div class="chat-h"><span class="av"><svg viewBox="0 0 2060 2060" aria-hidden="true"><use href="#av"/></svg></span><div><b>Ask anything about me</b><small>Answered by your AI, from my llms.txt</small></div><span class="live">online</span></div>
           <div class="chat-log" data-chat-log aria-live="polite">
             <div class="msg bot"><p>The short answers are above. For everything else, ask here: I'll hand your question to the AI you prefer, along with my <a href="/llms.txt">llms.txt</a>, the long version of this page that I wrote for them.</p></div>
           </div>
@@ -2208,7 +2219,7 @@ const TL=[
  {lane:'build',y:2023.6,when:'2023–24',kind:'Audience',title:'Three Instagram pages, 316,000 followers',text:'A crab, a cat and an AI page. All three sold.'},
  {lane:'win',y:2023.45,when:'2023–24',kind:'School',title:'“Alamar” distinction',text:'Top 1% for grades and conduct at the military school in São Gabriel.'},
  {lane:'build',y:2022.55,when:'2022–23',kind:'Hardware',title:'Rockets, from fireworks up',text:'Home-mixed propellant, an Arduino flight computer, parachute recovery. Five built.',big:true},
- {lane:'learn',y:null,when:'Age 14',kind:'Business',title:'First business: popsicles',text:'Sold popsicles at school until the principal banned it for “causing disorder” and taking customers from the cafeteria. Moved to the sidewalk outside at pickup time, where the parents were. R$2,000 in a few months. About 22 more business ideas followed.'},
+ {lane:'learn',y:2022.35,when:'2022',kind:'Business',title:'First business: popsicles',text:'Sold popsicles at school until the principal banned it for “causing disorder” and taking customers from the cafeteria. Moved to the sidewalk outside at pickup time, where the parents were. R$2,000 in a few months. About 22 more business ideas followed.'},
  {lane:'learn',y:2020.5,when:'2020',kind:'Markets',title:'The stock market at 12',text:'Spent the pandemic reading about stocks and giving family and friends advice nobody asked for.'},
  {lane:'build',y:2018,when:'2017–19',kind:'Film',title:'A murder-mystery trilogy',text:'One film per summer, with my cousin. Script, shooting and editing by hand.'}
 ];
@@ -2260,13 +2271,13 @@ addEventListener('keydown',e=>{if(!lb.open)return;if(e.key==='ArrowLeft')openLb(
 /* ========== 18b. ask an AI: header menu + chat ========== */
 const SITE='https://pedroverissimo.vercel.app';
 const AIS=[
-  {n:'ChatGPT',c:'#10A37F',u:p=>'https://chatgpt.com/?hints=search&q='+p},
-  {n:'Claude',c:'#D97757',u:p=>'https://claude.ai/new?q='+p},
-  {n:'Gemini',c:'#4285F4',u:p=>'https://gemini.google.com/app',paste:1},
-  {n:'Grok',c:'#8A8F98',u:p=>'https://grok.com/?q='+p},
-  {n:'Perplexity',c:'#20B8CD',u:p=>'https://www.perplexity.ai/search/new?q='+p},
-  {n:'Meta AI',c:'#0866FF',u:p=>'https://www.meta.ai/?q='+p},
-  {n:'Copilot',c:'#7B61FF',u:p=>'https://copilot.microsoft.com/?q='+p}];
+  {n:'ChatGPT',m:'lg-gpt',u:p=>'https://chatgpt.com/?hints=search&q='+p},
+  {n:'Claude',m:'lg-claude',u:p=>'https://claude.ai/new?q='+p},
+  {n:'Gemini',m:'lg-gemini',u:p=>'https://gemini.google.com/app',paste:1},
+  {n:'Grok',m:'lg-grok',u:p=>'https://grok.com/?q='+p},
+  {n:'Perplexity',m:'lg-pplx',u:p=>'https://www.perplexity.ai/search/new?q='+p},
+  {n:'Meta AI',m:'lg-meta',u:p=>'https://www.meta.ai/?q='+p},
+  {n:'Copilot',m:'lg-copilot',u:p=>'https://copilot.microsoft.com/?q='+p}];
 const mkPrompt=q=>'Read '+SITE+'/llms.txt (Pedro Veríssimo wrote it about himself, for AI assistants; his site is '+SITE+') and use it to answer: '+q;
 let toastT;const toast=t=>{let d=$('.toast');if(!d){d=document.createElement('div');d.className='toast';d.setAttribute('role','status');document.body.appendChild(d)}d.textContent=t;clearTimeout(toastT);toastT=setTimeout(()=>d.remove(),3400)};
 const copyText=t=>{try{return navigator.clipboard.writeText(t)}catch(e){return Promise.reject(e)}};
@@ -2274,8 +2285,8 @@ function openAI(a,q){const p=mkPrompt(q);copyText(p).catch(()=>{});
   window.open(a.u(encodeURIComponent(p)),'_blank','noopener');
   toast(a.paste?'Opening '+a.n+'. The prompt is on your clipboard: paste it in.':'Opening '+a.n+'. The prompt is also on your clipboard, in case it doesn\'t show up.')}
 function aiButtons(box,q){box.innerHTML='';
-  AIS.forEach(a=>{const b=document.createElement('button');b.type='button';b.className='ai-b';b.style.setProperty('--c',a.c);b.innerHTML='<i></i>'+a.n;b.addEventListener('click',()=>openAI(a,q));box.appendChild(b)});
-  const c=document.createElement('button');c.type='button';c.className='ai-b cp';c.innerHTML='<i></i>Copy prompt';
+  AIS.forEach(a=>{const b=document.createElement('button');b.type='button';b.className='ai-b';b.innerHTML='<svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><use href="#'+a.m+'"/></svg>'+a.n;b.addEventListener('click',()=>openAI(a,q));box.appendChild(b)});
+  const c=document.createElement('button');c.type='button';c.className='ai-b cp';c.innerHTML='<svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><use href="#lg-copy"/></svg>Copy prompt';
   c.addEventListener('click',()=>copyText(mkPrompt(q)).then(()=>toast('Prompt copied. Paste it into any AI.'),()=>toast(mkPrompt(q))));box.appendChild(c)}
 $$('[data-ai-list][data-q]').forEach(b=>aiButtons(b,b.dataset.q));
 const ask=$('[data-ask]');
