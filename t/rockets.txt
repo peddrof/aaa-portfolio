@@ -1,0 +1,41 @@
+
+  [38;2;255;106;46m▌[0m[1mpedro veríssimo[0m[2m  ~/rockets[0m                                      [2m03/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;255;106;46m[1mROCKETS[0m[0m
+  [2mBuilt from fireworks up. São Gabriel, 2022–2023.[0m
+
+[38;2;255;106;46m                         /\
+                        /  \
+                       / /\ \
+                      |  ()  |
+                      |      |
+                      |  ||  |
+                     /|  ||  |\
+                    / |  ||  | \
+                   /__|______|__\
+                      \/\/\/\/
+                     (  )(  )(  )
+                  (    )    (    )
+              (      )    (     )   )
+      ~~~~~~(~~~~~~~~~~~~~~~~~~~~~~~~~)~~~~~~[0m
+
+  No lab, no club, no budget: YouTube (BPS.space did most of the
+  teaching) and a lot of launches that didn't go to plan. I started by
+  taking fireworks apart and mounting them in cardboard tubes. The first
+  ones exploded; after enough iterations they flew.
+
+  [38;2;255;106;46m▸[0m Home-mixed solid propellant, and a static fire on a kitchen scale
+    to read thrust.
+  [38;2;255;106;46m▸[0m An Arduino flight computer reading an accelerometer and driving
+    servos.
+  [38;2;255;106;46m▸[0m Parachute recovery, and cameras on board to film each flight.
+  [38;2;255;106;46m▸[0m Five rockets built. One pad fire. One flew in a corkscrew. I kept
+    every clip.
+
+  [2mfilm[0m  Foguete 7/2023, the documentary: https://youtu.be/FnTpVjeVxYo
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv sincra[2m   →[0m pv [1mai[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }

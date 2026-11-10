@@ -1,0 +1,20 @@
+
+  [38;2;242;193;78m▌[0m[1mpedro veríssimo[0m[2m  ~/farm[0m                                         [2m10/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;242;193;78m[1mFARM[0m[0m
+  [2mFive generations of rice and cattle.[0m
+
+[38;2;242;193;78m     _____|~~\_____      _
+    /   rice & cattle \    | |~
+   /________________ \___|_|______
+   ~~  ~~~  ~~  ~~~  ~~~  ~~  ~~~  ~~[0m
+
+  My family has worked the land in Rio Grande do Sul for five
+  generations. When I'm home I'm in the corral for the vaccinations and
+  on the combine for the harvest.
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv side[2m   →[0m pv [1mhonors[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }

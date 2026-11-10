@@ -1,0 +1,40 @@
+
+  [38;2;46;230;166m▌[0m[1mpedro veríssimo[0m[2m  ~/ai[0m                                           [2m04/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;46;230;166m[1mAI OLYMPIAD[0m[0m
+  [2mGold at the 1st National AI Olympiad (ONIA), 2025.[0m
+
+  [38;2;46;230;166m[1m716,000+[0m[0m[2m participants   [0m[38;2;46;230;166m[1m28[0m[0m[2m golds   [0m[38;2;46;230;166m[1m1[0m[0m[2m of them mine[0m
+
+  The rounds went from theory and ethics, to building models in Python,
+  to a final where I built a computer-vision algorithm for competing
+  robots, trained on Santos Dumont II, Brazil's national supercomputer.
+
+  [2m┌─ rn.py · my submission ────────────────────────────────────────────┐[0m
+  [2m│ [0m[38;2;46;230;166mfrom sklearn.neural_network import MLPClassifier[0m
+  [2m│ [0m[38;2;46;230;166mfrom sklearn.preprocessing import StandardScaler[0m
+  [2m│ [0m[38;2;46;230;166mimport pandas as pd[0m
+  [2m│ [0m[38;2;46;230;166m[0m
+  [2m│ [0m[38;2;46;230;166mtrain = pd.read_csv('treino.csv')[0m
+  [2m│ [0m[38;2;46;230;166mX, y = train.drop(['id', 'target'], axis=1), train['target'][0m
+  [2m│ [0m[38;2;46;230;166mscaler = StandardScaler()[0m
+  [2m│ [0m[38;2;46;230;166mmodel = MLPClassifier(hidden_layer_sizes=(200), max_iter=1000,[0m
+  [2m│ [0m[38;2;46;230;166m                      random_state=42)[0m
+  [2m│ [0m[38;2;46;230;166mmodel.fit(scaler.fit_transform(X), y)[0m
+  [2m│ [0m[38;2;46;230;166m# what was missing, rounds later: save a checkpoint between jobs[0m
+  [2m└─────────────────────────────────────────────────────────────────────┘[0m
+
+  The one that got away: the selection for the international team
+  trained on jobs capped at 15 minutes. I never saved a checkpoint, so
+  every job started from zero. My model stalled near 70% when it could
+  have reached about 95%. One missing line of code between me and
+  Beijing.
+
+  [2mcode [0m  https://github.com/peddrof/ONIA-Project
+  [2mafter[0m  named ambassador for the 2026 edition
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv rockets[2m   →[0m pv [1mvoluntaria[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }

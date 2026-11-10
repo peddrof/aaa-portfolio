@@ -1,0 +1,18 @@
+
+  [38;2;255;106;46m▌[0m[1mpedro veríssimo[0m[2m  ~/films[0m                                        [2m14/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;255;106;46m[1mFILMES PEDRO[0m[0m
+  [2mBefore all of this: films. Now on YouTube.[0m
+
+  [38;2;255;106;46mBatatinha 1       [0m  https://youtu.be/_12PqCGbdgI
+  [38;2;255;106;46mBatatinha 2       [0m  https://youtu.be/MT8nUVmGwXw
+  [38;2;255;106;46mBatatinha 3       [0m  https://youtu.be/tap-1_KABF4
+  [38;2;255;106;46mGuerra Fria       [0m  https://youtu.be/R73Zr48ojcc
+  [38;2;255;106;46mFoguete 7/2023    [0m  https://youtu.be/FnTpVjeVxYo
+  [38;2;255;106;46mPedras do Infinito[0m  https://youtu.be/CC7_vhzHMnY
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv press[2m   →[0m pv [1mask[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }

@@ -1,0 +1,18 @@
+
+  [38;2;79;127;255m▌[0m[1mpedro veríssimo[0m[2m  ~/flying[0m                                       [2m08/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;79;127;255m[1mFLYING[0m[0m
+  [2mFrom a cardboard cockpit to the real one.[0m
+
+  As a kid I built near full-scale cockpits out of cardboard, every
+  instrument drawn by hand. In May 2024, during the floods, with the
+  roads closed and a family emergency in Porto Alegre, I flew in as
+  co-pilot on a small plane found through a friend of a friend.
+
+  [2msince[0m  ANAC private pilot ground school done · 10 hours flown
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv data[2m   →[0m pv [1mside[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }

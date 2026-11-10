@@ -1,0 +1,26 @@
+
+  [38;2;140;146;160m▌[0m[1mpedro veríssimo[0m[2m  ~/press[0m                                        [2m13/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;140;146;160m[1mPRESS[0m[0m
+  [2mIn the news.[0m
+
+  [2mJul 2026[0m  [1mRBS TV[0m
+          The Morro da Cruz art school, part-funded through Voluntaria+
+  [2mJul 2026[0m  [1mZero Hora[0m
+          Porto Alegre gets a graffiti and visual arts school
+  [2mJul 2026[0m  [1mBrasil de Fato[0m
+          Students make a cultural space's renovation possible
+  [2mOct 2025[0m  [1mSBT RS[0m
+          InovaTec and Voluntaria+ on SBT
+  [2mAug 2025[0m  [1mRBS TV[0m
+          National Volunteering Day, featuring Voluntaria+
+  [2mAug 2025[0m  [1mColégio Farroupilha[0m
+          Student-built platform connects volunteers with NGOs
+  [2mJul 2024[0m  [1mCorreio do Povo[0m
+          Solidarity actions mobilize students
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv timeline[2m   →[0m pv [1mfilms[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }
