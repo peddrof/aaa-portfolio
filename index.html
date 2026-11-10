@@ -837,6 +837,9 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .sq-c>*:not(.bz):not(.sq-art){margin-inline:6px}
 .sq-c p{font-size:.92rem}
 .sq-art{position:relative;aspect-ratio:16/10;border-radius:12px;margin-bottom:12px;background:radial-gradient(70% 90% at 30% 20%,#FFE3EE,transparent 60%),#FFD43B;display:grid;place-items:center;overflow:hidden}
+.sq-art.photo{background:var(--bg-2);cursor:zoom-in;aspect-ratio:4/3.4}
+.sq-art.photo img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.sq-art.photo .sq-ban{top:12px;left:10px;right:auto;bottom:auto;transform:rotate(-5deg)}
 .sq-art .pop{height:86%;transform:rotate(12deg);filter:drop-shadow(0 12px 14px rgba(0,0,0,.18))}
 .sq-ban{position:absolute;right:10px;bottom:12px;transform:rotate(-6deg);font-family:var(--mono);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#C8102E;border:2px solid #C8102E;padding:3px 7px;border-radius:5px;background:rgba(255,255,255,.65)}
 .sq-dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin-top:10px;font-size:.84rem}
@@ -1589,17 +1592,7 @@ predictions_df.to_csv(<span class="s">'resposta.csv'</span>, index=<span class="
     </article>
     <div class="sq-row">
       <article class="sq-c pops">
-        <div class="sq-art"><svg class="pop" viewBox="0 0 200 240" aria-hidden="true">
-            <defs><linearGradient id="popg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF7AB0"/><stop offset=".55" stop-color="#FF4F8B"/><stop offset="1" stop-color="#E23670"/></linearGradient></defs>
-            <g stroke="#12141A" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
-              <rect x="88" y="150" width="24" height="76" rx="12" fill="#E8C48A"/>
-              <path d="M52 64C52 34 74 14 100 14C126 14 148 34 148 64V150C148 160 140 166 130 166H70C60 166 52 160 52 150Z" fill="url(#popg)"/>
-              <path d="M148 72C140 70 134 76 136 84C130 84 126 90 130 96C138 98 146 94 148 88Z" fill="#F7F6F2"/>
-              <path d="M66 70V140M84 56V150" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="7"/>
-              <path d="M70 166C70 178 62 180 62 190C62 198 76 198 76 190C76 182 70 178 70 166" fill="url(#popg)"/>
-            </g>
-            <g fill="#FFD43B" stroke="#12141A" stroke-width="3"><circle cx="34" cy="40" r="6"/><circle cx="170" cy="120" r="5"/><path d="M168 30l5 10 10 5-10 5-5 10-5-10-10-5 10-5z"/></g>
-          </svg><span class="sq-ban">Banned by the principal</span></div>
+        <div class="sq-art photo zoom" data-lb data-full="media/popsicles-l.webp" data-cap="On the sidewalk, at pickup time, with two happy customers."><img src="media/popsicles-s.webp" width="480" height="764" loading="lazy" decoding="async" alt="Pedro in a Santa hat behind a table with a cooler, on the sidewalk, with two young customers holding popsicles."><span class="sq-ban">Banned by the principal</span></div>
         <span class="sq-k">Business · age 14</span>
         <h3>First business: popsicles.</h3>
         <p>Sold popsicles at school until the principal banned it for “causing disorder” and taking customers from the cafeteria. Moved to the sidewalk outside at pickup time, where the parents were.</p>
