@@ -1,0 +1,25 @@
+
+  [38;2;255;212;59m▌[0m[1mpedro veríssimo[0m[2m  ~/honors[0m                                       [2m11/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;255;212;59m[1mHONORS[0m[0m
+  [2mNine, in one list.[0m
+
+  [38;2;255;212;59m▸[0m Gold medal, 1st National AI Olympiad (ONIA), 2025: one of 28 among
+    716,000+.
+  [38;2;255;212;59m▸[0m ONIA ambassador, 2026 edition.
+  [38;2;255;212;59m▸[0m Gold medal, Brazilian Astronomy Olympiad (OBA), 2025: top 150 in
+    Brazil.
+  [38;2;255;212;59m▸[0m Invited speaker, II BRICS Forum, Brasília, Sep 2025.
+  [38;2;255;212;59m▸[0m Geração Caldeira fellow, 2025: 200 of about 18,000, final project
+    won.
+  [38;2;255;212;59m▸[0m Preface of Colégio Farroupilha's 9th-grade book, 2025.
+  [38;2;255;212;59m▸[0m Solver #76, Paralelo 1155, Dec 2023.
+  [38;2;255;212;59m▸[0m "Alamar" distinction, military school: top 1% for grades and
+    conduct.
+  [38;2;255;212;59m▸[0m Top five, clipping competition.
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv farm[2m   →[0m pv [1mtimeline[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }

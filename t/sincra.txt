@@ -1,0 +1,26 @@
+
+  [38;2;79;127;255m▌[0m[1mpedro veríssimo[0m[2m  ~/sincra[0m                                       [2m02/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;79;127;255m[1mSINCRA[0m[0m
+  [2mWhat I am building now.[0m
+
+  [1m"Doctors shouldn't pay interest on money that's already theirs."[0m
+
+  In Brazil a surgeon can wait months to be paid for an operation, and
+  the hospital often can't tell where that money is stuck: internal
+  audit, the insurer, a missing signature. Sincra rebuilds every
+  procedure's path from surgery to payout and predicts how much each
+  doctor will receive, when, and with what confidence.
+
+  [38;2;79;127;255m01 connect[0m[2m  →  [0m[38;2;79;127;255m02 rebuild[0m[2m  →  [0m[38;2;79;127;255m03 predict[0m[2m  →  [0m[38;2;79;127;255m04 show[0m[2m  →  [0m[38;2;79;127;255m05 advance[0m
+
+  [2mrole   [0m  tech co-founder, one of three: product and engineering
+  [2mhistory[0m  started as shift scheduling; changed thesis at Link's Startup
+           School
+  [2mweb    [0m  https://sincra.app
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv about[2m   →[0m pv [1mrockets[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }

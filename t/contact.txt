@@ -1,0 +1,16 @@
+
+  [38;2;79;127;255m▌[0m[1mpedro veríssimo[0m[2m  ~/contact[0m                                      [2m16/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;79;127;255m[1mCONTACT[0m[0m
+  [2mSay hello. I answer.[0m
+
+  [2memail   [0m  pedrovverissimo1@gmail.com
+  [2mlinkedin[0m  https://www.linkedin.com/in/pvverissimo
+  [2mgithub  [0m  https://github.com/peddrof
+  [2mweb     [0m  https://pedroverissimo.vercel.app
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv ask[2m   →[0m pv [1mabout[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }

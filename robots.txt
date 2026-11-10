@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Hello, crawler. The long, plain-text version of this site, written for AI agents:
+# https://pedroverissimo.vercel.app/llms.txt

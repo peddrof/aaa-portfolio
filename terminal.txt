@@ -10,46 +10,29 @@
   [1mPedro Veríssimo[0m  [2m·[0m  builder from São Gabriel, Brazil
   [38;2;79;127;255mtech co-founder of Sincra[0m  [2m·[0m  São Paulo, UTC−3
 
-  [38;2;79;127;255m[1mNOW[0m [2m───────────────────────────────────────────────────────[0m
-  [38;2;79;127;255m▸[0m [1mSincra[0m
-    Fintech for medical receivables. Rebuilds each procedure's path from
-    surgery to payout and predicts how much a doctor gets paid, and when.
+  [38;2;79;127;255m[1mMENU[0m[0m [2m─────────────────────────────────────────────────────────────────[0m
+  [2m01[0m  [38;2;79;127;255mabout      [0m[2mWho, where from, how I got here.[0m
+  [2m02[0m  [38;2;79;127;255msincra     [0m[2mWhat I am building now.[0m
+  [2m03[0m  [38;2;255;106;46mrockets    [0m[2mBuilt from fireworks up. São Gabriel, 2022–2023.[0m
+  [2m04[0m  [38;2;46;230;166mai         [0m[2mGold at the 1st National AI Olympiad (ONIA), 2025.[0m
+  [2m05[0m  [38;2;255;212;59mvoluntaria [0m[2mVolunteers meet NGOs. Porto Alegre, 2024–2025.[0m
+  [2m06[0m  [38;2;255;79;139maudience   [0m[2mThree Instagram pages, 316,000 followers. All sold.[0m
+  [2m07[0m  [38;2;79;127;255mdata       [0m[2mA forecast that won, and a talk in Brasília. 2025.[0m
+  [2m08[0m  [38;2;79;127;255mflying     [0m[2mFrom a cardboard cockpit to the real one.[0m
+  [2m09[0m  [38;2;255;79;139mside       [0m[2mSmaller things, each one finished.[0m
+  [2m10[0m  [38;2;242;193;78mfarm       [0m[2mFive generations of rice and cattle.[0m
+  [2m11[0m  [38;2;255;212;59mhonors     [0m[2mNine, in one list.[0m
+  [2m12[0m  [38;2;140;146;160mtimeline   [0m[2mEverything, on one track. Newest first.[0m
+  [2m13[0m  [38;2;140;146;160mpress      [0m[2mIn the news.[0m
+  [2m14[0m  [38;2;255;106;46mfilms      [0m[2mBefore all of this: films. Now on YouTube.[0m
+  [2m15[0m  [38;2;46;230;166mask        [0m[2mAsk your own AI anything about me.[0m
+  [2m16[0m  [38;2;79;127;255mcontact    [0m[2mSay hello. I answer.[0m
 
-  [38;2;255;106;46m[1mWORK[0m [2m──────────────────────────────────────────────────────[0m
-  [38;2;255;106;46m▸[0m [1mRockets, built from fireworks up[0m
-    Home-mixed propellant, Arduino flight computer, parachute recovery.
-    Five built, 2022–2023. Taught mostly by BPS.space on YouTube.
-  [38;2;46;230;166m▸[0m [1mGold, 1st National AI Olympiad (ONIA)[0m
-    One of 28 golds among 716,000+ participants. Missed the international
-    team by one line of code: I never saved a checkpoint.
-  [38;2;255;212;59m▸[0m [1mVoluntaria+[0m
-    Led the rebuild as InovaTec head of tech. 170+ volunteers, 20 NGOs,
-    R$6,300 for a Braille printer, and the evening news.
-  [38;2;255;79;139m▸[0m [1mThree Instagram pages, 316,000 followers[0m
-    A crab (183K), a cat (83K) and an AI page (50K). All three sold.
-  [38;2;79;127;255m▸[0m [1mRBS Group Q4 forecast[0m
-    Geração Caldeira, 200 of ~18,000 selected. Final project won.
-  [38;2;140;146;160m▸[0m [1mII BRICS Forum, Brasília[0m
-    Invited speaker: "The Youth Perspective: innovation starts small."
-  [38;2;140;146;160m▸[0m [1mFlying[0m
-    Cardboard cockpits as a kid; co-pilot during the 2024 floods;
-    ANAC ground school done, 10 hours flown.
+  [38;2;46;230;166m[1mHOW TO MOVE AROUND[0m[0m [2m───────────────────────────────────────────────────[0m
+  1. define a tiny helper, once:
+     [38;2;46;230;166mpv(){ curl -sL pedroverissimo.vercel.app/$1; }[0m
+  2. then jump anywhere:        [38;2;46;230;166mpv rockets[0m[2m   ·   [0m[38;2;46;230;166mpv ai[0m[2m   ·   [0m[38;2;46;230;166mpv[0m
+  [2m   (or the long way: curl -sL pedroverissimo.vercel.app/rockets)[0m
 
-  [38;2;242;193;78m[1mROOTS[0m [2m─────────────────────────────────────────────────────[0m
-  Fifth generation of a family that farms rice and cattle in
-  Rio Grande do Sul. Corral for the vaccinations, combine for the harvest.
-
-  [38;2;140;146;160m[1mALSO[0m [2m──────────────────────────────────────────────────────[0m
-  Gold, Brazilian Astronomy Olympiad · Paralelo 1155 solver #76
-  "Alamar" distinction, top 1% at military school · Step Up mentor
-
-  [38;2;79;127;255m[1mLINKS[0m [2m─────────────────────────────────────────────────────[0m
-  [2mweb      [0mhttps://pedroverissimo.vercel.app
-  [2memail    [0mpedrovverissimo1@gmail.com
-  [2mgithub   [0mhttps://github.com/peddrof
-  [2mlinkedin [0mhttps://www.linkedin.com/in/pvverissimo
-  [2msincra   [0mhttps://sincra.app
-
-  [2mThe full version has rockets, a farm and a wall of flaps.
-  Open it in a browser, and type 1155.[0m
-
+  [2mEvery page ends with prev / next. Start with [0m[1mpv about[0m[2m.[0m
+  [2mThe full version has a launch, a farm and a wall of flaps. Type 1155.[0m

@@ -19,6 +19,40 @@
       }
     },
     {
+      "src": "/(about|sincra|rockets|ai|voluntaria|audience|data|flying|side|farm|honors|timeline|press|films|ask|contact|help)/?",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": {
+            "pre": "curl/"
+          }
+        }
+      ],
+      "dest": "/t/$1.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/onia/?",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": {
+            "pre": "curl/"
+          }
+        }
+      ],
+      "dest": "/t/ai.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
       "src": "/",
       "has": [
         {
@@ -30,6 +64,40 @@
         }
       ],
       "dest": "/terminal.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/(about|sincra|rockets|ai|voluntaria|audience|data|flying|side|farm|honors|timeline|press|films|ask|contact|help)/?",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": {
+            "pre": "Wget/"
+          }
+        }
+      ],
+      "dest": "/t/$1.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/onia/?",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": {
+            "pre": "Wget/"
+          }
+        }
+      ],
+      "dest": "/t/ai.txt",
       "headers": {
         "Content-Type": "text/plain; charset=utf-8",
         "Cache-Control": "public, max-age=0, must-revalidate"
@@ -53,6 +121,40 @@
       }
     },
     {
+      "src": "/(about|sincra|rockets|ai|voluntaria|audience|data|flying|side|farm|honors|timeline|press|films|ask|contact|help)/?",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": {
+            "pre": "HTTPie/"
+          }
+        }
+      ],
+      "dest": "/t/$1.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/onia/?",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": {
+            "pre": "HTTPie/"
+          }
+        }
+      ],
+      "dest": "/t/ai.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
       "src": "/",
       "has": [
         {
@@ -67,6 +169,159 @@
       "headers": {
         "Content-Type": "text/plain; charset=utf-8",
         "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/(about|sincra|rockets|ai|voluntaria|audience|data|flying|side|farm|honors|timeline|press|films|ask|contact|help)/?",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": {
+            "pre": "xh/"
+          }
+        }
+      ],
+      "dest": "/t/$1.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/onia/?",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": {
+            "pre": "xh/"
+          }
+        }
+      ],
+      "dest": "/t/ai.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/about/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#about"
+      }
+    },
+    {
+      "src": "/sincra/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#sincra"
+      }
+    },
+    {
+      "src": "/rockets/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#rockets"
+      }
+    },
+    {
+      "src": "/ai/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#onia"
+      }
+    },
+    {
+      "src": "/voluntaria/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#voluntaria"
+      }
+    },
+    {
+      "src": "/audience/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#audience"
+      }
+    },
+    {
+      "src": "/data/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#data"
+      }
+    },
+    {
+      "src": "/flying/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#flying"
+      }
+    },
+    {
+      "src": "/side/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#side"
+      }
+    },
+    {
+      "src": "/farm/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#farm"
+      }
+    },
+    {
+      "src": "/honors/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#honors"
+      }
+    },
+    {
+      "src": "/timeline/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#timeline"
+      }
+    },
+    {
+      "src": "/press/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#press"
+      }
+    },
+    {
+      "src": "/films/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#beyond"
+      }
+    },
+    {
+      "src": "/ask/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#talk"
+      }
+    },
+    {
+      "src": "/contact/?",
+      "status": 308,
+      "headers": {
+        "Location": "/#contact"
+      }
+    },
+    {
+      "src": "/help/?",
+      "status": 308,
+      "headers": {
+        "Location": "/"
       }
     },
     {

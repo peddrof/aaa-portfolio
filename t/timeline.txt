@@ -1,0 +1,26 @@
+
+  [38;2;140;146;160m▌[0m[1mpedro veríssimo[0m[2m  ~/timeline[0m                                     [2m12/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;140;146;160m[1mCHANGELOG[0m[0m
+  [2mEverything, on one track. Newest first.[0m
+
+  [1m2026[0m  [2m│[0m [38;2;255;106;46m→ move [0m  São Paulo, Link School of Business. Co-founds Sincra.
+        [2m│[0m [38;2;255;212;59m★ win  [0m  Voluntaria+, run by the students I trained, helps
+        [2m│[0m          fund an art school.
+  [1m2025[0m  [2m│[0m [38;2;255;212;59m★ win  [0m  Gold at ONIA and OBA. BRICS Forum. Caldeira project
+        [2m│[0m          wins.
+        [2m│[0m [38;2;79;127;255m+ build[0m  Step Up, Farroupilha AI, Advogado Rural.
+  [1m2024[0m  [2m│[0m [38;2;79;127;255m+ build[0m  Voluntaria+.
+        [2m│[0m [38;2;255;106;46m→ move [0m  Porto Alegre, alone, mid-year. Co-pilot during the
+        [2m│[0m          floods.
+  [1m2023[0m  [2m│[0m [38;2;255;212;59m★ win  [0m  Paralelo 1155, solver #76. The "Alamar".
+        [2m│[0m [38;2;79;127;255m+ build[0m  The crab, the cat and the AI page.
+  [1m2022[0m  [2m│[0m [38;2;79;127;255m+ build[0m  Rockets.
+  [1m2020[0m  [2m│[0m [38;2;46;230;166m∴ learn[0m  The stock market at 12.
+  [1m2017[0m  [2m│[0m [38;2;79;127;255m+ build[0m  A murder-mystery trilogy, one film per summer.
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv honors[2m   →[0m pv [1mpress[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }

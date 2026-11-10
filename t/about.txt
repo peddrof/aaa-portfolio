@@ -1,0 +1,24 @@
+
+  [38;2;79;127;255m▌[0m[1mpedro veríssimo[0m[2m  ~/about[0m                                        [2m01/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;79;127;255m[1mABOUT[0m[0m
+  [2mWho, where from, how I got here.[0m
+
+  I'm Pedro Veríssimo, a builder from São Gabriel, a town of about
+  60,000 people in the far south of Brazil. When something grabs my
+  attention, I go all the way, until there's something I can point to.
+
+  [2mfrom  [0m  São Gabriel, RS, fifth generation of rice and cattle farmers
+  [2mroute [0m  São Gabriel → Porto Alegre (2024) → São Paulo (2026)
+  [2mnow   [0m  tech co-founder of Sincra · Link School of Business
+  [2mspeaks[0m  Portuguese, English (C2, self-taught by 16), Spanish
+
+  In 2024 I moved to Porto Alegre on my own, in the middle of a school
+  year, because that was the only window I had. Most of what's on these
+  pages happened after that move.
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv contact[2m   →[0m pv [1msincra[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }

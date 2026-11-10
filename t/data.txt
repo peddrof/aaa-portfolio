@@ -1,0 +1,22 @@
+
+  [38;2;79;127;255m▌[0m[1mpedro veríssimo[0m[2m  ~/data[0m                                         [2m07/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;79;127;255m[1mDATA & STAGE[0m[0m
+  [2mA forecast that won, and a talk in Brasília. 2025.[0m
+
+  [38;2;79;127;255m[1mGERAÇÃO CALDEIRA[0m[0m [2m─────────────────────────────────────────────────────[0m
+
+  200 selected from about 18,000. Our final project, a predictive sales
+  panel for RBS Group's fourth quarter, won. I turned down an internship
+  offer to keep building.
+
+  [38;2;79;127;255m[1mII BRICS FORUM[0m[0m [2m───────────────────────────────────────────────────────[0m
+
+  Twenty minutes in Brasília, for diplomats and young leaders: "The
+  Youth Perspective: innovation starts small."
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv audience[2m   →[0m pv [1mflying[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }

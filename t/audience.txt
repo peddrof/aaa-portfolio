@@ -1,0 +1,24 @@
+
+  [38;2;255;79;139m▌[0m[1mpedro veríssimo[0m[2m  ~/audience[0m                                     [2m06/16[0m
+  [2m──────────────────────────────────────────────────────────────────────[0m
+
+  [38;2;255;79;139m[1mAUDIENCE[0m[0m
+  [2mThree Instagram pages, 316,000 followers. All sold.[0m
+
+  My feed kept serving the same repeatable formats with millions of
+  views, so I tried to reverse-engineer them. The first two pages went
+  nowhere. Then a crab took off.
+
+  [38;2;255;79;139m@seusiriqueijo[0m  183K  the most famous crab in Brazil
+  [38;2;255;79;139m@gatinhoajude [0m   83K  a cat drinking water; one reel: 340,088 accounts
+  [38;2;255;79;139m@inteligenciai[0m   50K  about AI
+
+  7.2 million accounts reached in one 30-day window. My benchmark: the
+  two biggest accounts that started copying me. I couldn't monetize, so
+  I sold all three, for R$1,200, R$800 and R$160. Lesson: sell before
+  you build.
+
+  [2m──────────────────────────────────────────────────────────────────────[0m
+  [2m←[0m pv voluntaria[2m   →[0m pv [1mdata[0m[2m   ⌂[0m pv[2m   ?[0m pv help
+  [2mno pv yet? paste this once:[0m
+  pv(){ curl -sL pedroverissimo.vercel.app/$1; }
