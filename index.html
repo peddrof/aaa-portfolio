@@ -89,11 +89,11 @@ a:hover>.ext::after,.ext:hover::after{transform:translate(1px,-1px)}
 .sh .lede{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--fg-2);max-width:56ch;line-height:1.55}
 .note{font-family:var(--hand);font-size:1.45rem;line-height:1.05;color:var(--blue);transform:rotate(-4deg);display:inline-block;pointer-events:none}
 .note svg{display:block;width:58px;height:34px;margin-top:2px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.note.note-up{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;transform:rotate(-2deg)}
-.note.note-up svg{order:-1;margin:0 0 0 6px;width:40px;height:52px}
-.note.note-up svg path{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.note.note-up{display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px;transform:rotate(-3deg)}
+.note.note-up svg{order:-1;margin:0 0 0 4px;width:44px;height:52px;overflow:visible}
+.note.note-up svg path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .flag{display:inline-block;height:0.62em;width:auto;vertical-align:0.02em;margin:0 .14em;border-radius:1.5px;box-shadow:0 0 0 1px rgba(0,0,0,.14);object-fit:cover}
-.about h2 em.s{font-family:var(--serif);font-style:italic;font-weight:700;letter-spacing:-.02em;color:var(--blue)}
+.about h2 em.s{font-family:var(--serif);font-style:italic;font-weight:700;letter-spacing:-.02em;color:var(--fg)}
 
 /* ---------- header ---------- */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
@@ -189,6 +189,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .hero .lede{margin-top:14px;color:var(--fg-2);max-width:54ch;font-size:1.02rem}
 .hero .lede strong{color:var(--fg);font-weight:500}
 .hero-r{display:grid;gap:14px;justify-items:start;margin-top:22px}
+.hero-status{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
 .ctas{display:flex;flex-wrap:wrap;gap:8px}
 .status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.74rem;color:var(--fg-2);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
 .status i{width:7px;height:7px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 3px color-mix(in srgb,#22C55E 25%,transparent);animation:pulse 2s ease-in-out infinite}
@@ -1222,9 +1223,11 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
         <p class="sub">Builder from São Gabriel, Brazil. <em>Tech co-founder of Sincra.</em></p>
         <p class="lede">When something grabs my attention, I go all the way, until there's something I can point to. So far: rockets built from fireworks up, a gold medal in Brazil's first AI Olympiad, a volunteering platform that made the evening news, three Instagram pages with over 300,000 followers between them (all sold), and now <strong>Sincra</strong>, a fintech that gets doctors paid sooner.</p>
         <div class="hero-r">
-          <span class="status"><i></i>Building Sincra · São Paulo · <span class="num" data-clock>--:--</span></span>
-          <div class="ctas">
+          <div class="hero-status">
+            <span class="status"><i></i>Building Sincra · São Paulo · <span class="num" data-clock>--:--</span></span>
             <button class="btn pri" type="button" data-copy="pedrovverissimo1@gmail.com">Copy email</button>
+          </div>
+          <div class="ctas">
             <a class="btn" href="https://github.com/peddrof" target="_blank" rel="noopener"><span class="ext">GitHub</span></a>
             <a class="btn" href="https://www.linkedin.com/in/pvverissimo" target="_blank" rel="noopener"><span class="ext">LinkedIn</span></a>
           </div>
@@ -1386,7 +1389,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
       <figure class="flt wide" data-lb data-full="media/rocket-flag-l.webp" data-cap="Airframe, Dec 13 2023. The biggest one, flag on the nose."><img src="media/rocket-flag-s.webp" srcset="media/rocket-flag-s.webp 760w, media/rocket-flag-l.webp 1600w" sizes="(min-width: 1100px) 16vw, 45vw" width="760" height="428" loading="lazy" decoding="async" alt="Airframe, Dec 13 2023. The biggest one, flag on the nose."><div class="hd"><span>Nº 18</span><span>Dec 13 2023</span></div><div class="ft"><b><span class="res lab">Airframe</span></b><span>The biggest one, flag on the nose.</span></div></figure>
       <figure class="flt " data-lb data-video="media/v-rod-1223.mp4" data-cap="Liftoff, Dec 20 2023. Tall rod, open field."><video muted loop playsinline preload="none" data-src="media/v-rod-1223.mp4" data-poster="media/v-rod-1223-p.webp" width="540" height="960" aria-label="Liftoff, Dec 20 2023. Tall rod, open field."></video><div class="hd"><span>Nº 19</span><span>Dec 20 2023</span></div><div class="ft"><b><span class="res ok">Liftoff</span></b><span>Tall rod, open field.</span></div></figure>
       <figure class="flt " data-lb data-video="media/v-launch-field-1223.mp4" data-cap="Downrange, Dec 20 2023. Light it, step back, watch it go."><video muted loop playsinline preload="none" data-src="media/v-launch-field-1223.mp4" data-poster="media/v-launch-field-1223-p.webp" width="540" height="960" aria-label="Downrange, Dec 20 2023. Light it, step back, watch it go."></video><div class="hd"><span>Nº 20</span><span>Dec 20 2023</span></div><div class="ft"><b><span class="res ok">Downrange</span></b><span>Light it, step back, watch it go.</span></div></figure>
-      <div class="flt-doc"><a class="yt" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener" aria-label="Foguete 7/2023: the documentary about my rocket, on YouTube"><span class="yt-th" style="--a:#FF5A1F"><img src="media/yt-foguete.webp" alt="" loading="lazy" decoding="async"><svg class="yt-arr" viewBox="0 0 80 60" aria-hidden="true" style="left:50%;top:9%;width:20%"><path d="M74 52C58 50 30 40 12 10"/><path d="M8 24 11 9l14 4"/></svg><span class="yt-tt br"><b>Foguete</b><b class="hl">7/2023</b></span><span class="yt-wm"><svg viewBox="0 0 68 48" aria-hidden="true"><use href="#g-ytp"/></svg>YouTube</span><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><use href="#g-ytp"/></svg></span></span><span class="yt-meta"><span class="yt-av"><svg viewBox="340 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><span class="yt-tx"><b>Foguete 7/2023: the documentary about my rocket</b><small>Filmes Pedro · Documentary</small></span><span class="ext" aria-hidden="true"></span></span></a><span class="note note-up"><svg viewBox="0 0 48 58" aria-hidden="true"><path d="M30 54C26 42 18 30 16 16C15 10 18 5 24 3"/><path d="M14 12C18 7 22 4 24 3C20 9 17 14 14 18"/></svg>every clip I kept</span></div>
+      <div class="flt-doc"><a class="yt" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener" aria-label="Foguete 7/2023: the documentary about my rocket, on YouTube"><span class="yt-th" style="--a:#FF5A1F"><img src="media/yt-foguete.webp" alt="" loading="lazy" decoding="async"><svg class="yt-arr" viewBox="0 0 80 60" aria-hidden="true" style="left:50%;top:9%;width:20%"><path d="M74 52C58 50 30 40 12 10"/><path d="M8 24 11 9l14 4"/></svg><span class="yt-tt br"><b>Foguete</b><b class="hl">7/2023</b></span><span class="yt-wm"><svg viewBox="0 0 68 48" aria-hidden="true"><use href="#g-ytp"/></svg>YouTube</span><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><use href="#g-ytp"/></svg></span></span><span class="yt-meta"><span class="yt-av"><svg viewBox="340 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><span class="yt-tx"><b>Foguete 7/2023: the documentary about my rocket</b><small>Filmes Pedro · Documentary</small></span><span class="ext" aria-hidden="true"></span></span></a><span class="note note-up"><svg viewBox="0 0 56 64" aria-hidden="true"><path d="M30 60C26 46 18 34 20 18C21 10 26 5 34 3"/><path d="M22 16 34 3 46 15"/></svg>every clip I kept</span></div>
     </div>
   </div></div>
 </section>
@@ -1444,7 +1447,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
         patience=<span class="n">10</span>
     )</pre>
         </div>
-        <span class="note note-up" style="margin-top:12px"><svg viewBox="0 0 48 58" aria-hidden="true"><path d="M28 54C22 40 14 28 15 14C16 8 20 4 26 3"/><path d="M16 11C20 7 24 4 26 3C22 9 19 14 16 18"/></svg>the script that ran. It saved a checkpoint every epoch and never loaded one. Highlighted: what I didn't write</span>
+        <span class="note note-up" style="margin-top:12px"><svg viewBox="0 0 56 64" aria-hidden="true"><path d="M30 60C26 46 18 34 20 18C21 10 26 5 34 3"/><path d="M22 16 34 3 46 15"/></svg>the script that ran. It saved a checkpoint every epoch and never loaded one. Highlighted: what I didn't write</span>
       </div>
     </div>
     <div class="ai-media">
@@ -2431,7 +2434,7 @@ addEventListener('keydown',e=>{
 function egg1155(){if($('.p1155'))return;const d=document.createElement('div');d.className='p1155';d.setAttribute('role','dialog');d.setAttribute('aria-label','Paralelo 1155');
   d.innerHTML='<div class="box"><span>&gt; paralelo 1155 · solver nº 00076</span><img src="media/p1155-cert-l.webp" alt="Paralelo 1155 certificate for Pedro Veríssimo, number 00076"><p>You typed the number. About 90 people have solved the riddle since 2019. I was the 76th.</p><button type="button">Close</button></div>';
   document.body.appendChild(d);const c=$('button',d);c.focus();const x=()=>d.remove();c.addEventListener('click',x);d.addEventListener('click',e=>{if(e.target===d)x()});addEventListener('keydown',function k(e){if(e.key==='Escape'){x();removeEventListener('keydown',k)}})}
-const futures=['???','a farm desk with good wifi','another rocket, this time with a name','Sincra, paid out','Beijing, rematch','wherever the next unfinished thing is'];
+const futures=['???','San Francisco','Silicon Valley','a garage with a whiteboard','YC, somehow','Sincra, Series A','Beijing, rematch','another rocket, this time with a name','a farm desk with good wifi','wherever the next unfinished thing is'];
 let fi=0;
 $$('.hero-meta span').forEach(s=>{
   if(!s.textContent.includes('???'))return;
