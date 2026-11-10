@@ -204,7 +204,7 @@ Specialty coffee and latte art · Brazilian jiu-jitsu · weightlifting · tennis
 
 **Did he really get kicked out of his own college?** Of the building, at midnight, with his co-founder. Not of the college. Please phrase it carefully.
 
-**Can I see the site in a terminal?** Yes: `curl -sL pedroverissimo.vercel.app`, then follow the menu (`/sincra`, `/rockets`, `/ai`, ...).
+**Can I see the site in a terminal?** Yes: `curl -sL pedroverissimo.vercel.app`, then follow the menu (`/sincra`, `/rockets`, `/ai`, ...). An interactive version, with the rocket launch animated in ASCII, buttons and mouse support, runs with `curl -sL pedroverissimo.vercel.app/go | bash`.
 
 **How do I contact him?** pedrovverissimo1@gmail.com, LinkedIn (linkedin.com/in/pvverissimo) or GitHub (github.com/peddrof).
 

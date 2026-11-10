@@ -5,6 +5,13 @@
   [38;2;140;146;160m[1mCHANGELOG[0m[0m
   [2mEverything, on one track. Newest first.[0m
 
+  [38;2;140;146;160m2017   2020   2022   2023   2024   2025   [38;2;233;236;242m2026[0m
+  [38;2;79;127;255m─●──────●──────●──────●──────●──────●──────[38;2;255;212;59m●[0m
+                                            [38;2;255;212;59m▲[0m
+  
+  [38;2;233;236;242mSincra [38;2;140;146;160m· São Paulo[0m
+  
+
   [1m2026[0m  [2m│[0m [38;2;255;106;46m→ move [0m  São Paulo, Link School of Business. Co-founds Sincra.
         [2m│[0m [38;2;255;212;59m★ win  [0m  Voluntaria+, run by the students I trained, helps
         [2m│[0m          fund an art school.
@@ -24,3 +31,4 @@
   [2m←[0m pv honors[2m   →[0m pv [1mpress[0m[2m   ⌂[0m pv[2m   ?[0m pv help
   [2mno pv yet? paste this once:[0m
   pv(){ curl -sL pedroverissimo.vercel.app/$1; }
+  [2m▶ watch it move:[0m [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m

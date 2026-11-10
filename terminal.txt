@@ -10,6 +10,11 @@
   [1mPedro Veríssimo[0m  [2m·[0m  builder from São Gabriel, Brazil
   [38;2;79;127;255mtech co-founder of Sincra[0m  [2m·[0m  São Paulo, UTC−3
 
+  [38;2;46;230;166m┌────────────────────────────────────────────────────────────────────┐[0m
+  [38;2;46;230;166m│[0m [38;2;46;230;166m[1m▶ NEW[0m[0m  [1mthe interactive version[0m[2m  ·  the launch, art, buttons, mouse[0m [38;2;46;230;166m│[0m
+  [38;2;46;230;166m│[0m   [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m                     [38;2;46;230;166m│[0m
+  [38;2;46;230;166m└────────────────────────────────────────────────────────────────────┘[0m
+
   [38;2;79;127;255m[1mMENU[0m[0m [2m─────────────────────────────────────────────────────────────────[0m
   [2m01[0m  [38;2;79;127;255mabout      [0m[2mWho, where from, how I got here.[0m
   [2m02[0m  [38;2;79;127;255msincra     [0m[2mWhat I am building now.[0m

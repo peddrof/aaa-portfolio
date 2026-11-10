@@ -5,6 +5,15 @@
   [38;2;255;79;139m[1mAUDIENCE[0m[0m
   [2mThree Instagram pages, 316,000 followers. All sold.[0m
 
+  [38;2;255;79;139m@seusiriqueijo  ██████████████████████   [38;2;233;236;242m183K[0m
+  [38;2;140;146;160m@gatinhoajude   [38;2;180;70;110m█████████▉                [38;2;233;236;242m83K[0m
+  [38;2;140;146;160m@inteligenciai  [38;2;180;70;110m██████                    [38;2;233;236;242m50K[0m
+  
+  [38;2;96;100;112m7.2M reached in 30 days · all three sold[0m
+  
+                                [38;2;255;106;46m(\/)(°''''°)(\/)[0m
+  [38;2;120;104;80m.____.~___.____~____.___~.____.__~_.____._~__.[0m
+
   My feed kept serving the same repeatable formats with millions of
   views, so I tried to reverse-engineer them. The first two pages went
   nowhere. Then a crab took off.
@@ -22,3 +31,4 @@
   [2m←[0m pv voluntaria[2m   →[0m pv [1mdata[0m[2m   ⌂[0m pv[2m   ?[0m pv help
   [2mno pv yet? paste this once:[0m
   pv(){ curl -sL pedroverissimo.vercel.app/$1; }
+  [2m▶ watch it move:[0m [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m

@@ -5,6 +5,16 @@
   [38;2;255;79;139m[1mSIDE QUESTS[0m[0m
   [2mSmaller things, each one finished.[0m
 
+   [38;2;255;140;175m.-"""-.[0m
+  [38;2;255;79;139m/       \[0m
+  [38;2;255;79;139m| [38;2;233;236;242m▖     [38;2;255;79;139m|    [38;2;96;100;112mside quest 2/5[0m
+  [38;2;255;140;175m|       |    [38;2;233;236;242mpopsicles[0m
+  [38;2;255;79;139m|       |    [38;2;140;146;160mR$2,000 · banned at s[0m
+  [38;2;255;79;139m'-.___.-'[0m
+     [38;2;242;193;78m| |       [38;2;96;100;112m· [38;2;255;79;139m● [38;2;96;100;112m· · ·[0m
+     [38;2;242;193;78m| |[0m
+     [38;2;242;193;78m'-'[0m
+
   [38;2;255;79;139m▸[0m Markets, age 12 (2020): the pandemic, a stock chart, and advice
     nobody asked for. In 2026, presenting at B3 with my Link class.
   [38;2;255;79;139m▸[0m Popsicles, age 14: sold at school until the principal banned it
@@ -22,3 +32,4 @@
   [2m←[0m pv flying[2m   →[0m pv [1mfarm[0m[2m   ⌂[0m pv[2m   ?[0m pv help
   [2mno pv yet? paste this once:[0m
   pv(){ curl -sL pedroverissimo.vercel.app/$1; }
+  [2m▶ watch it move:[0m [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m

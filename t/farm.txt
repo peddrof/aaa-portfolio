@@ -5,10 +5,14 @@
   [38;2;242;193;78m[1mFARM[0m[0m
   [2mFive generations of rice and cattle.[0m
 
-[38;2;242;193;78m     _____|~~\_____      _
-    /   rice & cattle \    | |~
-   /________________ \___|_|______
-   ~~  ~~~  ~~  ~~~  ~~~  ~~  ~~~  ~~[0m
+                                        [38;2;255;212;59m\ | /[0m
+      [38;2;233;236;242m^__^                              [38;2;255;212;59m- O -[0m
+      [38;2;233;236;242m(oo)\_______                      [38;2;255;212;59m/ | \[0m
+      [38;2;233;236;242m(__)\       )/\/[0m
+          [38;2;233;236;242m||[38;2;140;146;160m----[38;2;233;236;242mw |[0m
+          [38;2;233;236;242m||     ||[0m
+  [38;2;242;193;78m",,,,,,"''''''",,,,,,"''''''",,,,,,"''''''",,,[0m
+  [38;2;120;170;80m|//////|\\\\\\|//////|\\\\\\|//////|\\\\\\|///[0m
 
   My family has worked the land in Rio Grande do Sul for five
   generations. When I'm home I'm in the corral for the vaccinations and
@@ -18,3 +22,4 @@
   [2m←[0m pv side[2m   →[0m pv [1mhonors[0m[2m   ⌂[0m pv[2m   ?[0m pv help
   [2mno pv yet? paste this once:[0m
   pv(){ curl -sL pedroverissimo.vercel.app/$1; }
+  [2m▶ watch it move:[0m [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m

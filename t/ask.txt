@@ -5,6 +5,16 @@
   [38;2;46;230;166m[1mASK AN AI[0m[0m
   [2mAsk your own AI anything about me.[0m
 
+  [38;2;140;146;160m╭──────────────────────────╮[0m
+  [38;2;140;146;160m│ [38;2;233;236;242mwho is Pedro Veríssimo?  [38;2;140;146;160m│[0m
+  [38;2;140;146;160m╰──────────────────────────╯[0m
+        [38;2;46;230;166m╭──────────────────────────────────────╮[0m
+        [38;2;46;230;166m│ [38;2;233;236;242mA builder from São Gabriel, Brazil.  [38;2;46;230;166m│[0m
+        [38;2;46;230;166m│ [38;2;233;236;242mRockets, an AI gold, 316K followers, [38;2;46;230;166m│[0m
+        [38;2;46;230;166m│ [38;2;233;236;242mand now Sincra. Ask me more.         [38;2;46;230;166m│[0m
+        [38;2;46;230;166m╰──────────────────────────────────────╯[0m
+  [38;2;96;100;112mllms.txt → ChatGPT · Claude · Grok · Perplexit[0m
+
   I wrote a long plain-text file about myself for AI assistants. Hand it
   to yours and ask away:
 
@@ -12,9 +22,11 @@
 
   Or paste this into ChatGPT, Claude, Grok, Perplexity or Meta AI:
 
-  [2m"Read https://pedroverissimo.vercel.app/llms.txt and tell me who Pedro is."[0m
+  [2m"Read https://pedroverissimo.vercel.app/llms.txt[0m
+  [2m and tell me who Pedro is."[0m
 
   [2m──────────────────────────────────────────────────────────────────────[0m
   [2m←[0m pv films[2m   →[0m pv [1mcontact[0m[2m   ⌂[0m pv[2m   ?[0m pv help
   [2mno pv yet? paste this once:[0m
   pv(){ curl -sL pedroverissimo.vercel.app/$1; }
+  [2m▶ watch it move:[0m [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m

@@ -5,6 +5,16 @@
   [38;2;79;127;255m[1mABOUT[0m[0m
   [2mWho, where from, how I got here.[0m
 
+                                    [38;2;79;127;255m◆ [38;2;233;236;242mSão Paulo[0m
+                                [38;2;79;127;255m· ·   2026 · now[0m
+                            [38;2;79;127;255m· ·[0m
+                  [38;2;79;127;255m◆ · · · ·[0m
+                [38;2;79;127;255m·   [38;2;233;236;242mPorto Alegre[0m
+            [38;2;79;127;255m· ·     [38;2;140;146;160m2024 · alone, mid-year[0m
+      [38;2;79;127;255m◆ · ·[0m
+      [38;2;233;236;242mSão Gabriel[0m
+      [38;2;140;146;160mhome · rice & cattle[0m
+
   I'm Pedro Veríssimo, a builder from São Gabriel, a town of about
   60,000 people in the far south of Brazil. When something grabs my
   attention, I go all the way, until there's something I can point to.
@@ -22,3 +32,4 @@
   [2m←[0m pv contact[2m   →[0m pv [1msincra[0m[2m   ⌂[0m pv[2m   ?[0m pv help
   [2mno pv yet? paste this once:[0m
   pv(){ curl -sL pedroverissimo.vercel.app/$1; }
+  [2m▶ watch it move:[0m [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m

@@ -5,6 +5,15 @@
   [38;2;46;230;166m[1mAI OLYMPIAD[0m[0m
   [2mGold at the 1st National AI Olympiad (ONIA), 2025.[0m
 
+  [38;2;46;230;166mONIA 2025 [38;2;140;146;160m· gold · 1 of 28 among 716,000+[0m
+  
+  [38;2;140;146;160mjob 1  [38;2;46;230;166m██████████████[38;2;58;61;70m░░░░░░  [38;2;233;236;242m70% [38;2;255;72;72m✕ 15:00 cap[0m
+  [38;2;140;146;160mjob 2  [38;2;36;160;120m██████████████[38;2;58;61;70m░░░░░░  [38;2;233;236;242m70% [38;2;255;72;72m✕ from zero[0m
+  [38;2;140;146;160mjob 3  [38;2;36;160;120m██████████████[38;2;58;61;70m░░░░░░  [38;2;233;236;242m70% [38;2;255;72;72m✕ from zero[0m
+  [38;2;96;100;112mwhat if [38;2;255;212;59m+ joblib.dump(model, 'ckpt.pkl')[0m
+  [38;2;140;146;160mjob 4  [38;2;46;230;166m███████████████████[38;2;58;61;70m░  [38;2;233;236;242m95% [38;2;46;230;166m✓ Beijing[0m
+  
+
   [38;2;46;230;166m[1m716,000+[0m[0m[2m participants   [0m[38;2;46;230;166m[1m28[0m[0m[2m golds   [0m[38;2;46;230;166m[1m1[0m[0m[2m of them mine[0m
 
   The rounds went from theory and ethics, to building models in Python,
@@ -23,7 +32,7 @@
   [2m│ [0m[38;2;46;230;166m                      random_state=42)[0m
   [2m│ [0m[38;2;46;230;166mmodel.fit(scaler.fit_transform(X), y)[0m
   [2m│ [0m[38;2;46;230;166m# what was missing, rounds later: save a checkpoint between jobs[0m
-  [2m└─────────────────────────────────────────────────────────────────────┘[0m
+  [2m└────────────────────────────────────────────────────────────────────┘[0m
 
   The one that got away: the selection for the international team
   trained on jobs capped at 15 minutes. I never saved a checkpoint, so
@@ -38,3 +47,4 @@
   [2m←[0m pv rockets[2m   →[0m pv [1mvoluntaria[0m[2m   ⌂[0m pv[2m   ?[0m pv help
   [2mno pv yet? paste this once:[0m
   pv(){ curl -sL pedroverissimo.vercel.app/$1; }
+  [2m▶ watch it move:[0m [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m

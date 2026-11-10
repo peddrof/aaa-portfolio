@@ -5,12 +5,21 @@
   [38;2;255;212;59m[1mVOLUNTARIA+[0m[0m
   [2mVolunteers meet NGOs. Porto Alegre, 2024–2025.[0m
 
+     [38;2;226;64;110m.:::.   .:::.[0m
+    [38;2;226;64;110m::::::: :::::::       [38;2;255;212;59m170+ [38;2;140;146;160mvolunteers[0m
+    [38;2;226;64;110m:::::::::::::::         [38;2;255;212;59m20 [38;2;140;146;160mNGOs[0m
+     [38;2;226;64;110m':::::::::::'         [38;2;255;212;59m80+ [38;2;140;146;160mblood donors[0m
+       [38;2;226;64;110m':::::::'[0m
+         [38;2;226;64;110m':::'         [38;2;255;212;59mR$6,300 [38;2;140;146;160mBraille printer[0m
+           [38;2;226;64;110m'[0m
+                       [38;2;96;100;112mPorto Alegre · 2024–2025[0m
+
   At InovaTec, my school's student innovation club, I found lots of
   ambition and almost no one who could build. As head of technology I
   rebuilt the platform from scratch, and a team of four launched it in
   about four months.
 
-  [38;2;255;212;59m[1m170+[0m[0m[2m volunteers   [0m[38;2;255;212;59m[1m20[0m[0m[2m NGOs   [0m[38;2;255;212;59m[1m80+[0m[0m[2m blood donors   [0m[38;2;255;212;59m[1mR$6,300[0m[0m[2m for a Braille printer[0m
+  [38;2;255;212;59m[1m170+[0m[0m[2m volunteers   [0m[38;2;255;212;59m[1m20[0m[0m[2m NGOs   [0m[38;2;255;212;59m[1m80+[0m[0m[2m blood donors   [0m[38;2;255;212;59m[1mR$6,300[0m[0m[2m Braille printer[0m
 
   Covered by RBS TV, SBT, Zero Hora, Brasil de Fato and Correio do Povo.
   In July 2026 the students I trained used it to help fund an art school
@@ -22,3 +31,4 @@
   [2m←[0m pv ai[2m   →[0m pv [1maudience[0m[2m   ⌂[0m pv[2m   ?[0m pv help
   [2mno pv yet? paste this once:[0m
   pv(){ curl -sL pedroverissimo.vercel.app/$1; }
+  [2m▶ watch it move:[0m [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m

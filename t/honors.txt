@@ -5,6 +5,16 @@
   [38;2;255;212;59m[1mHONORS[0m[0m
   [2mNine, in one list.[0m
 
+   [38;2;79;127;255m\\   [38;2;255;79;139m//    [38;2;255;212;59m9 honors[0m
+    [38;2;79;127;255m\\ [38;2;255;79;139m//[0m
+     [38;2;255;212;59m)=(      [38;2;140;146;160m▸ ONIA gold       ▸ book preface[0m
+   [38;2;255;212;59m.'   '.    [38;2;140;146;160m▸ OBA gold        ▸ solver #76[0m
+   [38;2;255;212;59m/  ★  \    [38;2;140;146;160m▸ ONIA ambassador ▸ "Alamar" top 1[0m
+   [38;2;255;212;59m| 1st |    [38;2;140;146;160m▸ BRICS speaker   [38;2;233;236;242m▸ top 5 clipping[0m
+   [38;2;255;212;59m\     /    [38;2;140;146;160m▸ Caldeira fellow[0m
+    [38;2;255;212;59m'._.'[0m
+  
+
   [38;2;255;212;59m▸[0m Gold medal, 1st National AI Olympiad (ONIA), 2025: one of 28 among
     716,000+.
   [38;2;255;212;59m▸[0m ONIA ambassador, 2026 edition.
@@ -23,3 +33,4 @@
   [2m←[0m pv farm[2m   →[0m pv [1mtimeline[0m[2m   ⌂[0m pv[2m   ?[0m pv help
   [2mno pv yet? paste this once:[0m
   pv(){ curl -sL pedroverissimo.vercel.app/$1; }
+  [2m▶ watch it move:[0m [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m

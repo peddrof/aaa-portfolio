@@ -5,6 +5,14 @@
   [38;2;79;127;255m[1mSINCRA[0m[0m
   [2mWhat I am building now.[0m
 
+  [38;2;140;146;160msurgery     audit      insurer       [38;2;233;236;242mpayout[0m
+  
+    [38;2;79;127;255m●───────────●───────────●─────────────[38;2;255;212;59m●[0m
+  [38;2;255;212;59mR$ 12.400  [38;2;46;230;166m· paid ✓[0m
+  
+  [38;2;79;127;255msincra [38;2;140;146;160mpredicts [38;2;79;127;255m█████████████▉[38;2;58;61;70m░░ [38;2;233;236;242m87% · day 47[0m
+  
+
   [1m"Doctors shouldn't pay interest on money that's already theirs."[0m
 
   In Brazil a surgeon can wait months to be paid for an operation, and
@@ -24,3 +32,4 @@
   [2m←[0m pv about[2m   →[0m pv [1mrockets[0m[2m   ⌂[0m pv[2m   ?[0m pv help
   [2mno pv yet? paste this once:[0m
   pv(){ curl -sL pedroverissimo.vercel.app/$1; }
+  [2m▶ watch it move:[0m [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m

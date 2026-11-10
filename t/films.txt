@@ -5,6 +5,13 @@
   [38;2;255;106;46m[1mFILMES PEDRO[0m[0m
   [2mBefore all of this: films. Now on YouTube.[0m
 
+  [38;2;58;61;70m■   ■   ■   ■   ■   ■   ■   ■   ■   ■   ■   ■[0m
+  [38;2;140;146;160m│                     │                     │[0m
+  [38;2;140;146;160m│ [38;2;255;106;46mBATATINHA 1         [38;2;140;146;160m│ [38;2;255;106;46mBATATINHA 2         [38;2;140;146;160m│[0m
+  [38;2;140;146;160m│ [38;2;96;100;112m▶ YouTube           [38;2;140;146;160m│ [38;2;96;100;112m▶ YouTube           [38;2;140;146;160m│[0m
+  [38;2;58;61;70m■   ■   ■   ■   ■   ■   ■   ■   ■   ■   ■   ■[0m
+  [38;2;255;72;72m● [38;2;96;100;112mFilmes Pedro · before all of this[0m
+
   [38;2;255;106;46mBatatinha 1       [0m  https://youtu.be/_12PqCGbdgI
   [38;2;255;106;46mBatatinha 2       [0m  https://youtu.be/MT8nUVmGwXw
   [38;2;255;106;46mBatatinha 3       [0m  https://youtu.be/tap-1_KABF4
@@ -16,3 +23,4 @@
   [2m←[0m pv press[2m   →[0m pv [1mask[0m[2m   ⌂[0m pv[2m   ?[0m pv help
   [2mno pv yet? paste this once:[0m
   pv(){ curl -sL pedroverissimo.vercel.app/$1; }
+  [2m▶ watch it move:[0m [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m

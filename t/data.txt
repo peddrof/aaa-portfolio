@@ -5,6 +5,15 @@
   [38;2;79;127;255m[1mDATA & STAGE[0m[0m
   [2mA forecast that won, and a talk in Brasília. 2025.[0m
 
+  [38;2;233;236;242mRBS Group · Q4 sales forecast[0m
+                                  [38;2;46;230;166m▂▂ ▅▅[0m
+                      [38;2;79;127;255m▂▂ ▄▄ ▂▂ [38;2;46;230;166m▆▆ ██ ██ forecast[0m
+       [38;2;79;127;255m▁▁    ▄▄ ▆▆ ▅▅ ██ ██ ██ [38;2;46;230;166m██ ██ ██ Oct–Dec[0m
+    [38;2;79;127;255m▆▆ ██ ▇▇ ██ ██ ██ ██ ██ ██ [38;2;46;230;166m██ ██ ██[0m
+    [38;2;79;127;255m██ ██ ██ ██ ██ ██ ██ ██ ██ [38;2;46;230;166m██ ██ ██ [38;2;255;212;59m★ won[0m
+    [38;2;96;100;112mJ  F  M  A  M  J  J  A  S  [38;2;46;230;166mO  N  D[0m
+  [38;2;96;100;112mGeração Caldeira · 200 of ~18,000[0m
+
   [38;2;79;127;255m[1mGERAÇÃO CALDEIRA[0m[0m [2m─────────────────────────────────────────────────────[0m
 
   200 selected from about 18,000. Our final project, a predictive sales
@@ -20,3 +29,4 @@
   [2m←[0m pv audience[2m   →[0m pv [1mflying[0m[2m   ⌂[0m pv[2m   ?[0m pv help
   [2mno pv yet? paste this once:[0m
   pv(){ curl -sL pedroverissimo.vercel.app/$1; }
+  [2m▶ watch it move:[0m [38;2;46;230;166mcurl -sL pedroverissimo.vercel.app/go | bash[0m
