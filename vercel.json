@@ -1,0 +1,80 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "routes": [
+    {
+      "src": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": {
+            "pre": "curl/"
+          }
+        }
+      ],
+      "dest": "/terminal.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": {
+            "pre": "Wget/"
+          }
+        }
+      ],
+      "dest": "/terminal.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": {
+            "pre": "HTTPie/"
+          }
+        }
+      ],
+      "dest": "/terminal.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": {
+            "pre": "xh/"
+          }
+        }
+      ],
+      "dest": "/terminal.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/",
+      "headers": {
+        "Vary": "User-Agent"
+      },
+      "continue": true
+    }
+  ]
+}

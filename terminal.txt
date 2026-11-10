@@ -1,0 +1,55 @@
+
+  [38;2;79;127;255m████████    ██████████  ████████    ████████      ██████[0m
+  [38;2;79;127;255m██      ██  ██          ██      ██  ██      ██  ██      ██[0m
+  [38;2;79;127;255m██      ██  ██          ██      ██  ██      ██  ██      ██[0m
+  [38;2;79;127;255m████████    ████████    ██      ██  ████████    ██      ██[0m
+  [38;2;79;127;255m██          ██          ██      ██  ██  ██      ██      ██[0m
+  [38;2;79;127;255m██          ██          ██      ██  ██    ██    ██      ██[0m
+  [38;2;79;127;255m██          ██████████  ████████    ██      ██    ██████[0m
+
+  [1mPedro Veríssimo[0m  [2m·[0m  builder from São Gabriel, Brazil
+  [38;2;79;127;255mtech co-founder of Sincra[0m  [2m·[0m  São Paulo, UTC−3
+
+  [38;2;79;127;255m[1mNOW[0m [2m───────────────────────────────────────────────────────[0m
+  [38;2;79;127;255m▸[0m [1mSincra[0m
+    Fintech for medical receivables. Rebuilds each procedure's path from
+    surgery to payout and predicts how much a doctor gets paid, and when.
+
+  [38;2;255;106;46m[1mWORK[0m [2m──────────────────────────────────────────────────────[0m
+  [38;2;255;106;46m▸[0m [1mRockets, built from fireworks up[0m
+    Home-mixed propellant, Arduino flight computer, parachute recovery.
+    Five built, 2022–2023. Taught mostly by BPS.space on YouTube.
+  [38;2;46;230;166m▸[0m [1mGold, 1st National AI Olympiad (ONIA)[0m
+    One of 28 golds among 716,000+ participants. Missed the international
+    team by one line of code: I never saved a checkpoint.
+  [38;2;255;212;59m▸[0m [1mVoluntaria+[0m
+    Led the rebuild as InovaTec head of tech. 170+ volunteers, 20 NGOs,
+    R$6,300 for a Braille printer, and the evening news.
+  [38;2;255;79;139m▸[0m [1mThree Instagram pages, 316,000 followers[0m
+    A crab (183K), a cat (83K) and an AI page (50K). All three sold.
+  [38;2;79;127;255m▸[0m [1mRBS Group Q4 forecast[0m
+    Geração Caldeira, 200 of ~18,000 selected. Final project won.
+  [38;2;140;146;160m▸[0m [1mII BRICS Forum, Brasília[0m
+    Invited speaker: "The Youth Perspective: innovation starts small."
+  [38;2;140;146;160m▸[0m [1mFlying[0m
+    Cardboard cockpits as a kid; co-pilot during the 2024 floods;
+    ANAC ground school done, 10 hours flown.
+
+  [38;2;242;193;78m[1mROOTS[0m [2m─────────────────────────────────────────────────────[0m
+  Fifth generation of a family that farms rice and cattle in
+  Rio Grande do Sul. Corral for the vaccinations, combine for the harvest.
+
+  [38;2;140;146;160m[1mALSO[0m [2m──────────────────────────────────────────────────────[0m
+  Gold, Brazilian Astronomy Olympiad · Paralelo 1155 solver #76
+  "Alamar" distinction, top 1% at military school · Step Up mentor
+
+  [38;2;79;127;255m[1mLINKS[0m [2m─────────────────────────────────────────────────────[0m
+  [2mweb      [0mhttps://pedroverissimo.vercel.app
+  [2memail    [0mpedrovverissimo1@gmail.com
+  [2mgithub   [0mhttps://github.com/peddrof
+  [2mlinkedin [0mhttps://www.linkedin.com/in/pvverissimo
+  [2msincra   [0mhttps://sincra.app
+
+  [2mThe full version has rockets, a farm and a wall of flaps.
+  Open it in a browser, and type 1155.[0m
+
