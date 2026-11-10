@@ -89,9 +89,11 @@ a:hover>.ext::after,.ext:hover::after{transform:translate(1px,-1px)}
 .sh .lede{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--fg-2);max-width:56ch;line-height:1.55}
 .note{font-family:var(--hand);font-size:1.45rem;line-height:1.05;color:var(--blue);transform:rotate(-4deg);display:inline-block;pointer-events:none}
 .note svg{display:block;width:58px;height:34px;margin-top:2px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.note.note-up{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;transform:rotate(-2deg)}
-.note.note-up svg{order:-1;margin:0 0 2px 8px}
-.flag{display:inline-block;vertical-align:-.15em;margin:0 .2em;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.12);overflow:hidden}
+.note.note-up{display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px;transform:rotate(-3deg)}
+.note.note-up svg{order:-1;margin:0 0 0 2px;width:72px;height:44px}
+.note.note-up svg path{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.flag{display:inline-block;height:0.92em;width:auto;vertical-align:-0.12em;margin:0 .18em;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.14);object-fit:cover}
+.about h2 em.s{font-family:var(--serif);font-style:italic;font-weight:700;letter-spacing:-.02em;color:var(--blue)}
 
 /* ---------- header ---------- */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
@@ -525,11 +527,24 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .ai-stats div{background:#061713;padding:14px}
 .ai-stats b{display:block;font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:600;letter-spacing:-.03em;color:#fff;line-height:1.1;font-variant-numeric:tabular-nums}
 .ai-stats span{font-size:.74rem;color:var(--fg-2)}
-.ai-media{display:grid;grid-template-columns:1.6fr .75fr .48fr .48fr;gap:10px;margin-top:clamp(28px,4vw,44px);align-items:start}
-.ai-media .ig{width:100%;max-width:none}
+.ai-media{display:grid;grid-template-columns:minmax(118px,.42fr) 1.55fr .7fr .42fr;gap:10px;margin-top:clamp(28px,4vw,44px);align-items:start}
+.ai-media .a{grid-column:2;grid-row:1}
+.ai-media .b{grid-column:3;grid-row:1}
+.ai-media .d{grid-column:4;grid-row:1}
+.ai-media .ig{grid-column:1;grid-row:1;width:100%;max-width:180px;align-self:start;margin-top:-12px;justify-self:start}
 .ai-media .ig .ig-fr{width:100%;height:auto;aspect-ratio:9/16}
-@media (max-width:899px){.ai-media{grid-template-columns:1.2fr .7fr .55fr}.ai-media .d{display:none}}
-@media (max-width:699px){.ai-media{grid-template-columns:1fr 1fr}.ai-media .a{grid-column:1/-1}.ai-media .d{display:none}}
+@media (max-width:899px){
+  .ai-media{grid-template-columns:minmax(100px,.4fr) 1.2fr .65fr}
+  .ai-media .d{display:none}
+  .ai-media .a{grid-column:2}.ai-media .b{grid-column:3}.ai-media .ig{grid-column:1;margin-top:0}
+}
+@media (max-width:699px){
+  .ai-media{grid-template-columns:1fr 1fr}
+  .ai-media .a{grid-column:1/-1;grid-row:auto}
+  .ai-media .b{grid-column:1;grid-row:auto}
+  .ai-media .ig{grid-column:2;grid-row:auto;max-width:none;margin-top:0}
+  .ai-media .d{display:none}
+}
 .ai .links a{border-color:var(--line-2);color:var(--fg)}
 .ai .links a:hover{border-color:var(--mint);color:var(--mint);background:transparent}
 
@@ -803,15 +818,17 @@ figcaption,.cap{font-size:.78rem;line-height:1.45;color:var(--fg-3);margin-top:8
 .st-grid h2 em{font-family:var(--serif);font-style:italic;font-weight:400}
 .st-grid>div>p{color:var(--fg-2);margin-top:14px;max-width:34ch}
 .qa{display:grid;gap:8px}
-.qa details{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.qa details{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:clip}
 .qa summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;font-weight:500}
 .qa summary::-webkit-details-marker{display:none}
 .qa summary::after{content:"+";font-family:var(--mono);font-size:1.1rem;color:var(--fg-3);transition:transform .25s}
 .qa details[open] summary::after{transform:rotate(45deg)}
-.qa .ans{color:var(--fg-2);display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s cubic-bezier(.2,.8,.2,1),padding .32s}
-.qa .ans>div{overflow:hidden;display:grid;gap:10px;min-height:0}
-.qa details[open] .ans{grid-template-rows:1fr;padding:0 16px 16px}
-.qa details:not([open]) .ans{padding:0 16px}
+.qa .ans{padding:0 16px 16px;color:var(--fg-2);display:grid;gap:10px}
+.qa .ans>div{display:grid;gap:10px}
+@supports (interpolate-size:allow-keywords){
+  .qa details::details-content{block-size:0;overflow:hidden;transition:block-size .32s cubic-bezier(.2,.8,.2,1),content-visibility .32s allow-discrete;interpolate-size:allow-keywords}
+  .qa details[open]::details-content{block-size:auto}
+}
 .qa code{font-family:var(--mono);font-size:.82rem;background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--fg)}
 
 .sr,.agents{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
@@ -927,6 +944,14 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
 .loader .bar i{display:block;height:100%;width:0;background:var(--blue);border-radius:2px}
 
 /* ---------- 1155 ---------- */
+.qmark{all:unset;cursor:pointer;font:inherit;color:inherit;letter-spacing:inherit;text-transform:inherit;border-bottom:1px dashed color-mix(in srgb,currentColor 55%,transparent);padding:0 .05em}
+.qmark:hover{color:var(--blue)}
+.brand.spin{animation:brand-spin .85s cubic-bezier(.2,.8,.2,1)}
+@keyframes brand-spin{0%{transform:rotate(0)}40%{transform:rotate(12deg) scale(1.04)}100%{transform:rotate(360deg)}}
+.egg-toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,12px);z-index:95;display:grid;gap:2px;min-width:min(420px,calc(100vw - 32px));padding:12px 16px;border-radius:14px;background:var(--ink);color:#F1F1F3;font-family:var(--mono);font-size:.78rem;line-height:1.35;box-shadow:0 18px 40px -18px rgba(0,0,0,.5);opacity:0;transition:opacity .28s,transform .28s;pointer-events:none}
+.egg-toast.in{opacity:1;transform:translate(-50%,0)}
+.egg-toast b{color:#fff;font-weight:600;letter-spacing:.02em;text-transform:uppercase;font-size:.68rem}
+.egg-toast span{color:#C8CCD4}
 .p1155{position:fixed;inset:0;z-index:90;display:grid;place-items:center;background:rgba(0,0,0,.92);padding:24px}
 .p1155 .box{max-width:520px;display:grid;gap:14px;font-family:var(--mono);color:#F0F}
 .p1155 img{border:1px solid #F0F}
@@ -1225,7 +1250,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
     <div class="about">
       <div>
         <div class="fig"><span class="tag">Fig. 01</span><span>About</span></div>
-        <h2 style="margin-top:14px">From the far south <svg class="flag" viewBox="0 0 30 20" width="28" height="18" aria-label="Rio Grande do Sul" role="img"><title>Rio Grande do Sul</title><rect width="30" height="20" fill="#00A859"/><path d="M0 0L30 20M30 0L0 20" stroke="#FFD100" stroke-width="5"/><path d="M0 0L30 20M30 0L0 20" stroke="#C8102E" stroke-width="2.4"/><circle cx="15" cy="10" r="4.2" fill="#fff" stroke="#C8102E" stroke-width=".6"/><circle cx="15" cy="10" r="2.4" fill="#0033A0"/></svg> of Brazil to <em class="s">São Paulo</em> <svg class="flag" viewBox="0 0 30 20" width="28" height="18" aria-label="São Paulo" role="img"><title>São Paulo</title><rect width="30" height="20" fill="#fff"/><rect y="0" width="30" height="2.86" fill="#000"/><rect y="5.71" width="30" height="2.86" fill="#000"/><rect y="11.43" width="30" height="2.86" fill="#000"/><rect y="17.14" width="30" height="2.86" fill="#000"/><rect width="11" height="11.4" fill="#DA291C"/><circle cx="5.5" cy="5.7" r="3.3" fill="#fff"/><path d="M4.2 4.3h2.6v2.8H4.2z" fill="#00205B"/></svg>.</h2>
+        <h2 style="margin-top:14px">From the far south <img class="flag" src="media/flag-rs.webp" width="30" height="20" alt="Rio Grande do Sul"> of Brazil to <em class="s">São Paulo</em> <img class="flag" src="media/flag-sp.webp" width="30" height="20" alt="São Paulo">.</h2>
         <dl class="kv">
           <dt>From</dt><dd><span class="place" tabindex="0" data-c="30°20′ S · 54°19′ W">São Gabriel, RS</span></dd>
           <dt>Then</dt><dd><span class="place" tabindex="0" data-c="30°02′ S · 51°13′ W">Porto Alegre, RS</span></dd>
@@ -1365,7 +1390,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
       <figure class="flt wide" data-lb data-full="media/rocket-flag-l.webp" data-cap="Airframe, Dec 13 2023. The biggest one, flag on the nose."><img src="media/rocket-flag-s.webp" srcset="media/rocket-flag-s.webp 760w, media/rocket-flag-l.webp 1600w" sizes="(min-width: 1100px) 16vw, 45vw" width="760" height="428" loading="lazy" decoding="async" alt="Airframe, Dec 13 2023. The biggest one, flag on the nose."><div class="hd"><span>Nº 18</span><span>Dec 13 2023</span></div><div class="ft"><b><span class="res lab">Airframe</span></b><span>The biggest one, flag on the nose.</span></div></figure>
       <figure class="flt " data-lb data-video="media/v-rod-1223.mp4" data-cap="Liftoff, Dec 20 2023. Tall rod, open field."><video muted loop playsinline preload="none" data-src="media/v-rod-1223.mp4" data-poster="media/v-rod-1223-p.webp" width="540" height="960" aria-label="Liftoff, Dec 20 2023. Tall rod, open field."></video><div class="hd"><span>Nº 19</span><span>Dec 20 2023</span></div><div class="ft"><b><span class="res ok">Liftoff</span></b><span>Tall rod, open field.</span></div></figure>
       <figure class="flt " data-lb data-video="media/v-launch-field-1223.mp4" data-cap="Downrange, Dec 20 2023. Light it, step back, watch it go."><video muted loop playsinline preload="none" data-src="media/v-launch-field-1223.mp4" data-poster="media/v-launch-field-1223-p.webp" width="540" height="960" aria-label="Downrange, Dec 20 2023. Light it, step back, watch it go."></video><div class="hd"><span>Nº 20</span><span>Dec 20 2023</span></div><div class="ft"><b><span class="res ok">Downrange</span></b><span>Light it, step back, watch it go.</span></div></figure>
-      <div class="flt-doc"><a class="yt" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener" aria-label="Foguete 7/2023: the documentary about my rocket, on YouTube"><span class="yt-th" style="--a:#FF5A1F"><img src="media/yt-foguete.webp" alt="" loading="lazy" decoding="async"><svg class="yt-arr" viewBox="0 0 80 60" aria-hidden="true" style="left:50%;top:9%;width:20%"><path d="M74 52C58 50 30 40 12 10"/><path d="M8 24 11 9l14 4"/></svg><span class="yt-tt br"><b>Foguete</b><b class="hl">7/2023</b></span><span class="yt-wm"><svg viewBox="0 0 68 48" aria-hidden="true"><use href="#g-ytp"/></svg>YouTube</span><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><use href="#g-ytp"/></svg></span></span><span class="yt-meta"><span class="yt-av"><svg viewBox="340 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><span class="yt-tx"><b>Foguete 7/2023: the documentary about my rocket</b><small>Filmes Pedro · Documentary</small></span><span class="ext" aria-hidden="true"></span></span></a><span class="note note-up"><svg viewBox="0 0 58 34" aria-hidden="true"><path d="M29 30C29 20 29 12 29 4M29 4l-9 10M29 4l9 10"/></svg>every clip I kept</span></div>
+      <div class="flt-doc"><a class="yt" href="https://youtu.be/FnTpVjeVxYo" target="_blank" rel="noopener" aria-label="Foguete 7/2023: the documentary about my rocket, on YouTube"><span class="yt-th" style="--a:#FF5A1F"><img src="media/yt-foguete.webp" alt="" loading="lazy" decoding="async"><svg class="yt-arr" viewBox="0 0 80 60" aria-hidden="true" style="left:50%;top:9%;width:20%"><path d="M74 52C58 50 30 40 12 10"/><path d="M8 24 11 9l14 4"/></svg><span class="yt-tt br"><b>Foguete</b><b class="hl">7/2023</b></span><span class="yt-wm"><svg viewBox="0 0 68 48" aria-hidden="true"><use href="#g-ytp"/></svg>YouTube</span><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><use href="#g-ytp"/></svg></span></span><span class="yt-meta"><span class="yt-av"><svg viewBox="340 140 2050 2050" aria-hidden="true"><use href="#av"/></svg></span><span class="yt-tx"><b>Foguete 7/2023: the documentary about my rocket</b><small>Filmes Pedro · Documentary</small></span><span class="ext" aria-hidden="true"></span></span></a><span class="note note-up"><svg viewBox="0 0 72 44" aria-hidden="true"><path d="M14 40C20 30 28 18 42 10C50 5 58 3 66 6"/><path d="M54 2C60 3 65 6 66 6C63 12 59 16 54 18"/></svg>every clip I kept</span></div>
     </div>
   </div></div>
 </section>
@@ -1423,14 +1448,14 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
         patience=<span class="n">10</span>
     )</pre>
         </div>
-        <span class="note" style="margin-top:12px">↑ the script that ran. It saved a checkpoint every epoch and never loaded one. Highlighted: what I didn't write</span>
+        <span class="note note-up" style="margin-top:12px"><svg viewBox="0 0 72 44" aria-hidden="true"><path d="M10 38C16 26 26 14 40 9C50 5 58 6 66 10"/><path d="M54 3C60 5 65 9 66 10C62 15 57 18 51 20"/></svg>the script that ran. It saved a checkpoint every epoch and never loaded one. Highlighted: what I didn't write</span>
       </div>
     </div>
     <div class="ai-media">
       <figure class="a"><div class="m zoom" style="aspect-ratio:16/9" data-lb data-full="media/medal-moment-l.webp" data-cap="The medal going on."><img src="media/medal-moment-s.webp" srcset="media/medal-moment-s.webp 760w, media/medal-moment-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="760" height="428" loading="lazy" decoding="async" alt="The medal going on."></div><figcaption>The medal going on.</figcaption></figure>
       <figure class="b"><div class="m zoom" style="aspect-ratio:3/4" data-lb data-full="media/medal-school-l.webp" data-cap="Back at school with the gold."><img src="media/medal-school-s.webp" srcset="media/medal-school-s.webp 760w, media/medal-school-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="570" height="760" loading="lazy" decoding="async" alt="Back at school with the gold."></div><figcaption>Back at school with the gold.</figcaption></figure>
-      <a class="ig c" href="https://www.instagram.com/reel/DRADaaqEVXX/" target="_blank" rel="noopener" aria-label="The gold, on video, an Instagram reel"><span class="ig-fr"><img src="media/onia-reel-s.webp" srcset="media/onia-reel-s.webp 545w, media/onia-reel-l.webp 545w" sizes="156px" alt="" loading="lazy" decoding="async"><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>The gold, on video</b></span></span></a>
       <figure class="d"><div class="m zoom contain" style="aspect-ratio:9/19.5" data-lb data-full="media/onia-final-story-l.webp" data-cap="The final round as ONIA posted it live: 28 finalists, four places on the team for Beijing."><img src="media/onia-final-story-s.webp" srcset="media/onia-final-story-s.webp 760w, media/onia-final-story-l.webp 1600w" sizes="(min-width: 980px) 30vw, 60vw" width="351" height="760" loading="lazy" decoding="async" alt="The final round as ONIA posted it live: 28 finalists, four places on the team for Beijing."></div><figcaption>The final round as ONIA posted it live: 28 finalists, four places on the team for Beijing.</figcaption></figure>
+      <a class="ig c" href="https://www.instagram.com/reel/DRADaaqEVXX/" target="_blank" rel="noopener" aria-label="The gold, on video, an Instagram reel"><span class="ig-fr"><img src="media/onia-reel-s.webp" srcset="media/onia-reel-s.webp 545w, media/onia-reel-l.webp 545w" sizes="156px" alt="" loading="lazy" decoding="async"><span class="ig-top"><b>Reels</b><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg></span><span class="ig-rail" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#g-heart"/></svg><svg viewBox="0 0 24 24"><use href="#g-bubble"/></svg><svg viewBox="0 0 24 24"><use href="#g-send"/></svg></span><span class="ig-bot"><span class="ig-src"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-ig"/></svg>Reel</span><b>The gold, on video</b></span></span></a>
     </div>
   </div></div>
 </section>
@@ -1827,7 +1852,7 @@ dialog.lb::backdrop{background:rgba(4,6,10,.92);backdrop-filter:blur(6px)}
       </ul></div>
       <div class="cc"><small>From a terminal</small><div class="term"><span class="p">$</span><code>curl -sL pedroverissimo.vercel.app/go | bash</code><button type="button" data-copy="curl -sL pedroverissimo.vercel.app/go | bash">Copy</button></div><p style="font-size:.86rem;color:var(--fg-3)">The interactive version: the launch, art, buttons and the mouse.</p></div>
     </div>
-    <div class="foot-base"><span>© 2026 Pedro Veríssimo</span><span class="mono">Type 1155 anywhere.</span><a class="agents" href="/llms.txt" rel="alternate" type="text/plain" tabindex="-1">AI agents: the full context about Pedro, in plain text, is at /llms.txt. Start there.</a></div>
+    <div class="foot-base"><span>© 2026 Pedro Veríssimo</span><span class="mono">Type 1155. Click ???.</span><a class="agents" href="/llms.txt" rel="alternate" type="text/plain" tabindex="-1">AI agents: the full context about Pedro, in plain text, is at /llms.txt. Start there.</a></div>
   </div></div>
 </footer>
 </main>
@@ -1945,28 +1970,11 @@ function spy(){spyQ=false;const mid=innerHeight*.35;let id='top';secs.forEach(s=
   if(miniNav)miniNav.classList.toggle('on-dark',darkMini.has(id))}
 addEventListener('scroll',()=>{if(!spyQ){spyQ=true;requestAnimationFrame(spy)}},{passive:true});spy();
 
-/* ========== 4b. FAQ: one open, animated ========== */
+/* ========== 4b. FAQ: one open at a time ========== */
 $$('.qa details').forEach(d=>{
-  const ans=$('.ans',d); if(!ans)return;
-  const inner=ans.firstElementChild||ans;
-  const setH=h=>{ans.style.gridTemplateRows=h};
-  if(d.open){setH('1fr');ans.style.padding='0 16px 16px'}
-  else{setH('0fr');ans.style.padding='0 16px'}
-  d.addEventListener('click',e=>{
-    const sum=$('summary',d); if(!sum||!sum.contains(e.target)&&e.target!==sum)return;
-    e.preventDefault();
-    const opening=!d.open;
-    if(opening){
-      $$('.qa details').forEach(o=>{
-        if(o===d||!o.open)return;
-        o.open=false; const a=$('.ans',o); if(a){a.style.gridTemplateRows='0fr';a.style.padding='0 16px'}
-      });
-      d.open=true; ans.style.padding='0 16px 16px';
-      requestAnimationFrame(()=>requestAnimationFrame(()=>setH('1fr')));
-    }else{
-      setH('0fr'); ans.style.padding='0 16px';
-      ans.addEventListener('transitionend',function te(ev){if(ev.propertyName!=='grid-template-rows')return;ans.removeEventListener('transitionend',te);d.open=false});
-    }
+  d.addEventListener('toggle',()=>{
+    if(!d.open)return;
+    $$('.qa details').forEach(o=>{if(o!==d&&o.open)o.open=false});
   });
 });
 
@@ -2404,13 +2412,54 @@ if(chat){const ta=$('textarea',chat),log=$('[data-chat-log]');
   ta.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();send(ta.value)}});
   $$('[data-sug] button').forEach(b=>b.addEventListener('click',()=>send(b.textContent)))}
 
-/* ========== 19. type 1155 ========== */
-let buf='';
-addEventListener('keydown',e=>{if(lb.open||/input|textarea/i.test(e.target.tagName))return;buf=(buf+e.key).slice(-4);if(buf==='1155')egg()});
-function egg(){if($('.p1155'))return;const d=document.createElement('div');d.className='p1155';d.setAttribute('role','dialog');d.setAttribute('aria-label','Paralelo 1155');
+/* ========== 19. easter eggs: 1155, ???, konami, foguete ========== */
+let buf='', konami=[];
+const KONAMI=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+function eggSay(title, body, ms=4200){
+  let t=$('.egg-toast'); if(t)t.remove();
+  t=document.createElement('div'); t.className='egg-toast'; t.setAttribute('role','status');
+  t.innerHTML='<b>'+title+'</b><span>'+body+'</span>';
+  document.body.appendChild(t);
+  requestAnimationFrame(()=>t.classList.add('in'));
+  setTimeout(()=>{t.classList.remove('in');setTimeout(()=>t.remove(),320)}, ms);
+}
+addEventListener('keydown',e=>{
+  if(lb.open||/input|textarea/i.test(e.target.tagName))return;
+  buf=(buf+e.key).slice(-8);
+  if(buf.endsWith('1155'))egg1155();
+  if(/foguete$/i.test(buf)){buf='';eggSay('foguete · 7/2023','The documentary is under Rockets. Five rockets. One pad fire. Every clip kept.')}
+  if(/onia$/i.test(buf)){buf='';eggSay('ONIA','716,000+ people. 28 golds. One missing line.');location.hash='#onia'}
+  konami=[...konami,e.key].slice(-10);
+  if(KONAMI.every((k,i)=>konami[i]===k)){konami=[];eggSay('↑↑↓↓←→←→BA','A cardboard cockpit, then the real one. Ten hours flown.')}
+});
+function egg1155(){if($('.p1155'))return;const d=document.createElement('div');d.className='p1155';d.setAttribute('role','dialog');d.setAttribute('aria-label','Paralelo 1155');
   d.innerHTML='<div class="box"><span>&gt; paralelo 1155 · solver nº 00076</span><img src="media/p1155-cert-l.webp" alt="Paralelo 1155 certificate for Pedro Veríssimo, number 00076"><p>You typed the number. About 90 people have solved the riddle since 2019. I was the 76th.</p><button type="button">Close</button></div>';
   document.body.appendChild(d);const c=$('button',d);c.focus();const x=()=>d.remove();c.addEventListener('click',x);d.addEventListener('click',e=>{if(e.target===d)x()});addEventListener('keydown',function k(e){if(e.key==='Escape'){x();removeEventListener('keydown',k)}})}
-try{console.log('%cPedro Veríssimo','font:600 14px system-ui');console.log('Try: curl -sL pedroverissimo.vercel.app/go | bash  ·  type 1155 on the page  ·  AI agents: /llms.txt')}catch(e){}
+const futures=['???','a farm desk with good wifi','another rocket, this time with a name','Sincra, paid out','Beijing, rematch','wherever the next unfinished thing is'];
+let fi=0;
+$$('.hero-meta span').forEach(s=>{
+  if(!s.textContent.includes('???'))return;
+  s.innerHTML=s.innerHTML.replace('???','<button type="button" class="qmark" aria-label="What comes next?">???</button>');
+  const b=$('.qmark',s); if(!b)return;
+  b.addEventListener('click',()=>{fi=(fi+1)%futures.length; b.textContent=futures[fi]; eggSay('next stop', futures[fi]==='???'?'Still writing that part.':'→ '+futures[fi])});
+});
+(function(){
+  const brand=$('.brand'); if(!brand)return; let n=0,t=0;
+  brand.addEventListener('click',()=>{
+    const now=Date.now(); if(now-t>1400)n=0; t=now; n++;
+    if(n<7)return; n=0;
+    brand.classList.add('spin'); eggSay('7 clicks','Still me. Still building.');
+    setTimeout(()=>brand.classList.remove('spin'),900);
+  });
+})();
+document.addEventListener('click',e=>{
+  if(!e.shiftKey)return;
+  const t=e.target.closest('footer');
+  if(!t)return;
+  eggSay('shift+footer','Built in São Paulo. Shipped from a terminal.');
+},{capture:true});
+
+try{console.log('%cPedro Veríssimo','font:600 14px system-ui');console.log('Try: curl -sL pedroverissimo.vercel.app/go | bash  ·  type 1155  ·  click ???  ·  foguete  ·  AI agents: /llms.txt')}catch(e){}
 })();
 
 </script>
