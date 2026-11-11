@@ -92,7 +92,7 @@ page('rockets', 'Rockets', ORANGE, 'Built from fireworks up. SÃ£o Gabriel, 2022â
     bullets(['Home-mixed solid propellant, and a static fire on a kitchen scale to read thrust.',
              'An Arduino flight computer reading an accelerometer and driving servos.',
              'Parachute recovery, and cameras on board to film each flight.',
-             'Five rockets built. One pad fire. One flew in a corkscrew. I kept every clip.'], ORANGE),
+             'Eleven rockets built. One pad fire. One flew in a corkscrew. I kept every clip.'], ORANGE),
     kv([('film', 'Foguete 7/2023, the documentary: https://youtu.be/FnTpVjeVxYo')]),
 ]))
 

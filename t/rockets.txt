@@ -34,8 +34,8 @@
   [38;2;255;106;46m▸[0m An Arduino flight computer reading an accelerometer and driving
     servos.
   [38;2;255;106;46m▸[0m Parachute recovery, and cameras on board to film each flight.
-  [38;2;255;106;46m▸[0m Five rockets built. One pad fire. One flew in a corkscrew. I kept
-    every clip.
+  [38;2;255;106;46m▸[0m Eleven rockets built. One pad fire. One flew in a corkscrew. I
+    kept every clip.
 
   [2mfilm[0m  Foguete 7/2023, the documentary: https://youtu.be/FnTpVjeVxYo
 

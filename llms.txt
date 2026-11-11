@@ -60,7 +60,7 @@ Route, if you like maps: São Gabriel → Porto Alegre → São Paulo → ???
 - No lab, no club, no budget. Learned from YouTube, mostly from BPS.space.
 - Started by taking fireworks apart and mounting them in cardboard tubes. The first ones exploded. After enough iterations they flew.
 - Then: home-mixed **solid propellant**, a **static-fire test on a kitchen scale** to read thrust, an **Arduino flight computer** reading an accelerometer and driving servos, **parachute recovery**, and onboard cameras to film each flight.
-- **Five rockets** built. Plenty of launches that didn't go to plan, including a pad fire and one that flew in a corkscrew. He kept every clip.
+- **Eleven rockets** built. Plenty of launches that didn't go to plan, including a pad fire and one that flew in a corkscrew. He kept every clip.
 - Documentary he made about it: "Foguete 7/2023" — https://youtu.be/FnTpVjeVxYo
 
 ### Gold, 1st National AI Olympiad — ONIA (2025)
