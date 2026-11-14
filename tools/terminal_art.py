@@ -1,7 +1,7 @@
 """ASCII art and animations for the terminal version.
 
 Every animation is a list of frames; a frame is a list of ANSI strings, one per row, all frames the same height.
-Animations play at FPS. `launch()` is a port of the canvas launch on the page (index.html, section 14).
+Animations play at FPS. `launch()` is a port of the ASCII launch on the page (index.html, section 14).
 """
 import math, random
 
@@ -59,264 +59,171 @@ def typed(s, n): return s[:max(0, n)]
 
 
 # ----------------------------------------------------------------------------------------- the launch
-# Grid of glyphs; smoke is particles splatted into a density field, glyph = density (edges pick a slope
-# glyph from the gradient), colour = light from the flame. World units are column widths, y = row * A.
-_STOPS = [(0, '#1A0E2A'), (.1, '#3B1450'), (.2, '#7A1A5A'), (.3, '#B8263F'), (.4, '#E2401F'), (.5, '#FF5A1F'), (.6, '#FF7A1A'),
-          (.7, '#FF9A1A'), (.8, '#FFB31A'), (.88, '#FFCB3A'), (.94, '#FFE28A'), (1, '#FFF8EA')]
-_hx = lambda h: tuple(int(h[i:i + 2], 16) for i in (1, 3, 5))
-_NR = 40
-_COL = []
-for _i in range(_NR):
-    _t = _i / (_NR - 1); _j = 0
-    while _j < len(_STOPS) - 2 and _STOPS[_j + 1][0] < _t: _j += 1
-    (_p0, _c0), (_p1, _c1) = _STOPS[_j], _STOPS[_j + 1]
-    _COL.append(mix(_hx(_c0), _hx(_c1), (_t - _p0) / (_p1 - _p0)))
-def _add(c): _COL.append(_hx(c)); return len(_COL) - 1
-HULL, SHADE, WIN, PNK, VIO, STEEL, GND, HUD, STAR = map(_add, ['#F2EEE6', '#9A9288', '#7FA6FF', '#FF4F8B', '#A38CFF', '#6A5D54', '#4A3C33', '#7D786F', '#C9C2B6'])
-
-def _cl(v): return 0.0 if v < 0 else 1.0 if v > 1 else v
-def _ri(v): return round(_cl(v) * (_NR - 1))
-def _ss(v): v = _cl(v); return v * v * (3 - 2 * v)
-
-RK = [['    ^    ', '    w    '], ["   /'\\   ", '   ewe   '], ['  /___\\  ', '  eeeee  '], ['  | o |  ', '  w b s  '], ['  |   |  ', '  w   s  '],
-      ['  |===|  ', '  waaas  '], [' /|   |\\ ', ' ew   se '], ['/_|___|_\\', 'eewssssee'], ['   /_\\   ', '   ggg   ']]
-_RH = len(RK)
-_RKS = [(s.find(s.strip()[0]), len(s.rstrip()) - 1) for s, _ in RK]
-_RKC = {'w': HULL, 's': SHADE, 'e': _ri(.56), 'a': _ri(.85), 'b': WIN, 'g': STEEL}
-_SMG, _EDG, _SCR, _FP = ' .:-=+*o%#@', '(/~\\)/-\\', '!<>-_\\/[]{}=+*^?#%', ['|||', '\\|/', '<*>', '/|\\', '(|||)', '\\|/']
-_PM = list(range(256))
-_s = 1234567
-for _i in range(255, 0, -1):
-    _s = _s * 16807 % 2147483647; _k = _s % (_i + 1); _PM[_i], _PM[_k] = _PM[_k], _PM[_i]
-_PM = _PM + _PM
-
-def _vn(x, y):
-    xi, yi = math.floor(x), math.floor(y); u, v = x - xi, y - yi; X, Y = xi & 255, yi & 255
-    s, r = u * u * (3 - 2 * u), v * v * (3 - 2 * v)
-    A, B, C_, D = _PM[_PM[X] + Y], _PM[_PM[X + 1] + Y], _PM[_PM[X] + Y + 1], _PM[_PM[X + 1] + Y + 1]
-    return (A + (B - A) * s + (C_ - A) * r + (A - B - C_ + D) * s * r) / 255
-
-def _fbm(x, y): return _vn(x, y) * .55 + _vn(x * 2.1 + 19, y * 2.1 + 7) * .3 + _vn(x * 4.3 + 3, y * 4.3 + 41) * .15
-
-def _hsh(i):
-    M = 0xFFFFFFFF
-    h = ((i ^ 0x9E3779B9) * 0x85EBCA6B) & M; h ^= h >> 13; h = (h * 0xC2B2AE35) & M; h ^= h >> 16
-    return h / 4294967296
-
+# Port of the page's launch (index.html, section 14): fire, dust and smoke particles splatted into heat and
+# density grids; density picks the glyph and one of six orange shades. Rates and vertical speeds scale with the grid.
 LAUNCH_BG = (7, 8, 11)
-LOOP_S, T_IGN, T_LIFT, T_FILL0, T_FILL1, T_FADE0, T_FADE1 = 12.2, 2, 2.6, 6.4, 9, 9.5, 11.5
+# seconds; T_FILL1 is when the smoke fills the frame (the TUI intro ends there)
+LOOP_S, T_IGN, T_LIFT, T_FILL0, T_FILL1, T_FADE0, T_FADE1 = 13, 1.0, 2.4, 5.0, 7.0, 12.0, 13.0
+LAUNCH_COL = [(138, 58, 10), (184, 73, 12), (226, 97, 15), (255, 125, 26), (255, 160, 53), (255, 201, 77)]
+_RK_BIG = ['    ^    ', '   /$\\   ', '  /$$$\\  ', '  |$$$|  ', '  |$o$|  ', '  |$$$|  ', '  |$$$|  ', '  |===|  ',
+           '  |$$$|  ', ' /|$$$|\\ ', '/_|___|_\\', '   \\_/   ']
+_RK_SMALL = ['  ^  ', ' /$\\ ', ' |o| ', ' |=| ', '/|_|\\', ' \\_/ ']
+_SR, _FR = ' .:-=+*#%@', " .'^*#@"
 
 
 def launch(C=68, R=18, A=2.0, seed=7919):
-    """One loop of the launch (pad, liftoff, ground cloud, fill, clear) at FPS. Returns frames."""
-    hz = round(R * .8); xc = C >> 1; top0 = hz - 1 - _RH; ACC = 2 * (top0 + _RH + 4) / (3.4 * 3.4); N = C * R
-    HS = [_hsh(i) for i in range(N)]
-    VG = [0.0] * N
-    for y in range(R):
+    """One loop of the launch (pad, ignition, liftoff, smoke that fills the frame, fade) at FPS. Returns frames."""
+    rng = random.Random(seed); rr = rng.random
+    def rnd(a, b): return a + rr() * (b - a)
+    def cl(v, a, b): return a if v < a else b if v > b else v
+    def sgn(): return -1 if rr() < .5 else 1
+    def n_of(rate): k = int(rate); return k + (rr() < rate - k)
+    big = R >= 30
+    RK = _RK_BIG if big else _RK_SMALL
+    RH, RW, BO = len(RK), len(RK[0]), (2 if big else 1)
+    G = R - max(2, round(R * .13)); CX = C // 2; K = C / 96; KY = R / 44; AR = K * KY; SX = RW / 9
+    TH = 14 if big else max(4, round(G * .4)); TX = CX - RW // 2 - 5
+    ARM = (CX - RW // 2 + BO - 1) - (TX + 3) + 1; ARMY = (G - round(TH * .64), G - round(TH * .36))
+    stars = [(rng.randrange(C), rng.randrange(max(1, G - TH - 3)), rr() * 6.28, rnd(.8, 2.3)) for _ in range(round(.011 * C * G))]
+    gap = max(10, round(16 * K))
+    ridge = []
+    for x in range(C):
+        h = round(1.2 + 1.4 * math.sin(x * .19) + .9 * math.sin(x * .071 + 1.3))
+        ridge.append(0 if abs(x - CX) < gap else int(cl(h, 0, 3)) if big else int(h >= 3))
+    tex = [[rng.choice(".,-`'") if rr() < .24 - (y - G) * .02 else ' ' for x in range(C)] for y in range(G + 1, R)]
+    KER = []
+    for r in range(4 if big else 3):
+        k, rx = [], math.ceil(r * A)
+        for dy in range(-r, r + 1):
+            for dx in range(-rx, rx + 1):
+                w = (1 - math.hypot(dx / A, dy) / (r + 1)) / (1 + .6 * r)
+                if w > 0: k.append((dx, dy, w))
+        KER.append(k)
+    NK = len(KER) - 1
+    P = []  # [x, y, vx, vy, life, max, type (0 smoke, 1 fire, 2 fire along the ground), strength]
+
+    def thr(T): return 0 if T < T_IGN else cl((T - T_IGN) / .9, 0, 1)
+    def ry(T): return G - 1 if T < T_LIFT else (G - 1) - (G + RH - 2) * min((T - T_LIFT) / 4, 1.3) ** 2.3
+    def smoke(x, y, vx, vy, l, s): return [x, y, vx, vy, l, l, 0, s]
+
+    def step(T, dt):
+        th, yb = thr(T), ry(T)
+        if T < T_IGN:
+            for _ in range(n_of(10 * dt)):
+                s = sgn(); P.append(smoke(CX + s * rnd(2, 4) * SX, G - RH // 2 + rnd(-1, 1), s * rnd(1, 4), rnd(-1.2, .4) * KY, 1.8, .6))
+        if th > 0 and yb > -3:
+            for _ in range(n_of(260 * th * KY * dt)):
+                l = rnd(.15, .4); P.append([CX + rnd(-1.6, 1.6) * SX, yb + 1, rnd(-3, 3), rnd(22, 42) * KY, l, l, 1, 1])
+            if yb > G - (RH + 6):
+                for _ in range(n_of(200 * th * AR * dt)):
+                    P.append(smoke(CX + rnd(-4, 4) * SX, G - 1 - rnd(0, 2 * KY), sgn() * rnd(4, .5 * C), -rnd(.5, 7) * KY, rnd(4, 7), 1.2))
+            if T > T_LIFT:
+                for _ in range(n_of(70 * KY * dt)):
+                    P.append(smoke(CX + rnd(-1.5, 1.5) * SX, yb + 1 + rnd(0, 3 * KY), rnd(-6, 6), rnd(-.5, 3) * KY, rnd(4.5, 6.2), 1))
+            if yb < RH + 6:
+                k = cl(1 - yb / (RH + 6), 0, 1)
+                for _ in range(n_of(150 * k * KY * dt)):
+                    P.append(smoke(CX + rnd(-6, 6) * SX, yb - rnd(0, RH - 1), rnd(-5, 5), rnd(-1.5, 1.2) * KY, rnd(3, 5), 1.1))
+        if T_LIFT + .2 < T < T_FILL1:
+            for _ in range(n_of(130 * K * max(KY, .75) * dt)):
+                P.append(smoke(CX + rnd(-3, 3) * SX, rnd(max(0, yb - 4 * KY), G - 2), sgn() * rnd(2, .35 * C), rnd(-2, 1) * KY, rnd(4.5, 5.5), .9))
+        fx, fy, ff = .45 ** dt, .55 ** dt, .25 ** dt
+        keep = []
+        for p in P:
+            p[0] += p[2] * dt; p[1] += p[3] * dt; p[4] -= dt
+            if p[6] == 1:
+                if p[1] >= G - 1:
+                    p[1] = G - 1; p[6] = 2; p[3] = -rnd(0, 3) * KY; p[2] = sgn() * rnd(12, .35 * C); p[4] = p[5] = rnd(.3, .8)
+            elif p[6] == 2: p[2] *= ff
+            else:
+                p[2] *= fx; p[3] *= fy; p[3] -= .7 * KY * dt
+                if p[1] > G - 1: p[1] = G - 1; p[3] = -abs(p[3]) * .2
+            if p[4] > 0 and -8 < p[0] < C + 8 and -8 < p[1] < R: keep.append(p)
+        P[:] = keep[-4500:]
+
+    def render(T):
+        ch = [[' '] * C for _ in range(R)]; lv = [[-1] * C for _ in range(R)]
+        def put(x, y, c, l):
+            if 0 <= x < C and 0 <= y < R: ch[y][x] = c; lv[y][x] = l
+        for sx, sy, ph, sp in stars:
+            v = math.sin(T * sp + ph)
+            if v > -.2: put(sx, sy, '+' if v > .7 else '.', 1 if v > .7 else 0)
         for x in range(C):
-            ex, ey = (x + .5) / C * 2 - 1, (y + .5) / R * 2 - 1
-            VG[y * C + x] = (_ss(min(x + .5, C - x - .5) / (C * .14)) * _ss((y + .5) / (R * .2)) * _ss((R - y - .5) / (R * .1))
-                             * _ss((1.34 - math.hypot(ex, ey)) / .42))
-    rng, fl = random.Random(seed), random.Random(seed * 3)
-    rnd, frnd = rng.random, fl.random
-    parts, sparks = [], []
-    st = {'T': 0.0}
-
-    def spawn(x, y, vx, vy, r, m, h, gr):
-        if len(parts) < 1800: parts.append([x, y, vx, vy, r, m, h, gr, 0.0, rnd() * 2, rnd() * 50])
-
-    def rocket_top(t):
-        u = t - T_LIFT
-        return top0 - .5 * ACC * u * u if u > 0 else top0
-
-    def step(dt):
-        st['T'] += dt; t = st['T']; u = t - T_LIFT
-        noz = rocket_top(t) + _RH; vR = ACC * u * A if u > 0 else 0; xe = xc + .5; deck = (hz - 1) * A; fade = t > T_FADE0
-        if .8 < t < T_IGN and rnd() < .45: spawn(xc - 2.5, (top0 + 5.5) * A, -(1 + rnd() * 2), rnd() * 1.2, .4, .12, .35, 0)
-        if t >= T_IGN and noz > -10:
-            ramp = _cl((t - T_IGN) / .3)
-            if (noz + 3) * A >= deck:
-                for _ in range(round(4 * ramp)):
-                    s = -1 if rnd() < .5 else 1; up = rnd() < .25
-                    spawn(xe + s * rnd() * 2, deck - rnd() * A, s * (1 + rnd() * 4 if up else 3 + rnd() * 10),
-                          -(2 + rnd() * 5) if up else (rnd() - .7) * 6, .8 + rnd() * .8, .8 + rnd() * .3, 1, 1)
-            if u > 0:
-                for _ in range(7):
-                    spawn(xe + (rnd() - .5) * 1.2, (noz + 1 + rnd() * 2) * A, (-1 if rnd() < .5 else 1) * (2.5 + rnd() * 4.5),
-                          22 + rnd() * 10 - vR, .6 + rnd() * .5, .8, 1, 0)
-            if t < T_LIFT + 1.2:
-                for _ in range(3):
-                    sparks.append([xe + (rnd() - .5) * 4, deck - rnd() * A, (rnd() - .5) * 46, -(8 + rnd() * 34), 0.0, .35 + rnd() * .6, rnd()])
-        for i in range(len(parts) - 1, -1, -1):
-            p = parts[i]; p[8] += dt; x, y, gr, h = p[0], p[1], p[7], p[6]
-            n1 = _vn(x * .11 + p[10], y * .11 - t * .7) - .5; n2 = _vn(x * .11 + 71, y * .11 + p[10] - t * .7) - .5
-            p[2] += n1 * 14 * dt
-            p[3] += (n2 * (7 if gr else 12) - (.3 + 2.5 * h if gr else 1.1 + 4 * h)) * dt
-            p[2] *= math.exp(-(.5 if gr else .35) * dt); p[3] *= math.exp(-(1.2 if gr else 1.5) * dt)
-            p[0] += p[2] * dt; p[1] += p[3] * dt
-            floor = (hz - 1 + p[9]) * A
-            if p[1] > floor:
-                if not p[7]:
-                    p[7] = 1
-                    s = (-1 if rnd() < .5 else 1) if abs(p[0] - xe) < .6 else (1 if p[0] > xe else -1)
-                    p[2] += s * min(12, abs(p[3])) * (.4 + .5 * rnd())
-                p[1] = floor; p[3] = -abs(p[3]) * .12
-            p[4] += dt * (1.6 * math.exp(-p[8] * .9) + .4 if p[7] else 1.4 * math.exp(-p[8] * .9) + 1.3)
-            p[6] *= math.exp(-dt * 2.4); p[5] *= math.exp(-dt * (1.5 if fade else .1))
-            if p[5] < .02 or p[0] < -30 or p[0] > C + 30 or p[1] < -40: parts.pop(i)
-        for i in range(len(sparks) - 1, -1, -1):
-            s = sparks[i]; s[4] += dt; s[3] += 50 * dt; s[0] += s[2] * dt; s[1] += s[3] * dt
-            if s[4] > s[5] or s[1] > (hz + .3) * A: sparks.pop(i)
-
-    def render():
-        t = st['T']; u = t - T_LIFT; rt = round(rocket_top(t)); noz = rt + _RH; eng = T_IGN <= t < T_FILL1
-        IF = _cl((t - T_IGN) / .15) * (.85 + .15 * frnd()) if eng and noz > -14 else 0
-        fx, fy = xc + .5, min(noz + 2, hz - 1) * A
-        def lit(x, y):
-            dx, dy = x + .5 - fx, (y + .5) * A - fy
-            return IF / (1 + (dx * dx + dy * dy) / 160)
-        CH, CI, AL, MK = [None] * N, [0] * N, [0.0] * N, [0] * N
-        DEN, HT, DD, NZ = [0.0] * N, [0.0] * N, [0.0] * N, [0.0] * N
-        def put(x, y, ch, ci, al, m):
-            if 0 <= x < C and 0 <= y < R:
-                i = y * C + x; CH[i] = ch; CI[i] = ci; AL[i] = al
-                if m: MK[i] = m
-        for y in range(hz - 1):
+            h = ridge[x]
+            if h:
+                n = ridge[x + 1] if x + 1 < C else 0; p = ridge[x - 1] if x else 0
+                c = '^' if p < h and n < h else '/' if n > h else '\\' if p > h else '\\' if n < h else '/' if p < h else '-'
+                put(x, G - h, c, 0)
+        th, yb0 = thr(T), ry(T)
+        glow = th * cl(1 - (G - 1 - yb0) / (RH + 8), 0, 1) if th > 0 else 0
+        for x in range(C):
+            d, l = abs(x - CX), 1
+            if glow > 0 and d < (8 + 22 * K) * glow and rr() < .85: l = 5 if d < 6 * glow + 2 else 4 if d < 14 * glow else 3
+            put(x, G, '_', l)
+        for j, row in enumerate(tex):
+            for x, c in enumerate(row):
+                if c != ' ': put(x, G + 1 + j, c, 0)
+        put(TX + 1, G - TH - 3, '*', 5 if math.sin(T * 6) > 0 else 2); put(TX + 1, G - TH - 2, '|', 2)
+        put(TX, G - TH - 1, '/', 2); put(TX + 1, G - TH - 1, '^', 2); put(TX + 2, G - TH - 1, '\\', 2)
+        for y in range(G - TH, G):
+            put(TX, y, '|', 2); put(TX + 1, y, 'X' if y % 2 else '+', 1); put(TX + 2, y, '|', 2)
+        for i in range(round(ARM * cl(1 - (T - .4) / .5, 0, 1))):
+            for ay in ARMY: put(TX + 3 + i, ay, '=', 2)
+        pw = RW // 2 + 3
+        put(CX - pw, G, '[', 3); put(CX + pw, G, ']', 3)
+        for x in range(CX - pw + 1, CX + pw): put(x, G, '=', 4 if glow > .5 else 3)
+        D = [[0.0] * C for _ in range(R)]; H = [[0.0] * C for _ in range(R)]
+        for p in P:
+            f = cl(p[4] / p[5], 0, 1); xi, yi = round(p[0]), round(p[1])
+            if p[6]:
+                if 0 <= xi < C and 0 <= yi < R: H[yi][xi] += f * 1.4 + .2
+                continue
+            a = p[7] * f ** .8
+            for dx, dy, w in KER[min(NK, int((1 - f) * (NK + 1.5)))]:
+                x, y = xi + dx, yi + dy
+                if 0 <= x < C and 0 <= y < R: D[y][x] += a * w
+        for y in range(G):
             for x in range(C):
-                i = y * C + x; h = HS[i]
-                if h < .016:
-                    k = h / .016
-                    put(x, y, '.' if k < .72 else '+' if k < .9 else '*', PNK if k > .95 else VIO if k > .86 else STAR,
-                        (.18 + .42 * (.5 + .5 * math.sin(t * (1.2 + k * 2.6) + i))) * VG[i], 4)
-        for y in range(hz, R):
-            for x in range(C):
-                i = y * C + x; h = HS[i]
-                if y == hz: c = '_'
-                elif h < .04 + .12 * (y - hz) / (R - hz): c = ".,'`"[int(h * 997) & 3]
-                else: continue
-                l = lit(x, y)
-                put(x, y, c, _ri(.4 + .6 * l) if l > .1 else GND, _cl((.7 if y == hz else .4) + l) * VG[i], 3)
-        for x in range(xc - 7, xc + 11):
-            l = lit(x, hz - 1)
-            put(x, hz - 1, '/' if x == xc - 7 else '\\' if x == xc + 10 else '=', _ri(.45 + .55 * l) if l > .15 else STEEL, 1, 2)
-        tx = xc + 6
-        for y in range(top0 + 1, hz - 1):
-            l = lit(tx + 1, y); c = _ri(.4 + .55 * l) if l > .18 else STEEL
-            put(tx, y, '|', c, .9, 2); put(tx + 1, y, '/' if y & 1 else '\\', c, .6, 2); put(tx + 2, y, '|', c, .9, 2)
-        put(tx, top0, '-', STEEL, .9, 2); put(tx + 1, top0, '+', STEEL, .9, 2); put(tx + 2, top0, '-', STEEL, .9, 2)
-        bl = t % 1.2 < .18
-        put(tx + 1, top0 - 1, '*' if bl else '.', PNK if bl else STEEL, 1 if bl else .5, 2)
-        arm = 3 if t < T_IGN else max(0, 3 - math.floor((t - T_IGN) / .12))
-        for k in range(arm): put(tx - 1 - k, top0 + 4, '=', STEEL, .9, 2)
-        if noz > 0:
-            asm = t / .7 if t < .7 else 1
-            for r in range(_RH):
-                y = rt + r
-                if y < 0 or y >= R: continue
-                s, cm = RK[r]
-                for k in range(_RKS[r][0], _RKS[r][1] + 1):
-                    x = xc - 4 + k; ch = s[k]
-                    if ch == ' ': put(x, y, ' ', 0, 0, 1); continue
-                    ci, g = _RKC[cm[k]], ch
-                    if asm < 1 and HS[(r * 9 + k) * 131 % N] > asm:
-                        g = _SCR[int(frnd() * len(_SCR))]; ci = _ri(.55 + frnd() * .45)
-                    elif IF and r >= _RH - 4 and ci in (HULL, SHADE):
-                        l = lit(x, y)
-                        if l > .4: ci = _ri(.62 + .38 * l)
-                    put(x, y, g, ci, 1, 1)
-        for p in parts:
-            r = p[4]; rr = r / A; ir = 1 / (r * r); py = p[1] / A
-            x0, x1 = max(0, math.floor(p[0] - r)), min(C - 1, math.ceil(p[0] + r))
-            y0, y1 = max(0, math.floor(py - rr)), min(R - 1, math.ceil(py + rr))
-            for y in range(y0, y1 + 1):
-                dy = (y + .5) * A - p[1]; dy2 = dy * dy
-                for x in range(x0, x1 + 1):
-                    dx = x + .5 - p[0]; q = (dx * dx + dy2) * ir
-                    if q < 1:
-                        w = p[5] * (1 - q) * (1 - q); i = y * C + x; DEN[i] += w; HT[i] += w * p[6]
-        F = 0 if t < T_FILL0 else _ss((t - T_FILL0) / (T_FILL1 - T_FILL0))
-        K = 0 if t < T_FADE0 else _cl((t - T_FADE0) / (T_FADE1 - T_FADE0))
-        for y in range(R):
-            hN = (hz - y) / hz
-            for x in range(C):
-                i = y * C + x; D = DEN[i]
-                if D < .004 and F <= 0: continue
-                nz = NZ[i] = _fbm(x * .085, y * A * .085 + t * .45); nb = _vn(x * .07 + 9, y * A * .07 + t * .3)
-                d = (1 - math.exp(-D * .5)) * (.35 + 1.1 * nz) * (.35 + .9 * _ss((nb - .2) / .5))
-                if F > 0:
-                    fd = _cl((F * 1.6 - .3 - hN) / .3 + (nz - .5) * 1.8) * (.2 + .55 * nz + .3 * nb); d = 1 - (1 - _cl(d)) * (1 - fd)
-                if K > 0: d *= 1 - _ss(K * 1.9 - .7 * nb - .2 * HS[i])
-                DD[i] = _cl(d)
-        gl = .12 if T_IGN < t < T_FADE0 else 0
-        for y in range(1, R - 1):
-            hN = (hz - y) / hz; bg = gl * _cl(1 - (hz - y) / 9)
-            for x in range(1, C - 1):
-                i = y * C + x; v = VG[i]; d = DD[i] * (.45 + .55 * v)
-                if d < .05: continue
-                m = MK[i]
-                if (m == 1 and d < .92) or (m == 2 and d < .35): continue
-                ko = .35 if MK[i - 1] == 1 or MK[i + 1] == 1 else 1
-                gx = (DD[i + 1] - DD[i - 1]) * .5; gy = (DD[i + C] - DD[i - C]) * .5 / A; g2 = gx * gx + gy * gy
-                if d < .55 and g2 > .012: ch = _EDG[round(math.atan2(gy, gx) / (math.pi / 4)) & 7]
-                else: ch = _SMG[min(len(_SMG) - 1, max(1, int(d * (len(_SMG) - .01) + (HS[i] - .5) * .9)))]
-                lx, ly = fx - x - .5, fy - (y + .5) * A; ln = math.hypot(lx, ly) or 1; gn = math.sqrt(g2) or 1
-                lam = .5 - .5 * (gx * lx + gy * ly) / (gn * ln) if g2 > 1e-5 else .5
-                D = DEN[i]; hh = HT[i] / D if D > .01 else 0
-                lt = .28 + .62 * lit(x, y) * (.35 + .9 * lam) + .35 * hh + .1 * d + bg + (NZ[i] - .5) * .3
-                if F > 0: lt = max(lt, (.3 + .35 * _cl(1 - hN) + .3 * NZ[i]) * F)
-                put(x, y, ch, _ri(lt * (1 - .55 * K)), _cl(.3 + d * 1.3) * v * ko, 0)
-        if IF and noz < R:
-            sp = _cl((t - T_IGN) / .35); L = round(5 + min(3, (ACC * u if u > 0 else 0) * .15) + frnd() * 2)
-            for k in range(L + 3):
-                y = noz + k
-                if y < 0: continue
-                if y >= hz - 1:
-                    if k < L:
-                        s = k / L; W = round(1 + 9 * sp * (1 - s))
-                        for dx in range(-W, W + 1):
-                            I = (1 - abs(dx) / (W + 1)) * (1 - s * .6)
-                            put(xc + dx, hz - 1, ('=' if I > .6 else '~' if I > .38 else '-') if dx else '*', _ri(.5 + .5 * I), _cl(.5 + I), 5)
-                    break
-                if k >= L:
-                    for dx in range(-2, 3):
-                        if frnd() < .4 * (1 - (k - L) / 3): put(xc + dx, y, ":'.`"[int(frnd() * 4)], _ri(.48 + .25 * frnd()), .6, 5)
-                    continue
-                ty = k if k < 2 else 2 + ((k - 2) & 3); cy = 0 if k < 2 else (k - 2) >> 2; pat = _FP[ty]; n = len(pat); I = 1 - k / L * .55
-                for j in range(n):
-                    g = pat[j]; off = abs(j - (n - 1) / 2)
-                    if g in '<>': ci = PNK
-                    elif g == '*': g = ('.' if cy > 1 else '+') if cy else '*'; ci = _NR - 1
-                    else:
-                        if g == '|' and frnd() < (.45 if cy else .12): g = ':' if cy else '!'
-                        elif g in '()' and frnd() < .2: g = '{' if g == '(' else '}'
-                        ci = _ri(.78 + .22 * I if off < .5 else .6 + .3 * I if off < 1.5 else .5 + .3 * I)
-                    put(xc - ((n - 1) >> 1) + j, y, g, ci, _cl(.45 + .65 * I), 5)
-        for s in sparks:
-            q = 1 - s[4] / s[5]; x = math.floor(s[0]); y = math.floor(s[1] / A)
-            if x < 0 or x >= C or y < 0 or y >= R or MK[y * C + x] == 1: continue
-            put(x, y, '*' if q > .6 else "'" if q > .3 else '.', PNK if s[6] < .25 else _ri(.75 + .25 * q), _cl(q * 1.4), 0)
-        if 1.9 < u < 2.7:
-            e = math.sin(math.pi * (u - 1.9) / .8)
-            for j in range(3, 11):
-                y = rt + j; al = e * (1 - j / 11)
-                put(xc - j, y, '/', VIO if j % 3 else PNK, al, 0); put(xc + j, y, '\\', VIO if j % 3 else PNK, al, 0)
-        tt = t - T_LIFT; sec = math.ceil(-tt) if tt < 0 else math.floor(tt)
-        lab = 'T%s00:%02d' % ('-' if tt < 0 else '+', sec)
-        if t < T_FADE0:
-            for k, ch in enumerate(lab): put(2 + k, 1, ch, _ri(.6) if 0 <= tt < 1.5 else HUD, .85, 0)
+                d, h = D[y][x], H[y][x]
+                if d > .07: ch[y][x] = _SR[min(9, 1 + int(d * 2.6))]; lv[y][x] = 0 if d < .2 else 1 if d < .6 else 2 if d < 1.4 else 3
+                if h > .15: ch[y][x] = _FR[min(6, 1 + int(h * 2.2))]; lv[y][x] = 3 if h < .7 else 4 if h < 1.6 else 5
+        yb = round(yb0)
+        sh = (sgn() if rr() < .45 else 0) if T_IGN < T < 3.4 else 0
+        v = cl((yb - 1) / (RH + 3), 0, 1) if yb < RH + 4 else 1
+        x0 = CX - RW // 2 + sh
+        if v > 0:
+            for r, row in enumerate(RK):
+                y = yb - RH + 1 + r
+                if not 0 <= y < G: continue
+                for c, k in enumerate(row):
+                    if k == ' ' or (v < 1 and rr() > v): continue
+                    if k == '$': put(x0 + c, y, ' ', -1)
+                    else: put(x0 + c, y, k, 5 if k in 'o^' else 3 if k == '=' else 4)
+            if th > 0:
+                FL = RH * .75
+                for i in range(round(FL * .33 + th * FL + rnd(0, FL * .25))):
+                    y = yb + 1 + i
+                    if y >= G or y < 0: continue
+                    w = max(0, round((2.6 if big else 1.6) - i * (.28 if big else .3) + rnd(-.5, .5)))
+                    for d in range(-w, w + 1):
+                        if v < 1 and rr() > v: continue
+                        ad = abs(d)
+                        c = ('@' if i < 3 or i % 3 == 2 else '#') if ad == 0 else "'" if ad == w else '%' if ad == 1 else '*'
+                        put(CX + d + sh, y, c, 5 if (ad == 0 and i % 3 == 2) or i < 3 else 4 if i < 7 else 3)
+        op = cl(T_FADE1 - T, 0, 1) if T > T_FADE0 else cl(T / .5, 0, 1) if T < .5 else 1
         cv = Canvas(C, R, LAUNCH_BG)
-        for i in range(N):
-            ch = CH[i]
-            if not ch or ch == ' ' or AL[i] < .04: continue
-            # the page adds a bloom pass; a little extra alpha stands in for it
-            c = mix(LAUNCH_BG, _COL[CI[i]], min(1, AL[i] * 1.12))
-            cv.g[i // C][i % C] = (ch, tuple(min(255, v // 6 * 6 + 3) for v in c))
+        if op < .04: return cv.rows()
+        for y in range(R):
+            for x in range(C):
+                if lv[y][x] < 0 or ch[y][x] == ' ': continue
+                c = mix(LAUNCH_BG, LAUNCH_COL[lv[y][x]], op)
+                cv.g[y][x] = (ch[y][x], tuple(min(255, q // 6 * 6 + 3) for q in c))
         return cv.rows()
 
-    frames, DT, sub = [], 1 / 30, 30 // FPS
-    for f in range(round(LOOP_S * FPS)):
-        frames.append(render())
-        for _ in range(sub): step(DT)
+    frames, DT, sub, T = [], 1 / 30, 30 // FPS, 0.0
+    for _ in range(round(LOOP_S * FPS)):
+        frames.append(render(T))
+        for _ in range(sub): T += DT; step(T, DT)
     return frames
 
 
